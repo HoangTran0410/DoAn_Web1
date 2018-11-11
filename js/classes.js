@@ -12,7 +12,7 @@ function Promo(name, value) { // khuyen mai
 		var contentLabel = "";
 		switch(this.name) {
 			case "giamgia" : 
-				contentLabel = `<i class="fa fa-bolt"></i>`+ this.value + `&#8363;`;
+				contentLabel = `<i class="fa fa-bolt"></i> Giảm `+ this.value + `&#8363;`;
 				break;
 
 			case "tragop" :
