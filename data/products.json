@@ -1,0 +1,26 @@
+{
+	"list" : [
+		{
+			"name": "SamSung Galaxy J4+",
+			"img": "img/products/samsung-galaxy-j4-plus-pink-400x400.jpg",
+			"price": "3.490.000",
+			"star": 5,
+			"rateCount": 26,
+			"promo": {
+				"name": "tragop",
+				"value": 0
+			}
+		}, 
+		{
+			"name": "Oppo F9",
+			"img": "img/products/oppo-f9-red-600x600.jpg",
+			"price": "7.690.000",
+			"star": 5,
+			"rateCount": 188,
+			"promo": {
+				"name": "giamgia",
+				"value": "500.000"
+			}
+		}
+	]
+}

@@ -1,0 +1,389 @@
+* { margin: 0; padding: 0; outline: none; font-family: sans-serif; }
+body, html { min-width: 1024px; }
+a { text-decoration: none; color: #222;}
+ul { list-style: none; }
+.clear { clear: both; line-height: 0; }
+
+/* Use for auto clear float */
+/* ====== https://css-tricks.com/snippets/css/clear-fix/ ======== */
+	.group:before,
+	.group:after {
+	  content: "";
+	  display: table;
+	} 
+	.group:after {
+	  clear: both;
+	}
+	.group {
+	  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+	}
+/* ===== End clear float ====== */
+
+
+/* Top Navigation */
+	.top-nav {
+		display: inline-block;
+		background: #f1f1f1;
+		width: 100%;
+		border-bottom: 1px #e1e1e1 solid;
+	}
+
+	/* Social Icon */
+		.social-top-nav {
+			float: left;
+			display: table;
+		}
+		.social-top-nav a {
+			display: table-cell;
+			padding: 8px;
+			text-align: center;
+			font-size: 13px;
+			color: gray;
+			background-color: #f1f1f1;
+		}
+		/* hightlight icon fb, google, youtube .... when hover */
+		.social-top-nav a:hover { color: #fff; }
+		.fa-facebook:hover { background: #3B5998; }
+		.fa-twitter:hover { background: #55ACEE; }
+		.fa-google:hover { background: #dd4b39; }
+		.fa-youtube:hover { background: #bb0000; }
+	/* ======= End Social Icon ======= */
+
+	/* Quick link */
+		.top-nav-quicklink {
+			float: right;
+		}
+		.top-nav-quicklink li {
+			display: inline-block;
+			font-size: 85%;
+			padding: 5px;
+			color: gray;
+		}
+		.top-nav-quicklink li a {
+			display: block;
+			color: gray;
+		}
+		.top-nav-quicklink li a:hover {
+			color: black;
+		}
+	/* ======= End quick link ======= */
+/* ======= End Top navigation ======= */
+
+/* Header */
+	.header {
+		padding: 15px 0 5px 0 ;
+		border-bottom: 1px solid #e1e1e1;
+	}
+
+	/* Logo */
+		.header .logo {
+			max-width: 250px;
+			height: 60px;
+			float: left;
+		}
+		.header .logo img {
+			width: 100%;
+			height: 100%;
+			vertical-align: middle;
+		}
+	/* ======= End logo ======== */
+
+	/* Content */
+		.header .content{
+			width: calc(100% - 250px);
+			float: left;
+		}
+
+		/* Search */
+			.search-header {
+				float: left;
+			}
+
+			form.input { 
+				margin-left: 20px;
+				background: #ddd;
+				border: 2px solid #bbb;
+				border-radius: 10px;
+				height: 35px;
+				width: 300px;
+				/* dieu` ching? width cua? search o? day^ */
+			}
+			.input input{
+				float: left;
+				padding: 0 0 0 15px;
+				border: none;
+				border-radius: 10px 0 0 10px;
+				height: 100%;
+				width: calc(100% - 100px - 20px);
+				/* 100 la width button, 20 la padding button */
+			}
+			.input button {
+				float: right;
+				font-size: 14px;
+				font-weight: bold;
+				padding: 0 10px;
+				color: #888;
+				background: none;
+				width: 100px;
+				height: 100%;
+				border: none;
+				cursor: pointer;
+			}
+			.input button:hover {
+				color: #000;
+			}
+
+			.tags {
+				margin: 5px 0 0 20px;
+				font-size: 13px;
+			}
+			.tags a {
+				color: gray;
+				padding: 0 5px;
+			}
+			.tags a:hover {
+				color: black;
+				text-decoration: underline;
+			}
+		/* ======= End search ========== */
+
+		/* Tools Member */
+			.tools-member {
+				float: right;
+				margin-left: 10px;
+				font-size: 14px;
+			}
+	
+			/* Member */
+				.member {
+					float: left;
+				}
+				.member p {
+					margin-bottom: 5px;
+				}
+				.member a {
+					color: black;
+					font-weight: bold;
+				}
+				.member a:hover {
+					text-decoration: underline;
+				}
+			/* ======= End Member ======= */
+
+			/* Cart */
+				.cart {
+					float: left;
+					border-left: 1px solid #bbb;
+					margin-left: 10px; 
+					padding-left: 15px;
+				}
+				.cart a {
+					padding: 5px 0;
+					font-size: 15px;
+					font-weight: bold;
+					color: #454;
+				}
+				.cart a:hover {
+					background: #ededed;
+					color: #000;
+				}
+				.cart-number {
+					width: 100%;
+					font-weight: bold;
+					font-size: 18px;
+					color: red;
+				}
+				.cart-number span {
+					/* size for icon */
+					font-size: 20px;
+					color: black;
+				}
+			/* ======= End Cart ======== */
+
+			/* Check Order */
+				.check-order {
+					float: left;
+					border-left: 1px solid #bbb;
+					margin-left: 10px;
+					padding-left: 5px; 
+				}
+				.check-order a {
+					display: block;
+					text-align: center;
+					padding: 5px 10px;
+					font-size: 16px;
+					font-weight: bold;
+					color: #454;
+				}
+				.check-order a:hover {
+					color: #000;
+					background: #ededed;
+				}
+			/* ======= End Check Order ======= */
+		/* ======= End Tools Member ======= */
+	/* ======= End Content ========= */
+/* ======= End header ======== */
+
+/* Banner */
+	.banner {
+		background: #f5f5f5;
+		padding-top:  10px;
+		border-bottom: 1px solid #e1e1e1;
+	}
+/* ======= End Banner ======== */
+
+/* Home Product */
+	.homeproduct {
+
+	}
+	.homeproduct li {
+		float: left;
+		position: relative;
+		margin: 10px 5px;
+	}
+	.homeproduct li a {
+		position: relative;
+		display: block;
+		padding: 10px 0;
+	}
+	.homeproduct li span {
+	    display: inline-block;
+	    vertical-align: middle;
+	    font-size: 12px;
+	    text-decoration: line-through;
+	    margin-left: 5px;
+	    color: #222;
+	}
+	/* Name and image */
+		.homeproduct a img {
+			width: 200px;
+			height: 200px;
+			margin: 15px auto;
+			transition-duration: .25s;
+		}
+		.homeproduct a:hover > img {
+			margin: 5px auto 25px;
+		}
+		.homeproduct li h3 {
+			display: block;
+			margin: 0 10px;
+			color: #333;
+			line-height: 1.3em;
+			font-size: 16px;
+			font-weight: normal;
+		}
+		.homeproduct li a:hover h3 {
+			color: #288ad6;
+        }
+	/* ====== End Name and image ===== */
+
+	/* Price */
+		.homeproduct li .price {
+			display: block;
+			padding: 5px 10px 0px 10px;
+		}
+		.homeproduct li strong {
+		    display: inline-block;
+		    vertical-align: middle;
+		    overflow: hidden;
+		    font-size: 14px;
+		    color: #e10c00;
+		    line-height: 15px;
+		}
+	/* ===== End Price ===== */
+
+	/* Rating */
+		.homeproduct .ratingresult {
+			padding: 5px 10px;
+		}
+		.homeproduct .ratingresult span {
+		    display: inline-block;
+		    position: relative;
+		    top: 1px;
+		    margin-left: 5px;
+		    vertical-align: middle;
+		    text-decoration: none;
+		    font-size: 12px;
+		    color: #777;
+		}
+		.fa-star, .fa-star-o {
+			color: orange;
+		}
+	/* ===== End Rating ===== */
+
+	/* Khuyen mai */
+		.homeproduct li label {
+		    display: inline-block;
+		    position: absolute;
+		    top: 207px;
+		    left: 10px;
+		    font-size: 12px;
+		    color: #fff;
+		    font-weight: 600;
+		    background: #3fb846;
+		    border-radius: 2px;
+		    padding: 3px 5px 0;
+		    height: 18px;
+		}
+		/* Giam gia thanh */
+		.homeproduct li label.giamgia {
+		    background-image: linear-gradient(-90deg,#ec1f1f 0%,#ff9c00 100%);
+		    border-radius: 10px;
+		    padding: 1px 7px;
+		    padding-left: 0;
+		    padding-right: 10px;
+		}
+		.fa-bolt {
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			line-height: 20px;
+			border-radius: 50%;
+			background: #f21;
+			color: white;
+		}
+		/* Tra gop 0% */
+		.homeproduct li label.tragop {
+		    background: #f28902;
+		}
+		/* Gia re online */
+		.homeproduct li label.giareonline {
+
+		}
+	/* ===== End Khuyen mai ====== */
+/* ====== End Home Product ======= */
+
+/* Footer */
+	.footer {
+		height: 150px;
+		width: 100%;
+		background: #476;
+		color: white;
+
+		text-align: center;
+		line-height: 150px;
+	}
+/* ======= End Footer ======== */
+
+#goto-top-page {
+    bottom: 15px;
+    position: fixed;
+    right: 15px;
+    z-index: 100;    /* display: none; */
+    background: rgba(0, 0, 0, .6);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 29px;
+    text-align: center;
+    cursor: pointer;
+    font-family: Consolas, monospace;
+}
+
+/* ========= ScrollBar ============ */
+::-webkit-scrollbar{width:7px;height:7px;}
+::-webkit-scrollbar-track{background:#444;}
+::-webkit-scrollbar-thumb{background:#999;border-radius:5px;}
+::-webkit-scrollbar-thumb:hover{background:#333;}
