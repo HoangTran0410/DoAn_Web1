@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	// Thêm hình vào banner
-	var imgs = ["banner1", "banner2", "banner3", "banner4", "banner5", "banner6"];
-	for (var img of imgs) {
-		var linkimg = "img/banners/" + img + ".png";
+	var numBanner = 8; // Số lượng hình banner
+	for (var i = 1; i <= numBanner; i++) {
+		var linkimg = "img/banners/banner" + i + ".png";
 		addBanner(linkimg, linkimg);
 	}
 
@@ -37,13 +37,7 @@ $(document).ready(function() {
 	for (var t of tags)
 		addTags(t, "");
 
-
-	// Thêm sản phẩm từ file products.json
-	var product, promo;
-	for(var p of list_products) {
-		promo = new Promo(p.promo.name, p.promo.value);
-		product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo);
-		product.addToWeb();
-	}
+	// Thêm sản phẩm từ list_products trong file products.js
+	addProductsFrom(list_products);
 });
 
