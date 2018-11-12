@@ -2,6 +2,7 @@
 body, html { min-width: 1024px; }
 a { text-decoration: none; color: #222;}
 ul { list-style: none; }
+li { text-align: -webkit-match-parent; display: list-item; }
 .clear { clear: both; line-height: 0; }
 
 /* Use for auto clear float */
@@ -242,9 +243,10 @@ ul { list-style: none; }
 		margin: 10px 5px;
 	}
 	.homeproduct li a {
-		position: relative;
 		display: block;
+		position: relative;
 		padding: 10px 0;
+		max-width: 200px;
 	}
 	.homeproduct li span {
 	    display: inline-block;
