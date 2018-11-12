@@ -10,6 +10,7 @@ $(document).ready(function() {
 	var owl = $('.owl-carousel');
 	owl.owlCarousel({
 		items: 1.5,
+		// autoWidth:true,
 		center: true,
 		loop: true,
 		smartSpeed: 450,
@@ -38,14 +39,11 @@ $(document).ready(function() {
 
 
 	// Thêm sản phẩm từ file products.json
-	$.getJSON("data/products.json", function(data) {
-	    console.log(data);
-	    var product, promo;
-	    for(var p of data.list) {
-	    	promo = new Promo(p.promo.name, p.promo.value);
-	    	product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo);
-	    	product.addToWeb();
-	    }
-	});
+	var product, promo;
+	for(var p of list_products) {
+		promo = new Promo(p.promo.name, p.promo.value);
+		product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo);
+		product.addToWeb();
+	}
 });
 

@@ -23,6 +23,10 @@ function Promo(name, value) { // khuyen mai
 			case "giareonline" :
 				contentLabel = `Giá rẻ online`;
 				break;
+
+			case "moiramat" :
+				contentLabel = "Mới ra mắt";
+				break;
 		}
 
 		var label = 
