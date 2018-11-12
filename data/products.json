@@ -4,7 +4,7 @@
 			"name": "SamSung Galaxy J4+",
 			"img": "img/products/samsung-galaxy-j4-plus-pink-400x400.jpg",
 			"price": "3.490.000",
-			"star": 5,
+			"star": 3,
 			"rateCount": 26,
 			"promo": {
 				"name": "tragop",
@@ -42,6 +42,28 @@
 			"promo": {
 				"name": "giamgia",
 				"value": "250.000"
+			}
+		},
+		{
+			"name": "Samsung Galaxy A8+ (2018)",
+			"img": "img/products/samsung-galaxy-a8-plus-2018-gold-600x600.jpg",
+			"price": "11.990.000",
+			"star": 0,
+			"rateCount": 0,
+			"promo": {
+				"name": "giamgia",
+				"value": "1.500.000"
+			}
+		},
+		{
+			"name": "Xiaomi Mi 8 Lite",
+			"img": "img/products/xiaomi-mi-8-lite-black-1-600x600.jpg",
+			"price": "6.690.000",
+			"star": 0,
+			"rateCount": 0,
+			"promo": {
+				"name": "tragop",
+				"value": "0"
 			}
 		}
 	]
