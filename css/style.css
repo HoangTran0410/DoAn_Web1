@@ -337,8 +337,8 @@ li { text-align: -webkit-match-parent; display: list-item; }
 		}
 		/* Giam gia thanh */
 		.homeproduct li label.giamgia {
-		    /*background-image: linear-gradient(-90deg, #ec1f1f 0%, #ff9c00 100%);*/
-		    background-image: linear-gradient(180deg, #fff 0%, #000 100%);
+		    background-image: linear-gradient(-90deg, #ec1f1f 0%, #ff9c00 100%);
+/* 		    background-image: linear-gradient(180deg, #fff 0%, #000 100%); */
 		    border-radius: 10px;
 		    padding: 1px 7px;
 		    padding-left: 0;
