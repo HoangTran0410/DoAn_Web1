@@ -9,35 +9,25 @@ $(document).ready(function() {
 	// Khởi động thư viện hỗ trợ banner
 	var owl = $('.owl-carousel');
 	owl.owlCarousel({
-		items: 1.3,
+		items: 1.5,
 		center: true,
 		loop: true,
 		smartSpeed: 450,
 
 		autoplay: true,
-		autoplayTimeout: 3000,
-		autoplayHoverPause: true,
-		responsive: {
-			600: {
-				items: 1
-			},
-			1000: {
-				items: 1.3
-			},
-			1400: {
-				items: 2.5
-			}
-		}
+		autoplayTimeout: 2500,
+		autoplayHoverPause: true
 	});
-	owl.on('mousewheel', '.owl-stage', function(e) {
-		var del = e.deltaY || e.originalEvent.deltaY;
-		if (del > 0) {
-			owl.trigger('next.owl');
-		} else {
-			owl.trigger('prev.owl');
-		}
-		e.preventDefault();
-	});
+	// Dung mouse wheel de thay doi hinh banner
+	// owl.on('mousewheel', '.owl-stage', function(e) {
+	// 	var del = e.deltaY || e.originalEvent.deltaY;
+	// 	if (del > 0) {
+	// 		owl.trigger('next.owl');
+	// 	} else {
+	// 		owl.trigger('prev.owl');
+	// 	}
+	// 	e.preventDefault();
+	// });
 
 
 

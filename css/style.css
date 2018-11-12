@@ -78,7 +78,7 @@ li { text-align: -webkit-match-parent; display: list-item; }
 
 	/* Logo */
 		.header .logo {
-			max-width: 250px;
+			width: 250px;
 			height: 60px;
 			float: left;
 		}
@@ -91,6 +91,7 @@ li { text-align: -webkit-match-parent; display: list-item; }
 
 	/* Content */
 		.header .content{
+			/* tru width cua logo */
 			width: calc(100% - 250px);
 			float: left;
 		}
@@ -100,7 +101,7 @@ li { text-align: -webkit-match-parent; display: list-item; }
 				float: left;
 			}
 
-			form.input { 
+			form.input-search { 
 				margin-left: 20px;
 				background: #ddd;
 				border: 2px solid #bbb;
@@ -109,7 +110,7 @@ li { text-align: -webkit-match-parent; display: list-item; }
 				width: 300px;
 				/* dieu` ching? width cua? search o? day^ */
 			}
-			.input input{
+			.input-search input{
 				float: left;
 				padding: 0 0 0 15px;
 				border: none;
@@ -118,7 +119,7 @@ li { text-align: -webkit-match-parent; display: list-item; }
 				width: calc(100% - 100px - 20px);
 				/* 100 la width button, 20 la padding button */
 			}
-			.input button {
+			.input-search button {
 				float: right;
 				font-size: 14px;
 				font-weight: bold;
@@ -130,7 +131,7 @@ li { text-align: -webkit-match-parent; display: list-item; }
 				border: none;
 				cursor: pointer;
 			}
-			.input button:hover {
+			.input-search button:hover {
 				color: #000;
 			}
 
@@ -194,7 +195,7 @@ li { text-align: -webkit-match-parent; display: list-item; }
 					font-size: 18px;
 					color: red;
 				}
-				.cart-number span {
+				.cart-number i {
 					/* size for icon */
 					font-size: 20px;
 					color: black;
@@ -257,15 +258,18 @@ li { text-align: -webkit-match-parent; display: list-item; }
 	    color: #222;
 	}
 	/* Name and image */
+		/* Hinh anh san pham */
 		.homeproduct a img {
 			width: 200px;
 			height: 200px;
 			margin: 15px auto;
-			transition-duration: .25s;
+			transition-duration: 0.2s;
 		}
+		/* Di chuyen anh? len tren */
 		.homeproduct a:hover > img {
 			margin: 5px auto 25px;
 		}
+		/* Ten san pham */
 		.homeproduct li h3 {
 			display: block;
 			margin: 0 10px;
@@ -274,16 +278,19 @@ li { text-align: -webkit-match-parent; display: list-item; }
 			font-size: 16px;
 			font-weight: normal;
 		}
-		.homeproduct li a:hover h3 {
+		/* Hightlight ten san pham khi hover */
+		.homeproduct a:hover h3 {
 			color: #288ad6;
         }
 	/* ====== End Name and image ===== */
 
 	/* Price */
+		/* la div chua strong */
 		.homeproduct li .price {
 			display: block;
 			padding: 5px 10px 0px 10px;
 		}
+		/* strong la gia tien in dam */
 		.homeproduct li strong {
 		    display: inline-block;
 		    vertical-align: middle;
@@ -314,6 +321,7 @@ li { text-align: -webkit-match-parent; display: list-item; }
 	/* ===== End Rating ===== */
 
 	/* Khuyen mai */
+		/* label la tag khuyen mai */
 		.homeproduct li label {
 		    display: inline-block;
 		    position: absolute;
@@ -329,7 +337,8 @@ li { text-align: -webkit-match-parent; display: list-item; }
 		}
 		/* Giam gia thanh */
 		.homeproduct li label.giamgia {
-		    background-image: linear-gradient(-90deg,#ec1f1f 0%,#ff9c00 100%);
+		    /*background-image: linear-gradient(-90deg, #ec1f1f 0%, #ff9c00 100%);*/
+		    background-image: linear-gradient(180deg, #fff 0%, #000 100%);
 		    border-radius: 10px;
 		    padding: 1px 7px;
 		    padding-left: 0;
