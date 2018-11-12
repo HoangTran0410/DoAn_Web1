@@ -247,6 +247,7 @@ section { max-width: 1200px; margin: 0 auto; }
 		position: relative;
 		border-right: 1px solid #eee;
     	border-bottom: 1px solid #eee;
+    	transition-duration: .5s;
 	}
 	.homeproduct li a {
 		display: block;
