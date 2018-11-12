@@ -9,6 +9,7 @@ function Promo(name, value) { // khuyen mai
 	this.value = value;
 
 	this.toWeb = function() {
+		if(!this.name) return "";
 		var contentLabel = "";
 		switch(this.name) {
 			case "giamgia" : 
