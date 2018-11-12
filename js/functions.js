@@ -32,6 +32,25 @@
 		document.getElementById('products').innerHTML = "";
 	}
 
+// Tìm kiếm (Filter <li>)
+	function filterProductsName() {
+		var inp = document.getElementById('search-box');
+		var filter = inp.value.toUpperCase();
+		var ul = document.getElementById('products');
+		var li = ul.getElementsByTagName('li');
+
+		for(var i = 0; i < li.length; i++) {
+			var a = li[i].getElementsByTagName('a')[0];
+			var h3 = a.getElementsByTagName('h3')[0];
+
+			if(h3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				li[i].style.display = "";
+			} else {
+				li[i].style.display = "none";
+			}
+		}
+	}
+
 // Di chuyển lên đầu trang
 	function gotoTop() {
 		jQuery('html,body').animate({
