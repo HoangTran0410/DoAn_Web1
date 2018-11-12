@@ -1,8 +1,7 @@
 * { margin: 0; padding: 0; outline: none; font-family: sans-serif; }
 body, html { min-width: 1024px; }
+body { max-width: 1200px; margin: 0 auto; }
 a { text-decoration: none; color: #222;}
-ul { list-style: none; }
-li { text-align: -webkit-match-parent; display: list-item; }
 .clear { clear: both; line-height: 0; }
 
 /* Use for auto clear float */
@@ -236,20 +235,24 @@ li { text-align: -webkit-match-parent; display: list-item; }
 
 /* Home Product */
 	.homeproduct {
-
+		list-style-type: none;  
+		overflow: hidden;
 	}
 	.homeproduct li {
 		float: left;
+		width: 19.9%;
 		position: relative;
-		margin: 10px 5px;
+		border-right: 1px solid #eee;
+    	border-bottom: 1px solid #eee;
 	}
 	.homeproduct li a {
 		display: block;
 		position: relative;
 		padding: 10px 0;
-		max-width: 200px;
+		width: 100%; /* 100% so voi li */
+		height: 310px;
 	}
-	.homeproduct li span {
+	.homeproduct a .price span {
 	    display: inline-block;
 	    vertical-align: middle;
 	    font-size: 12px;
@@ -260,10 +263,11 @@ li { text-align: -webkit-match-parent; display: list-item; }
 	/* Name and image */
 		/* Hinh anh san pham */
 		.homeproduct a img {
-			width: 200px;
-			height: 200px;
+			display: block;
 			margin: 15px auto;
 			transition-duration: 0.2s;
+			width: 200px;
+			height: 200px;
 		}
 		/* Di chuyen anh? len tren */
 		.homeproduct a:hover > img {
@@ -272,10 +276,10 @@ li { text-align: -webkit-match-parent; display: list-item; }
 		/* Ten san pham */
 		.homeproduct li h3 {
 			display: block;
-			margin: 0 10px;
+			padding: 0 10px;
 			color: #333;
 			line-height: 1.3em;
-			font-size: 16px;
+			font-size: 15px;
 			font-weight: normal;
 		}
 		/* Hightlight ten san pham khi hover */
@@ -330,15 +334,13 @@ li { text-align: -webkit-match-parent; display: list-item; }
 		    font-size: 12px;
 		    color: #fff;
 		    font-weight: 600;
-		    background: #3fb846;
 		    border-radius: 2px;
 		    padding: 3px 5px 0;
 		    height: 18px;
 		}
 		/* Giam gia thanh */
 		.homeproduct li label.giamgia {
-		    background-image: linear-gradient(-90deg, #ec1f1f 0%, #ff9c00 100%);
-/* 		    background-image: linear-gradient(180deg, #fff 0%, #000 100%); */
+		    background-image: linear-gradient(90deg, #ff9c00 0%, #ec1f1f 100%);
 		    border-radius: 10px;
 		    padding: 1px 7px;
 		    padding-left: 0;
@@ -359,8 +361,13 @@ li { text-align: -webkit-match-parent; display: list-item; }
 		}
 		/* Gia re online */
 		.homeproduct li label.giareonline {
-
+			background: #3fb846;
 		}
+		/* Moi ra mat */
+		.homeproduct li label.moiramat {
+			background: #1191f8;
+		}
+		/* ==== End Moi ra mat ====*/
 	/* ===== End Khuyen mai ====== */
 /* ====== End Home Product ======= */
 
