@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create Product code</title>
+	
+	<style>
+		* {
+			font-family: sans-serif;
+		}
+		table {
+			border : 1px solid #333;
+			margin: 10px auto;
+		}
+		td {
+			border-bottom: 1pt solid #333;
+		}
+		input {
+			height: 26px;
+			font-size: 20px;
+		}
+		textarea {
+			font-size: 16px;
+		}
+		button {
+			font-size: 25px;
+			background: #4f4;
+			color: white;
+			border-radius: 10px;
+			border: none;
+			cursor: pointer;
+		}
+		button:hover {
+			background: #4b4;
+		}
+	</style>
+
+	<script>
+		function getResult() {
+			var name = document.getElementById('name').value;
+			var img = document.getElementById('img').value;
+			var price = document.getElementById('price').value;
+			var star = document.getElementById('star').value || 0;
+			var rateCount = document.getElementById('rateCount').value || 0;
+			var promoName = document.getElementById('promoName').value;
+			var promoValue = document.getElementById('promoValue').value;
+
+			var result = document.getElementById('result');
+			result.innerHTML = 
+`{
+	"name": "`+ name +`",
+	"img": "img/products/`+ img +`",
+	"price": "`+ price +`",
+	"star": `+ star +`,
+	"rateCount": `+ rateCount +`,
+	"promo": {
+		"name": "`+ promoName +`",
+		"value": "`+ promoValue +`"
+	}
+}`;
+		}
+	</script>
+
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<table cellpadding="7">
+					<tr>
+						<td>Tên sản phẩm:</td>
+						<td><input id="name" type="text"></td>
+					</tr>
+					<tr>
+						<td>Tên file ảnh</td>
+						<td><input id="img" type="text"></td>
+					</tr>
+					<tr>
+						<td>Giá tiền:</td>
+						<td><input id="price" type="text"></td>
+					</tr>
+					<tr>
+						<td>Đánh giá (mấy sao):</td>
+						<td><input id="star" type="text"></td>
+					</tr>
+					<tr>
+						<td>Số lượt đánh giá:</td>
+						<td><input id="rateCount" type="text"></td>
+					</tr>
+					<tr>
+						<td>Khuyến mãi:</td>
+						<td>
+							<select name="km" id="promoName">
+								<option value="">Không khuyến mãi</option>
+								<option value="tragop">Trả góp</option>
+								<option value="giamgia">Giảm giá</option>
+								<option value="moiramat">Mới ra mắt</option>
+								<option value="giareonline">Giá rẻ online</option>
+							</select>
+							
+						</td>
+					</tr>
+					<tr>
+						<td>Giá trị khuyến mãi:</td>
+						<td><input id="promoValue" type="text"></td>
+					</tr>
+				</table>
+			</td>
+
+			<td>
+				<button onclick="getResult()">Tạo HTML</button>
+				<p>Kết quả HTML:</p>
+				<textarea rows="13" cols="50" id="result"></textarea>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
