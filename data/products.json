@@ -65,6 +65,17 @@
 				"name": "tragop",
 				"value": "0"
 			}
+		},
+		{
+			"name": "Xiaomi Mi 8 Lite",
+			"img": "img/products/xiaomi-mi-8-lite-black-1-600x600.jpg",
+			"price": "6.690.000",
+			"star": 4,
+			"rateCount": 1547154,
+			"promo": {
+				"name": "",
+				"value": ""
+			}
 		}
 	]
 }
