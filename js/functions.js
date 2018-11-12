@@ -44,9 +44,11 @@
 			var h3 = a.getElementsByTagName('h3')[0];
 
 			if(h3.innerHTML.toUpperCase().indexOf(filter) > -1) {
-				li[i].style.display = "";
+				li[i].style.opacity = 1;
+				li[i].style.width = "19.9%";
 			} else {
-				li[i].style.display = "none";
+				li[i].style.opacity = 0;
+				li[i].style.width = 0;
 			}
 		}
 	}
