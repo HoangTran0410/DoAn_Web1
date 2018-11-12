@@ -44,12 +44,15 @@ function Product(img, name, price, star, rateCount, promo) {
 	this.addToWeb = function() {
 		// Chuyển star sang dạng tag html
 		var rating = "";
-		for(var i = 1; i <= 5; i++) {
-			if(i <= this.star) {
-				rating += `<i class="fa fa-star"></i>`
-			} else {
-				rating += `<i class="fa fa-star-o"></i>`
+		if(this.rateCount > 0){
+			for(var i = 1; i <= 5; i++) {
+				if(i <= this.star) {
+					rating += `<i class="fa fa-star"></i>`
+				} else {
+					rating += `<i class="fa fa-star-o"></i>`
+				}
 			}
+			rating += `<span>`+ this.rateCount +` đánh giá</span>`;
 		}
 
 		// Chuyển giá tiền sang dạng tag html
@@ -71,7 +74,6 @@ function Product(img, name, price, star, rateCount, promo) {
 				</div>
 				<div class="ratingresult">
 					`+ rating +`
-					<span>`+ this.rateCount +` đánh giá</span>
 				</div>
 				`+ (this.promo && this.promo.toWeb()) +`
 			</a>

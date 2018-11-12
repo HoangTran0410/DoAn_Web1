@@ -47,8 +47,7 @@ $(document).ready(function() {
 		addTags(t, "");
 
 
-	// Thêm sản phẩm tuwf file json
-	console.log("get")
+	// Thêm sản phẩm từ file products.json
 	$.getJSON("data/products.json", function(data) {
 	    console.log(data);
 	    var product, promo;
