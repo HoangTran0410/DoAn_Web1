@@ -1,8 +1,11 @@
 * { margin: 0; padding: 0; outline: none; font-family: sans-serif; }
 body, html { min-width: 1024px; }
-body { max-width: 1200px; margin: 0 auto; }
+
 a { text-decoration: none; color: #222;}
 .clear { clear: both; line-height: 0; }
+
+/* căn giữa mọi thứ trong section, và set độ rộng lớn nhất là 1200px */
+section { max-width: 1200px; margin: 0 auto; }
 
 /* Use for auto clear float */
 /* ====== https://css-tricks.com/snippets/css/clear-fix/ ======== */

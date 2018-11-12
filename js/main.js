@@ -10,7 +10,7 @@ $(document).ready(function() {
 	var owl = $('.owl-carousel');
 	owl.owlCarousel({
 		items: 1.5,
-		// autoWidth:true,
+		margin: 100,
 		center: true,
 		loop: true,
 		smartSpeed: 450,
