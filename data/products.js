@@ -221,25 +221,25 @@ var list_products =
 		}
 	},
 	{
-		"name": "iPhone Xs Max 256GB",
-		"img": "img/products/iphone-xs-max-256gb-white-600x600.jpg",
-		"price": "37.990.000",
-		"star": 0,
-		"rateCount": 0,
-		"promo": {
-			"name": "tragop",
-			"value": "0"
-		}
-	},
-	{
-		"name": "Mobiistar Của Hoàng",
-		"img": "img/products/mobiistar-b310-orange-600x600.jpg",
-		"price": "300.000.000",
+		"name": "Nokia Của Hoàng",
+		"img": "https://cdn.tgdd.vn/Products/Images/42/22701/dien-thoai-di-dong-Nokia-1280-dienmay.com-l.jpg",
+		"price": "1.000.000.000",
 		"star": 5,
 		"rateCount": 9999,
 		"promo": {
-			"name": "giareonline",
-			"value": "15.000.000"
+			"name": "giamgia",
+			"value": "15.000"
+		}
+	},
+	{
+		"name": "Samsung Galaxy A7 (2018)",
+		"img": "https://cdn.tgdd.vn/Products/Images/42/194327/samsung-galaxy-a7-2018-128gb-black-400x400.jpg",
+		"price": "8.990.000",
+		"star": 4,
+		"rateCount": 22,
+		"promo": {
+			"name": "tragop",
+			"value": "0"
 		}
 	}
 ];

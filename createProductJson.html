@@ -38,7 +38,7 @@
 			font-size: 16px;
 		}
 		.homeproduct li {
-			width: 210px;
+			width: 250px;
 		}
 	</style>
 
@@ -56,7 +56,7 @@
 			var promoName = document.getElementById('promoName').value;
 			var promoValue = document.getElementById('promoValue').value;
 
-			if(img.indexOf('http:') < 0) {
+			if(img.indexOf('http') < 0) {
 				img = "img/products/"+ img;	
 			}
 return`{
@@ -72,11 +72,16 @@ return`{
 }`;
 		}
 
+		function valueChange() {
+			putResultToTextArea();
+			document.getElementById('products').innerHTML = '';
+			addProduct(eval('(' + getResult() + ')'));
+		}
+
 		window.onload = function() {
-			document.onkeyup = function() {
-				putResultToTextArea();
-				document.getElementById('products').innerHTML = '';
-				addProduct(eval('(' + getResult() + ')'));
+			var inp = document.getElementsByTagName('input');
+			for(var i of inp) {
+				i.onkeyup = valueChange;
 			}
 		}
 	</script>
@@ -90,7 +95,7 @@ return`{
 				<table cellpadding="7">
 					<tr>
 						<td>Tên sản phẩm:</td>
-						<td><input id="name" type="text"></td>
+						<td><input id="name" type="text" onchange=""></td>
 					</tr>
 					<tr>
 						<td>Tên file ảnh</td>
@@ -111,7 +116,7 @@ return`{
 					<tr>
 						<td>Khuyến mãi:</td>
 						<td>
-							<select name="km" id="promoName" onchange="document.onkeyup()">
+							<select name="km" id="promoName" onchange="valueChange()">
 								<option value="">Không khuyến mãi</option>
 								<option value="tragop">Trả góp</option>
 								<option value="giamgia">Giảm giá</option>

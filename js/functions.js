@@ -73,7 +73,7 @@ function auto_Get_Database() {
 	var ul = document.getElementsByClassName('homeproduct')[0];
 	var li = ul.getElementsByTagName('li');
 	for(var l of li) {
-		var a = li[0].getElementsByTagName('a')[0];
+		var a = l.getElementsByTagName('a')[0];
 		// name
 		var name = a.getElementsByTagName('h3')[0].innerHTML;
 		
@@ -82,30 +82,21 @@ function auto_Get_Database() {
 		price = price.getElementsByTagName('strong')[0].innerHTML;
 
 		// img
-		var img = a.getElementsByTagName('img')[0];
-			// tao link download
-		var link = document.createElement('a'); 
-		link.href = img.src;
-			// lay ten hinh anh
-		img = img.src.split('/'); 
-		img = img[img.length - 1];
-			// download hinh anh voi ten lay duoc
-		link.download = img; 
-		document.body.appendChild(link);
-		link.click();
+		var img = a.getElementsByTagName('img')[0].src;
+		console.log(img);
 
-		// rating
-		var rating = a.getElementsByClassName('ratingresult')[0];
-		var star = rating.getElementsByClassName('icontgdd-ystar').length;
-		var rateCount = parseInt(rating.getElementsByTagName('span')[0].innerHTML);
+		// // rating
+		// var rating = a.getElementsByClassName('ratingresult')[0];
+		// var star = rating.getElementsByClassName('icontgdd-ystar').length;
+		// var rateCount = parseInt(rating.getElementsByTagName('span')[0].innerHTML);
 
-		// promo
-		var tragop = a.getElementsByClassName('installment');
-		if(tragop.length) {
+		// // promo
+		// var tragop = a.getElementsByClassName('installment');
+		// if(tragop.length) {
 
-		}
+		// }
 
-		var giamgia = a.getElementsByClassName('discount').length;
-		var giareonline = a.getElementsByClassName('shockprice').length;
+		// var giamgia = a.getElementsByClassName('discount').length;
+		// var giareonline = a.getElementsByClassName('shockprice').length;
 	}
 }
