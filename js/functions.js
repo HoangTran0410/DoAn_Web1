@@ -69,6 +69,7 @@
 		// document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 	}
 
+// Test, not finished
 function auto_Get_Database() {
 	var ul = document.getElementsByClassName('homeproduct')[0];
 	var li = ul.getElementsByTagName('li');
