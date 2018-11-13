@@ -46,7 +46,7 @@ function Product(img, name, price, star, rateCount, promo) {
 	this.rateCount = rateCount;
 	this.promo = promo;
 
-	this.addToWeb = function() {
+	this.addToWeb = function(id) {
 		// Chuyển star sang dạng tag html
 		var rating = "";
 		if(this.rateCount > 0){
@@ -85,7 +85,7 @@ function Product(img, name, price, star, rateCount, promo) {
 		</li>`;
 
 		// Thêm tag <li> vừa tạo vào <ul> homeproduct
-		var products = document.getElementById('products');
+		var products = document.getElementById(id || 'products');
 		products.innerHTML += newLi;
 	}
 }

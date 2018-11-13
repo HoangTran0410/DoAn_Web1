@@ -19,10 +19,10 @@
 	}
 
 // Thêm - Xóa sản phẩm
-	function addProduct(p) {
+	function addProduct(p, id) {
 		promo = new Promo(p.promo.name, p.promo.value);
 		product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo);
-		product.addToWeb();
+		product.addToWeb(id);
 	}
 	function addProductsFrom(list) {
 		var product, promo;

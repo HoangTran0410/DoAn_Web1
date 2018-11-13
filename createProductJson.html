@@ -33,6 +33,18 @@
 			height: 26px;
 			font-size: 20px;
 		}
+		button {
+			border-radius: 10px;
+			margin: 10px auto;
+			font-size: 20px;
+			padding: 10px 5px;
+			border: none;
+			cursor: pointer;
+			background: #487;
+		}
+		button:hover {
+			background: #4a7;
+		}
 		textarea {
 			padding: 5px 3px;
 			font-size: 16px;
@@ -43,10 +55,6 @@
 	</style>
 
 	<script>
-		function putResultToTextArea() {
-			var textarea = document.getElementById('t_a');
-			textarea.innerHTML = getResult();
-		}
 		function getResult() {
 			var name = document.getElementById('name').value;
 			var img = document.getElementById('img').value;
@@ -72,10 +80,24 @@ return`{
 }`;
 		}
 
+		function saveToDatabase() {
+			var r = getResult();
+			var p = eval('(' + r + ')');
+			if(!p.name || !p.price) {
+				alert('Chưa nhập tên hoặc giá tiền');
+				return;
+			}
+
+			addProduct(p, 'products');
+			var textarea = document.getElementById('t_a');
+			if(textarea.innerHTML == '')
+				textarea.innerHTML += r;
+			else textarea.innerHTML += ',\n'+r;
+		}
+
 		function valueChange() {
-			putResultToTextArea();
-			document.getElementById('products').innerHTML = '';
-			addProduct(eval('(' + getResult() + ')'));
+			document.getElementById('live').innerHTML = '';
+			addProduct(eval('(' + getResult() + ')'), 'live');
 		}
 
 		window.onload = function() {
@@ -134,6 +156,16 @@ return`{
 			</td>
 
 			<td>
+				<ul class="homeproduct" id="live"></ul>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button onclick="saveToDatabase()">Lưu vào database</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
 				<ul class="homeproduct" id="products"></ul>
 			</td>
 		</tr>
