@@ -4,38 +4,49 @@
 	<meta charset="UTF-8">
 	<title>Create Product code</title>
 	
+	<!-- Load font awesome icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/home_products.css">
+
+	<script src="data/products.js"></script>
+	<script src="js/classes.js"></script>
+	<script src="js/functions.js"></script>
+
 	<style>
-		* {
-			font-family: sans-serif;
+		* { 
+			outline: none; 
+			font-family: sans-serif; 
 		}
+		
 		table {
+			padding: 5px 3px;
 			border : 1px solid #333;
 			margin: 10px auto;
 		}
 		td {
+			padding: 5px 3px;
 			border-bottom: 1pt solid #333;
 		}
 		input {
+			padding: 5px 3px;
 			height: 26px;
 			font-size: 20px;
 		}
 		textarea {
+			padding: 5px 3px;
 			font-size: 16px;
 		}
-		button {
-			font-size: 25px;
-			background: #4f4;
-			color: white;
-			border-radius: 10px;
-			border: none;
-			cursor: pointer;
-		}
-		button:hover {
-			background: #4b4;
+		.homeproduct li {
+			width: 210px;
 		}
 	</style>
 
 	<script>
+		function putResultToTextArea() {
+			var textarea = document.getElementById('t_a');
+			textarea.innerHTML = getResult();
+		}
 		function getResult() {
 			var name = document.getElementById('name').value;
 			var img = document.getElementById('img').value;
@@ -45,11 +56,12 @@
 			var promoName = document.getElementById('promoName').value;
 			var promoValue = document.getElementById('promoValue').value;
 
-			var result = document.getElementById('result');
-			result.innerHTML = 
-`{
+			if(img.indexOf('http:') < 0) {
+				img = "img/products/"+ img;	
+			}
+return`{
 	"name": "`+ name +`",
-	"img": "img/products/`+ img +`",
+	"img": `+ img +`,
 	"price": "`+ price +`",
 	"star": `+ star +`,
 	"rateCount": `+ rateCount +`,
@@ -59,9 +71,18 @@
 	}
 }`;
 		}
+
+		window.onload = function() {
+			document.onkeyup = function() {
+				putResultToTextArea();
+				document.getElementById('products').innerHTML = '';
+				addProduct(eval('(' + getResult() + ')'));
+			}
+		}
 	</script>
 
 </head>
+
 <body>
 	<table>
 		<tr>
@@ -90,7 +111,7 @@
 					<tr>
 						<td>Khuyến mãi:</td>
 						<td>
-							<select name="km" id="promoName">
+							<select name="km" id="promoName" onchange="document.onkeyup()">
 								<option value="">Không khuyến mãi</option>
 								<option value="tragop">Trả góp</option>
 								<option value="giamgia">Giảm giá</option>
@@ -108,11 +129,16 @@
 			</td>
 
 			<td>
-				<button onclick="getResult()">Tạo Database</button>
+				<ul class="homeproduct" id="products"></ul>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
 				<p>Kết quả Database:</p>
-				<textarea rows="13" cols="70" id="result"></textarea>
+				<textarea rows="13" cols="70" id="t_a"></textarea>
 			</td>
 		</tr>
 	</table>
+
 </body>
 </html>

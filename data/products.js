@@ -219,5 +219,27 @@ var list_products =
 			"name": "",
 			"value": ""
 		}
+	},
+	{
+		"name": "iPhone Xs Max 256GB",
+		"img": "img/products/iphone-xs-max-256gb-white-600x600.jpg",
+		"price": "37.990.000",
+		"star": 0,
+		"rateCount": 0,
+		"promo": {
+			"name": "tragop",
+			"value": "0"
+		}
+	},
+	{
+		"name": "Mobiistar Của Hoàng",
+		"img": "img/products/mobiistar-b310-orange-600x600.jpg",
+		"price": "300.000.000",
+		"star": 5,
+		"rateCount": 9999,
+		"promo": {
+			"name": "giareonline",
+			"value": "15.000.000"
+		}
 	}
 ];

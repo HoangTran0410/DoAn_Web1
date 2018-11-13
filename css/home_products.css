@@ -1,0 +1,139 @@
+
+/* Home Product */
+	.homeproduct {
+		list-style-type: none;  
+		overflow: hidden;
+	}
+	.homeproduct li {
+		float: left;
+		width: 19.9%;
+		position: relative;
+		border-right: 1px solid #eee;
+    	border-bottom: 1px solid #eee;
+    	transition-duration: .5s;
+	}
+	.homeproduct li a {
+		display: block;
+		position: relative;
+		padding: 10px 0;
+		width: 100%; /* 100% so voi li */
+		height: 310px;
+	}
+	.homeproduct a .price span {
+	    display: inline-block;
+	    vertical-align: middle;
+	    font-size: 12px;
+	    text-decoration: line-through;
+	    margin-left: 5px;
+	    color: #222;
+	}
+	/* Name and image */
+		/* Hinh anh san pham */
+		.homeproduct a img {
+			display: block;
+			margin: 15px auto;
+			transition-duration: 0.2s;
+			width: 200px;
+			height: 200px;
+		}
+		/* Di chuyen anh? len tren */
+		.homeproduct a:hover > img {
+			margin: 5px auto 25px;
+		}
+		/* Ten san pham */
+		.homeproduct li h3 {
+			display: block;
+			padding: 0 10px;
+			color: #333;
+			line-height: 1.3em;
+			font-size: 15px;
+			font-weight: normal;
+		}
+		/* Hightlight ten san pham khi hover */
+		.homeproduct a:hover h3 {
+			color: #288ad6;
+        }
+	/* ====== End Name and image ===== */
+
+	/* Price */
+		/* la div chua strong */
+		.homeproduct li .price {
+			display: block;
+			padding: 5px 10px 0px 10px;
+		}
+		/* strong la gia tien in dam */
+		.homeproduct li strong {
+		    display: inline-block;
+		    vertical-align: middle;
+		    overflow: hidden;
+		    font-size: 14px;
+		    color: #e10c00;
+		    line-height: 15px;
+		}
+	/* ===== End Price ===== */
+
+	/* Rating */
+		.homeproduct .ratingresult {
+			padding: 5px 10px;
+		}
+		.homeproduct .ratingresult span {
+		    display: inline-block;
+		    position: relative;
+		    top: 1px;
+		    margin-left: 5px;
+		    vertical-align: middle;
+		    text-decoration: none;
+		    font-size: 12px;
+		    color: #777;
+		}
+		.fa-star, .fa-star-o {
+			color: orange;
+		}
+	/* ===== End Rating ===== */
+
+	/* Khuyen mai */
+		/* label la tag khuyen mai */
+		.homeproduct li label {
+		    display: inline-block;
+		    position: absolute;
+		    top: 207px;
+		    left: 10px;
+		    font-size: 12px;
+		    color: #fff;
+		    font-weight: 600;
+		    border-radius: 2px;
+		    padding: 3px 5px 0;
+		    height: 18px;
+		}
+		/* Giam gia thanh */
+		.homeproduct li label.giamgia {
+		    background-image: linear-gradient(90deg, #ff9c00 0%, #ec1f1f 100%);
+		    border-radius: 10px;
+		    padding: 1px 7px;
+		    padding-left: 0;
+		    padding-right: 10px;
+		}
+		.fa-bolt {
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			line-height: 20px;
+			border-radius: 50%;
+			background: #f21;
+			color: white;
+		}
+		/* Tra gop 0% */
+		.homeproduct li label.tragop {
+		    background: #f28902;
+		}
+		/* Gia re online */
+		.homeproduct li label.giareonline {
+			background: #3fb846;
+		}
+		/* Moi ra mat */
+		.homeproduct li label.moiramat {
+			background: #1191f8;
+		}
+		/* ==== End Moi ra mat ====*/
+	/* ===== End Khuyen mai ====== */
+/* ====== End Home Product ======= */

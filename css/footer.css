@@ -1,0 +1,11 @@
+/* Footer */
+	.footer {
+		height: 150px;
+		width: 100%;
+		background: #476;
+		color: white;
+
+		text-align: center;
+		line-height: 150px;
+	}
+/* ======= End Footer ======== */

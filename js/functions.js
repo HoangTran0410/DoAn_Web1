@@ -19,12 +19,15 @@
 	}
 
 // Thêm - Xóa sản phẩm
+	function addProduct(p) {
+		promo = new Promo(p.promo.name, p.promo.value);
+		product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo);
+		product.addToWeb();
+	}
 	function addProductsFrom(list) {
 		var product, promo;
 		for(var p of list) {
-			promo = new Promo(p.promo.name, p.promo.value);
-			product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo);
-			product.addToWeb();
+			addProduct(p);
 		}
 	}
 
