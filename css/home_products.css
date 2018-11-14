@@ -1,11 +1,17 @@
 /* Một phần css của filter ghi bên header.css */
 .filter {
 	margin: 15px auto;
+	width: 195px;
+	transition-duration: .3s;
 }
-.filter input{
-	width: calc(100% - 15px); /* 15px la padding left cua input */
+.filter:hover {
+	border: 2px solid orange;
+}
+.filter input {
+	padding: 0 15px;
+	width: calc(100% - 30px); /* 15px la padding left cua input */
 	border-radius: 10px;
-	font-size: 20px;
+	font-size: 15px;
 }
 #khongCoSanPham {
 	opacity: 0;
@@ -22,7 +28,7 @@
 		/*width: 19.9%;*/
 		width: 238px;
 		border: 1px solid #eee;
-    	transition-duration: .5s;
+    	transition-duration: .3s;
 	}
 	.homeproduct li a {
 		display: block;

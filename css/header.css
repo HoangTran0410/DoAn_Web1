@@ -29,14 +29,14 @@
 				float: left;
 			}
 
-			form.input-search , .filter{ 
+			form.input-search , .filter { /* filter là khung lọc sản phẩm */
 				margin-left: 20px;
 				background: #ddd;
 				border: 2px solid #bbb;
 				border-radius: 10px;
 				height: 35px;
 				width: 300px;
-				/* dieu` ching? width cua? search o? day^ */
+				/* điều chỉnh width của ô tìm kiếm trên header ở đây */
 			}
 			.input-search input, .filter input{
 				float: left;
@@ -58,6 +58,7 @@
 				height: 100%;
 				border: none;
 				cursor: pointer;
+				transition-duration: .3s;
 			}
 			.input-search button:hover {
 				color: #000;
