@@ -17,45 +17,7 @@
 		var khung_tags = document.getElementsByClassName('tags')[0];
 		khung_tags.innerHTML += new_tag;
 	}
-
-// Thêm - Xóa sản phẩm
-	function addProduct(p, id) {
-		promo = new Promo(p.promo.name, p.promo.value);
-		product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo);
-		product.addToWeb(id);
-	}
-	function addProductsFrom(list) {
-		var product, promo;
-		for(var p of list) {
-			addProduct(p);
-		}
-	}
-
-	function clearAllProducts() {
-		document.getElementById('products').innerHTML = "";
-	}
-
-// Tìm kiếm (Filter <li>)
-	function filterProductsName() {
-		var inp = document.getElementById('search-box');
-		var filter = inp.value.toUpperCase();
-		var ul = document.getElementById('products');
-		var li = ul.getElementsByTagName('li');
-
-		for(var i = 0; i < li.length; i++) {
-			var a = li[i].getElementsByTagName('a')[0];
-			var h3 = a.getElementsByTagName('h3')[0];
-
-			if(h3.innerHTML.toUpperCase().indexOf(filter) > -1) {
-				li[i].style.opacity = 1;
-				li[i].style.width = "19.9%";
-			} else {
-				li[i].style.opacity = 0;
-				li[i].style.width = 0;
-			}
-		}
-	}
-
+	
 // Di chuyển lên đầu trang
 	function gotoTop() {
 		jQuery('html,body').animate({

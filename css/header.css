@@ -29,7 +29,7 @@
 				float: left;
 			}
 
-			form.input-search { 
+			form.input-search , .filter{ 
 				margin-left: 20px;
 				background: #ddd;
 				border: 2px solid #bbb;
@@ -38,9 +38,9 @@
 				width: 300px;
 				/* dieu` ching? width cua? search o? day^ */
 			}
-			.input-search input{
+			.input-search input, .filter input{
 				float: left;
-				padding: 0 0 0 15px;
+				padding-left: 15px;
 				border: none;
 				border-radius: 10px 0 0 10px;
 				height: 100%;

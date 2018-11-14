@@ -1,22 +1,33 @@
-
+/* Một phần css của filter ghi bên header.css */
+.filter {
+	margin: 15px auto;
+}
+.filter input{
+	width: calc(100% - 15px); /* 15px la padding left cua input */
+	border-radius: 10px;
+}
+#khongCoSanPham {
+	opacity: 0;
+	width: 0;
+	color: red;
+	font-size: 30px;
+	font-weight: bold;
+}
 /* Home Product */
 	.homeproduct {
 		list-style-type: none;  
-		overflow: hidden;
 	}
 	.homeproduct li {
-		float: left;
-		width: 19.9%;
-		position: relative;
-		border-right: 1px solid #eee;
-    	border-bottom: 1px solid #eee;
+		/*width: 19.9%;*/
+		width: 239px;
+		border: 1px solid #eee;
     	transition-duration: .5s;
 	}
 	.homeproduct li a {
 		display: block;
 		position: relative;
 		padding: 10px 0;
-		width: 100%; /* 100% so voi li */
+		/*width: 100%;*/ /* 100% so voi li */
 		height: 310px;
 	}
 	.homeproduct a .price span {
@@ -78,7 +89,7 @@
 		}
 		.homeproduct .ratingresult span {
 		    display: inline-block;
-		    position: relative;
+		    /*position: relative;*/
 		    top: 1px;
 		    margin-left: 5px;
 		    vertical-align: middle;

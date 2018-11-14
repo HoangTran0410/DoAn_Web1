@@ -26,6 +26,7 @@
 		<script src="data/products.js"></script>
 		<script src="js/classes.js"></script>
 		<script src="js/functions.js"></script>
+		<script src="js/functionsForSanPham.js"></script>
 		<script src="js/main.js"></script>
 
 	</head>
@@ -37,8 +38,9 @@
 					<a href="#" class="fa fa-twitter"></a>
 					<a href="#" class="fa fa-google"></a>
 					<a href="#" class="fa fa-youtube"></a>
-				</div>
-				<ul class="top-nav-quicklink">
+				</div> <!-- End Social Topnav -->
+
+				<ul class="top-nav-quicklink flexContain">
 					<li><a href="#">Trả góp 0%</a></li>
 					<li>|</li>
 					<li><a href="#">So sánh sản phẩm</a></li>
@@ -53,9 +55,9 @@
 					<li>|</li>
 					<li><a href="#">Liên hệ</a></li>
 					<li>|</li>
-				</ul>
-			</section>
-		</div>
+				</ul> <!-- End Quick link -->
+			</section><!-- End Section -->
+		</div><!-- End Top Nav  -->
 
 		<section>
 			<div class="header group">
@@ -63,20 +65,22 @@
 					<a href="#">
 						<img src="img/logo.jpg" alt="">
 					</a>
-				</div>
+				</div> <!-- End Logo -->
+
 				<div class="content">
 					<div class="search-header">
 						<form class="input-search">
-							<input id="search-box" type="text" placeholder="Nhập từ khóa tìm kiếm..." onkeyup="filterProductsName()">
+							<input id="search-box" type="text" placeholder="Nhập từ khóa tìm kiếm...">
 							<button type="submit">
 							<i class="fa fa-search"></i>
 							Tìm kiếm
 							</button>
-						</form>
+						</form> <!-- End Form search -->
 						<div class="tags">
 							<strong>Từ khóa: </strong>
 						</div>
-					</div>
+					</div> <!-- End Search header -->
+
 					<div class="tools-member">
 						<div class="member">
 							<p>Xin chào:
@@ -88,7 +92,8 @@
 									Đăng kí tài khoản
 								</a>
 							</p>
-						</div>
+						</div> <!-- End Member -->
+
 						<div class="cart">
 							<a href="#">
 								<div class="cart-number">
@@ -97,23 +102,34 @@
 								</div>
 								Giỏ hàng
 							</a>
-						</div>
+						</div> <!-- End Cart -->
+
 						<div class="check-order">
 							<a href="#">
 								<i class="fa fa-truck"></i><br>
 								Kiểm tra đơn hàng
 							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+						</div> <!-- End Check Order -->
+					</div> <!-- End Tools Member -->
+				</div> <!-- End Content -->
+			</div> <!-- End Header -->
 			
 			<div class="banner">
 				<div class="owl-carousel owl-theme"></div>
-			</div>
+			</div> <!-- End Banner -->
 
-			<ul id="products" class="homeproduct group"></ul>
-		</section>
+			<br><hr>
+			<div class="filter">
+				<input type="text" placeholder="Tìm tên sản phẩm..." onkeyup="filterProductsName(this)">
+			</div> <!-- End Filter -->
+
+			<ul id="products" class="homeproduct group flexContain">
+				<div id="khongCoSanPham">
+					<i class="fa fa-times-circle"></i>
+					Không có sản phẩm nào
+				</div>
+			</ul>
+		</section> <!-- End Section -->
 
 		<div class="footer">FOOTER</div>
 		<p id="goto-top-page" onclick="gotoTop()">&uarr;</p>
