@@ -5,6 +5,7 @@
 .filter input{
 	width: calc(100% - 15px); /* 15px la padding left cua input */
 	border-radius: 10px;
+	font-size: 20px;
 }
 #khongCoSanPham {
 	opacity: 0;
@@ -19,7 +20,7 @@
 	}
 	.homeproduct li {
 		/*width: 19.9%;*/
-		width: 239px;
+		width: 238px;
 		border: 1px solid #eee;
     	transition-duration: .5s;
 	}

@@ -15,35 +15,8 @@
 		document.getElementById('products').innerHTML = "";
 	}
 
-// Tìm kiếm (lọc) tên (Filter <li>)
-	function filterProductsName(ele) {
-		var filter = ele.value.toUpperCase();
-		var ul = document.getElementById('products');
-		var li = ul.getElementsByTagName('li');
-		var coSanPham = false;
-		// var order = 1;
-
-		for(var i = 0; i < li.length; i++) {
-			var a = li[i].getElementsByTagName('a')[0];
-			var h3 = a.getElementsByTagName('h3')[0];
-
-			if(h3.innerHTML.toUpperCase().indexOf(filter) > -1) {
-				// li[i].style.order = order++; // Test
-				li[i].style.opacity = 1;
-				li[i].style.width = "239px";
-				li[i].style.borderWidth = "1px";
-
-				coSanPham = true;
-
-			} else {
-				// li[i].style.order = li.length; // Test
-				li[i].style.width = 0;
-				li[i].style.opacity = 0;
-				li[i].style.borderWidth = "0";
-			}
-		}
-
-		// Thông báo nếu không có sản phẩm
+// Thông báo nếu không có sản phẩm
+	function alertNotHaveProduct(coSanPham) {
 		var thongbao = document.getElementById('khongCoSanPham');
 		if(!coSanPham) {
 			thongbao.style.width = "auto";
@@ -59,24 +32,68 @@
 		}
 	}
 
-// Tìm kiếm (lọc) theo số lượng sao
-	function filterProductsStar(ele) {
+// Hiển thị, Ẩn  - Sản phẩm (<li>)
+	function showLi(li) {
+		li.style.opacity = 1;
+		li.style.width = "239px";
+		li.style.borderWidth = "1px";
+	}
+	function hideLi(li) {
+		li.style.width = 0;
+		li.style.opacity = 0;
+		li.style.borderWidth = "0";
+	}
+
+// Tìm kiếm (lọc) tên (Filter <li>)
+	function filterProductsName(ele) {
 		var filter = ele.value.toUpperCase();
 		var ul = document.getElementById('products');
 		var li = ul.getElementsByTagName('li');
+		var coSanPham = false;
+		// var order = 1;
 
 		for(var i = 0; i < li.length; i++) {
 			var a = li[i].getElementsByTagName('a')[0];
 			var h3 = a.getElementsByTagName('h3')[0];
 
 			if(h3.innerHTML.toUpperCase().indexOf(filter) > -1) {
-				// li[i].style.order = order++; // Test
-				li[i].style.opacity = 1;
-				li[i].style.width = "239px";
+				showLi(li[i]);
+				coSanPham = true;
+
 			} else {
-				// li[i].style.order = li.length; // Test
-				li[i].style.opacity = 0;
-				li[i].style.width = 0;
+				hideLi(li[i]);
 			}
 		}
+
+		// Thông báo nếu không có sản phẩm
+		alertNotHaveProduct(coSanPham);
+	}
+
+// Tìm kiếm (lọc) theo số lượng sao
+	function filterProductsStar(num) {
+		var ul = document.getElementById('products');
+		var li = ul.getElementsByTagName('li');
+
+		var coSanPham = false;
+
+		for(var i = 0; i < li.length; i++) {
+			var a = li[i].getElementsByTagName('a')[0];
+			var divRate = a.getElementsByClassName('ratingresult');
+
+			if(!divRate) return;
+			divRate = divRate[0];
+
+			var starCount = divRate.getElementsByClassName('fa-star').length;
+
+			if(starCount >= num) {
+				showLi(li[i]);
+				coSanPham = true;
+
+			} else {
+				hideLi(li[i]);
+			}
+		}
+
+		// Thông báo nếu không có sản phẩm
+		alertNotHaveProduct(coSanPham);
 	}
