@@ -4,10 +4,11 @@
 		product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo);
 		product.addToWeb(id);
 	}
-	function addProductsFrom(list) {
-		var product, promo;
-		for(var p of list) {
-			addProduct(p);
+	function addProductsFrom(list, vitri, soluong) {
+		var start = vitri || 0;
+		var end = (soluong ? start+soluong : list.length);
+		for(var i = start; i < end; i++) {
+			addProduct(list[i]);
 		}
 	}
 
@@ -44,24 +45,33 @@
 		li.style.borderWidth = "0";
 	}
 
-// Tìm kiếm (lọc) tên (Filter <li>)
+// Lấy mảng sản phẩm trong trang hiện tại
+	function getLiArray() {
+		var ul = document.getElementById('products');
+		var listLi = ul.getElementsByTagName('li');
+		return listLi;
+	}
+
+// Tìm kiếm (lọc) theo tên
+	function getNameFromLi(li) {
+		var a = li.getElementsByTagName('a')[0];
+		var h3 = a.getElementsByTagName('h3')[0];
+		var name = h3.innerHTML.toUpperCase();
+		return name;
+	}
+
 	function filterProductsName(ele) {
 		var filter = ele.value.toUpperCase();
-		var ul = document.getElementById('products');
-		var li = ul.getElementsByTagName('li');
+		var listLi = getLiArray();
 		var coSanPham = false;
-		// var order = 1;
 
-		for(var i = 0; i < li.length; i++) {
-			var a = li[i].getElementsByTagName('a')[0];
-			var h3 = a.getElementsByTagName('h3')[0];
-
-			if(h3.innerHTML.toUpperCase().indexOf(filter) > -1) {
-				showLi(li[i]);
+		for(var i = 0; i < listLi.length; i++) {
+			if(getNameFromLi(listLi[i]).indexOf(filter) > -1) {
+				showLi(listLi[i]);
 				coSanPham = true;
 
 			} else {
-				hideLi(li[i]);
+				hideLi(listLi[i]);
 			}
 		}
 
@@ -70,27 +80,29 @@
 	}
 
 // Tìm kiếm (lọc) theo số lượng sao
+	function getStarFromLi(li) {
+		var a = li.getElementsByTagName('a')[0];
+		var divRate = a.getElementsByClassName('ratingresult');
+		if(!divRate) return 0;
+
+		divRate = divRate[0];
+		var starCount = divRate.getElementsByClassName('fa-star').length;
+
+		return starCount;
+	}
+
 	function filterProductsStar(num) {
-		var ul = document.getElementById('products');
-		var li = ul.getElementsByTagName('li');
+		var listLi = getLiArray();
 
 		var coSanPham = false;
 
-		for(var i = 0; i < li.length; i++) {
-			var a = li[i].getElementsByTagName('a')[0];
-			var divRate = a.getElementsByClassName('ratingresult');
-
-			if(!divRate) return;
-			divRate = divRate[0];
-
-			var starCount = divRate.getElementsByClassName('fa-star').length;
-
-			if(starCount >= num) {
-				showLi(li[i]);
+		for(var i = 0; i < listLi.length; i++) {
+			if(getStarFromLi(listLi) >= num) {
+				showLi(listLi[i]);
 				coSanPham = true;
 
 			} else {
-				hideLi(li[i]);
+				hideLi(listLi[i]);
 			}
 		}
 

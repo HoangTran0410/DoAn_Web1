@@ -77,36 +77,40 @@
 						</div>
 					</div> <!-- End Search header -->
 
-					<div class="tools-member">
-						<div class="member">
-							<p>Xin chào:
-								<a href="#" class="btn-login">Đăng nhập</a>
-							</p>
-							<p>
-								<a href="#">
-									<i class="fa fa-user"></i>
-									Đăng kí tài khoản
-								</a>
-							</p>
-						</div> <!-- End Member -->
-
-						<div class="cart">
-							<a href="#">
-								<div class="cart-number">
-									<i class="fa fa-shopping-cart"></i>
-									0
-								</div>
-								Giỏ hàng
-							</a>
-						</div> <!-- End Cart -->
-
-						<div class="check-order">
-							<a href="#">
-								<i class="fa fa-truck"></i><br>
-								Kiểm tra đơn hàng
-							</a>
-						</div> <!-- End Check Order -->
-					</div> <!-- End Tools Member -->
+					<table class="tools-member">
+						<tr>
+							<td>
+								<div class="member">
+									<p>Xin chào:
+										<a href="#" class="btn-login">Đăng nhập</a>
+									</p>
+									<p>
+										<a href="#">
+											<i class="fa fa-user"></i>
+											Đăng kí tài khoản
+										</a>
+									</p>
+								</div> 
+							</td><!-- End Member -->
+							<td>
+								<div class="cart">
+									<a href="#">
+										<i class="fa fa-shopping-cart"></i>
+										<span>Giỏ hàng: </span>
+										<span class="cart-number">0</span>
+									</a>
+								</div> 
+							</td><!-- End Cart -->
+							<td>
+								<div class="check-order">
+									<a href="#">
+										<i class="fa fa-truck"></i>
+										<span>Đơn hàng</span>
+									</a>
+								</div> 
+							</td><!-- End Check Order -->
+						</tr>
+					</table><!-- End Tools Member -->
 				</div> <!-- End Content -->
 			</div> <!-- End Header -->
 			
@@ -114,17 +118,23 @@
 				<div class="owl-carousel owl-theme"></div>
 			</div> <!-- End Banner -->
 
-			<br><hr>
-			<div class="filter">
-				<input type="text" placeholder="Lọc sản phẩm theo tên..." onkeyup="filterProductsName(this)">
-			</div> <!-- End Filter -->
+			<div class="contain-products">
+				<br><hr>
+				<div class="filter">
+					<input type="text" placeholder="Lọc sản phẩm theo tên..." onkeyup="filterProductsName(this)">
+				</div> <!-- End Filter -->
 
-			<ul id="products" class="homeproduct group flexContain">
-				<div id="khongCoSanPham">
-					<i class="fa fa-times-circle"></i>
-					Không có sản phẩm nào
+				<ul id="products" class="homeproduct group flexContain">
+					<div id="khongCoSanPham">
+						<i class="fa fa-times-circle"></i>
+						Không có sản phẩm nào
+					</div>
+				</ul><!-- End products -->
+
+				<div class="pagination">
+					
 				</div>
-			</ul>
+			</div>
 		</section> <!-- End Section -->
 
 		<div class="footer">FOOTER</div>

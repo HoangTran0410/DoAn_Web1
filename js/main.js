@@ -27,7 +27,7 @@ $(document).ready(function() {
 		addTags(t, "");
 
 	// Thêm sản phẩm từ list_products trong file products.js
-	addProductsFrom(list_products);
+	addProductsFrom(list_products, 4, 10);
 });
 
 

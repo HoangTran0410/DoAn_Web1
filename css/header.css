@@ -105,29 +105,37 @@
 				.cart {
 					float: left;
 					border-left: 1px solid #bbb;
-					margin-left: 10px; 
-					padding-left: 15px;
+					margin-left: 5px; 
+					padding-left: 5px;
 				}
 				.cart a {
 					padding: 5px 0;
-					font-size: 15px;
+					font-size: 16px;
 					font-weight: bold;
-					color: #454;
+					color: #565;
 				}
 				.cart a:hover {
-					background: #ededed;
 					color: #000;
 				}
-				.cart-number {
-					width: 100%;
-					font-weight: bold;
-					font-size: 18px;
-					color: red;
+				.cart a:hover > i, .check-order a:hover > i { 
+					/* i ở dây là class fa-shopping-cart va .fa-truck */
+					border: 1px solid #fff;
+					background-color: #ccc;
+					color: #f22;
 				}
-				.cart-number i {
-					/* size for icon */
-					font-size: 20px;
-					color: black;
+				.fa-shopping-cart, .fa-truck{
+					padding: 10px;
+					border-radius: 50%;
+					border: 1px solid #ccc;
+					background-color: #fff;
+					color: #000;
+					margin-right: 5px;
+					transition: 0.3s;
+				}
+				.cart-number {
+					font-weight: bold;
+					/*font-size: 18px;*/
+					color: red;
 				}
 			/* ======= End Cart ======== */
 
@@ -135,20 +143,19 @@
 				.check-order {
 					float: left;
 					border-left: 1px solid #bbb;
-					margin-left: 10px;
+					margin-left: 5px;
 					padding-left: 5px; 
 				}
 				.check-order a {
 					display: block;
 					text-align: center;
-					padding: 5px 10px;
 					font-size: 16px;
 					font-weight: bold;
-					color: #454;
+					color: #565;
+					transition: 0.3s;
 				}
 				.check-order a:hover {
 					color: #000;
-					background: #ededed;
 				}
 			/* ======= End Check Order ======= */
 		/* ======= End Tools Member ======= */
