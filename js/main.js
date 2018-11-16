@@ -27,12 +27,39 @@ window.onload = function() {
 	for (var t of tags)
 		addTags(t, "?search=" + t);
 
+	// Thêm hãng điện thoại
+	var company = ["Apple.jpg", "Samsung.jpg", "OPPO.jpg", "Nokia.jpg", "Huawei.jpg", "Xiaomi.png",
+			"Realme.png", "Vivo.jpg", "Philips.jpg", "Mobell.jpg", "Mobiistar.jpg", "Itel.jpg",
+			"Coolpad.png", "HTC.jpg", "Motorola.jpg"];
+
+	for(var c of company) {
+		addCompany("img/company/" + c, "?company=" + c.slice(0, c.length - 4));
+	}
+
+
+	// Thêm sản phẩm vào trang
 	var sanPhamPhanTich = phanTich_Location();
 	var sanPhamPhanTrang = tinhToanPhanTrang(sanPhamPhanTich, phanTrang);
 
 	addProductsFrom(sanPhamPhanTrang);
+	if(!sanPhamPhanTrang.length) alertNotHaveProduct(false);
+
+	// hideSanPhamKhongThuoc(sanPhamPhanTrang);
 };
 
+function hideSanPhamKhongThuoc(list) {
+	var allLi = getLiArray();
+	for(var i = 0; i < allLi.length; i++) {
+		var hide = true;
+		for(var j = 0; j < list.length; j++){
+			if(getNameFromLi(allLi[i]) == list[j].name) {
+				hide = false;
+				break;
+			}
+		}
+		if(hide) hideLi(allLi[i]);
+	}
+}
 
 // Dung mouse wheel de thay doi hinh banner
 // owl.on('mousewheel', '.owl-stage', function(e) {

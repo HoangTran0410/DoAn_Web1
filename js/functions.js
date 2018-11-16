@@ -31,7 +31,7 @@ function themNutPhanTrang(soTrang, trangHienTai) {
 	if(soTrang > 1) // Chỉ hiện nút phân trang nếu số trang > 1
 	for(var i = 1; i <= soTrang; i++) {
 		if(i == trangHienTai) {
-			divPhanTrang.innerHTML += `<a href="" class="current">` + i + `</a>`
+			divPhanTrang.innerHTML += `<a href="#" class="current">` + i + `</a>`
 		
 		} else {
 			divPhanTrang.innerHTML += `<a href="`+k+`page=`+(i)+`">` + i + `</a>`
@@ -202,7 +202,7 @@ function getLiArray() {
 function getNameFromLi(li) {
 	var a = li.getElementsByTagName('a')[0];
 	var h3 = a.getElementsByTagName('h3')[0];
-	var name = h3.innerHTML.toUpperCase();
+	var name = h3.innerHTML;
 	return name;
 }
 
@@ -211,10 +211,14 @@ function filterProductsName(ele) {
 	var listLi = getLiArray();
 	var coSanPham = false;
 
+	var soLuong = 0;
+
 	for (var i = 0; i < listLi.length; i++) {
-		if (getNameFromLi(listLi[i]).indexOf(filter) > -1) {
+		if (getNameFromLi(listLi[i]).toUpperCase().indexOf(filter) > -1
+		&&  soLuong < soLuongSanPhamMaxTrongMotTrang) {
 			showLi(listLi[i]);
 			coSanPham = true;
+			soLuong++;
 
 		} else {
 			hideLi(listLi[i]);
@@ -275,6 +279,14 @@ function addTags(nameTag, link) {
 	// Thêm <a> vừa tạo vào khung tìm kiếm
 	var khung_tags = document.getElementsByClassName('tags')[0];
 	khung_tags.innerHTML += new_tag;
+}
+
+// Thêm hãng sản xuất
+function addCompany(img, link) {
+	var new_tag = `<a href=` + link + `><img src=` + img + `></a>`;
+
+	var khung_hangSanXuat = document.getElementsByClassName('companyMenu')[0];
+	khung_hangSanXuat.innerHTML += new_tag;
 }
 
 // Di chuyển lên đầu trang

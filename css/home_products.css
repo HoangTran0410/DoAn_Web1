@@ -1,3 +1,21 @@
+.companyMenu a {
+    border: 1px solid #eee;
+    height: 40px;
+    line-height: 40px;
+}
+
+.companyMenu a:hover {
+	border: 1px solid #aaa;
+}
+
+.companyMenu a img{
+    max-height: 30px;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+
+
 /* Một phần css của filter ghi bên header.css */
 .filter {
 	margin: 15px auto;
@@ -19,13 +37,13 @@
 	color: red;
 	font-size: 30px;
 	font-weight: bold;
+	height: 310px;
 }
 /* Home Product */
 	.homeproduct {
 		list-style-type: none;  
 	}
 	.homeproduct li {
-		/*width: 19.9%;*/
 		width: 238px;
 		border: 1px solid #eee;
     	transition-duration: .3s;
@@ -34,7 +52,6 @@
 		display: block;
 		position: relative;
 		padding: 10px 0;
-		/*width: 100%;*/ /* 100% so voi li */
 		height: 310px;
 	}
 	.homeproduct a .price span {
