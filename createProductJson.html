@@ -14,7 +14,6 @@
 	<script src="data/products.js"></script>
 	<script src="js/classes.js"></script>
 	<script src="js/functions.js"></script>
-	<script src="js/functionsForSanPham.js"></script>
 
 	<style>
 		* { 
@@ -105,8 +104,9 @@ return`{
 
 		window.onload = function() {
 			var inp = document.getElementsByTagName('input');
-			for(var i of inp) {
-				i.onkeyup = valueChange;
+			console.log(inp);
+			for(var i = 0; i < inp.length; i++) {
+				inp[i].onkeyup = valueChange;
 			}
 		}
 	</script>
