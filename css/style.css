@@ -52,4 +52,4 @@ section { max-width: 1680px; margin: 0 auto; }
 ::-webkit-scrollbar{width:7px;height:7px;}
 ::-webkit-scrollbar-track{background:#444;}
 ::-webkit-scrollbar-thumb{background:#999;border-radius:5px;}
-::-webkit-scrollbar-thumb:hover{background:#333;}
+::-webkit-scrollbar-thumb:hover{background:#ccc;}

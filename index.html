@@ -27,7 +27,6 @@
 		<script src="data/products.js"></script>
 		<script src="js/classes.js"></script>
 		<script src="js/functions.js"></script>
-		<script src="js/functionsForSanPham.js"></script>
 		<script src="js/main.js"></script>
 
 	</head>
@@ -66,8 +65,8 @@
 
 				<div class="content">
 					<div class="search-header">
-						<form class="input-search">
-							<input id="search-box" type="text" placeholder="Nhập từ khóa tìm kiếm...">
+						<form class="input-search" method="get">
+							<input id="search-box" name="search" type="text" placeholder="Nhập từ khóa tìm kiếm...">
 							<button type="submit">
 							<i class="fa fa-search"></i>
 							Tìm kiếm
@@ -78,40 +77,29 @@
 						</div>
 					</div> <!-- End Search header -->
 
-					<table class="tools-member">
-						<tr>
-							<td>
-								<div class="member">
-									<p>Xin chào:
-										<a href="#" class="btn-login">Đăng nhập</a>
-									</p>
-									<p>
-										<a href="#">
-											<i class="fa fa-user"></i>
-											Đăng kí tài khoản
-										</a>
-									</p>
-								</div> 
-							</td><!-- End Member -->
-							<td>
-								<div class="cart">
-									<a href="#">
-										<i class="fa fa-shopping-cart"></i>
-										<span>Giỏ hàng: </span>
-										<span class="cart-number">0</span>
-									</a>
-								</div> 
-							</td><!-- End Cart -->
-							<td>
-								<div class="check-order">
-									<a href="#">
-										<i class="fa fa-truck"></i>
-										<span>Đơn hàng</span>
-									</a>
-								</div> 
-							</td><!-- End Check Order -->
-						</tr>
-					</table><!-- End Tools Member -->
+					<div class="tools-member">
+						<div class="member">
+							<a href="#">
+								<i class="fa fa-user"></i>
+								Tài khoản
+							</a>
+						</div> <!-- End Member -->
+
+						<div class="cart">
+							<a href="#">
+								<i class="fa fa-shopping-cart"></i>
+								<span>Giỏ hàng: </span>
+								<span class="cart-number">0</span>
+							</a>
+						</div> <!-- End Cart -->
+
+						<div class="check-order">
+							<a href="#">
+								<i class="fa fa-truck"></i>
+								<span>Đơn hàng</span>
+							</a>
+						</div> <!-- End Check Order -->
+					</div><!-- End Tools Member -->
 				</div> <!-- End Content -->
 			</div> <!-- End Header -->
 			
@@ -119,8 +107,8 @@
 				<div class="owl-carousel owl-theme"></div>
 			</div> <!-- End Banner -->
 
+			<br><hr>
 			<div class="contain-products">
-				<br><hr>
 				<div class="filter">
 					<input type="text" placeholder="Lọc sản phẩm theo tên..." onkeyup="filterProductsName(this)">
 				</div> <!-- End Filter -->
@@ -132,13 +120,7 @@
 					</div>
 				</ul><!-- End products -->
 
-				<div class="pagination">
-					<a href=""><i class="fa fa-angle-left"></i></a>
-					<a href="" class="current">1</a>
-					<a href="">2</a>
-					<a href="">3</a>
-					<a href=""><i class="fa fa-angle-right"></i></a>
-				</div>
+				<div class="pagination"></div>
 			</div>
 		</section> <!-- End Section -->
 
