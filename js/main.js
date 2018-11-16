@@ -66,7 +66,7 @@ function phanTich_Location() {
 					break;
 
 				case 'price':
-					var prices = dauBang[1].split('+');
+					var prices = dauBang[1].split('-');
 					result = timKiemTheoGiaTien(result, prices[0], prices[1]);
 					break;
 
@@ -88,7 +88,7 @@ function phanTich_Location() {
 					break;
 
 				case 'sort':
-					var s = dauBang[1].split('+');
+					var s = dauBang[1].split('-');
 					var tenThanhPhanCanSort = s[0];
 
 					switch (tenThanhPhanCanSort) {
