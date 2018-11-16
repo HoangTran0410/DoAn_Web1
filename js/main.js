@@ -1,6 +1,6 @@
 var soLuongSanPhamMaxTrongMotTrang = 8;
 
-$(document).ready(function() {
+window.onload = function() {
 
 	// Thêm hình vào banner
 	var numBanner = 8; // Số lượng hình banner
@@ -20,7 +20,6 @@ $(document).ready(function() {
 
 		autoplay: true,
 		autoplayTimeout: 3500
-		// ,autoplayHoverPause: true
 	});
 
 	// thêm tags (từ khóa) vào khung tìm kiếm
@@ -32,7 +31,7 @@ $(document).ready(function() {
 	var sanPhamPhanTrang = tinhToanPhanTrang(sanPhamPhanTich, phanTrang);
 
 	addProductsFrom(sanPhamPhanTrang);
-});
+};
 
 
 // Dung mouse wheel de thay doi hinh banner
