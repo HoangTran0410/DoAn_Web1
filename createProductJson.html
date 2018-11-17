@@ -59,6 +59,7 @@
 	<script>
 		function getResult() {
 			var name = document.getElementById('name').value;
+			var company = document.getElementById('company').value;
 			var img = document.getElementById('img').value;
 			var price = document.getElementById('price').value;
 			var star = document.getElementById('star').value || 0;
@@ -69,45 +70,45 @@
 			if(img.indexOf('http') < 0) {
 				img = "img/products/"+ img;	
 			}
-return`{
-	"name": "`+ name +`",
-	"img": "`+ img +`",
-	"price": "`+ price +`",
-	"star": `+ star +`,
-	"rateCount": `+ rateCount +`,
+return {
+	"name": name,
+	"company": company,
+	"img": img,
+	"price": price,
+	"star": star,
+	"rateCount": rateCount,
 	"promo": {
-		"name": "`+ promoName +`",
-		"value": "`+ promoValue +`"
+		"name": promoName,
+		"value": promoValue
 	}
-}`;
+};
 		}
 
 		function saveToDatabase() {
 			var r = getResult();
-			var p = eval('(' + r + ')');
-			if(!p.name || !p.price) {
+			if(!r.name || !r.price) {
 				alert('Chưa nhập tên hoặc giá tiền');
 				return;
 			}
 
-			addProduct(p, 'products');
+			addProduct(r, 'products');
 			var textarea = document.getElementById('t_a');
 			if(textarea.innerHTML == '')
-				textarea.innerHTML += r;
-			else textarea.innerHTML += ',\n'+r;
+				textarea.innerHTML += JSON.stringify(r, null, "\t");
+			else textarea.innerHTML += ',\n'+JSON.stringify(r, null, "\t");
 		}
 
 		function valueChange() {
 			document.getElementById('live').innerHTML = '';
-			addProduct(eval('(' + getResult() + ')'), 'live');
+			addProduct(getResult(), 'live');
 		}
 
 		window.onload = function() {
 			var inp = document.getElementsByTagName('input');
-			console.log(inp);
 			for(var i = 0; i < inp.length; i++) {
 				inp[i].onkeyup = valueChange;
 			}
+			document.getElementById('company').onchange = valueChange;
 		}
 	</script>
 
@@ -121,6 +122,28 @@ return`{
 					<tr>
 						<td>Tên sản phẩm:</td>
 						<td><input id="name" type="text" onchange=""></td>
+					</tr>
+					<tr>
+						<td>Tên Hãng:</td>
+						<td>
+							<select name="" id="company">
+								<option value="Apple">Apple</option>
+								<option value="Samsung">Samsung</option>
+								<option value="Oppo">Oppo</option>
+								<option value="Nokia">Nokia</option>
+								<option value="Huawei">Huawei</option>
+								<option value="Xiaomi">Xiaomi</option>	
+								<option value="Realme">Realme</option>
+								<option value="Vivo">Vivo</option>
+								<option value="Philips">Philips</option>
+								<option value="Mobell">Mobell</option>
+								<option value="Mobiistar">Mobiistar</option>
+								<option value="Itel">Itel</option>
+								<option value="Coolpad">Coolpad</option>
+								<option value="HTC">HTC</option>
+								<option value="Motorola">Motorola</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td>Tên file ảnh</td>
@@ -159,7 +182,7 @@ return`{
 			</td>
 
 			<td>
-				<ul class="homeproduct flexContain group" id="live"></ul>
+				<ul class="homeproduct group flexContain" id="live"></ul>
 			</td>
 		</tr>
 		<tr>

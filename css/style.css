@@ -7,28 +7,40 @@ a { text-decoration: none; color: #222;}
 /* căn giữa mọi thứ trong section, và set độ rộng lớn nhất là 1200px */
 section { max-width: 1680px; margin: 0 auto; }
 
+hr {
+    color: #ddd;
+    background-color: #ddd;
+    border-top: 1px solid #ddd;
+}
+
 .flexContain {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    /*align-items: center;*/
-/*    align-self: center;*/
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 /* Use for auto clear float */
 /* ====== https://css-tricks.com/snippets/css/clear-fix/ ======== */
-	.group:before,
-	.group:after {
-	  content: "";
-	  display: table;
-	} 
-	.group:after {
-	  clear: both;
-	}
-	.group {
-	  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
-	}
+    .group:before,
+    .group:after {
+      content: "";
+      display: table;
+    } 
+    .group:after {
+      clear: both;
+    }
+    .group {
+      zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+    }
 /* ===== End clear float ====== */
 
 #goto-top-page {

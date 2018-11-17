@@ -1,4 +1,3 @@
-
 // Thêm sản phẩm vào trang
 function addProduct(p, id) {
 	promo = new Promo(p.promo.name, p.promo.value);
@@ -25,51 +24,42 @@ function themNutPhanTrang(soTrang, trangHienTai) {
 
 	divPhanTrang.innerHTML = '';
 
-	if(trangHienTai > 1) // Nút về phân trang trước
-		divPhanTrang.innerHTML = `<a href="`+k+`page=`+(trangHienTai-1)+`"><i class="fa fa-angle-left"></i></a>`;
+	if (trangHienTai > 1) // Nút về phân trang trước
+		divPhanTrang.innerHTML = `<a href="` + k + `page=` + (trangHienTai - 1) + `"><i class="fa fa-angle-left"></i></a>`;
 
-	if(soTrang > 1) // Chỉ hiện nút phân trang nếu số trang > 1
-	for(var i = 1; i <= soTrang; i++) {
-		if(i == trangHienTai) {
-			divPhanTrang.innerHTML += `<a href="#" class="current">` + i + `</a>`
-		
-		} else {
-			divPhanTrang.innerHTML += `<a href="`+k+`page=`+(i)+`">` + i + `</a>`
+	if (soTrang > 1) // Chỉ hiện nút phân trang nếu số trang > 1
+		for (var i = 1; i <= soTrang; i++) {
+			if (i == trangHienTai) {
+				divPhanTrang.innerHTML += `<a href="#" class="current">` + i + `</a>`
+
+			} else {
+				divPhanTrang.innerHTML += `<a href="` + k + `page=` + (i) + `">` + i + `</a>`
+			}
 		}
-	}
 
-	if(trangHienTai < soTrang) { // Nút tới phân trang sau
-		divPhanTrang.innerHTML += `<a href="`+k+`page=`+(trangHienTai+1)+`"><i class="fa fa-angle-right"></i></a>`
+	if (trangHienTai < soTrang) { // Nút tới phân trang sau
+		divPhanTrang.innerHTML += `<a href="` + k + `page=` + (trangHienTai + 1) + `"><i class="fa fa-angle-right"></i></a>`
 	}
 }
 
 function loaiBoPageCu(link) {
 	var vitri = link.indexOf('page');
-	if(vitri < 0) {
-		if(link.indexOf('?') < 0) return link+'?';
-		return link+'&';
+
+	if (vitri < 0) {
+		if (link.indexOf('?') < 0) return link + '?';
+		return link + '&';
 	}
 
-	var coDauHoiCham = (link[vitri-1] == '?');
-	var coDauVa = (link[vitri-1] == '&');
-
-	var dauTruocPage = '';
-	if(!coDauHoiCham && !coDauVa) {
-		dauTruocPage = '?';
-	}
-	
-	var result = link.slice(0, vitri) + dauTruocPage;
-
-	return result;
+	return link.slice(0, vitri);
 }
 
 function tinhToanPhanTrang(list, vitriTrang) {
 	var sanPhamDu = list.length % soLuongSanPhamMaxTrongMotTrang;
-	var soTrang = parseInt(list.length / soLuongSanPhamMaxTrongMotTrang) + (sanPhamDu?1:0);
-	var trangHienTai = parseInt(vitriTrang<soTrang?vitriTrang:soTrang);
+	var soTrang = parseInt(list.length / soLuongSanPhamMaxTrongMotTrang) + (sanPhamDu ? 1 : 0);
+	var trangHienTai = parseInt(vitriTrang < soTrang ? vitriTrang : soTrang);
 
 	themNutPhanTrang(soTrang, trangHienTai);
-	var start = soLuongSanPhamMaxTrongMotTrang*(trangHienTai-1);
+	var start = soLuongSanPhamMaxTrongMotTrang * (trangHienTai - 1);
 
 	var temp = list.slice();
 
@@ -83,8 +73,25 @@ function timKiemTheoTen(list, ten, soluong) {
 	if (soluong < list.length) count = soluong;
 	else count = list.length;
 
+	ten = ten.replace('+', ' ');
+	ten = ten.replace('%20', ' ');
+	ten = ten.split(' ');
+
 	for (var i = 0; i < list.length; i++) {
-		if (list[i].name.toUpperCase().indexOf(ten.toUpperCase()) >= 0) {
+		var correct = false, countCorrect = 0;
+		var listName = list[i].name.toUpperCase();
+
+		for (var j = 0; j < ten.length; j++) {
+			if (listName.indexOf(ten[j].toUpperCase()) >= 0) {
+				countCorrect++;
+				if(countCorrect == ten.length) {
+					correct = true;
+					break;
+				}
+			}
+		}
+
+		if (correct) {
 			result.push(list[i]);
 			count--;
 			if (count <= 0) break;
@@ -160,6 +167,29 @@ function timKiemTheoKhuyenMai(list, tenKhuyenMai, soluong) {
 }
 
 // ========== LỌC ===============
+// Thêm choosed filter
+function addChoosedFilter(type, name) {
+	var link = linkOfChoosedFilter(type);
+	var tag_a = `<a href="` + link + `"><h3>` + name + ` <i class="fa fa-close"></i> </h3></a>`;
+
+	var divChoosedFilter = document.getElementsByClassName('choosedFilter')[0];
+	divChoosedFilter.innerHTML += tag_a;
+}
+
+function linkOfChoosedFilter(type) {
+	var url = window.location.href;
+	var indexOfType = url.indexOf(type);
+
+	var indexOfEndType = url.indexOf('&', indexOfType)+1;
+	if(indexOfEndType <= 0) indexOfEndType = url.length;
+
+	// thêm ? nếu chưa có
+	var leftString = url.substring(0, indexOfType);
+	if(leftString.indexOf('?') < 0) leftString += '?';
+
+	var result = leftString + url.substring(indexOfEndType);
+	return result;
+}
 
 // Thông báo nếu không có sản phẩm
 function alertNotHaveProduct(coSanPham) {
@@ -214,8 +244,8 @@ function filterProductsName(ele) {
 	var soLuong = 0;
 
 	for (var i = 0; i < listLi.length; i++) {
-		if (getNameFromLi(listLi[i]).toUpperCase().indexOf(filter) > -1
-		&&  soLuong < soLuongSanPhamMaxTrongMotTrang) {
+		if (getNameFromLi(listLi[i]).toUpperCase().indexOf(filter) > -1 &&
+			soLuong < soLuongSanPhamMaxTrongMotTrang) {
 			showLi(listLi[i]);
 			coSanPham = true;
 			soLuong++;

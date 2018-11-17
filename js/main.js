@@ -1,4 +1,11 @@
-var soLuongSanPhamMaxTrongMotTrang = 8;
+var soLuongSanPhamMaxTrongMotTrang = 10;
+
+// window.onbeforeunload = function (e) {
+//   var confirmationMessage = "";
+
+//   (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+//   return confirmationMessage;                            //Webkit, Safari, Chrome
+// };
 
 window.onload = function() {
 
@@ -28,17 +35,20 @@ window.onload = function() {
 		addTags(t, "?search=" + t);
 
 	// Thêm hãng điện thoại
-	var company = ["Apple.jpg", "Samsung.jpg", "OPPO.jpg", "Nokia.jpg", "Huawei.jpg", "Xiaomi.png",
-			"Realme.png", "Vivo.jpg", "Philips.jpg", "Mobell.jpg", "Mobiistar.jpg", "Itel.jpg",
-			"Coolpad.png", "HTC.jpg", "Motorola.jpg"];
-
+	var company = ["Apple.jpg", "Samsung.jpg", "Oppo.jpg", "Nokia.jpg", "Huawei.jpg", "Xiaomi.png",
+		"Realme.png", "Vivo.jpg", "Philips.jpg", "Mobell.jpg", "Mobiistar.jpg", "Itel.jpg",
+		"Coolpad.png", "HTC.jpg", "Motorola.jpg"];
 	for(var c of company) {
 		addCompany("img/company/" + c, "?company=" + c.slice(0, c.length - 4));
 	}
 
+	// Thêm choosed filter
+	// addChoosedFilter('company', 'Apple', '');
+	// addChoosedFilter('promo', 'Trả góp 0%', '');
+	// addChoosedFilter('promo', 'Mới ra mắt', '');
 
 	// Thêm sản phẩm vào trang
-	var sanPhamPhanTich = phanTich_Location();
+	var sanPhamPhanTich = phanTich_URL();
 	var sanPhamPhanTrang = tinhToanPhanTrang(sanPhamPhanTich, phanTrang);
 
 	addProductsFrom(sanPhamPhanTrang);
@@ -46,20 +56,6 @@ window.onload = function() {
 
 	// hideSanPhamKhongThuoc(sanPhamPhanTrang);
 };
-
-function hideSanPhamKhongThuoc(list) {
-	var allLi = getLiArray();
-	for(var i = 0; i < allLi.length; i++) {
-		var hide = true;
-		for(var j = 0; j < list.length; j++){
-			if(getNameFromLi(allLi[i]) == list[j].name) {
-				hide = false;
-				break;
-			}
-		}
-		if(hide) hideLi(allLi[i]);
-	}
-}
 
 // Dung mouse wheel de thay doi hinh banner
 // owl.on('mousewheel', '.owl-stage', function(e) {
@@ -74,85 +70,121 @@ function hideSanPhamKhongThuoc(list) {
 
 // =========== Đọc dữ liệu từ window.location ============
 var phanTrang = 1;
-function phanTich_Location() {
+
+function filterConditionFromURL() {
 	var fullLocation = window.location.href;
 	var dauHoi = fullLocation.split('?');
 
-	var result = list_products;
-	var daPhanTrang = false;
-
-	if (dauHoi[1]) {
+	if(dauHoi[1]) {
 		var dauVa = dauHoi[1].split('&');
+		return dauVa;
+	}
 
-		for (var i = 0; i < dauVa.length; i++) {
-			var dauBang = dauVa[i].split('=');
+	return [];
+}
 
-			switch (dauBang[0]) {
-				case 'search':
-					result = timKiemTheoTen(result, dauBang[1]);
-					break;
+function phanTich_URL() {
+	var filters = filterConditionFromURL();
+	var result = list_products.slice();
 
-				case 'price':
-					var prices = dauBang[1].split('-');
-					result = timKiemTheoGiaTien(result, prices[0], prices[1]);
-					break;
+	for (var i = 0; i < filters.length; i++) {
+		var dauBang = filters[i].split('=');
 
-				case 'company':
-					result = timKiemTheoCongTySanXuat(result, dauBang[1]);
-					break;
+		switch (dauBang[0]) {
+			case 'search':
+				result = timKiemTheoTen(result, dauBang[1]);
+				break;
 
-				case 'star':
-					result = timKiemTheoSoLuongSao(result, dauBang[1]);
-					break;
+			case 'price':
+				var prices = dauBang[1].split('-');
+				result = timKiemTheoGiaTien(result, prices[0], prices[1] || 1E10);
 
-				case 'promo':
-					result = timKiemTheoKhuyenMai(result, dauBang[1]);
-					break;
+				var nameFilter;
+				if(prices[0] == 0) nameFilter = 'Dưới ' + prices[1]/1E6 + ' triệu';
+				else if(prices[1] == 0) nameFilter = 'Trên ' + prices[0]/1E6 + ' triệu';
+				else nameFilter = prices[0]/1E6 + ' triệu - ' + prices[1]/1E6 + ' triệu';
+				addChoosedFilter('star', nameFilter);
+				break;
 
-				case 'page': // page phải ở cuối đường link
-					// result = tinhToanPhanTrang(result, dauBang[1]);
-					phanTrang = dauBang[1];
-					break;
+			case 'company':
+				result = timKiemTheoCongTySanXuat(result, dauBang[1]);
+				addChoosedFilter('company', dauBang[1]);
+				break;
 
-				case 'sort':
-					var s = dauBang[1].split('-');
-					var tenThanhPhanCanSort = s[0];
+			case 'star':
+				result = timKiemTheoSoLuongSao(result, dauBang[1]);
+				addChoosedFilter('star', 'Trên '+(dauBang[1]-1)+' sao')
+				break;
 
-					switch (tenThanhPhanCanSort) {
-						case 'price':
-							result.sort(function(a, b) {
-								var giaA = parseInt(a.price.split('.').join(''));
-								var giaB = parseInt(b.price.split('.').join(''));
-								return giaA - giaB;
-							});
-							break;
+			case 'promo':
+				result = timKiemTheoKhuyenMai(result, dauBang[1]);
+				var nameFilter;
+				switch(dauBang[1]) {
+					case 'tragop' : nameFilter = 'Trả góp'; break;
+					case 'giamgia' : nameFilter = 'Giảm giá'; break;
+					case 'giareonline' : nameFilter = 'Giá rẻ online'; break;
+					case 'moiramat' : nameFilter = 'Mới ra mắt'; break;
+				}
+				addChoosedFilter('promo', nameFilter);
+				break;
 
-						case 'star':
-							result.sort(function(a, b) {
-								return a.star - b.star;
-							});
-							break;
+			case 'page': // page phải ở cuối đường link
+				// result = tinhToanPhanTrang(result, dauBang[1]);
+				phanTrang = dauBang[1];
+				break;
 
-						case 'rateCount':
-							result.sort(function(a, b) {
-								return a.rateCount - b.rateCount;
-							});
-							break;
+			case 'sort':
+				var s = dauBang[1].split('-');
+				var tenThanhPhanCanSort = s[0];
 
-						case 'name':
-							result.sort(function(a, b) {
-								return a.name.localeCompare(b.name);
-							});
-							break;
-					}
+				switch (tenThanhPhanCanSort) {
+					case 'price':
+						result.sort(function(a, b) {
+							var giaA = parseInt(a.price.split('.').join(''));
+							var giaB = parseInt(b.price.split('.').join(''));
+							return giaA - giaB;
+						});
+						break;
 
-					if(s[1] == 'decrease') 
-						result.reverse();
+					case 'star':
+						result.sort(function(a, b) {
+							return a.star - b.star;
+						});
+						break;
 
-					break;
-			}
+					case 'rateCount':
+						result.sort(function(a, b) {
+							return a.rateCount - b.rateCount;
+						});
+						break;
+
+					case 'name':
+						result.sort(function(a, b) {
+							return a.name.localeCompare(b.name);
+						});
+						break;
+				}
+
+				if(s[1] == 'decrease') 
+					result.reverse();
+
+				break;
 		}
 	}
 
 	return result;
+}
+
+function hideSanPhamKhongThuoc(list) {
+	var allLi = getLiArray();
+	for(var i = 0; i < allLi.length; i++) {
+		var hide = true;
+		for(var j = 0; j < list.length; j++){
+			if(getNameFromLi(allLi[i]) == list[j].name) {
+				hide = false;
+				break;
+			}
+		}
+		if(hide) hideLi(allLi[i]);
+	}
 }

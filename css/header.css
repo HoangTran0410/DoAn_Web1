@@ -58,7 +58,9 @@
 				height: 100%;
 				border: none;
 				cursor: pointer;
-				transition-duration: .3s;
+				-webkit-transition-duration: .3s;
+				     -o-transition-duration: .3s;
+				        transition-duration: .3s;
 			}
 			.input-search button:hover {
 				color: #000;
@@ -92,7 +94,9 @@
 				font-size: 16px;
 				font-weight: bold;
 				color: #565;
-				transition-duration: .3s;
+				-webkit-transition-duration: .3s;
+				     -o-transition-duration: .3s;
+				        transition-duration: .3s;
 			}
 			.tools-member a:hover > i {
 				border: 1px solid #fff;
@@ -109,6 +113,8 @@
 				border: 1px solid #ccc;
 				background-color: #fff;
 				color: #000;
+				-webkit-transition: 0.2s;
+				-o-transition: 0.2s;
 				transition: 0.2s;
 			}
 			/* Member */
