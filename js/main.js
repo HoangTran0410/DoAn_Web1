@@ -39,13 +39,30 @@ window.onload = function() {
 		"Realme.png", "Vivo.jpg", "Philips.jpg", "Mobell.jpg", "Mobiistar.jpg", "Itel.jpg",
 		"Coolpad.png", "HTC.jpg", "Motorola.jpg"];
 	for(var c of company) {
-		addCompany("img/company/" + c, "?company=" + c.slice(0, c.length - 4));
+		addCompany("img/company/" + c, c.slice(0, c.length - 4));
 	}
 
-	// Thêm choosed filter
-	// addChoosedFilter('company', 'Apple', '');
-	// addChoosedFilter('promo', 'Trả góp 0%', '');
-	// addChoosedFilter('promo', 'Mới ra mắt', '');
+	/* Thêm choosed filter
+		 Được thêm trong hàm phanTich_URL() */
+
+	// Thêm chọn mức giá
+	addPricesRange(0, 2000000);
+	addPricesRange(2000000, 4000000);
+	addPricesRange(4000000, 7000000);
+	addPricesRange(7000000, 13000000);
+	addPricesRange(13000000, 0);
+
+	// Thêm chọn khuyến mãi
+	addPromotion('giamgia');
+	addPromotion('tragop');
+	addPromotion('moiramat');
+	addPromotion('giareonline');
+
+	// Thêm chọn số sao
+	addStarFilter(3);
+	addStarFilter(4);
+	addStarFilter(5);
+
 
 	// Thêm sản phẩm vào trang
 	var sanPhamPhanTich = phanTich_URL();
@@ -93,17 +110,15 @@ function phanTich_URL() {
 		switch (dauBang[0]) {
 			case 'search':
 				result = timKiemTheoTen(result, dauBang[1]);
+				addChoosedFilter('search', `"`+dauBang[1]+`"`);
 				break;
 
 			case 'price':
 				var prices = dauBang[1].split('-');
-				result = timKiemTheoGiaTien(result, prices[0], prices[1] || 1E10);
+				addChoosedFilter('price', priceToString(prices[0], prices[1]));
 
-				var nameFilter;
-				if(prices[0] == 0) nameFilter = 'Dưới ' + prices[1]/1E6 + ' triệu';
-				else if(prices[1] == 0) nameFilter = 'Trên ' + prices[0]/1E6 + ' triệu';
-				else nameFilter = prices[0]/1E6 + ' triệu - ' + prices[1]/1E6 + ' triệu';
-				addChoosedFilter('star', nameFilter);
+				prices[1] = Number(prices[1]) || 1E10;
+				result = timKiemTheoGiaTien(result, prices[0], prices[1]);
 				break;
 
 			case 'company':
@@ -113,23 +128,15 @@ function phanTich_URL() {
 
 			case 'star':
 				result = timKiemTheoSoLuongSao(result, dauBang[1]);
-				addChoosedFilter('star', 'Trên '+(dauBang[1]-1)+' sao')
+				addChoosedFilter('star', starToString(dauBang[1]));
 				break;
 
 			case 'promo':
 				result = timKiemTheoKhuyenMai(result, dauBang[1]);
-				var nameFilter;
-				switch(dauBang[1]) {
-					case 'tragop' : nameFilter = 'Trả góp'; break;
-					case 'giamgia' : nameFilter = 'Giảm giá'; break;
-					case 'giareonline' : nameFilter = 'Giá rẻ online'; break;
-					case 'moiramat' : nameFilter = 'Mới ra mắt'; break;
-				}
-				addChoosedFilter('promo', nameFilter);
+				addChoosedFilter('promo', promoToString(dauBang[1]));
 				break;
 
 			case 'page': // page phải ở cuối đường link
-				// result = tinhToanPhanTrang(result, dauBang[1]);
 				phanTrang = dauBang[1];
 				break;
 

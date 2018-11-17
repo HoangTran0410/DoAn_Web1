@@ -14,24 +14,46 @@
     margin-top: -3px;
 }
 
+/* Filters */
+.filters {
 
-/* Một phần css của filter ghi bên header.css */
-/* Do khung filter giống khung search trên header */
-.filter {
+}
+.filters div {
+	display: block;
+	width: 100%;
+}
+
+.filters div a {
+    color: #288ad6;
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 10px;
+    line-height: 40px;
+}
+.filters div a:hover {
+	color: #444;
+}
+
+/* Filter by Name */
+.filterName {
 	margin: 15px auto;
-	width: 195px;
-	-webkit-transition-duration: .3s;
-	     -o-transition-duration: .3s;
-	        transition-duration: .3s;
+	text-align: center;
+	/* width: 195px; */
 }
-.filter:hover {
-	border: 2px solid orange;
-}
-.filter input {
+.filterName input {
 	padding: 0 15px;
-	width: calc(100% - 30px); /* 15px la padding left cua input */
+	/* width: calc(100% - 30px); 15px la padding left cua input */
+	height: 30px;
+	border: 2px solid #bbb;
 	border-radius: 10px;
 	font-size: 15px;
+	-webkit-transition-duration: .3s;
+     -o-transition-duration: .3s;
+        transition-duration: .3s;
+}
+.filterName input:focus {
+	border: 2px solid orange;
 } 
 /* Choosed filter */
 .choosedFilter {

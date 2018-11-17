@@ -109,16 +109,29 @@
 
 			<div class="companyMenu group flexContain"></div>
 			
-			<br><hr>
+			<br>
 			<div class="contain-products">
-
-				<div class="choosedFilter flexContain">
-				</div> <!-- End Choosed Filter -->
-
-				<div class="filter">
-					<input type="text" placeholder="Lọc sản phẩm theo tên..." onkeyup="filterProductsName(this)">
-				</div> <!-- End Filter -->
 				<hr>
+				<div class="filters"> 
+					<div class="pricesRangeFilter">
+						<a href="javascript:;" style="color: #000;">Chọn mức giá: </a>
+					</div>
+					<div class="promosFilter">
+						<a href="javascript:;" style="color: #000;">Chọn khuyến mãi: </a>
+					</div>
+					<div class="starFilter">
+						<a href="javascript:;" style="color: #000;">Số lượng sao: </a>
+					</div>
+					<div class="sortFilter">
+						
+					</div>
+				</div>
+				<div class="choosedFilter flexContain"> </div>
+				<hr>
+
+				<div class="filterName">
+					<input type="text" placeholder="Lọc sản phẩm theo tên..." onkeyup="filterProductsName(this)">
+				</div> <!-- End FilterName -->
 
 				<ul id="products" class="homeproduct group flexContain">
 					<div id="khongCoSanPham">

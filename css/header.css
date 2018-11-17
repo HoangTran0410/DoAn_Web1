@@ -29,7 +29,7 @@
 				float: left;
 			}
 
-			form.input-search , .filter { /* filter là khung lọc sản phẩm */
+			form.input-search {
 				margin-left: 20px;
 				background: #ddd;
 				border: 2px solid #bbb;
@@ -38,7 +38,7 @@
 				width: 300px;
 				/* điều chỉnh width của ô tìm kiếm trên header ở đây */
 			}
-			.input-search input, .filter input{
+			.input-search input {
 				float: left;
 				padding-left: 15px;
 				border: none;
