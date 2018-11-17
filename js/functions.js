@@ -20,7 +20,7 @@ function clearAllProducts() {
 // Nút phân trang
 function themNutPhanTrang(soTrang, trangHienTai) {
 	var divPhanTrang = document.getElementsByClassName('pagination')[0];
-	var k = removeOldFilter('page');
+	var k = removeOldFilter(window.location.href, 'page');
 	if(k.indexOf('?') > 0) k+='&';
 
 	divPhanTrang.innerHTML = '';
@@ -170,7 +170,8 @@ function timKiemTheoKhuyenMai(list, tenKhuyenMai, soluong) {
 // ========== LỌC ===============
 // Thêm choosed filter
 function addChoosedFilter(type, name) {
-	var link = removeOldFilter(type);
+	var link = removeOldFilter(window.location.href, type);
+	link = removeOldFilter(link, 'page');
 	var tag_a = `<a href="` + link + `"><h3>` + name + ` <i class="fa fa-close"></i> </h3></a>`;
 
 	var divChoosedFilter = document.getElementsByClassName('choosedFilter')[0];
@@ -181,8 +182,8 @@ function cutOffString(url, start, end) {
 	return url.substring(0, start) + url.substring(end+1);
 }
 
-function removeOldFilter(type) {
-	var url = window.location.href;
+function removeOldFilter(url, type) {
+	// var url = window.location.href;
 	var co = url.indexOf(type);
 
 	// Nếu đã có thì xóa
@@ -199,16 +200,23 @@ function removeOldFilter(type) {
 			}
 			
 		} else {
-			var vaTiepTheo = (vtVa>0?vtVa:url.length+1);
+			var vaTiepTheo = (vtVa>0?vtVa:url.length);
 			return cutOffString(url, co-1, vaTiepTheo-1);
 		}
 	}
 
-	// Nếu chưa có thì thêm
-	if(url.indexOf('?') > 0) {
-		return url + '&';
+	return url;
+}
+
+function addFilterToUrl(url, name, value) {
+	var urlRemoved = removeOldFilter(url, 'page'); // Xóa phân trang
+	var vtDauHoi = urlRemoved.indexOf('?');
+
+	if(vtDauHoi > 0) {
+		return urlRemoved + '&' + name +'='+value;
 	}
-	return url + '?';
+
+	return urlRemoved + '?'+name+'='+value;
 }
 
 // Thông báo nếu không có sản phẩm
@@ -333,8 +341,8 @@ function addTags(nameTag, link) {
 
 // Thêm hãng sản xuất
 function addCompany(img, nameCompany) {
-	var link = removeOldFilter('company');
-	link += 'company=' + nameCompany;
+	var link = removeOldFilter(window.location.href, 'company');
+	link = addFilterToUrl(link, 'company', nameCompany);
 
 	var new_tag = `<a href=` + link + `><img src=` + img + `></a>`;
 
@@ -345,8 +353,8 @@ function addCompany(img, nameCompany) {
 // Thêm chọn mức giá
 function addPricesRange(min, max) {
 	var text = priceToString(min, max);
-	var link = removeOldFilter('price');
-	link += 'price='+ min +'-'+ max;
+	var link = removeOldFilter(window.location.href, 'price');
+	link = addFilterToUrl(link, 'price', (min +'-'+ max));
 
 	var mucgia = `<a href="`+link+`">`+ text +`</a>`
 	document.getElementsByClassName('pricesRangeFilter')[0].innerHTML += mucgia;
@@ -354,8 +362,8 @@ function addPricesRange(min, max) {
 
 // Thêm chọn khuyến mãi
 function addPromotion(name) {
-	var link = removeOldFilter('promo');
-	link += 'promo=' + name;
+	var link = removeOldFilter(window.location.href, 'promo');
+	link = addFilterToUrl(link, 'promo', name);
 
 	var text = promoToString(name);
 	var promo = `<a href="`+link+`">`+ text +`</a>`;
@@ -364,8 +372,8 @@ function addPromotion(name) {
 
 // Thêm chọn số lượng sao
 function addStarFilter(value) {
-	var link = removeOldFilter('star');
-	link += 'star=' + value;
+	var link = removeOldFilter(window.location.href, 'star');
+	link = addFilterToUrl(link, 'star', value);
 
 	var text = starToString(value);
 	var star = `<a href="`+link+`">`+ text +`</a>`;
