@@ -63,6 +63,16 @@ window.onload = function() {
 	addStarFilter(4);
 	addStarFilter(5);
 
+	// Thêm chọn sắp xếp
+	addSortFilter('ascending', 'price', 'Giá tăng dần');
+	addSortFilter('decrease', 'price', 'Giá giảm dần');
+	addSortFilter('ascending', 'star', 'Sao tăng dần');
+	addSortFilter('decrease', 'star', 'Sao giảm dần');
+	addSortFilter('ascending', 'rateCount', 'Đánh giá tăng dần');
+	addSortFilter('decrease', 'rateCount', 'Đánh giá giảm dần');
+	addSortFilter('ascending', 'name', 'Tên A-Z');
+	addSortFilter('decrease', 'name', 'Tên Z-A');
+
 	// Thêm filter đã chọn
 	addAllChoosedFilter();
 };

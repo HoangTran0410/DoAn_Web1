@@ -16,7 +16,7 @@ function getFilterFromURL() { // tách và trả về mảng bộ lọc trên ur
 	var fullLocation = window.location.href;
 	var dauHoi = fullLocation.split('?'); // tách theo dấu ?
 
-	if(dauHoi[1]) {
+	if (dauHoi[1]) {
 		var dauVa = dauHoi[1].split('&');
 		return dauVa;
 	}
@@ -100,7 +100,7 @@ function phanTich_URL() {
 						break;
 				}
 
-				if(s[1] == 'decrease') {
+				if (s[1] == 'decrease') {
 					filtersFromUrl.sort.type = 'decrease';
 					result.reverse();
 				}
@@ -120,7 +120,7 @@ function addProduct(p, id) {
 }
 
 // thêm các sản phẩm từ biến mảng nào đó vào trang
-function addProductsFrom(list, vitri, soluong) { 
+function addProductsFrom(list, vitri, soluong) {
 	var start = vitri || 0;
 	var end = (soluong ? start + soluong : list.length);
 	for (var i = start; i < end; i++) {
@@ -137,7 +137,8 @@ function themNutPhanTrang(soTrang, trangHienTai) {
 	var divPhanTrang = document.getElementsByClassName('pagination')[0];
 
 	var k = createLinkFilter('remove', 'page'); // xóa phân trang cũ
-	if(k.indexOf('?') > 0) k += '&'; else k += '?'; // thêm dấu
+	if (k.indexOf('?') > 0) k += '&';
+	else k += '?'; // thêm dấu
 
 	if (trangHienTai > 1) // Nút về phân trang trước
 		divPhanTrang.innerHTML = `<a href="` + k + `page=` + (trangHienTai - 1) + `"><i class="fa fa-angle-left"></i></a>`;
@@ -183,13 +184,14 @@ function timKiemTheoTen(list, ten, soluong) {
 	ten = ten.split(' ');
 
 	for (var i = 0; i < list.length; i++) {
-		var correct = false, countCorrect = 0;
+		var correct = false,
+			countCorrect = 0;
 		var listName = list[i].name.toUpperCase();
 
 		for (var j = 0; j < ten.length; j++) {
 			if (listName.indexOf(ten[j].toUpperCase()) >= 0) {
 				countCorrect++;
-				if(countCorrect == ten.length) {
+				if (countCorrect == ten.length) {
 					correct = true;
 					break;
 				}
@@ -273,9 +275,9 @@ function timKiemTheoKhuyenMai(list, tenKhuyenMai, soluong) {
 
 // ========== LỌC ===============
 // Thêm bộ lọc đã chọn vào html
-function addChoosedFilter(type, name) {
+function addChoosedFilter(type, textInside) {
 	var link = createLinkFilter('remove', type);
-	var tag_a = `<a href="` + link + `"><h3>` + name + ` <i class="fa fa-close"></i> </h3></a>`;
+	var tag_a = `<a href="` + link + `"><h3>` + textInside + ` <i class="fa fa-close"></i> </h3></a>`;
 
 	var divChoosedFilter = document.getElementsByClassName('choosedFilter')[0];
 	divChoosedFilter.innerHTML += tag_a;
@@ -285,22 +287,28 @@ function addChoosedFilter(type, name) {
 function addAllChoosedFilter() {
 	// Thêm từ biến lưu giữ bộ lọc 'filtersFromUrl'
 
-	if(filtersFromUrl.company != '') 
+	if (filtersFromUrl.company != '')
 		addChoosedFilter('company', filtersFromUrl.company);
 
-	if(filtersFromUrl.search != '') 
-		addChoosedFilter('search', '"'+ filtersFromUrl.search +'"');
+	if (filtersFromUrl.search != '')
+		addChoosedFilter('search', '"' + filtersFromUrl.search + '"');
 
-	if(filtersFromUrl.price != '') {
+	if (filtersFromUrl.price != '') {
 		var prices = filtersFromUrl.price.split('-');
 		addChoosedFilter('price', priceToString(prices[0], prices[1]));
 	}
 
-	if(filtersFromUrl.promo != '') 
+	if (filtersFromUrl.promo != '')
 		addChoosedFilter('promo', promoToString(filtersFromUrl.promo));
 
-	if(filtersFromUrl.star != '') 
+	if (filtersFromUrl.star != '')
 		addChoosedFilter('star', starToString(filtersFromUrl.star));
+
+	if (filtersFromUrl.sort.by != '') {
+		var sortBy = sortToString(filtersFromUrl.sort.by);
+		var kieuSapXep = (filtersFromUrl.sort.type == 'decrease' ? 'giảm dần' : 'tăng dần');
+		addChoosedFilter('sort', sortBy + kieuSapXep);
+	}
 }
 
 // Tạo link cho bộ lọc
@@ -308,26 +316,37 @@ function addAllChoosedFilter() {
 // tương ứng 'thêm' bộ lọc mới có giá trị = valueAdd, hoặc 'xóa' bộ lọc đã có
 function createLinkFilter(type, nameFilter, valueAdd) {
 	var o = copyObject(filtersFromUrl);
-		o.page = ''; // reset phân trang
+	o.page = ''; // reset phân trang
 
-	if(type == 'add') o[nameFilter] = valueAdd;
-	else if(type == 'remove')  o[nameFilter] = '';
+	if (nameFilter == 'sort') {
+		if (type == 'add') {
+			o.sort.by = valueAdd.by;
+			o.sort.type = valueAdd.type;
+
+		} else if (type == 'remove') {
+			o.sort.by = '';
+		}
+
+	} else {
+		if (type == 'add') o[nameFilter] = valueAdd;
+		else if (type == 'remove') o[nameFilter] = '';
+	}
 
 	var link = window.location.pathname;
 	var h = false; // Đã có dấu hỏi hay chưa
 
 	// thêm những filter trước sort
-	for(var i in o) {
-		if(i!='sort' && o[i]){
-			link += (h?'&':'?') + i + '=' + o[i];
+	for (var i in o) {
+		if (i != 'sort' && o[i]) {
+			link += (h ? '&' : '?') + i + '=' + o[i];
 			h = true;
 		}
 	}
 
 	// thêm sort (do sort trong filtersFromUrl là kiểu object, 
 	// khác với kiểu string của những thằng còn lại)
-	if(o.sort.by != '')
-		link += (h?'&':'?') + 'sort=' + o.sort.by + '-' + o.sort.type;
+	if (o.sort.by != '')
+		link += (h ? '&' : '?') + 'sort=' + o.sort.by + '-' + o.sort.type;
 
 	return link;
 }
@@ -471,10 +490,11 @@ function addCompany(img, nameCompany) {
 // Thêm chọn mức giá
 function addPricesRange(min, max) {
 	var text = priceToString(min, max);
-	var link = createLinkFilter('add', 'price', min +'-'+ max);
+	var link = createLinkFilter('add', 'price', min + '-' + max);
 
-	var mucgia = `<a href="`+link+`">`+ text +`</a>`
-	document.getElementsByClassName('pricesRangeFilter')[0].innerHTML += mucgia;
+	var mucgia = `<a href="` + link + `">` + text + `</a>`
+	document.getElementsByClassName('pricesRangeFilter')[0]
+			.getElementsByClassName('dropdown-content')[0].innerHTML += mucgia;
 }
 
 // Thêm chọn khuyến mãi
@@ -482,8 +502,9 @@ function addPromotion(name) {
 	var link = createLinkFilter('add', 'promo', name);
 
 	var text = promoToString(name);
-	var promo = `<a href="`+link+`">`+ text +`</a>`;
-	document.getElementsByClassName('promosFilter')[0].innerHTML += promo;
+	var promo = `<a href="` + link + `">` + text + `</a>`;
+	document.getElementsByClassName('promosFilter')[0]
+			.getElementsByClassName('dropdown-content')[0].innerHTML += promo;
 }
 
 // Thêm chọn số lượng sao
@@ -491,30 +512,63 @@ function addStarFilter(value) {
 	var link = createLinkFilter('add', 'star', value);
 
 	var text = starToString(value);
-	var star = `<a href="`+link+`">`+ text +`</a>`;
-	document.getElementsByClassName('starFilter')[0].innerHTML += star;
+	var star = `<a href="` + link + `">` + text + `</a>`;
+	document.getElementsByClassName('starFilter')[0]
+			.getElementsByClassName('dropdown-content')[0].innerHTML += star;
+}
+
+// Thêm chọn sắp xếp theo giá
+function addSortFilter(type, nameFilter, text) {
+	var link = createLinkFilter('add', 'sort', {
+		by: nameFilter,
+		type: type
+	});
+	var sortTag = `<a href="` + link + `">` + text + `</a>`;
+
+	document.getElementsByClassName('sortFilter')[0]
+			.getElementsByClassName('dropdown-content')[0].innerHTML += sortTag;
 }
 
 // Chuyển mức giá về dạng chuỗi tiếng việt
 function priceToString(min, max) {
-	if(min == 0) return 'Dưới ' + max/1E6 + ' triệu';
-	if(max == 0) return 'Trên ' + min/1E6 + ' triệu';
-	return 'Từ ' + min/1E6 + ' - ' + max/1E6 + ' triệu';
+	if (min == 0) return 'Dưới ' + max / 1E6 + ' triệu';
+	if (max == 0) return 'Trên ' + min / 1E6 + ' triệu';
+	return 'Từ ' + min / 1E6 + ' - ' + max / 1E6 + ' triệu';
 }
 
 // Chuyển khuyến mãi vễ dạng chuỗi tiếng việt
 function promoToString(name) {
-	switch(name) {
-		case 'tragop' : return 'Trả góp';
-		case 'giamgia' : return 'Giảm giá';
-		case 'giareonline' : return 'Giá rẻ online';
-		case 'moiramat' : return 'Mới ra mắt';
+	switch (name) {
+		case 'tragop':
+			return 'Trả góp';
+		case 'giamgia':
+			return 'Giảm giá';
+		case 'giareonline':
+			return 'Giá rẻ online';
+		case 'moiramat':
+			return 'Mới ra mắt';
 	}
 }
 
 // Chuyển số sao về dạng chuỗi tiếng việt
 function starToString(star) {
-	return 'Trên ' + (star-1) + ' sao';
+	return 'Trên ' + (star - 1) + ' sao';
+}
+
+// Chuyển các loại sắp xếp về dạng chuỗi tiếng việt
+function sortToString(sortBy) {
+	switch (sortBy) {
+		case 'price':
+			return 'Giá ';
+		case 'star':
+			return 'Sao ';
+		case 'rateCount':
+			return 'Đánh giá ';
+		case 'name':
+			return 'Tên ';
+		default:
+			return '';
+	}
 }
 
 // Di chuyển lên đầu trang
@@ -562,4 +616,3 @@ function auto_Get_Database() {
 		// var giareonline = a.getElementsByClassName('shockprice').length;
 	}
 }
-
