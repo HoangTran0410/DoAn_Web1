@@ -88,7 +88,7 @@
 						<div class="cart">
 							<a href="#">
 								<i class="fa fa-shopping-cart"></i>
-								<span>Giỏ hàng: </span>
+								<span>Giỏ hàng</span>
 								<span class="cart-number">0</span>
 							</a>
 						</div> <!-- End Cart -->
@@ -110,39 +110,38 @@
 			<section class="flexContain">
 				<img src="img/blackFriday.gif" alt="">
 			</section> <!-- End BlackFriday  -->
-
-			<div class="companyMenu group flexContain"></div>
 			
 			<br>
+			<div class="companyMenu group flexContain"></div>
+			
+			<div class="flexContain"> 
+
+				<div class="pricesRangeFilter dropdown">
+					<button class="dropbtn">Giá tiền</button>
+					<div class="dropdown-content"></div>
+				</div>
+
+				<div class="promosFilter dropdown">
+					<button class="dropbtn">Khuyến mãi</button>
+					<div class="dropdown-content"></div>
+				</div>
+
+				<div class="starFilter dropdown">
+					<button class="dropbtn">Số lượng sao</button>
+					<div class="dropdown-content"></div>
+				</div>
+
+				<div class="sortFilter dropdown">
+					<button class="dropbtn">Sắp xếp</button>	
+					<div class="dropdown-content"></div>
+				</div>
+
+			</div> <!-- End khung chọn bộ lọc -->
+
+			<div class="choosedFilter flexContain"> </div> <!-- Những bộ lọc đã chọn -->
+			<hr>
+
 			<div class="contain-products">
-				<hr>
-				<div class="flexContain"> 
-
-					<div class="pricesRangeFilter dropdown">
-						<button class="dropbtn">Giá tiền</button>
-						<div class="dropdown-content"></div>
-					</div>
-
-					<div class="promosFilter dropdown">
-						<button class="dropbtn">Khuyến mãi</button>
-						<div class="dropdown-content"></div>
-					</div>
-
-					<div class="starFilter dropdown">
-						<button class="dropbtn">Số lượng sao</button>
-						<div class="dropdown-content"></div>
-					</div>
-
-					<div class="sortFilter dropdown">
-						<button class="dropbtn">Sắp xếp</button>	
-						<div class="dropdown-content"></div>
-					</div>
-
-				</div> <!-- End khung chọn bộ lọc -->
-
-				<div class="choosedFilter flexContain"> </div> <!-- Những bộ lọc đã chọn -->
-				<hr>
-
 				<div class="filterName">
 					<input type="text" placeholder="Lọc trong trang theo tên..." onkeyup="filterProductsName(this)">
 				</div> <!-- End FilterName -->
@@ -151,7 +150,7 @@
 					<div id="khongCoSanPham">
 						<i class="fa fa-times-circle"></i>
 						Không có sản phẩm nào
-					</div>
+					</div> <!-- End Khong co san pham -->
 				</ul><!-- End products -->
 
 				<div class="pagination"></div>

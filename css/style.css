@@ -5,7 +5,7 @@ a { text-decoration: none; color: #222;}
 .clear { clear: both; line-height: 0; }
 
 /* căn giữa section, và set độ rộng lớn nhất là 1200px */
-section { max-width: 1200px; margin: 0 auto; }
+section { max-width: 1205px; margin: 0 auto; }
 
 hr {
     color: #ddd;
@@ -60,6 +60,45 @@ hr {
     font-family: Consolas, monospace;
 }
 
+/* animation ping */
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #f33;
+    border-radius: 100%;
+    display: block;
+}
+.dot .ping {
+    border: 1px solid #f33;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    background-color: rgba(238,46,36,.2);
+    border-radius: 100%;
+    -webkit-animation-duration: 1.25s;
+    animation-duration: 1.25s;
+    -webkit-animation-name: sonar;
+    animation-name: sonar;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    display: block;
+    margin: -1px 0 0 -1px;
+}
+@keyframes sonar {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    100% {
+        -webkit-transform: scale(3);
+        transform: scale(3);
+        opacity: 0
+    }
+}
 /* ========= ScrollBar ============ */
 ::-webkit-scrollbar{ width:0px; height:7px; }
 ::-webkit-scrollbar-track{background:#444;}

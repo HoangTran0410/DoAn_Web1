@@ -23,7 +23,8 @@
 	    border: none;
 	    border-radius: 5px;
 	    cursor: pointer;
-	    margin-bottom: 5px;
+		margin-bottom: 5px;
+		transition-duration: .3s;
 	}
 	.dropbtn:after {
 	    content: ' \25B7';

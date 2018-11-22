@@ -492,7 +492,7 @@ function addPricesRange(min, max) {
 	var text = priceToString(min, max);
 	var link = createLinkFilter('add', 'price', min + '-' + max);
 
-	var mucgia = `<a href="` + link + `">` + text + `</a>`
+	var mucgia = `<a href="` + link + `">` + text + `</a>`;
 	document.getElementsByClassName('pricesRangeFilter')[0]
 			.getElementsByClassName('dropdown-content')[0].innerHTML += mucgia;
 }
