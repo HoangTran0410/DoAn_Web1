@@ -5,7 +5,7 @@ a { text-decoration: none; color: #222;}
 .clear { clear: both; line-height: 0; }
 
 /* căn giữa section, và set độ rộng lớn nhất là 1200px */
-section { max-width: 1680px; margin: 0 auto; }
+section { max-width: 1200px; margin: 0 auto; }
 
 hr {
     color: #ddd;

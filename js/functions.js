@@ -332,7 +332,7 @@ function createLinkFilter(type, nameFilter, valueAdd) {
 		else if (type == 'remove') o[nameFilter] = '';
 	}
 
-	var link = window.location.pathname;
+	var link = window.location.href.split('?')[0];
 	var h = false; // Đã có dấu hỏi hay chưa
 
 	// thêm những filter trước sort
