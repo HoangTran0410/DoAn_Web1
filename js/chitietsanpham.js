@@ -8,12 +8,14 @@ window.onload = function () {
     autocomplete(document.getElementById('search-box'), list_products);
 
     getProductFromUrl();
-
 }
 
 function getProductFromUrl() {
     var nameProduct = window.location.href.split('?')[1];
     if (!nameProduct) return;
+
+    // fdasjfdsal
+    // Thêm code blablabla
 
     nameProduct = nameProduct.replace('-plus', '+');
     nameProduct = nameProduct.split('-').join(' ');
