@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0; outline: none; font-family: sans-serif; }
+* { margin: 0; padding: 0; outline: none; font-family: Arial, Helvetica, sans-serif;}
 body, html { min-width: 1024px; }
 
 a { text-decoration: none; color: #222;}
@@ -47,7 +47,7 @@ hr {
     bottom: 15px;
     position: fixed;
     right: 15px;
-    z-index: 100;    /* display: none; */
+    z-index: 9;    /* display: none; */
     background: rgba(0, 0, 0, .6);
     color: #fff;
     font-size: 18px;

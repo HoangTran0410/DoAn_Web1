@@ -1,11 +1,36 @@
 /* Footer */
-	.footer {
-		height: 150px;
-		width: 100%;
-		background: #476;
-		color: white;
+.footer {
+	height: 150px;
+	width: 100%;
+	background: #476;
+	color: white;
 
-		text-align: center;
-		line-height: 150px;
-	}
+	text-align: center;
+	line-height: 150px;
+}
+
+.plc {
+	background: #d4e7d8;
+	/* overflow: hidden; */
+	font-size: 15px;
+	color: #333;
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+}
+.plc ul {
+	width: 100%;
+}
+.plc li {
+	width: 20%;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 5px 10px;
+	line-height: 20px;
+	border-right: solid 1px #bbb;
+	margin: 5px 0;
+}
+.plc li:last-child {
+	border-right: none;
+}
+
 /* ======= End Footer ======== */

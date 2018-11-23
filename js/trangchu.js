@@ -25,9 +25,6 @@ window.onload = function () {
 	// autocomplete cho khung tim kiem
 	autocomplete(document.getElementById('search-box'), list_products);
 
-	// change onsubmit for form
-	// formOnSubmit(document.getElementsByClassName('input-search')[0]); 
-
 	// thêm tags (từ khóa) vào khung tìm kiếm
 	var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
 	for (var t of tags)

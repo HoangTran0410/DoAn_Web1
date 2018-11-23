@@ -1,7 +1,12 @@
 /* Header */
 	.header {
+		position: sticky;
+		position: -webkit-sticky; /* Safari */
+		top: 0;
+		z-index: 12;
+		background-color: white;
 		padding: 15px 0 5px 0 ;
-		border-bottom: 1px solid #e1e1e1;
+		border-bottom: 3px solid #e1e1e1;
 	}
 
 	/* Logo */
@@ -174,6 +179,7 @@
 					padding-left: 5px;
 				}
 				.cart-number {
+					font-family: 'Courier New', Courier, monospace;
 					position: absolute;
 					left: 30px;
 					bottom: -10px;

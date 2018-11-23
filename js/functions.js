@@ -14,7 +14,7 @@ var filtersFromUrl = { // Các bộ lọc tìm được trên url sẽ đc lưu 
 
 function getFilterFromURL() { // tách và trả về mảng bộ lọc trên url
 	var fullLocation = window.location.href;
-		fullLocation = decodeURIComponent(fullLocation);
+	fullLocation = decodeURIComponent(fullLocation);
 	var dauHoi = fullLocation.split('?'); // tách theo dấu ?
 
 	if (dauHoi[1]) {
@@ -443,7 +443,7 @@ function createLinkFilter(type, nameFilter, valueAdd) {
 		else if (type == 'remove') o[nameFilter] = '';
 	}
 
-	var link = window.location.href.split('?')[0];
+	var link = window.location.href.split('?')[0].replace('#', '');
 	var h = false; // Đã có dấu hỏi hay chưa
 
 	// thêm những filter trước sort
