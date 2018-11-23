@@ -22,7 +22,7 @@ function getProductFromUrl() {
     var divChiTiet = document.getElementsByClassName('chitietSanpham')[0];
 
     // Đổi title
-    document.title = nameProduct + ' - Thế giới di động';
+    document.title = nameProduct + ' - Thế giới điện thoại';
 
     // Cập nhật tên h1
     var h1 = divChiTiet.getElementsByTagName('h1')[0];
@@ -49,7 +49,7 @@ function getProductFromUrl() {
         s += addThongSo('RAM', sanPham.detail.ram);
         s += addThongSo('Bộ nhớ trong', sanPham.detail.rom);
         s += addThongSo('Thẻ nhớ', sanPham.detail.microUSB);
-        s += addThongSo('Pin', sanPham.detail.battery);
+        s += addThongSo('Dung lượng pin', sanPham.detail.battery);
     info.innerHTML = s;
 }
 

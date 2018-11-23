@@ -10,15 +10,15 @@ var list_products = [{
 		"value": 0
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"screen": "IPS LCD, 6.0', HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "13 MB",
+		"camaraFront": "5 MP",
+		"cpu": "Qualcomm Snapdragon 425 4 nhân 64-bit",
+		"ram": "2 GB",
+		"rom": "16 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3300 mAh"
 	}
 }, {
 	"name": "Xiaomi Mi 8 Lite",

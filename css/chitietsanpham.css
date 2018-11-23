@@ -296,6 +296,7 @@ h1 {
 .info_product h2 {
     text-align: center;
     font-size: 20px;
+    padding: 10px;
 }
 
 .info {
