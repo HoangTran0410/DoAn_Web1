@@ -14,6 +14,7 @@ var filtersFromUrl = { // Các bộ lọc tìm được trên url sẽ đc lưu 
 
 function getFilterFromURL() { // tách và trả về mảng bộ lọc trên url
 	var fullLocation = window.location.href;
+		fullLocation = decodeURIComponent(fullLocation);
 	var dauHoi = fullLocation.split('?'); // tách theo dấu ?
 
 	if (dauHoi[1]) {
@@ -33,6 +34,7 @@ function phanTich_URL() {
 
 		switch (dauBang[0]) {
 			case 'search':
+				dauBang[1] = dauBang[1].split('+').join(' ');
 				result = timKiemTheoTen(result, dauBang[1]);
 				filtersFromUrl.search = dauBang[1];
 				break;
@@ -71,7 +73,7 @@ function phanTich_URL() {
 				switch (tenThanhPhanCanSort) {
 					case 'price':
 						filtersFromUrl.sort.by = 'price';
-						result.sort(function(a, b) {
+						result.sort(function (a, b) {
 							var giaA = parseInt(a.price.split('.').join(''));
 							var giaB = parseInt(b.price.split('.').join(''));
 							return giaA - giaB;
@@ -80,21 +82,21 @@ function phanTich_URL() {
 
 					case 'star':
 						filtersFromUrl.sort.by = 'star';
-						result.sort(function(a, b) {
+						result.sort(function (a, b) {
 							return a.star - b.star;
 						});
 						break;
 
 					case 'rateCount':
 						filtersFromUrl.sort.by = 'rateCount';
-						result.sort(function(a, b) {
+						result.sort(function (a, b) {
 							return a.rateCount - b.rateCount;
 						});
 						break;
 
 					case 'name':
 						filtersFromUrl.sort.by = 'name';
-						result.sort(function(a, b) {
+						result.sort(function (a, b) {
 							return a.name.localeCompare(b.name);
 						});
 						break;
@@ -175,35 +177,25 @@ function tinhToanPhanTrang(list, vitriTrang) {
 
 // ======== TÌM KIẾM (Từ mảng list truyền vào, trả về 1 mảng kết quả) ============
 function timKiemTheoTen(list, ten, soluong) {
-	var count, result = [];
-	if (soluong < list.length) count = soluong;
-	else count = list.length;
-
-	ten = ten.replace('+', ' ');
-	ten = ten.replace('%20', ' ');
+	var tempList = copyObject(list);
+	var result = [];
 	ten = ten.split(' ');
+	console.log(ten);
 
-	for (var i = 0; i < list.length; i++) {
-		var correct = false,
-			countCorrect = 0;
-		var listName = list[i].name.toUpperCase();
-
-		for (var j = 0; j < ten.length; j++) {
-			if (listName.indexOf(ten[j].toUpperCase()) >= 0) {
-				countCorrect++;
-				if (countCorrect == ten.length) {
-					correct = true;
-					break;
-				}
+	for (var sp of tempList) {
+		var correct = true;
+		for (var t of ten) {
+			if (sp.name.toUpperCase().indexOf(t.toUpperCase()) < 0) {
+				correct = false;
+				break;
 			}
 		}
-
 		if (correct) {
-			result.push(list[i]);
-			count--;
-			if (count <= 0) break;
+			result.push(sp);
 		}
 	}
+
+	console.log(result);
 
 	return result;
 }
@@ -273,6 +265,121 @@ function timKiemTheoKhuyenMai(list, tenKhuyenMai, soluong) {
 	return result;
 }
 
+// https://www.w3schools.com/howto/howto_js_autocomplete.asp
+function autocomplete(inp, arr) {
+	var currentFocus;
+
+	inp.addEventListener("keyup", function (e) {
+		if (e.keyCode != 13 && e.keyCode != 40 && e.keyCode != 38) { // not Enter,Up,Down arrow
+			var a, b, i, val = this.value;
+
+			/*close any already open lists of autocompleted values*/
+			closeAllLists();
+			if (!val) {
+				return false;
+			}
+			currentFocus = -1;
+
+			/*create a DIV element that will contain the items (values):*/
+			a = document.createElement("DIV");
+			a.setAttribute("id", this.id + "autocomplete-list");
+			a.setAttribute("class", "autocomplete-items");
+
+			/*append the DIV element as a child of the autocomplete container:*/
+			this.parentNode.appendChild(a);
+
+			/*for each item in the array...*/
+			for (i = 0; i < arr.length; i++) {
+				/*check if the item starts with the same letters as the text field value:*/
+				if (arr[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+
+					/*create a DIV element for each matching element:*/
+					b = document.createElement("DIV");
+
+					/*make the matching letters bold:*/
+					b.innerHTML = "<strong>" + arr[i].name.substr(0, val.length) + "</strong>";
+					b.innerHTML += arr[i].name.substr(val.length);
+
+					/*insert a input field that will hold the current array item's value:*/
+					b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
+
+					/*execute a function when someone clicks on the item value (DIV element):*/
+					b.addEventListener("click", function (e) {
+						/*insert the value for the autocomplete text field:*/
+						inp.value = this.getElementsByTagName("input")[0].value;
+						inp.focus();
+
+						/*close the list of autocompleted values,
+						(or any other open lists of autocompleted values:*/
+						closeAllLists();
+					});
+					a.appendChild(b);
+				}
+			}
+		}
+
+	});
+	/*execute a function presses a key on the keyboard:*/
+	inp.addEventListener("keydown", function (e) {
+		var x = document.getElementById(this.id + "autocomplete-list");
+		if (x) x = x.getElementsByTagName("div");
+		if (e.keyCode == 40) {
+			/*If the arrow DOWN key is pressed, increase the currentFocus variable:*/
+			currentFocus++;
+			/*and and make the current item more visible:*/
+			addActive(x);
+		} else if (e.keyCode == 38) { //up
+			/*If the arrow UP key is pressed,
+			decrease the currentFocus variable:*/
+			currentFocus--;
+			/*and and make the current item more visible:*/
+			addActive(x);
+		} else if (e.keyCode == 13) {
+			/*If the ENTER key is pressed, prevent the form from being submitted,*/
+
+			if (currentFocus > -1) {
+				/*and simulate a click on the "active" item:*/
+				if (x) {
+					x[currentFocus].click();
+					e.preventDefault();
+				}
+			}
+		}
+	});
+
+	function addActive(x) {
+		/*a function to classify an item as "active":*/
+		if (!x) return false;
+		/*start by removing the "active" class on all items:*/
+		removeActive(x);
+		if (currentFocus >= x.length) currentFocus = 0;
+		if (currentFocus < 0) currentFocus = (x.length - 1);
+		/*add class "autocomplete-active":*/
+		x[currentFocus].classList.add("autocomplete-active");
+	}
+
+	function removeActive(x) {
+		/*a function to remove the "active" class from all autocomplete items:*/
+		for (var i = 0; i < x.length; i++) {
+			x[i].classList.remove("autocomplete-active");
+		}
+	}
+
+	function closeAllLists(elmnt) {
+		/*close all autocomplete lists in the document, except the one passed as an argument:*/
+		var x = document.getElementsByClassName("autocomplete-items");
+		for (var i = 0; i < x.length; i++) {
+			if (elmnt != x[i] && elmnt != inp) {
+				x[i].parentNode.removeChild(x[i]);
+			}
+		}
+	}
+	/*execute a function when someone clicks in the document:*/
+	document.addEventListener("click", function (e) {
+		closeAllLists(e.target);
+	});
+}
+
 // ========== LỌC ===============
 // Thêm bộ lọc đã chọn vào html
 function addChoosedFilter(type, textInside) {
@@ -283,8 +390,8 @@ function addChoosedFilter(type, textInside) {
 	divChoosedFilter.innerHTML += tag_a;
 
 	var deleteAll = document.getElementById('deleteAllFilter');
-		deleteAll.style.display = "block";
-		deleteAll.href = window.location.href.split('?')[0];
+	deleteAll.style.display = "block";
+	deleteAll.href = window.location.href.split('?')[0];
 }
 
 // Thêm nhiều bộ lọc cùng lúc 
@@ -498,7 +605,7 @@ function addPricesRange(min, max) {
 
 	var mucgia = `<a href="` + link + `">` + text + `</a>`;
 	document.getElementsByClassName('pricesRangeFilter')[0]
-			.getElementsByClassName('dropdown-content')[0].innerHTML += mucgia;
+		.getElementsByClassName('dropdown-content')[0].innerHTML += mucgia;
 }
 
 // Thêm chọn khuyến mãi
@@ -508,7 +615,7 @@ function addPromotion(name) {
 	var text = promoToString(name);
 	var promo = `<a href="` + link + `">` + text + `</a>`;
 	document.getElementsByClassName('promosFilter')[0]
-			.getElementsByClassName('dropdown-content')[0].innerHTML += promo;
+		.getElementsByClassName('dropdown-content')[0].innerHTML += promo;
 }
 
 // Thêm chọn số lượng sao
@@ -518,7 +625,7 @@ function addStarFilter(value) {
 	var text = starToString(value);
 	var star = `<a href="` + link + `">` + text + `</a>`;
 	document.getElementsByClassName('starFilter')[0]
-			.getElementsByClassName('dropdown-content')[0].innerHTML += star;
+		.getElementsByClassName('dropdown-content')[0].innerHTML += star;
 }
 
 // Thêm chọn sắp xếp theo giá
@@ -530,7 +637,7 @@ function addSortFilter(type, nameFilter, text) {
 	var sortTag = `<a href="` + link + `">` + text + `</a>`;
 
 	document.getElementsByClassName('sortFilter')[0]
-			.getElementsByClassName('dropdown-content')[0].innerHTML += sortTag;
+		.getElementsByClassName('dropdown-content')[0].innerHTML += sortTag;
 }
 
 // Chuyển mức giá về dạng chuỗi tiếng việt

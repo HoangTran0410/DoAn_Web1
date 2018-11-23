@@ -1,6 +1,6 @@
 var list_products =
 	[{
-		"name": "SamSung Galaxy J4+",
+		"name": "SamSung Galaxy J4 Plus",
 		"company": "Samsung",
 		"img": "img/products/samsung-galaxy-j4-plus-pink-400x400.jpg",
 		"price": "3.490.000",
@@ -44,7 +44,7 @@ var list_products =
 			"value": "250.000"
 		}
 	}, {
-		"name": "Samsung Galaxy A8+ (2018)",
+		"name": "Samsung Galaxy A8 Plus (2018)",
 		"company": "Samsung",
 		"img": "img/products/samsung-galaxy-a8-plus-2018-gold-600x600.jpg",
 		"price": "11.990.000",
@@ -220,15 +220,15 @@ var list_products =
 			"value": ""
 		}
 	}, {
-		"name": "Nokia Của Hoàng",
+		"name": "Nokia black future",
 		"company": "Nokia",
 		"img": "https://cdn.tgdd.vn/Products/Images/42/22701/dien-thoai-di-dong-Nokia-1280-dienmay.com-l.jpg",
-		"price": "1.000.000.000",
+		"price": "999.999.000",
 		"star": 5,
 		"rateCount": 9999,
 		"promo": {
 			"name": "giamgia",
-			"value": "15.000"
+			"value": "1.000"
 		}
 	}, {
 		"name": "Samsung Galaxy A7 (2018)",
