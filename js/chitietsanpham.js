@@ -64,7 +64,7 @@ function timKiem() { // hàm chạy khi submit form tìm kiếm
     var keysearch = document.getElementById('search-box').value;
         keysearch = keysearch.split('+').join('-');
         keysearch = keysearch.replace('+', '-plus');
-    window.open('http://127.0.0.1:8887/index.html?search=' + keysearch);
+    window.open('https://hoangtran0410.github.io/DoAn_Web1/index.html?search=' + keysearch);
     return true;
 }
 
