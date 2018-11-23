@@ -69,12 +69,12 @@ function Product(img, name, price, star, rateCount, promo) {
 		}
 
 		// Cho mọi thứ vào tag <li>... </li>
-		var chitietSp = window.location.href.split('index.html')[0] + 'chitietsanpham.html?' + this.name.split(' ').join('-');
+		var chitietSp = 'chitietsanpham.html?' + this.name.split(' ').join('-');
 			chitietSp = chitietSp.replace('+', '-plus');
 			
 		var newLi =
 			`<li>
-			<a href="`+ chitietSp +`">
+			<a target="print_popup" href="`+ chitietSp +`">
 				<img src=` + this.img + ` alt="">
 				<h3>` + this.name + `</h3>
 				<div class="price">

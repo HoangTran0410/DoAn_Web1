@@ -1,5 +1,3 @@
-var soLuongSanPhamMaxTrongMotTrang = 15;
-
 window.onload = function () {
 
 	// Thêm hình vào banner
@@ -92,7 +90,7 @@ window.onload = function () {
 // 	e.preventDefault();
 // });
 
-
+// Hàm Test, chưa sử dụng
 function hideSanPhamKhongThuoc(list) {
 	var allLi = getLiArray();
 	for (var i = 0; i < allLi.length; i++) {

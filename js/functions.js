@@ -1,3 +1,5 @@
+var soLuongSanPhamMaxTrongMotTrang = 15;
+
 // =========== Đọc dữ liệu từ url ============
 var filtersFromUrl = { // Các bộ lọc tìm được trên url sẽ đc lưu vào đây
 	company: '',
@@ -180,7 +182,6 @@ function timKiemTheoTen(list, ten, soluong) {
 	var tempList = copyObject(list);
 	var result = [];
 	ten = ten.split(' ');
-	console.log(ten);
 
 	for (var sp of tempList) {
 		var correct = true;
@@ -194,8 +195,6 @@ function timKiemTheoTen(list, ten, soluong) {
 			result.push(sp);
 		}
 	}
-
-	console.log(result);
 
 	return result;
 }
@@ -581,8 +580,8 @@ function addBanner(img, link) {
 }
 
 // Thêm từ khóa tìm kiếm
-function addTags(nameTag, link) {
-	var new_tag = `<a href=` + link + `>` + nameTag + `</a>`;
+function addTags(nameTag, link, blank) {
+	var new_tag = `<a href=` + link + (blank?' target="_black"':'') + `>` + nameTag + `</a>`;
 
 	// Thêm <a> vừa tạo vào khung tìm kiếm
 	var khung_tags = document.getElementsByClassName('tags')[0];

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/topnav.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/chitietsanpham.css">
     <link rel="stylesheet" href="css/footer.css">
     <!-- js -->
     <script src="data/products.js"></script>
@@ -28,22 +29,22 @@
     <div class="top-nav group">
         <section>
             <div class="social-top-nav">
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-google"></a>
-                <a href="#" class="fa fa-youtube"></a>
+                <a class="fa fa-facebook"></a>
+                <a class="fa fa-twitter"></a>
+                <a class="fa fa-google"></a>
+                <a class="fa fa-youtube"></a>
             </div> <!-- End Social Topnav -->
 
             <ul class="top-nav-quicklink flexContain">
-                <li><a href="#">So sánh sản phẩm</a></li>
+                <li><a>So sánh sản phẩm</a></li>
                 <li>|</li>
-                <li><a href="#">Tuyển dụng</a></li>
+                <li><a>Tuyển dụng</a></li>
                 <li>|</li>
-                <li><a href="#">Giới thiệu</a></li>
+                <li><a>Giới thiệu</a></li>
                 <li>|</li>
-                <li><a href="#">Trung tâm bảo hành</a></li>
+                <li><a>Trung tâm bảo hành</a></li>
                 <li>|</li>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a>Liên hệ</a></li>
                 <li>|</li>
             </ul> <!-- End Quick link -->
         </section><!-- End Section -->
@@ -59,12 +60,14 @@
 
             <div class="content">
                 <div class="search-header">
-                    <form class="input-search" method="get">
-                        <input id="search-box" name="search" type="text" placeholder="Nhập từ khóa tìm kiếm...">
-                        <button type="submit">
-                            <i class="fa fa-search"></i>
-                            Tìm kiếm
-                        </button>
+                    <form class="input-search" method="get" target="_black" onsubmit="return timKiem();">
+                        <div class="autocomplete">
+                            <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm...">
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                                Tìm kiếm
+                            </button>
+                        </div>
                     </form> <!-- End Form search -->
                     <div class="tags">
                         <strong>Từ khóa: </strong>
@@ -73,14 +76,15 @@
 
                 <div class="tools-member">
                     <div class="member">
-                        <a href="#">
+                        <a onclick="">
                             <i class="fa fa-user"></i>
                             Tài khoản
                         </a>
+
                     </div> <!-- End Member -->
 
                     <div class="cart">
-                        <a href="#">
+                        <a>
                             <i class="fa fa-shopping-cart"></i>
                             <span>Giỏ hàng</span>
                             <span class="cart-number">0</span>
@@ -88,7 +92,7 @@
                     </div> <!-- End Cart -->
 
                     <div class="check-order">
-                        <a href="#">
+                        <a>
                             <i class="fa fa-truck"></i>
                             <span>Đơn hàng</span>
                         </a>
@@ -96,6 +100,80 @@
                 </div><!-- End Tools Member -->
             </div> <!-- End Content -->
         </div> <!-- End Header -->
+
+        <div class="chitietSanpham">
+            <h1>Điện thoại </h1>
+            <div class="rowdetail group">
+                <div class="picture">
+                    <img src="" onclick="opencertain()">
+                </div>
+                <div class="price_sale">
+                    <div class="area_price">
+                        <strong>7.690.000₫</strong>
+                        <label class="installment">Trả góp 0%</label>
+                    </div>
+                    <div class="ship">
+                        <img src="img/chitietsanpham/clock-152067_960_720.png">
+                        <div>NHẬN HÀNG TRONG 1 GIỜ</div>
+                    </div>
+                    <div class="area_promo">
+                        <strong>khuyến mãi</strong>
+                        <div class="promo">
+                            <img src="img/chitietsanpham/icon-tick.png">
+                            <div>
+                                Khách hàng có thể mua trả góp sản phẩm với lãi suất 0% với thời hạn 6 tháng kể từ khi
+                                mua hàng.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="policy">
+                        <div>
+                            <img src="img/chitietsanpham/box.png">
+                            <p>
+                                Trong hộp có: Sạc, Tai nghe, Sách hướng dẫn, Cây lấy sim, Ốp lưng
+                            </p>
+                        </div>
+                        <div>
+                            <img src="img/chitietsanpham/icon-baohanh.png">
+                            <p>
+                                Bảo hành chính hãng 12 tháng.
+                            </p>
+                        </div>
+                        <div class="last">
+                            <img src="img/chitietsanpham/1-1.jpg">
+                            <p>
+                                1 đổi 1 trong 1 tháng nếu lỗi, đổi sản phẩm tại nhà trong 1 ngày.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="area_order">
+                        <a href="#" class="buy_now">
+                            <b>MUA NGAY</b>
+                            <p>Giao trong 1 giờ hoặc nhận tại cửa hàng</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="info_product">
+                    <h2>Thông số kỹ thuật</h2>
+                    <ul class="info">
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="overlaycertainimg" class="overlaycertainimg">
+                <div class="close" onclick="closecertain()">&times;</div>
+                <div class="overlaycertainimg-content">
+                    <img id="bigimg" class="bigimg" src="img/chitietsanpham/oppo-f9-red-2-400x460.png">
+                    <div class="div_smallimg">
+                        <img src="img/chitietsanpham/oppo-f9-mau-do-1-org.jpg" onclick="changepic(this.src)">
+                        <img src="img/chitietsanpham/oppo-f9-mau-do-2-org.jpg" onclick="changepic(this.src)">
+                        <img src="img/chitietsanpham/oppo-f9-mau-do-3-org.jpg" onclick="changepic(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
     </section>
 
 </body>
