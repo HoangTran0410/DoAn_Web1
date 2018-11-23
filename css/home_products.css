@@ -91,7 +91,7 @@
 .choosedFilter { margin: 10px auto; }
 .choosedFilter i { transition-duration: .3s; }
 .choosedFilter a:hover > h3 > i { color: red; }
-.choosedFilter a:hover > h3 { text-decoration: line-through; }
+/* .choosedFilter a:hover > h3 { text-decoration: line-through; } */
 .choosedFilter a {
     font-size: 12px;
     padding: 6px;
