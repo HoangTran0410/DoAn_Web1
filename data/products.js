@@ -76,15 +76,15 @@ var list_products = [{
 		"value": "250.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
+		"screen": "IPS LCD, 5.8', HD+",
+		"os": "Android One",
+		"camara": "13 MP và 5 MP (2 camera)",
+		"camaraFront": "8 MP",
 		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"ram": "3 GB",
+		"rom": "32 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3060 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "Samsung Galaxy A8 Plus (2018)",
@@ -98,12 +98,12 @@ var list_products = [{
 		"value": "1.500.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
+		"screen": "Super AMOLED, 6', Full HD+",
+		"os": "Android 7.1 (Nougat)",
+		"camara": "16 MP",
+		"camaraFront": "16 MP và 8 MP (2 camera)",
+		"cpu": "Exynos 7885 8 nhân 64-bit",
+		"ram": "6 GB",
 		"rom": "64 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
 		"battery": "3500 mAh, có sạc nhanh"
