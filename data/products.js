@@ -12,7 +12,7 @@ var list_products = [{
 	"detail": {
 		"screen": "IPS LCD, 6.0', HD+",
 		"os": "Android 8.1 (Oreo)",
-		"camara": "13 MB",
+		"camara": "13 MP",
 		"camaraFront": "5 MP",
 		"cpu": "Qualcomm Snapdragon 425 4 nhân 64-bit",
 		"ram": "2 GB",
@@ -32,15 +32,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "IPS LCD, 6.26', Full HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "12 MP và 5 MP (2 camera)",
+		"camaraFront": "24 MP",
+		"cpu": "Qualcomm Snapdragon 660 8 nhân",
 		"ram": "4 GB",
 		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"microUSB": "MicroSD, hỗ trợ tối đa 512 GB",
+		"battery": "3300 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "Oppo F9",
@@ -384,15 +384,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "OLED, 6.39', Quad HD+ (2K+)",
+		"os": "Android 9.0 (Pie)",
+		"camara": "40 MP, 20 MP và 8 MP (3 camera)",
+		"camaraFront": "24 MP",
+		"cpu": "Hisilicon Kirin 980 8 nhân 64-bit",
+		"ram": "6 GB",
+		"rom": "128 GB",
+		"microUSB": "NM card, hỗ trợ tối đa 512 GB",
+		"battery": "4200 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "Huawei Nova 3",
@@ -1044,14 +1044,14 @@ var list_products = [{
 		"value": "500.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "OLED, 6.39', Quad HD+ (2K+)",
+		"os": "Android 9.0 (Pie)",
+		"camara": "40 MP, 20 MP và 8 MP (3 camera)",
+		"camaraFront": "24 MP",
+		"cpu": "Hisilicon Kirin 980 8 nhân 64-bit",
+		"ram": "6 GB",
+		"rom": "128 GB",
+		"microUSB": "NM card, hỗ trợ tối đa 512 GB",
+		"battery": "4200 mAh, có sạc nhanh"
 	}
 }];

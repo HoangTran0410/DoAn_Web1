@@ -581,7 +581,7 @@ function addBanner(img, link) {
 
 // Thêm từ khóa tìm kiếm
 function addTags(nameTag, link, blank) {
-	var new_tag = `<a href=` + link + (blank?' target="_black"':'') + `>` + nameTag + `</a>`;
+	var new_tag = `<a href=` + link + (blank ? ' target="_black"' : '') + `>` + nameTag + `</a>`;
 
 	// Thêm <a> vừa tạo vào khung tìm kiếm
 	var khung_tags = document.getElementsByClassName('tags')[0];
@@ -725,4 +725,55 @@ function auto_Get_Database() {
 		// var giamgia = a.getElementsByClassName('discount').length;
 		// var giareonline = a.getElementsByClassName('shockprice').length;
 	}
+}
+
+function getThonTinSanPhamFrom_TheGioiDiDong() {
+	javascript: (function () {
+		var s = document.createElement('script');
+		s.innerHTML = `
+			(function () {
+				var ul = document.getElementsByClassName('parameter')[0];
+				var li_s = ul.getElementsByTagName('li');
+				var result = {};
+				result.detail = {};
+	
+				for (var li of li_s) {
+					var loai = li.getElementsByTagName('span')[0].innerText;
+					var giatri = li.getElementsByTagName('div')[0].innerText;
+	
+					switch (loai) {
+						case "Màn hình:":
+							result.detail.screen = giatri.replace('"', "'");
+							break;
+						case "Hệ điều hành:":
+							result.detail.os = giatri;
+							break;
+						case "Camera sau:":
+							result.detail.camara = giatri;
+							break;
+						case "Camera trước:":
+							result.detail.camaraFront = giatri;
+							break;
+						case "CPU:":
+							result.detail.cpu = giatri;
+							break;
+						case "RAM:":
+							result.detail.ram = giatri;
+							break;
+						case "Bộ nhớ trong:":
+							result.detail.rom = giatri;
+							break;
+						case "Thẻ nhớ:":
+							result.detail.microUSB = giatri;
+							break;
+						case "Dung lượng pin:":
+							result.detail.battery = giatri;
+							break;
+					}
+				}
+	
+				console.log(JSON.stringify(result, null, "\t"));
+			})();`;
+		document.body.appendChild(s);
+	})();
 }
