@@ -74,7 +74,7 @@ function Product(img, name, price, star, rateCount, promo) {
 			
 		var newLi =
 			`<li>
-			<a target="print_popup" href="`+ chitietSp +`">
+			<a target="_blank" href="`+ chitietSp +`">
 				<img src=` + this.img + ` alt="">
 				<h3>` + this.name + `</h3>
 				<div class="price">

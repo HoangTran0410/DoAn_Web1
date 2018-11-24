@@ -55,13 +55,13 @@
     height: 1em;
     line-height: 1em;
     text-align: center;
-    color: #fff;
+    color: #ccc;
     cursor: pointer;
     transition: .2s ease;
 }
 
 .overlaycertainimg .close:hover {
-    color: #fff;
+    /* color: #fff; */
     background-color: #f33;
     border-radius: 50%;
 }

@@ -85,7 +85,7 @@ function getDetailPromo(sp) {
         case 'tragop': return `Khách hàng có thể mua trả góp sản phẩm với lãi suất `+sp.promo.value+`% với thời hạn 6 tháng kể từ khi mua hàng.`;
         case 'giamgia': return `Khách hàng sẽ được giảm `+sp.promo.value+`₫ khi tới mua trực tiếp tại cửa hàng`;
         case 'moiramat': return `Khách hàng sẽ được thử máy miễn phí tại cửa hàng. Có thể đổi trả lỗi trong vòng 2 tháng.`;
-        case 'giareonline': return `Sản phẩm sẽ được giảm còn `+sp.promo.value+`₫ khi mua hàng bằng thẻ VPBank hoặc tin nhắn SMS`;
+        case 'giareonline': return `Sản phẩm sẽ được giảm còn `+sp.promo.value+`₫ khi mua hàng online bằng thẻ VPBank hoặc tin nhắn SMS`;
         default : return `Cơ hội trúng 61 xe Wave Alpha khi trả góp Home Credit`;
     }
 }
