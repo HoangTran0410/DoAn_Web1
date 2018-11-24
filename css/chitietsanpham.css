@@ -17,7 +17,8 @@
     line-height: 40px;
 }
 
-.fa-star, .fa-star-o {
+.fa-star,
+.fa-star-o {
     color: orange;
 }
 
@@ -31,7 +32,6 @@
 
 .overlaycertainimg {
     z-index: 14;
-    display: none;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -40,16 +40,30 @@
     top: 0;
     left: 0;
     background: #000;
+    transform: scale(0);
+    transition: .2s ease;
 }
 
-.overlaycertainimg .close { /*Nút tắt hình*/
+.overlaycertainimg .close {
+    /*Nút tắt hình*/
     position: absolute;
     /*Định vị tuyệt đối theo thành phần bao ngoài (cửa sổ trình duyệt)*/
-    font-size: 50px;
     top: 15px;
     right: 45px;
+    font-size: 3rem;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
     color: #fff;
     cursor: pointer;
+    transition: .2s ease;
+}
+
+.overlaycertainimg .close:hover {
+    color: #fff;
+    background-color: #f33;
+    border-radius: 50%;
 }
 
 .overlaycertainimg-content {
@@ -60,7 +74,8 @@
     background-color: #fff;
 }
 
-.overlaycertainimg-content img.bigimg { /*hình lớn ở certainimg*/
+.overlaycertainimg-content img.bigimg {
+    /*hình lớn ở certainimg*/
     height: 540px;
     display: block;
     margin: auto;
@@ -75,7 +90,7 @@
     text-align: center;
 }
 
-.overlaycertainimg-content .div_smallimg  {
+.overlaycertainimg-content .div_smallimg {
     display: block;
 }
 
@@ -135,6 +150,16 @@
     margin-right: 10px;
 }
 
+.area_price span {
+    /* giá tiền gạch ngang */
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    text-decoration: line-through;
+    margin-left: 5px;
+    color: #222;
+}
+
 .area_price label {
     display: inline-block;
     position: relative;
@@ -151,6 +176,7 @@
     background: #f28902;
     margin: 0 0 0 5px;
 }
+
 .area_price label.giamgia {
     background-image: -webkit-gradient(linear, left top, right top, from(#ff9c00), to(#ec1f1f));
     background-image: -webkit-linear-gradient(left, #ff9c00 0%, #ec1f1f 100%);
@@ -158,10 +184,12 @@
     background-image: linear-gradient(90deg, #ff9c00 0%, #ec1f1f 100%);
     margin: 0 0 0 5px;
 }
+
 .area_price label.moiramat {
     background: #1191f8;
     margin: 0 0 0 5px;
 }
+
 .area_price label.giareonline {
     background: #3fb846;
     margin: 0 0 0 5px;

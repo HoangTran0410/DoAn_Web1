@@ -120,15 +120,15 @@ var list_products = [{
 		"value": "27.990.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "OLED, 5.8', Super Retina",
+		"os": "iOS 11",
+		"camara": "2 camera 12 MP",
+		"camaraFront": "7 MP",
+		"cpu": "Apple A11 Bionic 6 nhân",
+		"ram": "3 GB",
+		"rom": "256 GB",
+		"microUSB": "Không",
+		"battery": "2716 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "Oppo A3s 32GB",
@@ -142,15 +142,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"screen": "IPS LCD, 6.2', HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "13 MP và 2 MP (2 camera)",
+		"camaraFront": "8 MP",
+		"cpu": "Qualcomm Snapdragon 450 8 nhân 64-bit",
+		"ram": "3 GB",
+		"rom": "32 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "4230 mAh"
 	}
 }, {
 	"name": "Samsung Galaxy J8",
@@ -164,15 +164,15 @@ var list_products = [{
 		"value": "500.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"screen": "Super AMOLED, 6.0', HD+",
+		"os": "Android 8.0 (Oreo)",
+		"camara": "16 MP và 5 MP (2 camera)",
+		"camaraFront": "16 MP",
+		"cpu": "Qualcomm Snapdragon 450 8 nhân 64-bit",
+		"ram": "3 GB",
+		"rom": "32 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3500 mAh"
 	}
 }, {
 	"name": "iPad 2018 Wifi 32GB",
@@ -186,15 +186,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "LED-backlit LCD, 9.7p''",
+		"os": "	iOS 11.3",
+		"camara": "8 MP",
+		"camaraFront": "1.2 MP",
+		"cpu": "Apple A10 Fusion, 2.34 GHz",
+		"ram": "2 GB",
+		"rom": "32 GB",
+		"microUSB": "Không",
+		"battery": "Chưa có thông số cụ thể"
 	}
 }, {
 	"name": "iPhone 7 Plus 32GB",
@@ -208,15 +208,15 @@ var list_products = [{
 		"value": "16.990.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "LED-backlit IPS LCD, 5.5', Retina HD",
+		"os": "iOS 11",
+		"camara": "2 camera 12 MP",
+		"camaraFront": "7 MP",
+		"cpu": "Apple A10 Fusion 4 nhân 64-bit",
+		"ram": "3 GB",
+		"rom": "32 GB",
+		"microUSB": "Không",
+		"battery": "2900 mAh"
 	}
 }, {
 	"name": "Xiaomi Mi 8",
@@ -230,15 +230,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "IPS LCD, 6.26', Full HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "12 MP và 5 MP (2 camera)",
+		"camaraFront": "24 MP",
+		"cpu": "Qualcomm Snapdragon 660 8 nhân",
 		"ram": "4 GB",
 		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"microUSB": "MicroSD, hỗ trợ tối đa 512 GB",
+		"battery": "3300 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "Mobiistar X",
@@ -252,15 +252,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "IPS LCD, 5.86', HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "16 MP và 5 MP (2 camera)",
+		"camaraFront": "16 MP",
+		"cpu": "MediaTek MT6762 8 nhân 64-bit (Helio P22)",
 		"ram": "4 GB",
-		"rom": "64 GB",
+		"rom": "32 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3000 mAh"
 	}
 }, {
 	"name": "Mobiistar Zumbo S2 Dual",
@@ -274,15 +274,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 5.5', Full HD",
+		"os": "Android 7.0 (Nougat)",
+		"camara": "13 MP",
+		"camaraFront": "13 MP và 8 MP (2 camera)",
+		"cpu": "MT6737T, 4 nhân",
+		"ram": "3 GB",
+		"rom": "32 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+		"battery": "3000 mAh"
 	}
 }, {
 	"name": "Mobiistar E Selfie",
@@ -296,15 +296,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 6.0', HD+",
+		"os": "Android 7.0 (Nougat)",
+		"camara": "13 MP",
+		"camaraFront": "13 MP",
+		"cpu": "MediaTek MT6739 4 nhân 64-bit",
+		"ram": "2 GB",
+		"rom": "16 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+		"battery": "3900 mAh"
 	}
 }, {
 	"name": "Mobiistar B310",
@@ -318,15 +318,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "LCD, 1.8', QQVGA",
+		"os": "Không",
+		"camara": "0.08 MP",
+		"camaraFront": "Không",
+		"cpu": "Không",
+		"ram": "Không",
+		"rom": "Không",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "800 mAh"
 	}
 }, {
 	"name": "Xiaomi Redmi Note 5",
@@ -340,15 +340,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "IPS LCD, 5.99', Full HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "12 MP và 5 MP (2 camera)",
+		"camaraFront": "13 MP",
+		"cpu": "Qualcomm Snapdragon 636 8 nhân",
 		"ram": "4 GB",
 		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+		"battery": "4000 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "Xiaomi Redmi 5 Plus 4GB",
@@ -362,15 +362,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "IPS LCD, 5.99', Full HD+",
+		"os": "Android 7.1 (Nougat)",
+		"camara": "12 MP",
+		"camaraFront": "5 MP",
+		"cpu": "Snapdragon 625 8 nhân 64-bit",
 		"ram": "4 GB",
 		"rom": "64 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "4000 mAh"
 	}
 }, {
 	"name": "Huawei Mate 20 Pro",
@@ -407,14 +407,14 @@ var list_products = [{
 	},
 	"detail": {
 		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "24 MP và 16 MP (2 camera)",
+		"camaraFront": "24 MP và 2 MP (2 camera)",
+		"cpu": "Hisilicon Kirin 970 8 nhân",
+		"ram": "6 GB",
+		"rom": "128 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3750 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "Huawei Y5 2017",
@@ -428,15 +428,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 5', HD",
+		"os": "Android 6.0 (Marshmallow)",
+		"camara": "8 MP",
+		"camaraFront": "5 MP",
+		"cpu": "MT6737T, 4 nhân",
+		"ram": "2 GB",
+		"rom": "16 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+		"battery": "3000 mAh"
 	}
 }, {
 	"name": "Nokia black future",
@@ -450,15 +450,15 @@ var list_products = [{
 		"value": "1.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "4K, Chống nước, Chống trầy",
+		"os": "iOS + Android song song",
+		"camara": "Bộ tứ camara tàng hình",
+		"camaraFront": "Chuẩn thế giới 50MP",
+		"cpu": "16 nhân 128 bit",
+		"ram": "Không giới hạn",
+		"rom": "Dùng thoải mái",
+		"microUSB": "Không cần",
+		"battery": "Không cần sạc"
 	}
 }, {
 	"name": "Samsung Galaxy A7 (2018)",
@@ -472,15 +472,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "Super AMOLED, 6.0', Full HD+",
+		"os": "Android 8.0 (Oreo)",
+		"camara": "24 MP, 8 MP và 5 MP (3 camera)",
+		"camaraFront": "24 MP",
+		"cpu": "Exynos 7885 8 nhân 64-bit",
 		"ram": "4 GB",
 		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"microUSB": "MicroSD, hỗ trợ tối đa 512 GB",
+		"battery": "3300 mAh"
 	}
 }, {
 	"name": "Realme 2 Pro 8GB/128GB",
@@ -494,15 +494,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
+		"screen": "IPS LCD, 6.3', Full HD+",
 		"os": "ColorOS 5.2 (Android 8.1)",
 		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"camaraFront": "16 MP",
+		"cpu": "Qualcomm Snapdragon 660 8 nhân",
+		"ram": "8 GB",
+		"rom": "128 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3500 mAh"
 	}
 }, {
 	"name": "Realme 2 4GB/64GB",
@@ -516,15 +516,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "IPS LCD, 6.2', HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "13 MP và 2 MP (2 camera)",
+		"camaraFront": "8 MP",
+		"cpu": "Qualcomm Snapdragon 450 8 nhân 64-bit",
 		"ram": "4 GB",
 		"rom": "64 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "4230 mAh"
 	}
 }, {
 	"name": "Realme C1",
@@ -538,15 +538,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"screen": "IPS LCD, 6.2', HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "13 MP và 2 MP (2 camera)",
+		"camaraFront": "5 MP",
+		"cpu": "Qualcomm Snapdragon 450 8 nhân 64-bit",
+		"ram": "2 GB",
+		"rom": "16 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "4230 mAh"
 	}
 }, {
 	"name": "Realme 2 Pro 4GB/64GB",
@@ -560,15 +560,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
+		"screen": "IPS LCD, 6.3', Full HD+",
 		"os": "ColorOS 5.2 (Android 8.1)",
 		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"camaraFront": "16 MP",
+		"cpu": "Qualcomm Snapdragon 660 8 nhân",
 		"ram": "4 GB",
 		"rom": "64 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3500 mAh"
 	}
 }, {
 	"name": "Philips E331",
@@ -582,15 +582,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "TFT, 2.4', QVGA",
+		"os": "Không",
+		"camara": "0.3 MP",
+		"camaraFront": "Không",
+		"cpu": "Không",
+		"ram": "Không",
+		"rom": "Không",
+		"microUSB": "MicroSD, hỗ trợ tối đa 16 GB",
+		"battery": "1600 mAh"
 	}
 }, {
 	"name": "Philips S329",
@@ -604,15 +604,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 5', HD",
+		"os": "Android 7.0 (Nougat)",
+		"camara": "13 MP",
+		"camaraFront": "5 MP",
+		"cpu": "Mediatek MT6750 8 nhân",
+		"ram": "3 GB",
+		"rom": "16 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 64 GB",
+		"battery": "3000 mAh"
 	}
 }, {
 	"name": "Philips E103",
@@ -626,15 +626,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "TFT, 1.77', 65.536 màu",
+		"os": "Không",
+		"camara": "Không",
+		"camaraFront": "Không",
+		"cpu": "Không",
+		"ram": "Không",
+		"rom": "Không",
+		"microUSB": "Không",
+		"battery": "1050 mAh"
 	}
 }, {
 	"name": "Vivo V11",
@@ -648,15 +648,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
+		"screen": "Super AMOLED, 6.41', Full HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "12 MP và 5 MP (2 camera)",
 		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"cpu": "Qualcomm Snapdragon 660 8 nhân",
+		"ram": "6 GB",
+		"rom": "128 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3400 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "Vivo V9",
@@ -670,15 +670,15 @@ var list_products = [{
 		"value": "800.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "IPS LCD, 6.3', Full HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "16 MP và 5 MP (2 camera)",
+		"camaraFront": "24 MP",
+		"cpu": "Snapdragon 626 8 nhân 64-bit",
 		"ram": "4 GB",
 		"rom": "64 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3260 mAh"
 	}
 }, {
 	"name": "Vivo Y85",
@@ -692,15 +692,15 @@ var list_products = [{
 		"value": "500.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "IPS LCD, 6.22', HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "13 MP và 2 MP (2 camera)",
+		"camaraFront": "8 MP",
+		"cpu": "MediaTek MT6762 8 nhân 64-bit (Helio P22)",
 		"ram": "4 GB",
-		"rom": "64 GB",
+		"rom": "32 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3260 mAh"
 	}
 }, {
 	"name": "Vivo Y71",
@@ -714,15 +714,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
+		"screen": "IPS LCD, 6.0', HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "13 MP",
+		"camaraFront": "5 MP",
+		"cpu": "Qualcomm Snapdragon 425 4 nhân 64-bit",
+		"ram": "3 GB",
+		"rom": "16 GB",
 		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"battery": "3360 mAh"
 	}
 }, {
 	"name": "Mobell M789",
@@ -736,15 +736,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "TFT, 2.4', 65.536 màu",
+		"os": "Không",
+		"camara": "Không",
+		"camaraFront": "Không",
+		"cpu": "Không",
+		"ram": "Không",
+		"rom": "Không",
+		"microUSB": "Không",
+		"battery": "1200 mAh"
 	}
 }, {
 	"name": "Mobell Rock 3",
@@ -758,15 +758,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "TFT, 2.4', 65.536 màu",
+		"os": "Không",
+		"camara": "Không",
+		"camaraFront": "Không",
+		"cpu": "Không",
+		"ram": "Không",
+		"rom": "Không",
+		"microUSB": "Không",
+		"battery": "5000 mAh"
 	}
 }, {
 	"name": "Mobell S60",
@@ -780,15 +780,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "LCD, 5.5', FWVGA",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "8 MP và 2 MP (2 camera)",
+		"camaraFront": "5 MP",
+		"cpu": "MT6580 4 nhân 32-bit",
+		"ram": "1 GB",
+		"rom": "16 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "2650 mAh"
 	}
 }, {
 	"name": "Itel P32",
@@ -802,15 +802,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 5.45', qHD",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "5 MP và 0.3 MP (2 camera)",
+		"camaraFront": "5 MP",
+		"cpu": "MT6580 4 nhân 32-bit",
+		"ram": "1 GB",
+		"rom": "8 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "4000 mAh"
 	}
 }, {
 	"name": "Itel A32F",
@@ -824,15 +824,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "TFT, 5', FWVGA",
+		"os": "Android Go Edition",
+		"camara": "5 MP",
+		"camaraFront": "2 MP",
+		"cpu": "MediaTek MT6580 4 nhân 32-bit",
+		"ram": "1 GB",
+		"rom": "8 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "2050 mAh"
 	}
 }, {
 	"name": "Itel it2123",
@@ -846,15 +846,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "TFT, 1.77', 65.536 màu",
+		"os": "Không",
+		"camara": "Không",
+		"camaraFront": "Không",
+		"cpu": "Không",
+		"ram": "Không",
+		"rom": "Không",
+		"microUSB": "Không",
+		"battery": "1000 mAh"
 	}
 }, {
 	"name": "Itel it2161",
@@ -868,15 +868,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "TFT, 1.77', WVGA",
+		"os": "Không",
+		"camara": "Không",
+		"camaraFront": "Không",
+		"cpu": "Không",
+		"ram": "Không",
+		"rom": "Không",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "1000 mAh"
 	}
 }, {
 	"name": "Coolpad N3D",
@@ -890,15 +890,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 5.45', HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "8 MP và 0.3 MP (2 camera)",
+		"camaraFront": "5 MP",
+		"cpu": "Spreadtrum SC9850K 4 nhân",
+		"ram": "2 GB",
+		"rom": "16 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "2500 mAh"
 	}
 }, {
 	"name": "Coolpad N3",
@@ -912,15 +912,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 5.45', HD+",
+		"os": "Android Go Edition",
+		"camara": "5 MP và 0.3 MP (2 camera)",
+		"camaraFront": "2 MP",
+		"cpu": "Spreadtrum SC9850K 4 nhân",
+		"ram": "1 GB",
+		"rom": "16 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "2300 mAh"
 	}
 }, {
 	"name": "Coolpad N3 mini",
@@ -934,15 +934,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 5', WVGA",
+		"os": "Android Go Edition",
+		"camara": "5 MP và 0.3 MP (2 camera)",
+		"camaraFront": "2 MP",
+		"cpu": "MT6580 4 nhân 32-bit",
+		"ram": "1 GB",
+		"rom": "8 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "2000 mAh"
 	}
 }, {
 	"name": "HTC U12 life",
@@ -956,15 +956,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
+		"screen": "Super LCD, 6', Full HD+",
+		"os": "Android 8.1 (Oreo)",
+		"camara": "16 MP và 5 MP (2 camera)",
+		"camaraFront": "13 MP",
+		"cpu": "Qualcomm Snapdragon 636 8 nhân",
 		"ram": "4 GB",
 		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"microUSB": "MicroSD, hỗ trợ tối đa 512 GB",
+		"battery": "3600 mAh"
 	}
 }, {
 	"name": "Motorola Moto C 4G",
@@ -978,15 +978,15 @@ var list_products = [{
 		"value": ""
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "TFT, 5', FWVGA",
+		"os": "Android 7.1 (Nougat)",
+		"camara": "5 MP",
+		"camaraFront": "2 MP",
+		"cpu": "MT6737 4 nhân",
+		"ram": "1 GB",
+		"rom": "16 GB",
+		"microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
+		"battery": "2350 mAh"
 	}
 }, {
 	"name": "iPhone Xr 128GB",
@@ -1000,15 +1000,15 @@ var list_products = [{
 		"value": "22.990.000"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
-		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"screen": "IPS LCD, 6.1', IPS LCD, 16 triệu màu",
+		"os": "iOS 12",
+		"camara": "12 MP",
+		"camaraFront": "7 MP",
+		"cpu": "Apple A12 Bionic 6 nhân",
+		"ram": "3 GB",
+		"rom": "128 GB",
+		"microUSB": "Không",
+		"battery": "2942 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "iPhone 8 Plus 64GB",
@@ -1022,15 +1022,15 @@ var list_products = [{
 		"value": "0"
 	},
 	"detail": {
-		"screen": "LTPS LCD, 6.3', Full HD+",
-		"os": "ColorOS 5.2 (Android 8.1)",
-		"camara": "16 MP và 2 MP (2 camera)",
-		"camaraFront": "25 MP",
-		"cpu": "MediaTek Helio P60 8 nhân 64-bit",
-		"ram": "4 GB",
+		"screen": "LED-backlit IPS LCD, 5.5', Retina HD",
+		"os": "iOS 11",
+		"camara": "2 camera 12 MP",
+		"camaraFront": "7 MP",
+		"cpu": "Apple A11 Bionic 6 nhân",
+		"ram": "3 GB",
 		"rom": "64 GB",
-		"microUSB": "MicroSD, hỗ trợ tối đa 256 GB",
-		"battery": "3500 mAh, có sạc nhanh"
+		"microUSB": "Không",
+		"battery": "2691 mAh, có sạc nhanh"
 	}
 }, {
 	"name": "iPhone 8 Plus 256GB",
@@ -1044,14 +1044,14 @@ var list_products = [{
 		"value": "500.000"
 	},
 	"detail": {
-		"screen": "OLED, 6.39', Quad HD+ (2K+)",
-		"os": "Android 9.0 (Pie)",
-		"camara": "40 MP, 20 MP và 8 MP (3 camera)",
-		"camaraFront": "24 MP",
-		"cpu": "Hisilicon Kirin 980 8 nhân 64-bit",
-		"ram": "6 GB",
-		"rom": "128 GB",
-		"microUSB": "NM card, hỗ trợ tối đa 512 GB",
-		"battery": "4200 mAh, có sạc nhanh"
+		"screen": "LED-backlit IPS LCD, 4.7', Retina HD",
+		"os": "iOS 11",
+		"camara": "12 MP",
+		"camaraFront": "7 MP",
+		"cpu": "Apple A11 Bionic 6 nhân",
+		"ram": "2 GB",
+		"rom": "256 GB",
+		"microUSB": "Không",
+		"battery": "1821 mAh, có sạc nhanh"
 	}
 }];

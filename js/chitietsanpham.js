@@ -44,10 +44,19 @@ function getProductFromUrl() {
     }
     divChiTiet.getElementsByClassName('rating')[0].innerHTML += rating;
 
-    // Cập nhật giá
+    // Cập nhật giá + label khuyến mãi
     var price = divChiTiet.getElementsByClassName('area_price')[0];
-    price.innerHTML = `<strong>` + sanPham.price + `₫</strong>`;
-    price.innerHTML += new Promo(sanPham.promo.name, sanPham.promo.value).toWeb();
+    if(sanPham.promo.name != 'giareonline') {
+        price.innerHTML = `<strong>` + sanPham.price + `₫</strong>`;
+        price.innerHTML += new Promo(sanPham.promo.name, sanPham.promo.value).toWeb();
+    } else {
+        price.innerHTML = `<strong>` + sanPham.promo.value + `&#8363;</strong>
+					        <span>` + sanPham.price + `&#8363;</span>`;
+    }
+    
+    // Cập nhật chi tiết khuyến mãi
+    document.getElementById('detailPromo').innerHTML =  getDetailPromo(sanPham);
+
 
     // Cập nhật hình
     var hinh = divChiTiet.getElementsByClassName('picture')[0];
@@ -67,6 +76,18 @@ function getProductFromUrl() {
         s += addThongSo('Thẻ nhớ', sanPham.detail.microUSB);
         s += addThongSo('Dung lượng pin', sanPham.detail.battery);
     info.innerHTML = s;
+
+
+}
+
+function getDetailPromo(sp) {
+    switch(sp.promo.name) {
+        case 'tragop': return `Khách hàng có thể mua trả góp sản phẩm với lãi suất `+sp.promo.value+`% với thời hạn 6 tháng kể từ khi mua hàng.`;
+        case 'giamgia': return `Khách hàng sẽ được giảm `+sp.promo.value+`₫ khi tới mua trực tiếp tại cửa hàng`;
+        case 'moiramat': return `Khách hàng sẽ được thử máy miễn phí tại cửa hàng. Có thể đổi trả lỗi trong vòng 2 tháng.`;
+        case 'giareonline': return `Sản phẩm sẽ được giảm còn `+sp.promo.value+`₫ khi mua hàng bằng thẻ VPBank hoặc tin nhắn SMS`;
+        default : return `Cơ hội trúng 61 xe Wave Alpha khi trả góp Home Credit`;
+    }
 }
 
 function addThongSo(ten, giatri) {
@@ -86,11 +107,11 @@ function timKiem() { // hàm chạy khi submit form tìm kiếm
 
 // đóng mở xem hình
 function opencertain() {
-    document.getElementById("overlaycertainimg").style.display = "block";
+    document.getElementById("overlaycertainimg").style.transform = "scale(1)";
 }
 
 function closecertain() {
-    document.getElementById("overlaycertainimg").style.display = "none";
+    document.getElementById("overlaycertainimg").style.transform = "scale(0)";
 }
 
 // đổi hình trong chế độ xem hình

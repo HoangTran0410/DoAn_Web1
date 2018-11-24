@@ -175,11 +175,38 @@
 		<div class="taikhoan">
 
 			<ul class="tab-group">
-				<li class="tab active"><a href="#signup">Đăng kí</a></li>
-				<li class="tab"><a href="#login">Đăng nhập</a></li>
+				<li class="tab active"><a href="#login">Đăng nhập</a></li>
+				<li class="tab"><a href="#signup">Đăng kí</a></li>
 			</ul> <!-- /tab group -->
 
 			<div class="tab-content">
+				<div id="login">
+					<h1>Chào mừng bạn trở lại!</h1>
+
+					<form action="/" method="post">
+
+						<div class="field-wrap">
+							<label>
+								Tên đăng nhập<span class="req">*</span>
+							</label>
+							<input type="text" required autocomplete="off" />
+						</div> <!-- /user name -->
+
+						<div class="field-wrap">
+							<label>
+								Mật khẩu<span class="req">*</span>
+							</label>
+							<input type="password" required autocomplete="off" />
+						</div> <!-- pass -->
+
+						<p class="forgot"><a href="#">Quên mật khẩu?</a></p>
+
+						<button class="button button-block" />Tiếp tục</button>
+
+					</form> <!-- /form -->
+
+				</div> <!-- /log in -->
+
 				<div id="signup">
 					<h1>Đăng kí miễn phí</h1>
 
@@ -227,34 +254,6 @@
 					</form> <!-- /form -->
 
 				</div> <!-- /sign up -->
-
-				<div id="login">
-					<h1>Chào mừng bạn trở lại!</h1>
-
-					<form action="/" method="post">
-
-						<div class="field-wrap">
-							<label>
-								Tên đăng nhập<span class="req">*</span>
-							</label>
-							<input type="text" required autocomplete="off" />
-						</div> <!-- /user name -->
-
-						<div class="field-wrap">
-							<label>
-								Mật khẩu<span class="req">*</span>
-							</label>
-							<input type="password" required autocomplete="off" />
-						</div> <!-- pass -->
-
-						<p class="forgot"><a href="#">Quên mật khẩu?</a></p>
-
-						<button class="button button-block" />Tiếp tục</button>
-
-					</form> <!-- /form -->
-
-				</div> <!-- /log in -->
-
 			</div><!-- tab-content -->
 
 		</div> <!-- /taikhoan -->
