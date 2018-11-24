@@ -1,5 +1,5 @@
-
-h1 {
+/* Phải thêm .chitietSanpham để không trùng với h1 của taikhoan */
+.chitietSanpham h1 {
     display: block;
     margin: 0 0 0 10px;
     float: left;

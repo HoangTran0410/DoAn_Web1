@@ -4,10 +4,13 @@ window.onload = function () {
     for (var t of tags)
         addTags(t, "index.html?search=" + t, true);
 
+    getProductFromUrl();
+
     // autocomplete cho khung tim kiem
     autocomplete(document.getElementById('search-box'), list_products);
 
-    getProductFromUrl();
+    // Cài đặt event cho phần tài khoản
+	setupEventTaiKhoan();
 }
 
 function getProductFromUrl() {

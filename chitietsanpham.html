@@ -13,18 +13,20 @@
 
     <!-- jquery for GotoTop -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+
     <!-- our files -->
     <!-- css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/topnav.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/taikhoan.css">
     <link rel="stylesheet" href="css/chitietsanpham.css">
     <link rel="stylesheet" href="css/footer.css">
     <!-- js -->
     <script src="data/products.js"></script>
     <script src="js/classes.js"></script>
     <script src="js/functions.js"></script>
+    <script src="js/taikhoan.js"></script>
     <script src="js/chitietsanpham.js"></script>
 </head>
 
@@ -79,7 +81,7 @@
 
                 <div class="tools-member">
                     <div class="member">
-                        <a onclick="">
+                        <a onclick="showTaiKhoan(true)">
                             <i class="fa fa-user"></i>
                             Tài khoản
                         </a>
@@ -178,6 +180,95 @@
         </div>
     </section>
 
+    <div class="containTaikhoan">
+        <span class="close" onclick="showTaiKhoan(false);">&times;</span>
+        <div class="taikhoan">
+
+            <ul class="tab-group">
+                <li class="tab active"><a href="#signup">Đăng kí</a></li>
+                <li class="tab"><a href="#login">Đăng nhập</a></li>
+            </ul> <!-- /tab group -->
+
+            <div class="tab-content">
+                <div id="signup">
+                    <h1>Đăng kí miễn phí</h1>
+
+                    <form action="/" method="post">
+
+                        <div class="top-row">
+                            <div class="field-wrap">
+                                <label>
+                                    Họ<span class="req">*</span>
+                                </label>
+                                <input type="text" required autocomplete="off" />
+                            </div>
+
+                            <div class="field-wrap">
+                                <label>
+                                    Tên<span class="req">*</span>
+                                </label>
+                                <input type="text" required autocomplete="off" />
+                            </div>
+                        </div> <!-- / ho ten -->
+
+                        <div class="field-wrap">
+                            <label>
+                                Địa chỉ Email<span class="req">*</span>
+                            </label>
+                            <input type="email" required autocomplete="off" />
+                        </div> <!-- /email -->
+
+                        <div class="field-wrap">
+                            <label>
+                                Tên đăng nhập<span class="req">*</span>
+                            </label>
+                            <input type="email" required autocomplete="off" />
+                        </div> <!-- /user name -->
+
+                        <div class="field-wrap">
+                            <label>
+                                Mật khẩu<span class="req">*</span>
+                            </label>
+                            <input type="password" required autocomplete="off" />
+                        </div> <!-- /pass -->
+
+                        <button type="submit" class="button button-block" />Tạo tài khoản</button>
+
+                    </form> <!-- /form -->
+
+                </div> <!-- /sign up -->
+
+                <div id="login">
+                    <h1>Chào mừng bạn trở lại!</h1>
+
+                    <form action="/" method="post">
+
+                        <div class="field-wrap">
+                            <label>
+                                Tên đăng nhập<span class="req">*</span>
+                            </label>
+                            <input type="text" required autocomplete="off" />
+                        </div> <!-- /user name -->
+
+                        <div class="field-wrap">
+                            <label>
+                                Mật khẩu<span class="req">*</span>
+                            </label>
+                            <input type="password" required autocomplete="off" />
+                        </div> <!-- pass -->
+
+                        <p class="forgot"><a href="#">Quên mật khẩu?</a></p>
+
+                        <button class="button button-block" />Tiếp tục</button>
+
+                    </form> <!-- /form -->
+
+                </div> <!-- /log in -->
+
+            </div><!-- tab-content -->
+
+        </div> <!-- /taikhoan -->
+    </div>
 
     <div class="plc">
         <section>

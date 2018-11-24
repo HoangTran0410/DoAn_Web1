@@ -78,6 +78,7 @@ window.onload = function () {
 	// Thêm filter đã chọn
 	addAllChoosedFilter();
 
+	// Cài đặt event cho phần tài khoản
 	setupEventTaiKhoan();
 };
 
