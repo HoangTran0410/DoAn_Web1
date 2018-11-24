@@ -77,6 +77,8 @@ window.onload = function () {
 
 	// Thêm filter đã chọn
 	addAllChoosedFilter();
+
+	setupEventTaiKhoan();
 };
 
 // Dung mouse wheel de thay doi hinh banner

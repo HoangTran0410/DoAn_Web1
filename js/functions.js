@@ -264,6 +264,22 @@ function timKiemTheoKhuyenMai(list, tenKhuyenMai, soluong) {
 	return result;
 }
 
+function timKiemTheoRAM(list, luongRam, soluong) {
+	var count, result = [];
+	if (soluong < list.length) count = soluong;
+	else count = list.length;
+
+	for (var i = 0; i < list.length; i++) {
+		if (parseInt(list[i].detail.ram) == luongRam) {
+			result.push(list[i]);
+			count--;
+			if (count <= 0) break;
+		}
+	}
+
+	return result;
+}
+
 // https://www.w3schools.com/howto/howto_js_autocomplete.asp
 function autocomplete(inp, arr) {
 	var currentFocus;
