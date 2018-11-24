@@ -727,7 +727,7 @@ function auto_Get_Database() {
 	}
 }
 
-function getThonTinSanPhamFrom_TheGioiDiDong() {
+function getThongTinSanPhamFrom_TheGioiDiDong() {
 	javascript: (function () {
 		var s = document.createElement('script');
 		s.innerHTML = `

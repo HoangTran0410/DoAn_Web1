@@ -27,6 +27,20 @@ function getProductFromUrl() {
     var h1 = divChiTiet.getElementsByTagName('h1')[0];
     h1.innerHTML += nameProduct;
 
+    // Cập nhật sao
+    var rating = "";
+    if (sanPham.rateCount > 0) {
+        for (var i = 1; i <= 5; i++) {
+            if (i <= sanPham.star) {
+                rating += `<i class="fa fa-star"></i>`
+            } else {
+                rating += `<i class="fa fa-star-o"></i>`
+            }
+        }
+        rating += `<span> ` + sanPham.rateCount + ` đánh giá</span>`;
+    }
+    divChiTiet.getElementsByClassName('rating')[0].innerHTML += rating;
+
     // Cập nhật giá
     var price = divChiTiet.getElementsByClassName('area_price')[0];
     price.innerHTML = `<strong>` + sanPham.price + `₫</strong>`;

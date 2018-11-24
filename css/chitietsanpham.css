@@ -11,6 +11,16 @@ h1 {
     /*tăng khoảng cách dòng*/
 }
 
+.rating {
+    float: left;
+    margin-left: 15px;
+    line-height: 40px;
+}
+
+.fa-star, .fa-star-o {
+    color: orange;
+}
+
 .rowdetail {
     display: block;
     border-top: 1px solid #e5e5e5;
