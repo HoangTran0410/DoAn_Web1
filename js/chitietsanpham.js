@@ -10,7 +10,10 @@ window.onload = function () {
     autocomplete(document.getElementById('search-box'), list_products);
 
     // Cài đặt event cho phần tài khoản
-	setupEventTaiKhoan();
+    setupEventTaiKhoan();
+    
+    // check LocalStorage
+    checkLocalStorage();
 }
 
 function getProductFromUrl() {

@@ -97,7 +97,11 @@
   color: #ffffff;
 }
 
-.tab-content > div:last-child {
+.tab-content > div {
+  display: block;
+}
+
+.tab-content>div:last-child {
   display: none;
   /* ẩn signup (last-child của tab-content) lúc mới vào web */
 }
@@ -117,8 +121,10 @@
   color: rgba(255, 255, 255, 0.5);
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; /* https://www.w3schools.com/cssref/playit.asp?filename=playcss_backface-visibility */
-  pointer-events: none; /* kiến label không thể ấn => ấn vào input sẽ ko bị vướng label */
+  backface-visibility: hidden;
+  /* https://www.w3schools.com/cssref/playit.asp?filename=playcss_backface-visibility */
+  pointer-events: none;
+  /* kiến label không thể ấn => ấn vào input sẽ ko bị vướng label */
   font-size: 22px;
 }
 

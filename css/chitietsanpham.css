@@ -39,7 +39,7 @@
     /*Cho nằm lên trên màn hình*/
     top: 0;
     left: 0;
-    background: #000;
+    background: rgba(0, 0, 0, .95);
     transform: scale(0);
     transition: .2s ease;
 }

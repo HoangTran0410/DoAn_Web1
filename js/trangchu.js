@@ -80,6 +80,9 @@ window.onload = function () {
 
 	// Cài đặt event cho phần tài khoản
 	setupEventTaiKhoan();
+
+	// check Localstorage
+	checkLocalStorage();
 };
 
 // Dung mouse wheel de thay doi hinh banner

@@ -40,6 +40,27 @@ function setupEventTaiKhoan() {
         }
     })
 
+    // Event chuyển tab login signup
+    var tab = document.getElementsByClassName('tab');
+    for(var t of tab) {
+        var a = t.getElementsByTagName('a')[0];
+        a.addEventListener('click', function(e) {
+            e.preventDefault(); // tắt event mặc định
+            this.parentElement.classList.add('active');
+            if(this.parentElement.nextElementSibling) {
+                this.parentElement.nextElementSibling.classList.remove('active');
+            }
+            if(this.parentElement.previousElementSibling) {
+                this.parentElement.previousElementSibling.classList.remove('active');
+            }
+
+            var target = this.href.split('#')[1];
+            document.getElementById(target).style.display = 'block';
+
+            var hide = (target=='login'?'signup':'login');
+            document.getElementById(hide).style.display = 'none';
+        })
+    }
 
     // $('.taikhoan').find('input').on('keyup blur focus', function (e) {
 
@@ -69,18 +90,26 @@ function setupEventTaiKhoan() {
 
     // });
 
-    $('.tab a').on('click', function (e) {
+    // $('.tab a').on('click', function (e) {
 
-        e.preventDefault();
+    //     e.preventDefault();
 
-        $(this).parent().addClass('active');
-        $(this).parent().siblings().removeClass('active');
+    //     $(this).parent().addClass('active');
+    //     $(this).parent().siblings().removeClass('active');
 
-        target = $(this).attr('href');
+    //     target = $(this).attr('href');
 
-        $('.tab-content > div').not(target).hide();
+    //     $('.tab-content > div').not(target).hide();
 
-        $(target).fadeIn(600);
+    //     $(target).fadeIn(600);
 
-    });
+    // });
+}
+
+function logIn() {
+    return true;
+}
+
+function signUp() {
+    return true;
 }

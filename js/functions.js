@@ -1,3 +1,12 @@
+
+function checkLocalStorage() {
+	if (typeof (Storage) == "undefined") {
+		alert('Máy tính không hỗ trợ LocalStorage. Không thể lưu thông tin sản phẩm, khách hàng!!');
+	} else {
+		console.log('LocaStorage OKE!');
+	}
+}
+
 var soLuongSanPhamMaxTrongMotTrang = 15;
 
 // =========== Đọc dữ liệu từ url ============

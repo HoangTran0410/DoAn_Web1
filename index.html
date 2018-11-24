@@ -167,7 +167,7 @@
 
 			<div class="pagination"></div>
 		</div>
-
+		
 	</section> <!-- End Section -->
 
 	<div class="containTaikhoan">
@@ -183,7 +183,7 @@
 				<div id="login">
 					<h1>Chào mừng bạn trở lại!</h1>
 
-					<form action="/" method="post">
+					<form action="/" method="post" onsubmit="return logIn();">
 
 						<div class="field-wrap">
 							<label>
@@ -196,12 +196,12 @@
 							<label>
 								Mật khẩu<span class="req">*</span>
 							</label>
-							<input type="password" required autocomplete="off" />
+							<input type="password" required autocomplete="off" minlength="3"/>
 						</div> <!-- pass -->
 
 						<p class="forgot"><a href="#">Quên mật khẩu?</a></p>
 
-						<button class="button button-block" />Tiếp tục</button>
+						<button type="submit" class="button button-block">Tiếp tục</button>
 
 					</form> <!-- /form -->
 
@@ -210,7 +210,7 @@
 				<div id="signup">
 					<h1>Đăng kí miễn phí</h1>
 
-					<form action="/" method="post">
+					<form action="/" method="post" onsubmit="return signUp();">
 
 						<div class="top-row">
 							<div class="field-wrap">
@@ -239,17 +239,17 @@
 							<label>
 								Tên đăng nhập<span class="req">*</span>
 							</label>
-							<input type="email" required autocomplete="off" />
+							<input type="text" required autocomplete="off" />
 						</div> <!-- /user name -->
 
 						<div class="field-wrap">
 							<label>
 								Mật khẩu<span class="req">*</span>
 							</label>
-							<input type="password" required autocomplete="off" />
+							<input type="password" required autocomplete="off" minlength="3" />
 						</div> <!-- /pass -->
 
-						<button type="submit" class="button button-block" />Tạo tài khoản</button>
+						<button type="submit" class="button button-block">Tạo tài khoản</button>
 
 					</form> <!-- /form -->
 
