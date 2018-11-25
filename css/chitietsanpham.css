@@ -85,26 +85,24 @@
 
 /*hình nhỏ ở certainimg*/
     {
+    display: block;
     margin-top: 25px;
     width: 100%;
     text-align: center;
 }
 
-.overlaycertainimg-content .div_smallimg {
-    display: block;
+.overlaycertainimg-content .div_smallimg:hover {
+    background-color: #222;
 }
 
 .overlaycertainimg-content .div_smallimg img {
-    width: 96px;
-    height: 70px;
-    margin: 0 2px;
+    width: 120px;
+    height: 90px;
+    transform: scale(0.95);
 }
 
 .overlaycertainimg-content .div_smallimg img:hover {
-    -webkit-transform: scale(1.1, 1.1);
-    -ms-transform: scale(1.1, 1.1);
-    -o-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
+    transform: scale(1);
 }
 
 .picture {

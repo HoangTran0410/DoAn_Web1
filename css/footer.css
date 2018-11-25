@@ -1,14 +1,4 @@
-/* Footer */
-.footer {
-	height: 150px;
-	width: 100%;
-	background: #476;
-	color: white;
-
-	text-align: center;
-	line-height: 150px;
-}
-
+/* Plc */
 .plc {
 	background: #dae2dc;
 	/* overflow: hidden; */
@@ -17,9 +7,11 @@
 	border-top: 1px solid #bbb;
 	border-bottom: 1px solid #bbb;
 }
+
 .plc ul {
 	width: 100%;
 }
+
 .plc li {
 	width: 20%;
 	display: inline-block;
@@ -29,8 +21,41 @@
 	border-right: solid 1px #bbb;
 	margin: 5px 0;
 }
+
 .plc li:last-child {
 	border-right: none;
+}
+
+/* ============= Footer ============= */
+.footer {
+	position: relative;
+	height: 150px;
+	width: 100%;
+	background: #476;
+
+
+	/*text-align: center;
+	line-height: 150px;*/
+}
+
+.copy-right {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	color: #ccc;
+	background-color: #252525;
+}
+
+.copy-right a {
+	color: #ccc;
+	transition: .2s ease;
+}
+
+.copy-right a:hover {
+	color: #fff;
 }
 
 /* ======= End Footer ======== */

@@ -25,13 +25,14 @@ window.onload = function () {
 
 	// thêm tags (từ khóa) vào khung tìm kiếm
 	var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
-	for (var t of tags) addTags(t, "?search=" + t)
+	for (var t of tags) addTags(t, "index.html?search=" + t)
+
 	// Thêm danh sách hãng điện thoại
 	var company = ["Apple.jpg", "Samsung.jpg", "Oppo.jpg", "Nokia.jpg", "Huawei.jpg", "Xiaomi.png",
 		"Realme.png", "Vivo.jpg", "Philips.jpg", "Mobell.jpg", "Mobiistar.jpg", "Itel.jpg",
 		"Coolpad.png", "HTC.jpg", "Motorola.jpg"
 	];
-	for (var c of company)  addCompany("img/company/" + c, c.slice(0, c.length - 4));
+	for (var c of company) addCompany("img/company/" + c, c.slice(0, c.length - 4));
 
 	// Thêm sản phẩm vào trang
 	var sanPhamPhanTich = phanTich_URL();
@@ -71,8 +72,8 @@ window.onload = function () {
 	// Thêm filter đã chọn
 	addAllChoosedFilter();
 
-	// Cài đặt event cho phần tài khoản
-	setupEventTaiKhoan();
+    // Cài đặt event cho phần tài khoản
+    setupEventTaiKhoan();	
 
 	// check Localstorage
 	checkLocalStorage();
@@ -406,7 +407,7 @@ function createLinkFilter(type, nameFilter, valueAdd) {
 		else if (type == 'remove') o[nameFilter] = '';
 	}
 
-	var link = window.location.href.split('?')[0].replace('#', '');
+	var link = 'index.html'; //window.location.href.split('?')[0].replace('#', '');
 	var h = false; // Đã có dấu hỏi hay chưa
 
 	// thêm những filter trước sort
@@ -417,8 +418,8 @@ function createLinkFilter(type, nameFilter, valueAdd) {
 		}
 	}
 
-	// thêm sort (do sort trong filtersFromUrl là kiểu object, 
-	// khác với kiểu string của những thằng còn lại)
+	// thêm sort (do sort trong filtersFromUrl là kiểu object, khác với kiểu string của những loại còn lại)
+	// nên lúc tạo link sẽ khác những loại trên
 	if (o.sort.by != '')
 		link += (h ? '&' : '?') + 'sort=' + o.sort.by + '-' + o.sort.type;
 

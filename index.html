@@ -39,7 +39,7 @@
 	<script> addTopNav(); </script>
 
 	<section>
-		<script> addHeader(true); </script>
+		<script> addHeader(); </script>
 
 		<div class="banner">
 			<div class="owl-carousel owl-theme"></div>
@@ -97,13 +97,14 @@
 
 			<div class="pagination"></div>
 		</div>
-		
+
 	</section> <!-- End Section -->
 
-	<script> addContainTaiKhoan(); </script>
-    <script> addPlc(); </script>
+	<script>
+		addContainTaiKhoan(); addPlc();
+	</script>
 
-	<div class="footer">FOOTER</div>
+	<div class="footer"><script>addFooter();</script></div>
 
 	<p id="goto-top-page" onclick="gotoTop()">&uarr;</p>
 </body>

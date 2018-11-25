@@ -68,13 +68,14 @@ function Product(img, name, price, star, rateCount, promo) {
 					<span>` + this.price + `&#8363;</span>`;
 		}
 
-		// Cho mọi thứ vào tag <li>... </li>
+		// tách theo dấu ' ' vào gắn lại bằng dấu '-', code này giúp bỏ hết khoảng trắng và thay vào bằng dấu '-'.
+		// Tạo link tới chi tiết sản phẩm, chuyển tất cả ' ' thành '-'
 		var chitietSp = 'chitietsanpham.html?' + this.name.split(' ').join('-');
-			chitietSp = chitietSp.replace('+', '-plus');
-			
+
+		// Cho mọi thứ vào tag <li>... </li>
 		var newLi =
-			`<li>
-			<a href="`+ chitietSp +`">
+		`<li>
+			<a href="` + chitietSp + `">
 				<img src=` + this.img + ` alt="">
 				<h3>` + this.name + `</h3>
 				<div class="price">

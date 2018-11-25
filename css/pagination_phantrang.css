@@ -15,10 +15,10 @@
 }
 
 .pagination a:hover:not(.current) {
-	background-color: #ccc;
+    background-color: #ccc;
 }
 
-.pagination .current{
+.pagination .current {
     color: white;
     background: #0950E8;
 }

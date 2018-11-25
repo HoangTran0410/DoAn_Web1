@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">
 
-    <!-- jquery for GotoTop -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- owl carousel libraries -->
+	<link rel="stylesheet" href="js/owlcarousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="js/owlcarousel/owl.theme.default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- our files -->
     <!-- css -->
@@ -45,7 +48,7 @@
                 </div>
                 <div class="price_sale">
                     <div class="area_price"> </div>
-                    <div class="ship">
+                    <div class="ship" style="display: none;">
                         <img src="img/chitietsanpham/clock-152067_960_720.png">
                         <div>NHẬN HÀNG TRONG 1 GIỜ</div>
                     </div>
@@ -88,22 +91,19 @@
                 <div class="close" onclick="closecertain()">&times;</div>
                 <div class="overlaycertainimg-content">
                     <img id="bigimg" class="bigimg" src="img/chitietsanpham/oppo-f9-red-2-400x460.png">
-                    <div class="div_smallimg">
-                        <img src="img/chitietsanpham/oppo-f9-mau-do-1-org.jpg" onclick="changepic(this.src)">
+                    <div class="div_smallimg owl-carousel">
+                        <!-- <img src="img/chitietsanpham/oppo-f9-mau-do-1-org.jpg" onclick="changepic(this.src)">
                         <img src="img/chitietsanpham/oppo-f9-mau-do-2-org.jpg" onclick="changepic(this.src)">
-                        <img src="img/chitietsanpham/oppo-f9-mau-do-3-org.jpg" onclick="changepic(this.src)">
+                        <img src="img/chitietsanpham/oppo-f9-mau-do-3-org.jpg" onclick="changepic(this.src)"> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script> addContainTaiKhoan(); </script>
-    <script> addPlc(); </script>
+    <script>addContainTaiKhoan(); addPlc();</script>
 
-    <div class="footer">FOOTER</div>
-
-    <p id="goto-top-page" onclick="gotoTop()">&uarr;</p>
+    <div class="footer"><script>addFooter();</script></div>
 
 </body>
 
