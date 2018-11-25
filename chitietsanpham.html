@@ -25,86 +25,16 @@
     <!-- js -->
     <script src="data/products.js"></script>
     <script src="js/classes.js"></script>
-    <script src="js/functions.js"></script>
-    <script src="js/taikhoan.js"></script>
+    <script src="js/dungchung.js"></script>
     <script src="js/chitietsanpham.js"></script>
 </head>
 
 <body>
-    <div class="top-nav group">
-        <section>
-            <div class="social-top-nav">
-                <a class="fa fa-facebook"></a>
-                <a class="fa fa-twitter"></a>
-                <a class="fa fa-google"></a>
-                <a class="fa fa-youtube"></a>
-            </div> <!-- End Social Topnav -->
 
-            <ul class="top-nav-quicklink flexContain">
-                <li><a>So sánh sản phẩm</a></li>
-                <li>|</li>
-                <li><a>Tuyển dụng</a></li>
-                <li>|</li>
-                <li><a>Giới thiệu</a></li>
-                <li>|</li>
-                <li><a>Trung tâm bảo hành</a></li>
-                <li>|</li>
-                <li><a>Liên hệ</a></li>
-                <li>|</li>
-            </ul> <!-- End Quick link -->
-        </section><!-- End Section -->
-    </div><!-- End Top Nav  -->
+    <script> addTopNav(); </script>
 
     <section>
-        <div class="header group">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="img/logo.jpg" alt="">
-                </a>
-            </div> <!-- End Logo -->
-
-            <div class="content">
-                <div class="search-header">
-                    <form class="input-search" method="get" target="_black" onsubmit="return timKiem();">
-                        <div class="autocomplete">
-                            <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm...">
-                            <button type="submit">
-                                <i class="fa fa-search"></i>
-                                Tìm kiếm
-                            </button>
-                        </div>
-                    </form> <!-- End Form search -->
-                    <div class="tags">
-                        <strong>Từ khóa: </strong>
-                    </div>
-                </div> <!-- End Search header -->
-
-                <div class="tools-member">
-                    <div class="member">
-                        <a onclick="showTaiKhoan(true)">
-                            <i class="fa fa-user"></i>
-                            Tài khoản
-                        </a>
-
-                    </div> <!-- End Member -->
-
-                    <div class="cart">
-                        <a>
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>Giỏ hàng</span>
-                            <span class="cart-number">0</span>
-                        </a>
-                    </div> <!-- End Cart -->
-
-                    <div class="check-order">
-                        <a>
-                            <i class="fa fa-truck"></i>
-                            <span>Đơn hàng</span>
-                        </a>
-                    </div> <!-- End Check Order -->
-                </div><!-- End Tools Member -->
-            </div> <!-- End Content -->
-        </div> <!-- End Header -->
+        <script> addHeader(); </script>
 
         <div class="chitietSanpham">
             <h1>Điện thoại </h1>
@@ -123,30 +53,21 @@
                         <strong>khuyến mãi</strong>
                         <div class="promo">
                             <img src="img/chitietsanpham/icon-tick.png">
-                            <div id="detailPromo">
-                                Khách hàng có thể mua trả góp sản phẩm với lãi suất 0% với thời hạn 6 tháng kể từ khi
-                                mua hàng.
-                            </div>
+                            <div id="detailPromo"> </div>
                         </div>
                     </div>
                     <div class="policy">
                         <div>
                             <img src="img/chitietsanpham/box.png">
-                            <p>
-                                Trong hộp có: Sạc, Tai nghe, Sách hướng dẫn, Cây lấy sim, Ốp lưng
-                            </p>
+                            <p>Trong hộp có: Sạc, Tai nghe, Sách hướng dẫn, Cây lấy sim, Ốp lưng </p>
                         </div>
                         <div>
                             <img src="img/chitietsanpham/icon-baohanh.png">
-                            <p>
-                                Bảo hành chính hãng 12 tháng.
-                            </p>
+                            <p>Bảo hành chính hãng 12 tháng.</p>
                         </div>
                         <div class="last">
                             <img src="img/chitietsanpham/1-1.jpg">
-                            <p>
-                                1 đổi 1 trong 1 tháng nếu lỗi, đổi sản phẩm tại nhà trong 1 ngày.
-                            </p>
+                            <p>1 đổi 1 trong 1 tháng nếu lỗi, đổi sản phẩm tại nhà trong 1 ngày.</p>
                         </div>
                     </div>
                     <div class="area_order">
@@ -177,109 +98,9 @@
         </div>
     </section>
 
-    <div class="containTaikhoan">
-        <span class="close" onclick="showTaiKhoan(false);">&times;</span>
-        <div class="taikhoan">
+    <script> addContainTaiKhoan(); </script>
+    <script> addPlc(); </script>
 
-            <ul class="tab-group">
-                <li class="tab active"><a href="#login">Đăng nhập</a></li>
-                <li class="tab"><a href="#signup">Đăng kí</a></li>
-            </ul> <!-- /tab group -->
-
-            <div class="tab-content">
-                <div id="login">
-                    <h1>Chào mừng bạn trở lại!</h1>
-
-                    <form action="/" method="post" onsubmit="return logIn();">
-
-                        <div class="field-wrap">
-                            <label>
-                                Tên đăng nhập<span class="req">*</span>
-                            </label>
-                            <input type="text" required autocomplete="off" />
-                        </div> <!-- /user name -->
-
-                        <div class="field-wrap">
-                            <label>
-                                Mật khẩu<span class="req">*</span>
-                            </label>
-                            <input type="password" required autocomplete="off" />
-                        </div> <!-- pass -->
-
-                        <p class="forgot"><a href="#">Quên mật khẩu?</a></p>
-
-                        <button type="submit" class="button button-block" />Tiếp tục</button>
-
-                    </form> <!-- /form -->
-
-                </div> <!-- /log in -->
-
-                <div id="signup">
-                    <h1>Đăng kí miễn phí</h1>
-
-                    <form action="/" method="post" onsubmit="return signUp();">
-
-                        <div class="top-row">
-                            <div class="field-wrap">
-                                <label>
-                                    Họ<span class="req">*</span>
-                                </label>
-                                <input type="text" required autocomplete="off" />
-                            </div>
-
-                            <div class="field-wrap">
-                                <label>
-                                    Tên<span class="req">*</span>
-                                </label>
-                                <input type="text" required autocomplete="off" />
-                            </div>
-                        </div> <!-- / ho ten -->
-
-                        <div class="field-wrap">
-                            <label>
-                                Địa chỉ Email<span class="req">*</span>
-                            </label>
-                            <input type="email" required autocomplete="off" />
-                        </div> <!-- /email -->
-
-                        <div class="field-wrap">
-                            <label>
-                                Tên đăng nhập<span class="req">*</span>
-                            </label>
-                            <input type="email" required autocomplete="off" />
-                        </div> <!-- /user name -->
-
-                        <div class="field-wrap">
-                            <label>
-                                Mật khẩu<span class="req">*</span>
-                            </label>
-                            <input type="password" required autocomplete="off" />
-                        </div> <!-- /pass -->
-
-                        <button type="submit" class="button button-block" />Tạo tài khoản</button>
-
-                    </form> <!-- /form -->
-
-                </div> <!-- /sign up -->
-            </div><!-- tab-content -->
-
-        </div> <!-- /taikhoan -->
-    </div>
-
-    <div class="plc">
-        <section>
-            <ul class="flexContain">
-                <li>Giao hàng hỏa tốc trong 1 giờ</li>
-                <li>Thanh toán linh hoạt: tiền mặt, visa / master, trả góp</li>
-                <li>Trải nghiệm sản phẩm tại nhà</li>
-                <li>Lỗi đổi tại nhà trong 1 ngày</li>
-                <li>Hỗ trợ suốt thời gian sử dụng.
-                    <br>Hotline:
-                    <a href="tel:12345678" style="color: #288ad6;">1234.5678</a>
-                </li>
-            </ul>
-        </section>
-    </div>
     <div class="footer">FOOTER</div>
 
     <p id="goto-top-page" onclick="gotoTop()">&uarr;</p>

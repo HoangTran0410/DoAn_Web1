@@ -1,10 +1,9 @@
 window.onload = function () {
     // thêm tags (từ khóa) vào khung tìm kiếm
     var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
-    for (var t of tags)
-        addTags(t, "index.html?search=" + t, true);
+    for (var t of tags) addTags(t, "index.html?search=" + t, true);
 
-    getProductFromUrl();
+    phanTich_URL_chiTietSanPham();
 
     // autocomplete cho khung tim kiem
     autocomplete(document.getElementById('search-box'), list_products);
@@ -16,7 +15,7 @@ window.onload = function () {
     checkLocalStorage();
 }
 
-function getProductFromUrl() {
+function phanTich_URL_chiTietSanPham() {
     var nameProduct = window.location.href.split('?')[1];
     if (!nameProduct) return;
 
@@ -79,8 +78,6 @@ function getProductFromUrl() {
         s += addThongSo('Thẻ nhớ', sanPham.detail.microUSB);
         s += addThongSo('Dung lượng pin', sanPham.detail.battery);
     info.innerHTML = s;
-
-
 }
 
 function getDetailPromo(sp) {
@@ -98,14 +95,6 @@ function addThongSo(ten, giatri) {
                 <p>`+ ten +`</p>
                 <div>`+ giatri +`</div>
             </li>`;
-}
-
-function timKiem() { // hàm chạy khi submit form tìm kiếm
-    var keysearch = document.getElementById('search-box').value;
-        keysearch = keysearch.split('+').join('-');
-        keysearch = keysearch.replace('+', '-plus');
-    window.open('https://hoangtran0410.github.io/DoAn_Web1/index.html?search=' + keysearch);
-    return true;
 }
 
 // đóng mở xem hình
