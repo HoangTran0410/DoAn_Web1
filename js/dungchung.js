@@ -406,7 +406,7 @@ function addContainTaiKhoan() {
                             <label>
                                 Tên đăng nhập<span class="req">*</span>
                             </label>
-                            <input type="email" required autocomplete="off" />
+                            <input type="text" required autocomplete="off" />
                         </div> <!-- /user name -->
 
                         <div class="field-wrap">
