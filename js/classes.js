@@ -6,10 +6,10 @@ function User(username, pass, ho, ten, email, products) {
 	this.username = username;
 	this.pass = pass;
 	this.products = products || [];
+}
 
-	this.equal = function(otherUser) {
-		return (this.username == otherUser.username && this.pass == otherUser.pass);
-	}
+function equalUser(u1, u2) {
+	return (u1.username == u2.username && u1.pass == u2.pass);
 }
 
 function Promo(name, value) { // khuyen mai
