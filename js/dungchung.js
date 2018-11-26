@@ -45,20 +45,12 @@ function setupEventTaiKhoan() {
     var list = taikhoan.getElementsByTagName('input');
 
     // Tạo event listener cho input để tạo hiệu ứng label
-    // Gồm 3 event onkeyup, onblur, onfocus được áp dụng cho từng input trong list bên trên
-    ['keyup', 'blur', 'focus'].forEach(function (evt) {
-        for (var l of list) {
-            l.addEventListener(evt, function (e) {
+    // Gồm 2 event onblur, onfocus được áp dụng cho từng input trong list bên trên
+    ['blur', 'focus'].forEach(function (evt) {
+        for (var i = 0; i < list.length; i++) {
+            list[i].addEventListener(evt, function (e) {
                 var label = this.previousElementSibling;
-                if (e.type === 'keyup') {
-                    if (this.value === '') {
-                        label.classList.remove('active');
-                        label.classList.remove('highlight');
-                    } else {
-                        label.classList.add('active');
-                        label.classList.add('highlight');
-                    }
-                } else if (e.type === 'blur') {
+                if (e.type === 'blur') {
                     if (this.value === '') {
                         label.classList.remove('active');
                         label.classList.remove('highlight');
@@ -66,12 +58,8 @@ function setupEventTaiKhoan() {
                         label.classList.remove('highlight');
                     }
                 } else if (e.type === 'focus') {
-
-                    if (this.value === '') {
-                        label.classList.remove('highlight');
-                    } else if (this.value !== '') {
-                        label.classList.add('highlight');
-                    }
+                    label.classList.add('active');
+                    label.classList.add('highlight');
                 }
             });
         }
@@ -79,8 +67,8 @@ function setupEventTaiKhoan() {
 
     // Event chuyển tab login-signup
     var tab = document.getElementsByClassName('tab');
-    for (var t of tab) {
-        var a = t.getElementsByTagName('a')[0];
+    for (var i = 0; i < tab.length; i++) {
+        var a = tab[i].getElementsByTagName('a')[0];
         a.addEventListener('click', function (e) {
             e.preventDefault(); // tắt event mặc định
 
@@ -103,13 +91,68 @@ function setupEventTaiKhoan() {
 
     // Đoạn code tại event trên được chuyển về js thuần từ code jquery
     // Code jquery cho phần tài khoản được lưu ở cuối file này
+
+    capNhatGioHang(); // Cập nhật mỗi khi load xong trang, hàm setupEventTaiKhoan() phải luôn được đặt trong window.onload
 }
 
-function logIn() {
-    return true;
+// Cập nhật số lượng hàng trong giỏ hàng
+function capNhatGioHang() {
+    var u = getUserHienTai();
+    if(u) document.getElementsByClassName('cart-number')[0].innerHTML = u.products.length;
 }
 
-function signUp() {
+function getUserHienTai() {
+    return JSON.parse(window.localStorage.getItem('userNow'));
+}
+
+function logIn(form) {
+    // Lấy dữ liệu từ form
+    var name = form.username.value;
+    var pass = form.pass.value;
+    var newUser = new User(name, pass);
+
+    // Lấy dữ liệu từ localstorage
+    var listUser = JSON.parse(window.localStorage.getItem('listUser')) || [];
+
+    // Kiểm tra xem dữ liệu form có khớp với dữ liệu localstorage ko
+    for(var u of listUser) {
+        if(newUser.equal(u)) {
+            window.localStorage.setItem('userNow', JSON.stringify(u));
+            return true;
+        }
+    }
+
+    // Trả về thông báo nếu không khớp
+    alert('Nhập sai tên hoặc mật khẩu !!!');
+    return false;
+}
+
+function signUp(form) {
+    var ho = form.ho.value;
+    var ten = form.ten.value;
+    var email = form.email.value;
+    var username = form.newUser.value;
+    var pass = form.newPass.value;
+    var newUser = new User(username, pass, ho, ten, email);
+
+    // Lấy dữ liệu các khách hàng hiện có
+    var listUser = JSON.parse(window.localStorage.getItem('listUser')) || [];
+
+    // Kiểm tra xem dữ liệu form có trùng với khách hàng đã có không
+    for(var u of listUser) {
+        if(newUser.username == u.username) {
+            alert('Tên đăng nhập đã có người sử dụng !!');
+            return false;
+        }
+    }
+
+    // Lưu người mới vào localstorage
+    listUser.push(newUser);
+    window.localStorage.setItem('listUser', JSON.stringify(listUser));
+
+    // Đăng nhập vào tài khoản mới tạo
+    window.localStorage.setItem('userNow', JSON.stringify(newUser));
+
     return true;
 }
 
@@ -350,20 +393,20 @@ function addContainTaiKhoan() {
                 <div id="login">
                     <h1>Chào mừng bạn trở lại!</h1>
 
-                    <form action="/" method="post" onsubmit="return logIn();">
+                    <form action="/DoAn_Web1/index.html" method="post" onsubmit="return logIn(this);">
 
                         <div class="field-wrap">
                             <label>
                                 Tên đăng nhập<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off" />
+                            <input name='username' type="text" required autocomplete="off" />
                         </div> <!-- /user name -->
 
                         <div class="field-wrap">
                             <label>
                                 Mật khẩu<span class="req">*</span>
                             </label>
-                            <input type="password" required autocomplete="off" />
+                            <input name="pass" type="password" required autocomplete="off" />
                         </div> <!-- pass -->
 
                         <p class="forgot"><a href="#">Quên mật khẩu?</a></p>
@@ -377,21 +420,21 @@ function addContainTaiKhoan() {
                 <div id="signup">
                     <h1>Đăng kí miễn phí</h1>
 
-                    <form action="/" method="post" onsubmit="return signUp();">
+                    <form action="/DoAn_Web1/index.html" method="post" onsubmit="return signUp(this);">
 
                         <div class="top-row">
                             <div class="field-wrap">
                                 <label>
                                     Họ<span class="req">*</span>
                                 </label>
-                                <input type="text" required autocomplete="off" />
+                                <input name="ho" type="text" required autocomplete="off" />
                             </div>
 
                             <div class="field-wrap">
                                 <label>
                                     Tên<span class="req">*</span>
                                 </label>
-                                <input type="text" required autocomplete="off" />
+                                <input name="ten" type="text" required autocomplete="off" />
                             </div>
                         </div> <!-- / ho ten -->
 
@@ -399,21 +442,21 @@ function addContainTaiKhoan() {
                             <label>
                                 Địa chỉ Email<span class="req">*</span>
                             </label>
-                            <input type="email" required autocomplete="off" />
+                            <input name="email" type="email" required autocomplete="off" />
                         </div> <!-- /email -->
 
                         <div class="field-wrap">
                             <label>
                                 Tên đăng nhập<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off" />
+                            <input name="newUser" type="text" required autocomplete="off" />
                         </div> <!-- /user name -->
 
                         <div class="field-wrap">
                             <label>
                                 Mật khẩu<span class="req">*</span>
                             </label>
-                            <input type="password" required autocomplete="off" />
+                            <input name="newPass" type="password" required autocomplete="off" />
                         </div> <!-- /pass -->
 
                         <button type="submit" class="button button-block" />Tạo tài khoản</button>

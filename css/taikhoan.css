@@ -135,9 +135,9 @@
 }
 
 .taikhoan label.active {
-  /* dịch chuyển label xuống, khi focus vào input */
-  -webkit-transform: translateY(50px);
-  transform: translateY(50px);
+  /* dịch chuyển label lên, khi focus vào input */
+  -webkit-transform: translateY(-25px);
+  transform: translateY(-25px);
   left: 2px;
   font-size: 14px;
 }
@@ -148,7 +148,7 @@
 }
 
 .taikhoan label.highlight {
-  /* đổi màu label đc dịch xuống */
+  /* đổi màu label đc dịch lên */
   color: #ffffff;
 }
 
