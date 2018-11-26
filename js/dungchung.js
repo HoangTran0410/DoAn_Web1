@@ -81,12 +81,12 @@ function setListUser(l) {
     window.localStorage.setItem('ListUser', JSON.stringify(l));
 }
 
-// Chỉnh sửa 1 user 'u' và cập nhật lại vào ListUser
+// Sau khi chỉnh sửa 1 user 'u' thì cần hàm này để cập nhật lại vào ListUser
 function updateListUser(u) {
    var list = getListUser();
-   for(var l of list) {
-       if(u.equal(l)) {
-           l = u;
+   for(var i = 0; i < list.length; i++) {
+       if(equalUser(u, list[i])) {
+           list[i] = u;
        }
    } 
    setListUser(list);
@@ -103,9 +103,10 @@ function logIn(form) {
 
     // Kiểm tra xem dữ liệu form có khớp với dữ liệu localstorage ko
     for(var u of listUser) {
-        if(newUser.equal(u)) {
+        if(equalUser(newUser, u)) {
             setUserNow(u);
-            return true;
+            console.log(u);
+            return false;
         }
     }
 
