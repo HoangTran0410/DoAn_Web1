@@ -1,3 +1,7 @@
+var nameProduct; // Tên sản phẩm trong trang này, 
+// là biến toàn cục để có thể dùng ở bát cứ đâu trong trang
+// không cần tính toán lấy tên từ url nhiều lần
+
 window.onload = function () {
     // thêm tags (từ khóa) vào khung tìm kiếm
     var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
@@ -15,10 +19,25 @@ window.onload = function () {
     checkLocalStorage();
 }
 
-function phanTich_URL_chiTietSanPham() {
-    var nameProduct = window.location.href.split('?')[1];
-    if (!nameProduct) return;
+function themVaoGioHang(tenSanPham) {
+    var user = getUserNow();
+    var t = getTimeNow();
+    user.products.push({
+        "name": tenSanPham || nameProduct,
+        "date": t
+    });
+    setUserNow(user); // cập nhật giỏ hàng cho user hiện tại
+    updateListUser(user); // cập nhật list user
+    capNhatGioHang(); // cập nhật giỏ hàng
     
+    alert('Sản phẩm đã được lưu vào giỏ hàng của ' + user.username + ' \n Xem trong console để thêm chi tiết về ' + user.username);
+    console.log(user);
+}
+
+function phanTich_URL_chiTietSanPham() {
+    nameProduct = window.location.href.split('?')[1]; // lấy tên
+    if (!nameProduct) return; // nếu không tìm thấy tên thì thoát hàm
+
     // tách theo dấu '-' vào gắn lại bằng dấu ' ', code này giúp bỏ hết dấu '-' thay vào bằng khoảng trắng.
     // code này làm ngược lại so với lúc tạo href cho sản phẩm trong file classes.js
     nameProduct = nameProduct.split('-').join(' ');
@@ -89,24 +108,24 @@ function phanTich_URL_chiTietSanPham() {
     addSmallImg("img/chitietsanpham/oppo-f9-mau-do-3-org.jpg");
     addSmallImg("img/products/huawei-mate-20-pro-green-600x600.jpg");
 
-    // Khởi động thư viện hỗ trợ banner
-	var owl = $('.owl-carousel');
-	owl.owlCarousel({
-		items: 5,
+    // Khởi động thư viện hỗ trợ banner - chỉ chạy sau khi tạo xong hình nhỏ
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        items: 5,
         center: true,
-		smartSpeed: 450,
-	});
+        smartSpeed: 450,
+    });
 }
 
 // Chi tiết khuyến mãi
 function getDetailPromo(sp) {
     switch (sp.promo.name) {
         case 'tragop':
-            var span = `<span style="font-weight: bold"> lãi suất `+ sp.promo.value +`% </span>`;
+            var span = `<span style="font-weight: bold"> lãi suất ` + sp.promo.value + `% </span>`;
             return `Khách hàng có thể mua trả góp sản phẩm với ` + span + `với thời hạn 6 tháng kể từ khi mua hàng.`;
 
         case 'giamgia':
-            var span = `<span style="font-weight: bold">`+ sp.promo.value +`</span>`;
+            var span = `<span style="font-weight: bold">` + sp.promo.value + `</span>`;
             return `Khách hàng sẽ được giảm ` + span + `₫ khi tới mua trực tiếp tại cửa hàng`;
 
         case 'moiramat':
@@ -114,12 +133,12 @@ function getDetailPromo(sp) {
 
         case 'giareonline':
             var del = stringToNum(sp.price) - stringToNum(sp.promo.value);
-            var span = `<span style="font-weight: bold">`+ numToString(del) +`</span>`;
+            var span = `<span style="font-weight: bold">` + numToString(del) + `</span>`;
             return `Sản phẩm sẽ được giảm ` + span + `₫ khi mua hàng online bằng thẻ VPBank hoặc tin nhắn SMS`;
 
         default:
             var span = `<span style="font-weight: bold">61 xe Wave Alpha</span>`;
-            return `Cơ hội trúng `+ span +` khi trả góp Home Credit`;
+            return `Cơ hội trúng ` + span + ` khi trả góp Home Credit`;
     }
 }
 
@@ -132,13 +151,13 @@ function addThongSo(ten, giatri) {
 
 // add hình
 function addSmallImg(img) {
-	var newDiv = `<div class='item'>
+    var newDiv = `<div class='item'>
                         <a>
                             <img src=` + img + ` onclick="changepic(this.src)">
                         </a>
                     </div>`;
-	var banner = document.getElementsByClassName('owl-carousel')[0];
-	banner.innerHTML += newDiv;
+    var banner = document.getElementsByClassName('owl-carousel')[0];
+    banner.innerHTML += newDiv;
 }
 
 // đóng mở xem hình
