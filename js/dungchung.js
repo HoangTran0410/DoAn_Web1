@@ -33,13 +33,139 @@ function copyObject(o) {
     return JSON.parse(JSON.stringify(o));
 }
 
+// ============================= Thời gian ===========================
+function getTimeNow() {
+    // var today = new Date();
+    // var dd = today.getDate();
+    // var mm = today.getMonth() + 1; //January is 0!
+    
+    // var yyyy = today.getFullYear();
+    // if (dd < 10) {
+    //   dd = '0' + dd;
+    // } 
+    // if (mm < 10) {
+    //   mm = '0' + mm;
+    // } 
+    // var today = dd + '/' + mm + '/' + yyyy;
+    // return today;
+    return Date(Date.now()).toLocaleString();
+}
+
 // ============================== TÀI KHOẢN ============================
+// Chuyển data JSON sang dạng USER
+function convert_JSON_to_USER(d) { // truyền vào JSON data
+    return new User(d.username, d.pass, d.ho, d.ten, d.email, d.products);
+}
+
+// Hàm get set cho người dùng hiện tại đã đăng nhập
+function getUserNow() {
+    var u;
+    var data = JSON.parse(window.localStorage.getItem('UserNow')); // Lấy dữ liệu từ localstorage
+    if(data) u = convert_JSON_to_USER(data); // chuyển về dạng User
+    return u;
+}
+function setUserNow(u) {
+    window.localStorage.setItem('UserNow', JSON.stringify(u));
+}
+
+// Hàm get set cho danh sách người dùng
+function getListUser() {
+    var data = JSON.parse(window.localStorage.getItem('ListUser')) || []
+    var l = [];
+    for(var d of data) {
+        l.push(convert_JSON_to_USER(d));
+    }
+    return l;
+}
+function setListUser(l) {
+    window.localStorage.setItem('ListUser', JSON.stringify(l));
+}
+
+// Chỉnh sửa 1 user 'u' và cập nhật lại vào ListUser
+function updateListUser(u) {
+   var list = getListUser();
+   for(var l of list) {
+       if(u.equal(l)) {
+           l = u;
+       }
+   } 
+   setListUser(list);
+}
+
+function logIn(form) {
+    // Lấy dữ liệu từ form
+    var name = form.username.value;
+    var pass = form.pass.value;
+    var newUser = new User(name, pass);
+
+    // Lấy dữ liệu từ localstorage
+    var listUser = getListUser();
+
+    // Kiểm tra xem dữ liệu form có khớp với dữ liệu localstorage ko
+    for(var u of listUser) {
+        if(newUser.equal(u)) {
+            setUserNow(u);
+            return true;
+        }
+    }
+
+    // Trả về thông báo nếu không khớp
+    alert('Nhập sai tên hoặc mật khẩu !!!');
+    return false;
+}
+
+function signUp(form) {
+    var ho = form.ho.value;
+    var ten = form.ten.value;
+    var email = form.email.value;
+    var username = form.newUser.value;
+    var pass = form.newPass.value;
+    var newUser = new User(username, pass, ho, ten, email);
+
+    // Lấy dữ liệu các khách hàng hiện có
+    var listUser = getListUser();
+
+    // Kiểm tra xem dữ liệu form có trùng với khách hàng đã có không
+    for(var u of listUser) {
+        if(newUser.username == u.username) {
+            alert('Tên đăng nhập đã có người sử dụng !!');
+            return false;
+        }
+    }
+
+    // Lưu người mới vào localstorage
+    listUser.push(newUser);
+    window.localStorage.setItem('ListUser', JSON.stringify(listUser));
+
+    // Đăng nhập vào tài khoản mới tạo
+    window.localStorage.setItem('UserNow', JSON.stringify(newUser));
+
+    return true;
+}
+
+function logOut() {
+    window.localStorage.removeItem('UserNow');
+}
+
+// Hiển thị form tài khoản, giá trị truyền vào là true hoặc false
 function showTaiKhoan(show) {
     var value = (show ? "scale(1, 1)" : "scale(0, 0)");
     var div = document.getElementsByClassName('containTaikhoan')[0];
     div.style.transform = value;
 }
 
+// Check xem có ai đăng nhập hay chưa (UserNow có hay chưa)
+// Hàm này chạy khi ấn vào nút tài khoản trên header
+function checkTaiKhoan() {
+    var un = getUserNow();
+    // if(!un) showTaiKhoan(true);
+    // else window.open('trungtambaohanh.html');
+    if(!un) alert('Chưa có ai đăng nhập ! Mời bạn đăng nhập');
+    else alert(getUserNow().username + ' đã đăng nhập !');
+    showTaiKhoan(true);
+}
+
+// Tạo event cho form tài khoản
 function setupEventTaiKhoan() {
     var taikhoan = document.getElementsByClassName('taikhoan')[0];
     var list = taikhoan.getElementsByTagName('input');
@@ -97,64 +223,10 @@ function setupEventTaiKhoan() {
 
 // Cập nhật số lượng hàng trong giỏ hàng
 function capNhatGioHang() {
-    var u = getUserHienTai();
+    var u = getUserNow();
     if(u) document.getElementsByClassName('cart-number')[0].innerHTML = u.products.length;
 }
 
-function getUserHienTai() {
-    return JSON.parse(window.localStorage.getItem('userNow'));
-}
-
-function logIn(form) {
-    // Lấy dữ liệu từ form
-    var name = form.username.value;
-    var pass = form.pass.value;
-    var newUser = new User(name, pass);
-
-    // Lấy dữ liệu từ localstorage
-    var listUser = JSON.parse(window.localStorage.getItem('listUser')) || [];
-
-    // Kiểm tra xem dữ liệu form có khớp với dữ liệu localstorage ko
-    for(var u of listUser) {
-        if(newUser.equal(u)) {
-            window.localStorage.setItem('userNow', JSON.stringify(u));
-            return true;
-        }
-    }
-
-    // Trả về thông báo nếu không khớp
-    alert('Nhập sai tên hoặc mật khẩu !!!');
-    return false;
-}
-
-function signUp(form) {
-    var ho = form.ho.value;
-    var ten = form.ten.value;
-    var email = form.email.value;
-    var username = form.newUser.value;
-    var pass = form.newPass.value;
-    var newUser = new User(username, pass, ho, ten, email);
-
-    // Lấy dữ liệu các khách hàng hiện có
-    var listUser = JSON.parse(window.localStorage.getItem('listUser')) || [];
-
-    // Kiểm tra xem dữ liệu form có trùng với khách hàng đã có không
-    for(var u of listUser) {
-        if(newUser.username == u.username) {
-            alert('Tên đăng nhập đã có người sử dụng !!');
-            return false;
-        }
-    }
-
-    // Lưu người mới vào localstorage
-    listUser.push(newUser);
-    window.localStorage.setItem('listUser', JSON.stringify(listUser));
-
-    // Đăng nhập vào tài khoản mới tạo
-    window.localStorage.setItem('userNow', JSON.stringify(newUser));
-
-    return true;
-}
 
 // ==================== Những hàm khác ===================== 
 function numToString(num, char) {
@@ -344,7 +416,7 @@ function addHeader() {
 
             <div class="tools-member">
                 <div class="member">
-                    <a onclick="showTaiKhoan(true)">
+                    <a onclick="checkTaiKhoan()">
                         <i class="fa fa-user"></i>
                         Tài khoản
                     </a>
@@ -489,14 +561,6 @@ function addPlc() {
     </div>`);
 }
 
-function chuyentab() {
-    var ans = window.confirm("Bạn có muốn đến một trang khác");
-    if (ans)
-        return true;
-    else
-        return false;
-}
-
 function checkLocalStorage() {
     if (typeof (Storage) == "undefined") {
         alert('Máy tính không hỗ trợ LocalStorage. Không thể lưu thông tin sản phẩm, khách hàng!!');
@@ -517,12 +581,6 @@ function gotoTop() {
     // document.body.scrollTop = 0; // For Safari
     // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
-
-
-
-
-
-
 
 
 
