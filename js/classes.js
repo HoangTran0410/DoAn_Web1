@@ -1,7 +1,15 @@
-function User(name, pass) {
-	this.name = name;
+function User(username, pass, ho, ten, email) {
+	this.ho = ho || '';
+	this.ten = ten || '';
+	this.email = email || '';
+
+	this.username = username;
 	this.pass = pass;
 	this.products = [];
+
+	this.equal = function(otherUser) {
+		return (this.username == otherUser.username && this.pass == otherUser.pass);
+	}
 }
 
 function Promo(name, value) { // khuyen mai
