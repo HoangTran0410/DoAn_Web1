@@ -21,6 +21,11 @@ window.onload = function () {
 
 function themVaoGioHang(tenSanPham) {
     var user = getUserNow();
+    if(!user) {
+        alert('Bạn cần đăng nhập để mua hàng !');
+        showTaiKhoan(true);
+        return;
+    }
     var t = getTimeNow();
     user.products.push({
         "name": tenSanPham || nameProduct,
@@ -29,7 +34,7 @@ function themVaoGioHang(tenSanPham) {
     setUserNow(user); // cập nhật giỏ hàng cho user hiện tại
     updateListUser(user); // cập nhật list user
     capNhatGioHang(); // cập nhật giỏ hàng
-    
+
     alert('Sản phẩm đã được lưu vào giỏ hàng của ' + user.username + ' \n Xem trong console để thêm chi tiết về ' + user.username);
     console.log(user);
 }
