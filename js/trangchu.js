@@ -7,7 +7,7 @@ window.onload = function () {
 		addBanner(linkimg, linkimg);
 	}
 
-	// Khởi động thư viện hỗ trợ banner
+	// Khởi động thư viện hỗ trợ banner - chỉ chạy khi đã tạo hình trong banner
 	var owl = $('.owl-carousel');
 	owl.owlCarousel({
 		items: 1.5,
@@ -630,15 +630,6 @@ function sortToString(sortBy) {
 			return '';
 	}
 }
-
-
-
-
-
-
-
-
-
 
 // Hàm Test, chưa sử dụng
 function hideSanPhamKhongThuoc(list) {
