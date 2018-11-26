@@ -1,11 +1,11 @@
-function User(username, pass, ho, ten, email) {
+function User(username, pass, ho, ten, email, products) {
 	this.ho = ho || '';
 	this.ten = ten || '';
 	this.email = email || '';
 
 	this.username = username;
 	this.pass = pass;
-	this.products = [];
+	this.products = products || [];
 
 	this.equal = function(otherUser) {
 		return (this.username == otherUser.username && this.pass == otherUser.pass);
