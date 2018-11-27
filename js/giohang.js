@@ -20,18 +20,18 @@ window.onload = function() {
 function addProductToTable(user) {
 	var table = document.getElementsByClassName('listSanPham')[0];;
 
-	table.innerHTML = `
+	var s = `
 		<tbody>
 			<tr>
 				<th>STT</th>
 				<th>Sản phẩm</th>
 				<th>Giá</th>
 				<th>Thời gian</th>
-				<th>Xóa / Sửa</th>
+				<th>Xóa</th>
 			</tr>`;
 
 	if(!user) {
-		table.innerHTML += `
+		s += `
 			<tr>
 				<td colspan="5"> 
 					<h1 style="color:red; font-weight:bold; text-align:center">
@@ -42,7 +42,7 @@ function addProductToTable(user) {
 		`;
 		return;
 	}  else if(user.products.length == 0) {
-		table.innerHTML += `
+		s += `
 			<tr>
 				<td colspan="5"> 
 					<h1 style="color:green; font-weight:bold; text-align:center">
@@ -56,26 +56,28 @@ function addProductToTable(user) {
 	var totalPrice = 0;
 	for(var i = 0; i < user.products.length; i++) {
 		var p = timKiemTheoTen(list_products, user.products[i].name)[0];
-		table.innerHTML += `
+		s += `
 			<tr>
 				<td>`+(i+1)+`</td>
 				<td>`+p.name+`</td>
 				<td>`+p.price+` ₫</td>
 				<td>`+user.products[i].date+`</td>
-				<td> <button onclick="xoaSanPhamTrongGioHang(`+ i +`)">Xóa</button> </td>
+				<td> <i class="fa fa-close" onclick="xoaSanPhamTrongGioHang(`+ i +`)"></i> </td>
 			</tr>
 		`;
 		totalPrice += stringToNum(p.price);
 	}
 
-	table.innerHTML += `
+	s += `
 			<tr style="font-weight:bold; text-align:center">
 				<td colspan="2">THÀNH TIỀN: </td>
 				<td>` + numToString(totalPrice) + ` ₫</td>
-				<td colspan="2"></td>
+				<td colspan="2"> <button class="thanhtoan">Thanh Toán</button> </td>
 			</tr>
 		</tbody>
 	`;
+
+	table.innerHTML = s;
 }
 
 function xoaSanPhamTrongGioHang(i) {
