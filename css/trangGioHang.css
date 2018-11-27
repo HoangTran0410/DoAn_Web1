@@ -1,0 +1,28 @@
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
+.listSanPham {
+	margin: 50px auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.listSanPham td, .listSanPham th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.listSanPham tr td:first-child, .listSanPham tr th:first-child {
+	width: 4em;
+	text-align: center;
+}
+
+.listSanPham tr:nth-child(even){background-color: #f2f2f2;}
+
+.listSanPham tr:hover {background-color: #ddd;}
+
+.listSanPham th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
