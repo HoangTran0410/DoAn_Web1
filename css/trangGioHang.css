@@ -15,6 +15,7 @@
 	text-align: center;
 }
 
+/* những tr chẵn sẽ có màu khác */
 .listSanPham tr:nth-child(even){background-color: #f2f2f2;}
 
 .listSanPham tr:hover {background-color: #ddd;}
