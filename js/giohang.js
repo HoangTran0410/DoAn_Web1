@@ -1,3 +1,4 @@
+var currentuser; // user hiện tại, biến toàn cục
 window.onload = function() {
 	// check Localstorage
 	checkLocalStorage();
@@ -5,11 +6,22 @@ window.onload = function() {
 	// Cài đặt event cho phần tài khoản
     setupEventTaiKhoan();	
 	
-	addProductToTable(getCurrentUser());
+	currentuser = getCurrentUser();
+	addProductToTable(currentuser);
 }
 
 function addProductToTable(user) {
-	var table = document.getElementsByClassName('listSanPham')[0].getElementsByTagName('tbody')[0];
+	var table = document.getElementsByClassName('listSanPham')[0];;
+
+	table.innerHTML = `
+		<tbody>
+			<tr>
+				<th>STT</th>
+				<th>Sản phẩm</th>
+				<th>Giá</th>
+				<th>Thời gian</th>
+				<th>Xóa / Sửa</th>
+			</tr>`;
 
 	if(!user) {
 		table.innerHTML += `
@@ -43,17 +55,28 @@ function addProductToTable(user) {
 				<td>`+p.name+`</td>
 				<td>`+p.price+` ₫</td>
 				<td>`+user.products[i].date+`</td>
-				<td> <button>Xóa</button> </td>
+				<td> <button onclick="xoaSanPhamTrongGioHang(`+ i +`)">Xóa</button> </td>
 			</tr>
 		`;
 		totalPrice += stringToNum(p.price);
 	}
 
 	table.innerHTML += `
-		<tr style="font-weight:bold; text-align:center">
-			<td colspan="2">THÀNH TIỀN: </td>
-			<td>` + numToString(totalPrice) + ` ₫</td>
-			<td colspan="2"></td>
-		</tr>
+			<tr style="font-weight:bold; text-align:center">
+				<td colspan="2">THÀNH TIỀN: </td>
+				<td>` + numToString(totalPrice) + ` ₫</td>
+				<td colspan="2"></td>
+			</tr>
+		</tbody>
 	`;
+}
+
+function xoaSanPhamTrongGioHang(i) {
+	// cập nhật danh sách sản phẩm trong localstorage
+	currentuser.products.splice(i, 1);
+	setCurrentUser(currentuser);
+	updateListUser(currentuser);
+
+	// cập nhật danh sách sản phẩm ở table
+	addProductToTable(currentuser);
 }
