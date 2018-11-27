@@ -162,7 +162,17 @@ function showTaiKhoan(show) {
 // Check xem có ai đăng nhập hay chưa (CurrentUser có hay chưa)
 // Hàm này chạy khi ấn vào nút tài khoản trên header
 function checkTaiKhoan() {
-    showTaiKhoan(true);
+    if(getCurrentUser()) {
+        if(window.confirm('Bạn muốn đăng xuất ?')) {
+            logOut();
+            location.reload();
+        }
+
+    } else {
+        showTaiKhoan(true);        
+    }
+
+
 }
 
 // Tạo event cho form tài khoản
@@ -228,11 +238,6 @@ function capNhatGioHang() {
         document.getElementsByClassName('cart-number')[0].innerHTML = u.products.length;
         document.getElementsByClassName('member')[0]
                 .getElementsByTagName('a')[0].childNodes[2].nodeValue = u.username;
-
-        // set event click cho Tài khoản
-        var a = document.getElementsByClassName('member')[0].getElementsByTagName('a')[0];
-        a.href = 'giohang.html';
-        a.onclick = null;
     }
 }
 
