@@ -79,4 +79,7 @@ function xoaSanPhamTrongGioHang(i) {
 
 	// cập nhật danh sách sản phẩm ở table
 	addProductToTable(currentuser);
+
+	// Cập nhật trên header
+	capNhatGioHang(); 
 }
