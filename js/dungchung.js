@@ -138,6 +138,7 @@ function signUp(form) {
 
 function logOut() {
     window.localStorage.removeItem('CurrentUser');
+    location.reload();
 }
 
 // Hiển thị form tài khoản, giá trị truyền vào là true hoặc false
