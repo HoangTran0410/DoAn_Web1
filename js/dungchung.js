@@ -1,10 +1,3 @@
-// function timKiem() { // hàm chạy khi submit form tìm kiếm
-//     var keysearch = document.getElementById('search-box').value;
-//     keysearch = keysearch.split('+').join('-');
-//     keysearch = keysearch.replace('+', '-plus');
-//     window.open('https://hoangtran0410.github.io/DoAn_Web1/index.html?search=' + keysearch);
-//     return true;
-// } LOẠI BỎ
 
 function timKiemTheoTen(list, ten, soluong) {
     var tempList = copyObject(list);
@@ -99,8 +92,8 @@ function logIn(form) {
     for(var u of listUser) {
         if(equalUser(newUser, u)) {
             setCurrentUser(u);
-            capNhatGioHang();
-            // showTaiKhoan(false);
+
+            // Reload lại trang ~ sau khi reload sẽ cập nhật luôn giỏ hàng khi hàm setupEventTaiKhoan chạy
             location.reload();
 
             return false;
@@ -175,21 +168,21 @@ function setupEventTaiKhoan() {
     var taikhoan = document.getElementsByClassName('taikhoan')[0];
     var list = taikhoan.getElementsByTagName('input');
 
-    // Tạo event listener cho input để tạo hiệu ứng label
+    // Tạo eventlistener cho input để tạo hiệu ứng label
     // Gồm 2 event onblur, onfocus được áp dụng cho từng input trong list bên trên
     ['blur', 'focus'].forEach(function (evt) {
         for (var i = 0; i < list.length; i++) {
             list[i].addEventListener(evt, function (e) {
-                var label = this.previousElementSibling;
-                if (e.type === 'blur') {
-                    if (this.value === '') {
+                var label = this.previousElementSibling; // lấy element ĐỨNG TRƯỚC this, this ở đây là input
+                if (e.type === 'blur') { // khi ấn chuột ra ngoài
+                    if (this.value === '') { // không có value trong input thì đưa label lại như cũ
                         label.classList.remove('active');
                         label.classList.remove('highlight');
-                    } else {
+                    } else { // nếu có chữ thì chỉ tắt hightlight chứ không tắt active, active là dịch chuyển lên trên
                         label.classList.remove('highlight');
                     }
-                } else if (e.type === 'focus') {
-                    label.classList.add('active');
+                } else if (e.type === 'focus') { // khi focus thì label active + hightlight
+                    label.classList.add('active'); 
                     label.classList.add('highlight');
                 }
             });
@@ -203,14 +196,20 @@ function setupEventTaiKhoan() {
         a.addEventListener('click', function (e) {
             e.preventDefault(); // tắt event mặc định
 
+            // Thêm active(màu xanh lá) cho li chứa tag a này => ấn login thì login xanh, signup thì signup sẽ xanh
             this.parentElement.classList.add('active');
+
+            // Sau khi active login thì phải tắt active sigup và ngược lại
+            // Trường hợp a này thuộc login => <li>Login</li> sẽ có nextElement là <li>SignUp</li>
             if (this.parentElement.nextElementSibling) {
                 this.parentElement.nextElementSibling.classList.remove('active');
             }
+            // Trường hợp a này thuộc signup => <li>SignUp</li> sẽ có .previousElement là <li>Login</li>
             if (this.parentElement.previousElementSibling) {
                 this.parentElement.previousElementSibling.classList.remove('active');
             }
 
+            // Ẩn phần nhập của login nếu ấn signup và ngược lại
             // href của 2 tab signup và login là #signup và #login -> tiện cho việc getElement dưới đây
             var target = this.href.split('#')[1];
             document.getElementById(target).style.display = 'block';
@@ -220,7 +219,7 @@ function setupEventTaiKhoan() {
         })
     }
 
-    // Đoạn code tại event trên được chuyển về js thuần từ code jquery
+    // Đoạn code tạo event trên được chuyển về js thuần từ code jquery
     // Code jquery cho phần tài khoản được lưu ở cuối file này
 
     capNhatGioHang(); // Cập nhật mỗi khi load xong trang, hàm setupEventTaiKhoan() phải luôn được đặt trong window.onload
@@ -382,15 +381,15 @@ function addTopNav() {
             </div> <!-- End Social Topnav -->
 
             <ul class="top-nav-quicklink flexContain">
-                <li><a>So sánh sản phẩm</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
                 <li>|</li>
-                <li><a>Tuyển dụng</a></li>
+                <li><a href="tuyendung.html">Tuyển dụng</a></li>
                 <li>|</li>
                 <li><a href="gioithieu.html">Giới thiệu</a></li>
                 <li>|</li>
                 <li><a href="trungtambaohanh.html">Trung tâm bảo hành</a></li>
                 <li>|</li>
-                <li><a>Liên hệ</a></li>
+                <li><a href="lienhe.html">Liên hệ</a></li>
                 <li>|</li>
             </ul> <!-- End Quick link -->
         </section><!-- End Section -->
@@ -453,7 +452,7 @@ function addHeader() {
 
 function addFooter() {
     document.write(`<div class="copy-right">
-                        <p><a href="/DoAn_Web1/index.html">SmartPhone Store</a> - All rights reserved © 2018 - Designed by
+                        <p><a href="index.html">SmartPhone Store</a> - All rights reserved © 2018 - Designed by
                             <span style="color: #eee; font-weight: bold">H-group</span></p>
                     </div>`);
 }
