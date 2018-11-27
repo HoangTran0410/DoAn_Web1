@@ -40,7 +40,8 @@ function addProductToTable(user) {
 				</td>
 			</tr>
 		`;
-		return;
+		table.innerHTML = s;
+		return ;
 	}  else if(user.products.length == 0) {
 		s += `
 			<tr>
@@ -59,7 +60,7 @@ function addProductToTable(user) {
 		s += `
 			<tr>
 				<td>`+(i+1)+`</td>
-				<td>`+p.name+`</td>
+				<td><a target="_blank" href="chitietsanpham.html?`+p.name.split(' ').join('-')+`">`+p.name+`</a></td>
 				<td>`+p.price+` ₫</td>
 				<td>`+user.products[i].date+`</td>
 				<td> <i class="fa fa-close" onclick="xoaSanPhamTrongGioHang(`+ i +`)"></i> </td>
