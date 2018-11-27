@@ -35,20 +35,19 @@ function copyObject(o) {
 
 // ============================= Thời gian ===========================
 function getTimeNow() {
-    // var today = new Date();
-    // var dd = today.getDate();
-    // var mm = today.getMonth() + 1; //January is 0!
-    
-    // var yyyy = today.getFullYear();
-    // if (dd < 10) {
-    //   dd = '0' + dd;
-    // } 
-    // if (mm < 10) {
-    //   mm = '0' + mm;
-    // } 
-    // var today = dd + '/' + mm + '/' + yyyy;
-    // return today;
-    return Date(Date.now()).toLocaleString();
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    var hh = today.getHours();
+    var mi = today.getMinutes();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+    var today = dd + '/' + mm + '/' + yyyy + ' - ' + hh + ':' + mi;
+    return today;
+    // return Date(Date.now()).toLocaleString();
 }
 
 // ============================== TÀI KHOẢN ============================
@@ -58,14 +57,14 @@ function convert_JSON_to_USER(d) { // truyền vào JSON data
 }
 
 // Hàm get set cho người dùng hiện tại đã đăng nhập
-function getUserNow() {
+function getCurrentUser() {
     var u;
-    var data = JSON.parse(window.localStorage.getItem('UserNow')); // Lấy dữ liệu từ localstorage
+    var data = JSON.parse(window.localStorage.getItem('CurrentUser')); // Lấy dữ liệu từ localstorage
     if(data) u = convert_JSON_to_USER(data); // chuyển về dạng User
     return u;
 }
-function setUserNow(u) {
-    window.localStorage.setItem('UserNow', JSON.stringify(u));
+function setCurrentUser(u) {
+    window.localStorage.setItem('CurrentUser', JSON.stringify(u));
 }
 
 // Hàm get set cho danh sách người dùng
@@ -104,7 +103,7 @@ function logIn(form) {
     // Kiểm tra xem dữ liệu form có khớp với dữ liệu localstorage ko
     for(var u of listUser) {
         if(equalUser(newUser, u)) {
-            setUserNow(u);
+            setCurrentUser(u);
             capNhatGioHang();
             showTaiKhoan(false);
             console.log(u);
@@ -141,14 +140,16 @@ function signUp(form) {
     window.localStorage.setItem('ListUser', JSON.stringify(listUser));
 
     // Đăng nhập vào tài khoản mới tạo
-    window.localStorage.setItem('UserNow', JSON.stringify(newUser));
-
+    window.localStorage.setItem('CurrentUser', JSON.stringify(newUser));
+    alert('Đăng kí thành công, Bạn sẽ được tự động đăng nhập!');
     showTaiKhoan(false);
+    capNhatGioHang();
+
     return false;
 }
 
 function logOut() {
-    window.localStorage.removeItem('UserNow');
+    window.localStorage.removeItem('CurrentUser');
 }
 
 // Hiển thị form tài khoản, giá trị truyền vào là true hoặc false
@@ -158,7 +159,7 @@ function showTaiKhoan(show) {
     div.style.transform = value;
 }
 
-// Check xem có ai đăng nhập hay chưa (UserNow có hay chưa)
+// Check xem có ai đăng nhập hay chưa (CurrentUser có hay chưa)
 // Hàm này chạy khi ấn vào nút tài khoản trên header
 function checkTaiKhoan() {
     showTaiKhoan(true);
@@ -220,13 +221,18 @@ function setupEventTaiKhoan() {
     capNhatGioHang(); // Cập nhật mỗi khi load xong trang, hàm setupEventTaiKhoan() phải luôn được đặt trong window.onload
 }
 
-// Cập nhật số lượng hàng trong giỏ hàng
+// Cập nhật số lượng hàng trong giỏ hàng + Tên current user
 function capNhatGioHang() {
-    var u = getUserNow();
+    var u = getCurrentUser();
     if(u) {
         document.getElementsByClassName('cart-number')[0].innerHTML = u.products.length;
         document.getElementsByClassName('member')[0]
                 .getElementsByTagName('a')[0].childNodes[2].nodeValue = u.username;
+
+        // set event click cho Tài khoản
+        var a = document.getElementsByClassName('member')[0].getElementsByTagName('a')[0];
+        a.href = 'giohang.html';
+        a.onclick = null;
     }
 }
 
@@ -430,7 +436,7 @@ function addHeader() {
                     <a href="giohang.html">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Giỏ hàng</span>
-                        <span class="cart-number">0</span>
+                        <span class="cart-number"></span>
                     </a>
                 </div> <!-- End Cart -->
 
