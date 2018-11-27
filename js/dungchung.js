@@ -100,8 +100,9 @@ function logIn(form) {
         if(equalUser(newUser, u)) {
             setCurrentUser(u);
             capNhatGioHang();
-            showTaiKhoan(false);
-            console.log(u);
+            // showTaiKhoan(false);
+            location.reload();
+
             return false;
         }
     }
@@ -137,8 +138,7 @@ function signUp(form) {
     // Đăng nhập vào tài khoản mới tạo
     window.localStorage.setItem('CurrentUser', JSON.stringify(newUser));
     alert('Đăng kí thành công, Bạn sẽ được tự động đăng nhập!');
-    showTaiKhoan(false);
-    capNhatGioHang();
+    location.reload();
 
     return false;
 }
