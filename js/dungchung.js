@@ -51,16 +51,11 @@ function getTimeNow() {
 }
 
 // ============================== TÀI KHOẢN ============================
-// Chuyển data JSON sang dạng USER
-function convert_JSON_to_USER(d) { // truyền vào JSON data
-    return new User(d.username, d.pass, d.ho, d.ten, d.email, d.products);
-}
 
 // Hàm get set cho người dùng hiện tại đã đăng nhập
 function getCurrentUser() {
     var u;
-    var data = JSON.parse(window.localStorage.getItem('CurrentUser')); // Lấy dữ liệu từ localstorage
-    if(data) u = convert_JSON_to_USER(data); // chuyển về dạng User
+    u = JSON.parse(window.localStorage.getItem('CurrentUser')); // Lấy dữ liệu từ localstorage
     return u;
 }
 function setCurrentUser(u) {
@@ -72,7 +67,7 @@ function getListUser() {
     var data = JSON.parse(window.localStorage.getItem('ListUser')) || []
     var l = [];
     for(var d of data) {
-        l.push(convert_JSON_to_USER(d));
+        l.push(d);
     }
     return l;
 }
