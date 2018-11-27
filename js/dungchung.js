@@ -105,6 +105,8 @@ function logIn(form) {
     for(var u of listUser) {
         if(equalUser(newUser, u)) {
             setUserNow(u);
+            capNhatGioHang();
+            showTaiKhoan(false);
             console.log(u);
             return false;
         }
@@ -141,7 +143,8 @@ function signUp(form) {
     // Đăng nhập vào tài khoản mới tạo
     window.localStorage.setItem('UserNow', JSON.stringify(newUser));
 
-    return true;
+    showTaiKhoan(false);
+    return false;
 }
 
 function logOut() {
@@ -150,7 +153,7 @@ function logOut() {
 
 // Hiển thị form tài khoản, giá trị truyền vào là true hoặc false
 function showTaiKhoan(show) {
-    var value = (show ? "scale(1, 1)" : "scale(0, 0)");
+    var value = (show ? "scale(1)" : "scale(0)");
     var div = document.getElementsByClassName('containTaikhoan')[0];
     div.style.transform = value;
 }
@@ -158,11 +161,6 @@ function showTaiKhoan(show) {
 // Check xem có ai đăng nhập hay chưa (UserNow có hay chưa)
 // Hàm này chạy khi ấn vào nút tài khoản trên header
 function checkTaiKhoan() {
-    var un = getUserNow();
-    // if(!un) showTaiKhoan(true);
-    // else window.open('trungtambaohanh.html');
-    if(!un) alert('Chưa có ai đăng nhập ! Mời bạn đăng nhập');
-    else alert(getUserNow().username + ' đã đăng nhập !');
     showTaiKhoan(true);
 }
 
@@ -225,7 +223,11 @@ function setupEventTaiKhoan() {
 // Cập nhật số lượng hàng trong giỏ hàng
 function capNhatGioHang() {
     var u = getUserNow();
-    if(u) document.getElementsByClassName('cart-number')[0].innerHTML = u.products.length;
+    if(u) {
+        document.getElementsByClassName('cart-number')[0].innerHTML = u.products.length;
+        document.getElementsByClassName('member')[0]
+                .getElementsByTagName('a')[0].childNodes[2].nodeValue = u.username;
+    }
 }
 
 
@@ -466,7 +468,7 @@ function addContainTaiKhoan() {
                 <div id="login">
                     <h1>Chào mừng bạn trở lại!</h1>
 
-                    <form action="/DoAn_Web1/index.html" method="post" onsubmit="return logIn(this);">
+                    <form onsubmit="return logIn(this);">
 
                         <div class="field-wrap">
                             <label>
@@ -493,7 +495,7 @@ function addContainTaiKhoan() {
                 <div id="signup">
                     <h1>Đăng kí miễn phí</h1>
 
-                    <form action="/DoAn_Web1/index.html" method="post" onsubmit="return signUp(this);">
+                    <form onsubmit="return signUp(this);">
 
                         <div class="top-row">
                             <div class="field-wrap">
