@@ -35,10 +35,11 @@ function getTimeNow() {
 
     var hh = today.getHours();
     var mi = today.getMinutes();
+    var se = today.getSeconds();
 
     if (dd < 10) dd = '0' + dd;
     if (mm < 10) mm = '0' + mm;
-    var today = dd + '/' + mm + '/' + yyyy + ' - ' + hh + ':' + mi;
+    var today = dd + '/' + mm + '/' + yyyy + ' - ' + hh + ':' + mi + ':' + se;
     return today;
     // return Date(Date.now()).toLocaleString();
 }
