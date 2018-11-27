@@ -270,6 +270,7 @@
     text-align: center;
     background: -webkit-linear-gradient(top, #f59000, #fd6e1d);
     text-decoration: none;
+    cursor: pointer;
 }
 
 .area_order .buy_now:hover {
