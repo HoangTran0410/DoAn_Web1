@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giới thiệu - Thế giới điện thoại</title>
+
+    <!-- Load font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+
+    <!-- our files -->
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/topnav.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/taikhoan.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/gioithieu.css">
+    <link rel="stylesheet" href="css/tintuc.css">
+    <link rel="stylesheet" href="css/lienhe.css">
+
+    <!-- js -->
+    <script src="js/dungchung.js"></script>
+    <script>
+        window.onload = function () {
+            setupEventTaiKhoan();
+        }
+    </script>
+
+</head>
+
+<body>
+    <script> addTopNav();</script>
+
+    <section>
+        <script> addHeader(); </script>
+
+        <div class="body-lienhe">
+            <div class="lienhe-header">Liên hệ</div>
+            <div class="lienhe-info">
+                <div class="info-left">
+                    <p><b style="color: gray"> CÔNG TY CỔ PHẦN MỘT THÀNH VIÊN </b><br/><br/>
+                        <b>Địa chỉ:</b> 273 An Dương Vương, phường 3, Quận 5, TPHCM<br/><br/>
+                        <b>Telephone:</b>  028 3835 4409<br/><br/>
+                        <b>Hotline:</b> 097777777 - CSKH: 028 9996 777<br/><br/>
+                        <b>Website:</b> <br/><br/>
+                        <b>E-mail:</b> DoAn@gmail.com<br/><br/>
+                        <b>Mã số thuế:</b> 01 02 03 04 05<br/><br/>
+                        <b>Tài khoản ngân hàng :</b><br/><br/>
+                        <b>Số TK:</b> 060008086888 <br/><br/>
+                        <b>Tại Ngân hàng:</b> Agribank Chi nhánh Sài Gòn<br/><br/><br/><br/>
+                        <b>Quý khách có thể gửi liên hệ tới chúng tôi bằng cách hoàn tất biểu mẫu dưới đây. Chúng tôi sẽ trả lời thư của quý khách, xin vui lòng khai báo đầy đủ. Hân hạnh phục vụ và chân thành cảm ơn sự quan tâm, đóng góp ý kiến đến Smartphone Store.</b>
+                    <p>
+                </div>
+                <div class="info-right">
+                    <a href="https://goo.gl/maps/mZHSVyGVj8N2" target="_blank" onclick="return chuyentab()"><img src="img/lienhe/bando.png"></a>
+                </div>
+            </div>
+            <div class="guithongtin">
+                <p style="font-size: 22px; color: gray">Gửi thông tin liên lạc cho chúng tôi: </p>
+                <hr/>
+                <table cellspacing="10px">
+                    <tr>
+                        <td>Họ và tên :</td>
+                        <td><input type="text" name="ht" size="40" maxlength="40" placeholder="Họ tên"></td>
+                    </tr>
+                    <tr>
+                        <td>Điện thoại liên hệ : </td>
+                        <td><input type="text" name="dtlh" size="40" maxlength="10" placeholder="Điện thoại"></td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ Email :</td>
+                        <td><input type="Email" name="em" size="40" placeholder="Email"></td>
+                    </tr>
+                    <tr>
+                        <td>Tiêu đề : </td>
+                        <td><input type="text" name="tde" size="40" maxlength="100" placeholder="Tiêu đề">
+                    </tr>
+                    <tr>
+                        <td>Nội dung :</td>
+                        <td><textarea name="nd" rows="5" cols="43px" maxlength="500" wrap="physical" placeholder="Nội dung liên hệ"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button>Gửi thông tin liên hệ</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script> addContainTaiKhoan(); addPlc(); </script>
+
+    <div class="footer">
+        <script>addFooter();</script>
+        
+    </div>
+
+</body>
+
+</html>

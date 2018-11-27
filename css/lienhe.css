@@ -1,0 +1,49 @@
+.body-lienhe{
+	margin: 30px 50px 50px 50px;
+	width: 90%;
+
+}
+.lienhe-header{
+	height: 40px;
+	font-weight: bold;
+	line-height: 40px;
+	padding-left: 10px;
+	background: pink;
+}
+.lienhe-info{
+	margin: 20px 10px 0 10px; 
+	display: inline-block;
+}
+.info-left{
+	float: left;
+	width: 45%;
+}
+.info-right {
+	float: right;
+	width: 50%;	
+}
+.info-right img{
+	border: 1px solid gray;
+	padding: 5px;
+	height:480px;
+	width: 500px;
+}
+.guithongtin {
+	width: 50%;
+}
+table{	
+	margin-top: 10px;
+	height: 20px;
+}
+table input{
+	padding: 5px;
+}
+table button{
+	padding: 5px;
+	cursor: pointer;
+	background: #FFF;
+	border: 1px solid #0C9;
+}
+table button:hover{
+	background: #0C9;
+}
