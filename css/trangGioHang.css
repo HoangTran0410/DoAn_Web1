@@ -49,13 +49,14 @@
     font-size: 1.5em;
     font-weight: bold;
     border: none;
-    background-color: #4CAF50;
+    background-color: rgb(197, 223, 199);
     border-radius: 10px;
     cursor: pointer;
     transition-duration: .2s;
 }
 .thanhtoan:hover {
     box-shadow: 5px 10px 18px #888888;
+    background-color: #4CAF50;
 }
 .thanhtoan:active {
     box-shadow: none;
