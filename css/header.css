@@ -180,7 +180,7 @@
 					padding-left: 5px;
 				}
 				.cart-number {
-					font-family: 'Courier New', Courier, monospace;
+					/*font-family: 'Courier New', Courier, monospace;*/
 					position: absolute;
 					left: 30px;
 					bottom: -10px;
