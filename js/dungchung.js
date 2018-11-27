@@ -403,7 +403,7 @@ function addHeader() {
 
         <div class="content">
             <div class="search-header">
-                <form class="input-search" method="get" action="/DoAn_Web1/index.html">
+                <form class="input-search" method="get" action="index.html">
                     <div class="autocomplete">
                         <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm...">
                         <button type="submit">
@@ -427,7 +427,7 @@ function addHeader() {
                 </div> <!-- End Member -->
 
                 <div class="cart">
-                    <a>
+                    <a href="giohang.html">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Giỏ hàng</span>
                         <span class="cart-number">0</span>
