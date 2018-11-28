@@ -50,6 +50,24 @@
     color: white;
 }
 
+/* Số lượng */
+.listSanPham .soluong {
+    text-align: center;
+}
+.listSanPham .soluong button {
+    width: 2em;
+    height: 2em;
+    font-size: 1em;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgb(182, 211, 206); 
+}
+.listSanPham .soluong input {
+    text-align: center;
+    width: 2.5em;
+    height: 2em;
+}
+
 /* Nút xóa */
 .fa-trash {
     text-align: center;
@@ -69,17 +87,21 @@
     padding: 10px 15px;
     font-size: 1.5em;
     font-weight: bold;
-    border: none;
+    /* border: none; */
     background-color: rgb(197, 223, 199);
     border-radius: 10px;
     cursor: pointer;
+}
+
+/* Hiệu ứng bóng đổ hover */
+.boxShadow {
     transition-duration: .2s;
 }
-.thanhtoan:hover {
-    box-shadow: 5px 10px 18px #888888;
-    background-color: #4CAF50;
+.boxShadow:hover {
+    box-shadow: 4px 8px 15px #888888;
+    background-color: #4CAF50; 
 }
-.thanhtoan:active {
+.boxShadow:active {
     box-shadow: none;
-    transition-duration: 0s;
+    transition-duration: 0s;    
 }
