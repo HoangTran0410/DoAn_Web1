@@ -63,8 +63,13 @@
     background-color: rgb(182, 211, 206); 
 }
 .listSanPham .soluong input {
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-size: 1em;
+    font-weight: bold;
     text-align: center;
-    width: 2.5em;
+    width: 5em;
     height: 2em;
 }
 
