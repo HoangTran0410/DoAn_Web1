@@ -29,18 +29,14 @@
 /* ============= Footer ============= */
 .footer {
 	position: relative;
-	height: 150px;
+	/* height: 40px; */
 	width: 100%;
 	background: #476;
-
-
-	/*text-align: center;
-	line-height: 150px;*/
 }
 
 .copy-right {
-	position: absolute;
-	bottom: 0;
+	/* position: absolute; */
+	/* bottom: 0; */
 	width: 100%;
 	text-align: center;
 	line-height: 40px;
