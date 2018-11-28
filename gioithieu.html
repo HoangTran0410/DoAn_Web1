@@ -24,6 +24,10 @@
 	<script src="js/dungchung.js"></script>
     <script>
         window.onload = function () {
+            // thêm tags (từ khóa) vào khung tìm kiếm
+            var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
+            for (var t of tags) addTags(t, "index.html?search=" + t);
+
             setupEventTaiKhoan();
         }
     </script>
@@ -33,7 +37,7 @@
 <body>
     <script> addTopNav();</script>
 
-    <section>
+    <section style="min-height: 85vh">
         <script> addHeader(); </script>
 
         <div class="page-gt">

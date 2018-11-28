@@ -23,6 +23,9 @@
 
     <script>
         window.onload = function () {
+            // thêm tags (từ khóa) vào khung tìm kiếm
+            var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
+            for (var t of tags) addTags(t, "index.html?search=" + t);
             setupEventTaiKhoan();
         }
     </script>
@@ -32,7 +35,7 @@
 
     <script>addTopNav();</script>
 
-    <section>
+    <section style="min-height: 85vh">
         <script>addHeader();</script>
 
         <table>
