@@ -1,4 +1,3 @@
-
 function timKiemTheoTen(list, ten, soluong) {
     var tempList = copyObject(list);
     var result = [];
@@ -41,17 +40,15 @@ function getTimeNow() {
     if (mm < 10) mm = '0' + mm;
     var today = dd + '/' + mm + '/' + yyyy + ' - ' + hh + ':' + mi + ':' + se;
     return today;
-    // return Date(Date.now()).toLocaleString();
 }
 
 // ============================== TÀI KHOẢN ============================
 
 // Hàm get set cho người dùng hiện tại đã đăng nhập
 function getCurrentUser() {
-    var u;
-    u = JSON.parse(window.localStorage.getItem('CurrentUser')); // Lấy dữ liệu từ localstorage
-    return u;
+    return JSON.parse(window.localStorage.getItem('CurrentUser')); // Lấy dữ liệu từ localstorage
 }
+
 function setCurrentUser(u) {
     window.localStorage.setItem('CurrentUser', JSON.stringify(u));
 }
@@ -60,24 +57,25 @@ function setCurrentUser(u) {
 function getListUser() {
     var data = JSON.parse(window.localStorage.getItem('ListUser')) || []
     var l = [];
-    for(var d of data) {
+    for (var d of data) {
         l.push(d);
     }
     return l;
 }
+
 function setListUser(l) {
     window.localStorage.setItem('ListUser', JSON.stringify(l));
 }
 
 // Sau khi chỉnh sửa 1 user 'u' thì cần hàm này để cập nhật lại vào ListUser
 function updateListUser(u) {
-   var list = getListUser();
-   for(var i = 0; i < list.length; i++) {
-       if(equalUser(u, list[i])) {
-           list[i] = u;
-       }
-   } 
-   setListUser(list);
+    var list = getListUser();
+    for (var i = 0; i < list.length; i++) {
+        if (equalUser(u, list[i])) {
+            list[i] = u;
+        }
+    }
+    setListUser(list);
 }
 
 function logIn(form) {
@@ -90,11 +88,11 @@ function logIn(form) {
     var listUser = getListUser();
 
     // Kiểm tra xem dữ liệu form có khớp với dữ liệu localstorage ko
-    for(var u of listUser) {
-        if(equalUser(newUser, u)) {
+    for (var u of listUser) {
+        if (equalUser(newUser, u)) {
             setCurrentUser(u);
 
-            // Reload lại trang ~ sau khi reload sẽ cập nhật luôn giỏ hàng khi hàm setupEventTaiKhoan chạy
+            // Reload lại trang -> sau khi reload sẽ cập nhật luôn giỏ hàng khi hàm setupEventTaiKhoan chạy
             location.reload();
 
             return false;
@@ -118,8 +116,8 @@ function signUp(form) {
     var listUser = getListUser();
 
     // Kiểm tra xem dữ liệu form có trùng với khách hàng đã có không
-    for(var u of listUser) {
-        if(newUser.username == u.username) {
+    for (var u of listUser) {
+        if (newUser.username == u.username) {
             alert('Tên đăng nhập đã có người sử dụng !!');
             return false;
         }
@@ -152,14 +150,14 @@ function showTaiKhoan(show) {
 // Check xem có ai đăng nhập hay chưa (CurrentUser có hay chưa)
 // Hàm này chạy khi ấn vào nút tài khoản trên header
 function checkTaiKhoan() {
-    if(getCurrentUser()) {
-        if(window.confirm('Bạn muốn đăng xuất ?')) {
+    if (getCurrentUser()) {
+        if (window.confirm('Bạn muốn đăng xuất ?')) {
             logOut();
             location.reload();
         }
 
     } else {
-        showTaiKhoan(true);        
+        showTaiKhoan(true);
     }
 
 
@@ -184,7 +182,7 @@ function setupEventTaiKhoan() {
                         label.classList.remove('highlight');
                     }
                 } else if (e.type === 'focus') { // khi focus thì label active + hightlight
-                    label.classList.add('active'); 
+                    label.classList.add('active');
                     label.classList.add('highlight');
                 }
             });
@@ -230,18 +228,36 @@ function setupEventTaiKhoan() {
 // Cập nhật số lượng hàng trong giỏ hàng + Tên current user
 function capNhatGioHang() {
     var u = getCurrentUser();
-    if(u) {
-        document.getElementsByClassName('cart-number')[0].innerHTML = u.products.length;
+    if (u) {
+        // Cập nhật số lượng hàng vào header
+        document.getElementsByClassName('cart-number')[0].innerHTML = getTongSoLuongSanPhamTrongGioHang(u);
+        // Cập nhật tên người dùng
         document.getElementsByClassName('member')[0]
-                .getElementsByTagName('a')[0].childNodes[2].nodeValue = u.username;
+            .getElementsByTagName('a')[0].childNodes[2].nodeValue = u.username;
     }
 }
 
+function getTongSoLuongSanPhamTrongGioHang(u) {
+    var soluong = 0;
+    for (var p of u.products) {
+        soluong += p.soluong;
+    }
+    return soluong;
+}
+
+function getSoLuongSanPhamTrongUser(tenSanPham, user) {
+    for (var p of user.products) {
+        if(p.name == tenSanPham)
+            return p.soluong;
+    }
+    return 0;
+}
 
 // ==================== Những hàm khác ===================== 
 function numToString(num, char) {
     return num.toLocaleString().split(',').join(char || '.');
 }
+
 function stringToNum(str, char) {
     return Number(str.split(char || '.').join(''));
 }
