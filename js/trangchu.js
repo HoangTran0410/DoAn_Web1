@@ -201,7 +201,7 @@ function phanTich_URL() {
 function addProduct(p, id) {
 	promo = new Promo(p.promo.name, p.promo.value); // class Promo
 	product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo); // Class product
-	product.addToWeb(id);
+	addToWeb(product, id);
 }
 
 // thêm các sản phẩm từ biến mảng nào đó vào trang
