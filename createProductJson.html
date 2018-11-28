@@ -15,7 +15,7 @@
 
 	<script src="data/products.js"></script>
 	<script src="js/classes.js"></script>
-	<script src="js/functions.js"></script>
+	<script src="js/dungchung.js"></script>
 
 	<style>
 		* { 
@@ -59,6 +59,12 @@
 	</style>
 
 	<script>
+		// Thêm sản phẩm vào trang
+		function addProduct(p, id) {
+			promo = new Promo(p.promo.name, p.promo.value); // class Promo
+			product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo); // Class product
+			addToWeb(product, id);
+		}
 		function getResult() {
 			var name = document.getElementById('name').value;
 			var company = document.getElementById('company').value;
