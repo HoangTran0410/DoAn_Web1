@@ -34,7 +34,7 @@ function addProductToTable(user) {
 	if (!user) {
 		s += `
 			<tr>
-				<td colspan="5"> 
+				<td colspan="6"> 
 					<h1 style="color:red; font-weight:bold; text-align:center">
 						Bạn chưa đăng nhập !!
 					</h1> 
@@ -46,7 +46,7 @@ function addProductToTable(user) {
 	} else if (user.products.length == 0) {
 		s += `
 			<tr>
-				<td colspan="5"> 
+				<td colspan="6"> 
 					<h1 style="color:green; font-weight:bold; text-align:center">
 						Giỏ hàng trống !!
 					</h1> 
