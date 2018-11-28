@@ -20,6 +20,7 @@ window.onload = function () {
 }
 
 function themVaoGioHang(tenSanPham) {
+    tenSanPham = tenSanPham || nameProduct;
     var user = getCurrentUser();
     if(!user) {
         alert('Bạn cần đăng nhập để mua hàng !');
@@ -27,10 +28,24 @@ function themVaoGioHang(tenSanPham) {
         return;
     }
     var t = getTimeNow();
-    user.products.push({
-        "name": tenSanPham || nameProduct,
-        "date": t
-    });
+    var daCoSanPham = false;;
+
+    for(var i = 0; i < user.products.length; i++) { // check trùng sản phẩm
+        if(user.products[i].name == tenSanPham) {
+            user.products[i].soluong++;
+            daCoSanPham = true;
+            break;
+        }
+    }
+    
+    if(!daCoSanPham){ // nếu không trùng thì mới thêm sản phẩm vào user.products
+        user.products.push({
+            "name": tenSanPham,
+            "soluong": 1,
+            "date": t
+        });
+    }
+    
     setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
     updateListUser(user); // cập nhật list user
     capNhatGioHang(); // cập nhật giỏ hàng
