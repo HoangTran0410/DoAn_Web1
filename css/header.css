@@ -186,6 +186,14 @@
 					bottom: -10px;
 					font-weight: bold;
 					color: red;
+					border-radius: 50%;
+					width: 1.5em;
+					height: 1.5em;
+					line-height: 1.5em;
+					text-align: center;
+				}
+				.cart .cart-number {
+					transition-duration: .4s; 
 				}
 			/* ======= End Cart ======== */
 

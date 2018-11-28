@@ -146,6 +146,8 @@ function giamSoLuong(tenSanPham) {
 }
 
 function capNhatMoiThu() { // Mọi thứ
+	animateCartNumber();
+	
 	// cập nhật danh sách sản phẩm trong localstorage
 	setCurrentUser(currentuser);
 	updateListUser(currentuser);

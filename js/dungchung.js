@@ -42,6 +42,20 @@ function getTimeNow() {
     return today;
 }
 
+// ============================== Cart Number =========================
+function animateCartNumber() {
+    // Hiệu ứng cho icon giỏ hàng
+    var cn = document.getElementsByClassName('cart-number')[0];
+    cn.style.transform = 'scale(2)';
+    cn.style.backgroundColor = 'rgba(255, 0, 0, 0.8)';
+    cn.style.color = 'white';
+    setTimeout(function() { 
+        cn.style.transform = 'scale(1)';
+        cn.style.backgroundColor = 'transparent';
+        cn.style.color = 'red';
+    }, 1200);
+}
+
 // ============================== TÀI KHOẢN ============================
 
 // Hàm get set cho người dùng hiện tại đã đăng nhập

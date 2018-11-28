@@ -45,12 +45,14 @@ function themVaoGioHang(tenSanPham) {
             "date": t
         });
     }
+
+    animateCartNumber();
     
     setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
     updateListUser(user); // cập nhật list user
     capNhatGioHang(); // cập nhật giỏ hàng
 
-    alert('Sản phẩm đã được thêm vào giỏ hàng của bạn (' + user.username +')');
+    // alert('Sản phẩm đã được thêm vào giỏ hàng của bạn (' + user.username +')');
 }
 
 function phanTich_URL_chiTietSanPham() {
