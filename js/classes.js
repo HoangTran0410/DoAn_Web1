@@ -53,51 +53,51 @@ function Product(img, name, price, star, rateCount, promo) {
 	this.star = star;
 	this.rateCount = rateCount;
 	this.promo = promo;
+}
 
-	this.addToWeb = function (id) {
-		// Chuyển star sang dạng tag html
-		var rating = "";
-		if (this.rateCount > 0) {
-			for (var i = 1; i <= 5; i++) {
-				if (i <= this.star) {
-					rating += `<i class="fa fa-star"></i>`
-				} else {
-					rating += `<i class="fa fa-star-o"></i>`
-				}
+function addToWeb(p, id) {
+	// Chuyển star sang dạng tag html
+	var rating = "";
+	if (p.rateCount > 0) {
+		for (var i = 1; i <= 5; i++) {
+			if (i <= p.star) {
+				rating += `<i class="fa fa-star"></i>`
+			} else {
+				rating += `<i class="fa fa-star-o"></i>`
 			}
-			rating += `<span>` + this.rateCount + ` đánh giá</span>`;
 		}
-
-		// Chuyển giá tiền sang dạng tag html
-		var price = `<strong>` + this.price + `&#8363;</strong>`;
-		if (this.promo && this.promo.name == "giareonline") {
-			// khuyến mãi 'Giá rẻ online' sẽ có giá thành mới
-			price = `<strong>` + this.promo.value + `&#8363;</strong>
-					<span>` + this.price + `&#8363;</span>`;
-		}
-
-		// tách theo dấu ' ' vào gắn lại bằng dấu '-', code này giúp bỏ hết khoảng trắng và thay vào bằng dấu '-'.
-		// Tạo link tới chi tiết sản phẩm, chuyển tất cả ' ' thành '-'
-		var chitietSp = 'chitietsanpham.html?' + this.name.split(' ').join('-');
-
-		// Cho mọi thứ vào tag <li>... </li>
-		var newLi =
-		`<li>
-			<a href="` + chitietSp + `">
-				<img src=` + this.img + ` alt="">
-				<h3>` + this.name + `</h3>
-				<div class="price">
-					` + price + `
-				</div>
-				<div class="ratingresult">
-					` + rating + `
-				</div>
-				` + (this.promo && this.promo.toWeb()) + `
-			</a>
-		</li>`;
-
-		// Thêm tag <li> vừa tạo vào <ul> homeproduct
-		var products = document.getElementById(id || 'products');
-		products.innerHTML += newLi;
+		rating += `<span>` + p.rateCount + ` đánh giá</span>`;
 	}
+
+	// Chuyển giá tiền sang dạng tag html
+	var price = `<strong>` + p.price + `&#8363;</strong>`;
+	if (p.promo && p.promo.name == "giareonline") {
+		// khuyến mãi 'Giá rẻ online' sẽ có giá thành mới
+		price = `<strong>` + p.promo.value + `&#8363;</strong>
+				<span>` + p.price + `&#8363;</span>`;
+	}
+
+	// tách theo dấu ' ' vào gắn lại bằng dấu '-', code này giúp bỏ hết khoảng trắng và thay vào bằng dấu '-'.
+	// Tạo link tới chi tiết sản phẩm, chuyển tất cả ' ' thành '-'
+	var chitietSp = 'chitietsanpham.html?' + p.name.split(' ').join('-');
+
+	// Cho mọi thứ vào tag <li>... </li>
+	var newLi =
+	`<li>
+		<a href="` + chitietSp + `">
+			<img src=` + p.img + ` alt="">
+			<h3>` + p.name + `</h3>
+			<div class="price">
+				` + price + `
+			</div>
+			<div class="ratingresult">
+				` + rating + `
+			</div>
+			` + (p.promo && p.promo.toWeb()) + `
+		</a>
+	</li>`;
+
+	// Thêm tag <li> vừa tạo vào <ul> homeproduct
+	var products = document.getElementById(id || 'products');
+	products.innerHTML += newLi;
 }
