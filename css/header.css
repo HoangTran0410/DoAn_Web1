@@ -180,16 +180,16 @@
 					padding-left: 5px;
 				}
 				.cart-number {
-					/*font-family: 'Courier New', Courier, monospace;*/
 					position: absolute;
-					left: 30px;
-					bottom: -10px;
+					left: 1.4em;
+					bottom: -1em;
 					font-weight: bold;
+					font-size: 1em;
 					color: red;
 					border-radius: 50%;
-					width: 1.5em;
-					height: 1.5em;
-					line-height: 1.5em;
+					width: 2em;
+					height: 2em;
+					line-height: 2em;
 					text-align: center;
 				}
 				.cart .cart-number {
