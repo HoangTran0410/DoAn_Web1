@@ -413,6 +413,8 @@ function addTopNav() {
             </div> <!-- End Social Topnav -->
 
             <ul class="top-nav-quicklink flexContain">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li>|</li>
                 <li><a href="tintuc.html">Tin tức</a></li>
                 <li>|</li>
                 <li><a href="tuyendung.html">Tuyển dụng</a></li>
