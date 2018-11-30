@@ -5,10 +5,13 @@
     width: 100%;
 }
 
-/* thêm border và padding cho td và th */
-.listSanPham td, .listSanPham th {
+/* thêm border và padding cho th */
+.listSanPham th {
     border: 1px solid #ddd;
     padding: 8px;
+}
+.listSanPham td {
+    border: 1px solid #ddd;
 }
 
 /* Link sản phẩm */
@@ -19,7 +22,7 @@
 .listSanPham td a {
     display: block;
     position: relative;
-    padding: 0;
+    padding: 5px 0;
 }
 .listSanPham td a:hover {
     text-decoration: underline;
