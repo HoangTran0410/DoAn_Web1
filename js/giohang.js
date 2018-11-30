@@ -26,8 +26,9 @@ function addProductToTable(user) {
 				<th>STT</th>
 				<th>Sản phẩm</th>
 				<th>Giá</th>
-				<th>Thời gian</th>
 				<th>Số lượng</th>
+				<th>Thành tiền</th>
+				<th>Thời gian</th>
 				<th>Xóa</th>
 			</tr>`;
 
@@ -60,30 +61,37 @@ function addProductToTable(user) {
 		var nameSp = user.products[i].name;
 		var soluongSp = getSoLuongSanPhamTrongUser(nameSp, user);
 		var p = timKiemTheoTen(list_products, nameSp)[0];
+		var price = (p.promo.name=='giareonline'?p.promo.value:p.price);
+		var thoigian = new Date(user.products[i].date).toLocaleString();
+		var thanhtien = stringToNum(price) * soluongSp;
 
 		s += `
 			<tr>
 				<td>` + (i + 1) + `</td>
 				<td class="noPadding"><a target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `">` + p.name + `</a></td>
-				<td class="alignRight">` + p.price + ` ₫</td>
-				<td style="text-align: center" >` + user.products[i].date + `</td>
+				<td class="alignRight">` + price + ` ₫</td>
 				<td class="soluong" >
 					<button class="boxShadow" onclick="giamSoLuong('` + nameSp + `')">-</button>
 					<input size="1" onchange="capNhatSoLuongFromInput(this, '`+nameSp+`')" value=` + soluongSp + `>
 					<button class="boxShadow" onclick="tangSoLuong('` + nameSp + `')">+</button>
 				</td>
+				<td class="alignRight">`+numToString(thanhtien)+` ₫</td>
+				<td style="text-align: center" >` + thoigian + `</td>
 				<td class="noPadding"> <i class="fa fa-trash" onclick="xoaSanPhamTrongGioHang(` + i + `)"></i> </td>
 			</tr>
 		`;
 		// Chú ý nháy cho đúng ở giamsoluong, tangsoluong
-		totalPrice += stringToNum(p.price) * soluongSp;
+		totalPrice += thanhtien;
 	}
 
 	s += `
 			<tr style="font-weight:bold; text-align:center">
-				<td colspan="2">THÀNH TIỀN: </td>
-				<td>` + numToString(totalPrice) + ` ₫</td>
-				<td colspan="3"> <button class="thanhtoan boxShadow" onclick="thanhToan()">Thanh Toán</button> </td>
+				<td colspan="4">TỔNG TIỀN: </td>
+				<td class="alignRight">` + numToString(totalPrice) + ` ₫</td>
+				<td> 
+					<button class="thanhtoan boxShadow" onclick="thanhToan()">Thanh Toán</button>
+				</td>
+				<td> <button class="xoaHet" onclick="xoaHet()"> Xóa hết </button> </td>
 			</tr>
 		</tbody>
 	`;
@@ -102,19 +110,31 @@ function xoaSanPhamTrongGioHang(i) {
 
 function thanhToan() {
 	if(!currentuser.products.length) {
-		alert('Có hàng đâu mà thanh toán cha !!');
+		window.confirm('Có hàng đâu mà thanh toán cha !!');
 		return;
 	}
-	alert('Nhớ trả tiền đừng xù hàng nha thầy !!');
-	currentuser.products = [];
-	capNhatMoiThu();
+	if(window.confirm('Nhớ trả tiền đừng xù hàng nha thầy !!')) {
+		currentuser.products = [];
+		capNhatMoiThu();
+	}
+}
+
+function xoaHet() {
+	if(currentuser.products.length) {
+		if(window.confirm('Bạn có chắc chắn muốn xóa hết sản phẩm trong giỏ !!')){
+			currentuser.products = [];
+			capNhatMoiThu();
+		}
+	}
 }
 
 function capNhatSoLuongFromInput(inp, tenSanPham) {
-	var soLuongMoi = inp.value;
+	var soLuongMoi = Number(inp.value);
+	if(!soLuongMoi || soLuongMoi <= 0) soLuongMoi = 1;
+	
 	for(var p of currentuser.products) {
 		if(p.name == tenSanPham) {
-			p.soluong = Number(soLuongMoi) || 1;
+			p.soluong = soLuongMoi;
 		}
 	}
 
@@ -156,5 +176,5 @@ function capNhatMoiThu() { // Mọi thứ
 	addProductToTable(currentuser);
 
 	// Cập nhật trên header
-	capNhatGioHang();
+	capNhat_ThongTin_CurrentUser();
 }
