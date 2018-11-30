@@ -1,16 +1,25 @@
 table {
 	border-collapse: collapse;
 	margin: 50px;
-	border: 1px solid pink;
 	width: 90%;
 	height: 100%;
 	font-size: 14px;
 }
 
-td,
-tr {
-	border: 1px solid pink;
+td {
+	padding: 5px 0;
 }
+
+td a {
+	display: block;
+}
+
+td a:hover {
+	text-decoration: underline;
+}
+
+/* những tr chẵn sẽ có màu khác */
+tr:nth-of-type(even) {background-color: #e6e4e4;}
 
 .header-table marquee {
 	height: 60px;

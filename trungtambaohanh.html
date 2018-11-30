@@ -74,10 +74,15 @@
                 ]
 
                 for (var i = 0; i < trungtam.length; i++) {
+                    var link = 'https://maps.google.com/maps?q=' + trungtam[i][0];
                     document.write(`
                         <tr>
                             <td class="col1">` + (i + 1) + `</td>
-                            <td class="col2">` + trungtam[i][0] +`</td>
+                            <td class="col2"> 
+                                <a href="`+link+`" target="_blank" title="Xem bản đồ">
+                                    ` + trungtam[i][0] +`
+                                </a>
+                            </td>
                             <td class="col3">` + trungtam[i][1] +`</td>
                             <td class="col4">` + trungtam[i][2] +`</td>
                         </tr>
