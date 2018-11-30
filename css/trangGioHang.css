@@ -37,7 +37,7 @@
 
 /* những tr chẵn sẽ có màu khác */
 .listSanPham tr:nth-of-type(even) {background-color: #f2f2f2;}
-.listSanPham tr:not(:last-child):hover {background-color: #ddd;}
+.listSanPham tr:not(:last-child):hover {background-color: #d9d9d9;}
 
 /* Last child là dòng tổng tiền */
 .listSanPham tr:last-child { background-color: #aaa; }
@@ -80,6 +80,7 @@
     height: 100%;
     color: #999;
     cursor: pointer;
+    transition-duration: .2s;
 }
 
 .fa-trash:hover {
@@ -96,6 +97,16 @@
     background-color: rgb(197, 223, 199);
     border-radius: 10px;
     cursor: pointer;
+}
+
+.xoaHet {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+}
+.xoaHet:hover {
+    background-color: rgb(224, 65, 65);
 }
 
 /* Hiệu ứng bóng đổ hover */
