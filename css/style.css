@@ -120,8 +120,10 @@ hr {
 /* ==================== css thêm , chưa sử dụng ========================= */
 /* tooltip https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard2 */
 .tooltip {
-    position: relative;
+    position: absolute;
     display: inline-block;
+    bottom: 5px;
+    right: 5px; 
 }
 
 .tooltip .tooltiptext {
@@ -133,7 +135,7 @@ hr {
     border-radius: 6px;
     padding: 5px;
     position: absolute;
-    z-index: 1;
+    z-index: 21;
     bottom: 150%;
     left: 50%;
     margin-left: -75px;
