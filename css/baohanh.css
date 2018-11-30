@@ -12,9 +12,12 @@ td {
 
 td a {
 	display: block;
+	margin-left: 5px;
+	transition-duration: .2s; 
 }
 
 td a:hover {
+	margin-left: 15px;
 	text-decoration: underline;
 }
 
