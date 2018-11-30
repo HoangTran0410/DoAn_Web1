@@ -94,6 +94,12 @@ function addToWeb(p, id) {
 				` + rating + `
 			</div>
 			` + (p.promo && p.promo.toWeb()) + `
+			<div class="tooltip">
+				<button class="themvaogio" onclick="themVaoGioHang('`+p.name+`'); return false;">
+					<span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+					+
+				</button>
+			</div>
 		</a>
 	</li>`;
 
