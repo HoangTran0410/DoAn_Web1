@@ -69,7 +69,7 @@ function addProductToTable(user) {
 			<tr>
 				<td>` + (i + 1) + `</td>
 				<td class="noPadding imgHide">
-					<a target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `">
+					<a target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `" title="Xem chi tiết">
 						` + p.name + `
 						<img src="`+p.img+`">
 					</a>
