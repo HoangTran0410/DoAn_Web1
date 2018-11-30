@@ -18,10 +18,24 @@
 }
 .listSanPham td a {
     display: block;
+    position: relative;
     padding: 0;
 }
 .listSanPham td a:hover {
     text-decoration: underline;
+}
+
+/* Hình ảnh sản phẩm */
+.imgHide img {
+    position: absolute;
+    right: -130px;
+    width: 150px;
+    height: 0;
+    border-radius: 10px;
+    transition-duration: .1s;
+}
+.imgHide a:hover img {
+    height: 150px;
 }
 
 /* Cột Giá tiền canh lề phải */
