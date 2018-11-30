@@ -6,18 +6,16 @@ table {
 	font-size: 14px;
 }
 
-td {
-	padding: 5px 0;
-}
-
 td a {
 	display: block;
 	margin-left: 5px;
+	padding: 10px 0;
 	transition-duration: .2s; 
 }
 
 td a:hover {
-	margin-left: 15px;
+	color: red;
+	margin-left: 10px;
 	text-decoration: underline;
 }
 
