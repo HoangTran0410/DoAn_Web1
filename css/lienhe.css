@@ -62,4 +62,3 @@ table button:hover{
 }
 /* những tr chẵn sẽ có màu khác */
 .thongtinnhom tr:nth-of-type(even) {background-color: #f2f2f2;}
-/* .thongtinnhom tr:not(:last-child):hover {background-color: #ddd;} */

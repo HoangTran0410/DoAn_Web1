@@ -15,32 +15,32 @@ function nguoidung() {
 
     //kiểm tra họ tên
     if (ktrahoten == false) {
-        alert("Mời bạn nhập lại họ tên");
+        addAlertBox('Mời bạn nhập lại họ tên.', '#f55', '#000');
         formlh.ht.focus();
         return false;
     }
     //-------
     else if (ktradienthoai == true) {
-        alert("Mời bạn nhập vào số");
+        addAlertBox('Mời bạn nhập số điện thoại.', '#f55', '#000');
         formlh.sdt.focus();
         return false;
     } else if (dienthoai.charAt(0) == 0) {
         if (dienthoai.length != 10) {
-            alert("Số điện thoại phải gồm 10 số");
+            addAlertBox('Số điện thoại phải gồm 10 số.', '#f55', '#000');
             formlh.sdt.focus();
             return false;
         }
         return true;
     } else if (dienthoai.charAt(0) == "+" && dienthoai.charAt(1) == 8 && dienthoai.charAt(2) == 4) {
         if (dienthoai.length != 12) {
-            alert("Bạn phải nhập đúng số điện thoại quy định");
+            addAlertBox('Số điện thoại không phù hợp.', '#f55', '#000');
             formlh.sdt.focus();
             return false;
         }
         return true;
     }
     if (dienthoai.charAt(0) != 0 || dienthoai.charAt(0) != "+84" || dienthoai.charAt(1) == 0) {
-        alert("Số điện thoại phải bắt đầu từ 0 hoặc +84");
+        addAlertBox('Số điện thoại phải bắt đầu từ 0 hoặc +84.', '#f55', '#000');
         formlh.sdt.focus();
         return false;
     }
