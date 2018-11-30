@@ -11,25 +11,28 @@
 	background: pink;
 }
 .lienhe-info{
-	margin: 20px 10px 0 10px; 
+	margin: 20px auto 0; 
 	display: inline-block;
+	width: 100%;
 }
 .info-left{
 	float: left;
-	width: 45%;
+	width: 48%;
 }
 .info-right {
 	float: right;
-	width: 50%;	
+	width: 48%;	
 }
-.info-right img{
+iframe {
 	border: 1px solid gray;
-	padding: 5px;
-	height:480px;
-	width: 500px;
 }
 .guithongtin {
+	width: 45%;
+	float: left;
+}
+.thongtinnhom{
 	width: 50%;
+	float: right;
 }
 table{	
 	margin-top: 10px;
@@ -47,3 +50,16 @@ table button{
 table button:hover{
 	background: #0C9;
 }
+.thongtinnhom table{
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+.thongtinnhom table td,th{
+	border: 1px solid #0C9;	
+	height: 30px;
+	padding: 3px;
+	text-align: center;
+}
+/* những tr chẵn sẽ có màu khác */
+.thongtinnhom tr:nth-of-type(even) {background-color: #f2f2f2;}
+/* .thongtinnhom tr:not(:last-child):hover {background-color: #ddd;} */
