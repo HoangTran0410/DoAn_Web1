@@ -25,6 +25,31 @@ function copyObject(o) {
     return JSON.parse(JSON.stringify(o));
 }
 
+// ============== ALert Box ===============
+// div có id alert được tạo trong hàm addFooter
+function addAlertBox(text, bgcolor, textcolor, time) {
+    var al = document.getElementById('alert');
+    al.childNodes[0].nodeValue = text;
+    al.style.backgroundColor = bgcolor;
+    al.style.opacity = 1;
+    al.style.zIndex = 200;
+
+    if (textcolor) al.style.color = textcolor;
+    if(time) 
+    setTimeout(function(){
+        al.style.opacity = 0;
+        al.style.zIndex = 0;
+    }, time);
+}
+function addEventCloseAlertButton() {
+    document.getElementById('closebtn')
+    .addEventListener('mouseover', (event) => {
+        // event.target.parentElement.style.display = "none";
+        event.target.parentElement.style.opacity = 0;
+        event.target.parentElement.style.zIndex = 0;
+    });
+}
+
 // ================ Cart Number + Thêm vào Giỏ hàng ======================
 function animateCartNumber() {
     // Hiệu ứng cho icon giỏ hàng
@@ -66,6 +91,7 @@ function themVaoGioHang(tenSanPham) {
     }
 
     animateCartNumber();
+    addAlertBox('Đã thêm '+ tenSanPham +' vào giỏ.', '#14ba48', '#000', 3500);
     
     setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
     updateListUser(user); // cập nhật list user
@@ -256,6 +282,7 @@ function setupEventTaiKhoan() {
     // Code jquery cho phần tài khoản được lưu ở cuối file này
 
     capNhat_ThongTin_CurrentUser(); // Cập nhật mỗi khi load xong trang, hàm setupEventTaiKhoan() phải luôn được đặt trong window.onload
+    addEventCloseAlertButton(); // TẠo event mỗi khi load xong trang
 }
 
 // Cập nhật số lượng hàng trong giỏ hàng + Tên current user
@@ -506,10 +533,17 @@ function addHeader() {
 }
 
 function addFooter() {
-    document.write(`<div class="copy-right">
-                        <p><a href="index.html">SmartPhone Store</a> - All rights reserved © 2018 - Designed by
-                            <span style="color: #eee; font-weight: bold">H-group</span></p>
-                    </div>`);
+    document.write(`
+    <!-- ============== Alert Box ============= -->
+    <div id="alert">
+        <span id="closebtn">&otimes;</span>
+    </div>
+
+    <!-- ============== Footer ============= -->
+    <div class="copy-right">
+        <p><a href="index.html">SmartPhone Store</a> - All rights reserved © 2018 - Designed by
+            <span style="color: #eee; font-weight: bold">H-group</span></p>
+    </div>`);
 }
 
 // Thêm contain Taikhoan

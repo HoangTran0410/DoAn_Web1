@@ -8,7 +8,7 @@
 body,
 html {
     min-width: 1024px;
-    
+
 }
 
 a {
@@ -65,6 +65,36 @@ hr {
     /* For IE 6/7 (trigger hasLayout) */
 }
 
+/* =========   Alert ===============*/
+#alert {
+    z-index: 200; /* luôn trên cùng (đè lên những thứ khác) */
+    display: block;
+    position: fixed;
+    bottom: 40px;
+    right: 5px;
+    padding: 20px;
+    background-color: #111;
+    opacity: 0;
+    color: white;
+    font-weight: bold;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+#closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
 /* ===== End clear float ====== */
 
 #goto-top-page {
@@ -117,13 +147,14 @@ hr {
 ::-webkit-scrollbar-thumb:hover {
     background: #ccc;
 }
+
 /* ==================== css thêm , chưa sử dụng ========================= */
 /* tooltip https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard2 */
 .tooltip {
     position: absolute;
     display: inline-block;
     bottom: 5px;
-    right: 5px; 
+    right: 5px;
 }
 
 .tooltip .tooltiptext {

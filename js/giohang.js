@@ -68,7 +68,9 @@ function addProductToTable(user) {
 		s += `
 			<tr>
 				<td>` + (i + 1) + `</td>
-				<td class="noPadding"><a target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `">` + p.name + `</a></td>
+				<td class="noPadding">
+					<a target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `">` + p.name + `</a>
+				</td>
 				<td class="alignRight">` + price + ` ₫</td>
 				<td class="soluong" >
 					<button class="boxShadow" onclick="giamSoLuong('` + nameSp + `')">-</button>
