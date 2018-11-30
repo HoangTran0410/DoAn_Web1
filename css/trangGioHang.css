@@ -51,6 +51,8 @@
 
 /* những tr chẵn sẽ có màu khác */
 .listSanPham tr:nth-of-type(even) {background-color: #f2f2f2;}
+
+/* Dòng tổng tiền thanh toán sẽ có màu đậm hơn */
 .listSanPham tr:not(:last-child):hover {background-color: #d9d9d9;}
 
 /* Last child là dòng tổng tiền */
