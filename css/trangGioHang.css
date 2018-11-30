@@ -118,6 +118,7 @@
     border-radius: 5px;
     padding: 5px;
     font-weight: bold;
+    cursor: pointer;
 }
 .xoaHet:hover {
     background-color: rgb(224, 65, 65);
