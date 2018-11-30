@@ -118,9 +118,10 @@ function thanhToan() {
 		window.confirm('Có hàng đâu mà thanh toán cha !!');
 		return;
 	}
-	if(window.confirm('Nhớ trả tiền đừng xù hàng nha thầy !!')) {
+	if(window.confirm('Thanh toán giỏ hàng ?')) {
 		currentuser.products = [];
 		capNhatMoiThu();
+		addAlertBox('Các sản phẩm đã được gửi vào đơn hàng và chờ xử lý.', '#4a5', '#fff', 4000);
 	}
 }
 
@@ -133,6 +134,7 @@ function xoaHet() {
 	}
 }
 
+// Cập nhật số lượng lúc nhập số lượng vào input
 function capNhatSoLuongFromInput(inp, tenSanPham) {
 	var soLuongMoi = Number(inp.value);
 	if(!soLuongMoi || soLuongMoi <= 0) soLuongMoi = 1;
