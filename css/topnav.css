@@ -45,11 +45,9 @@
 			color: gray;
 			padding: 2px .5em;
 			border-radius: 10px;
-			transition: .15s all;
 		}
 		.top-nav-quicklink li a:hover {
-			color: black;
-			transform: scale(1.1);
+			color: red;
 		}
 	/* ======= End quick link ======= */
 /* ======= End Top navigation ======= */
