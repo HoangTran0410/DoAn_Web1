@@ -25,24 +25,7 @@ function copyObject(o) {
     return JSON.parse(JSON.stringify(o));
 }
 
-// ============================= Thời gian ===========================
-function getTimeNow() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    var hh = today.getHours();
-    var mi = today.getMinutes();
-    var se = today.getSeconds();
-
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
-    var today = dd + '/' + mm + '/' + yyyy + ' - ' + hh + ':' + mi + ':' + se;
-    return today;
-}
-
-// ============================== Cart Number =========================
+// ================ Cart Number + Thêm vào Giỏ hàng ======================
 function animateCartNumber() {
     // Hiệu ứng cho icon giỏ hàng
     var cn = document.getElementsByClassName('cart-number')[0];
@@ -54,6 +37,41 @@ function animateCartNumber() {
         cn.style.backgroundColor = 'transparent';
         cn.style.color = 'red';
     }, 1200);
+}
+
+function themVaoGioHang(tenSanPham) {
+    var user = getCurrentUser();
+    if(!user) {
+        alert('Bạn cần đăng nhập để mua hàng !');
+        showTaiKhoan(true);
+        return;
+    }
+    var t = new Date();
+    var daCoSanPham = false;;
+
+    for(var i = 0; i < user.products.length; i++) { // check trùng sản phẩm
+        if(user.products[i].name == tenSanPham) {
+            user.products[i].soluong++;
+            daCoSanPham = true;
+            break;
+        }
+    }
+    
+    if(!daCoSanPham){ // nếu không trùng thì mới thêm sản phẩm vào user.products
+        user.products.push({
+            "name": tenSanPham,
+            "soluong": 1,
+            "date": t
+        });
+    }
+
+    animateCartNumber();
+    
+    setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
+    updateListUser(user); // cập nhật list user
+    capNhat_ThongTin_CurrentUser(); // cập nhật giỏ hàng
+
+    // alert('Sản phẩm đã được thêm vào giỏ hàng của bạn (' + user.username +')');
 }
 
 // ============================== TÀI KHOẢN ============================
@@ -98,10 +116,10 @@ function logIn(form) {
     var pass = form.pass.value;
     var newUser = new User(name, pass);
 
-    // Lấy dữ liệu từ localstorage
+    // Lấy dữ liệu từ danh sách người dùng localstorage
     var listUser = getListUser();
 
-    // Kiểm tra xem dữ liệu form có khớp với dữ liệu localstorage ko
+    // Kiểm tra xem dữ liệu form có khớp với người dùng nào trong danh sách ko
     for (var u of listUser) {
         if (equalUser(newUser, u)) {
             setCurrentUser(u);
@@ -115,6 +133,7 @@ function logIn(form) {
 
     // Trả về thông báo nếu không khớp
     alert('Nhập sai tên hoặc mật khẩu !!!');
+    form.username.focus();
     return false;
 }
 
@@ -177,7 +196,7 @@ function checkTaiKhoan() {
 
 }
 
-// Tạo event cho form tài khoản
+// Tạo event, hiệu ứng cho form tài khoản
 function setupEventTaiKhoan() {
     var taikhoan = document.getElementsByClassName('taikhoan')[0];
     var list = taikhoan.getElementsByTagName('input');
@@ -236,11 +255,11 @@ function setupEventTaiKhoan() {
     // Đoạn code tạo event trên được chuyển về js thuần từ code jquery
     // Code jquery cho phần tài khoản được lưu ở cuối file này
 
-    capNhatGioHang(); // Cập nhật mỗi khi load xong trang, hàm setupEventTaiKhoan() phải luôn được đặt trong window.onload
+    capNhat_ThongTin_CurrentUser(); // Cập nhật mỗi khi load xong trang, hàm setupEventTaiKhoan() phải luôn được đặt trong window.onload
 }
 
 // Cập nhật số lượng hàng trong giỏ hàng + Tên current user
-function capNhatGioHang() {
+function capNhat_ThongTin_CurrentUser() {
     var u = getCurrentUser();
     if (u) {
         // Cập nhật số lượng hàng vào header
@@ -251,6 +270,7 @@ function capNhatGioHang() {
     }
 }
 
+// tính tổng số lượng các sản phẩm của user u truyền vào
 function getTongSoLuongSanPhamTrongGioHang(u) {
     var soluong = 0;
     for (var p of u.products) {
@@ -259,6 +279,7 @@ function getTongSoLuongSanPhamTrongGioHang(u) {
     return soluong;
 }
 
+// lấy số lương của sản phẩm NÀO ĐÓ của user NÀO ĐÓ được truyền vào
 function getSoLuongSanPhamTrongUser(tenSanPham, user) {
     for (var p of user.products) {
         if(p.name == tenSanPham)
@@ -436,7 +457,7 @@ function addHeader() {
 	<div class="header group">
         <div class="logo">
             <a href="index.html">
-                <img src="img/logo.jpg" alt="">
+                <img src="img/logo.jpg" alt="Trang chủ Smartphone Store" title="Trang chủ Smartphone Store">
             </a>
         </div> <!-- End Logo -->
 
