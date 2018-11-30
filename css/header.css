@@ -141,8 +141,8 @@
 			}
 			.tools-member a:hover > i {
 				border: 1px solid #fff;
-				background-color: #ccc;
-				color: #f22;
+				background-color: rgb(161, 161, 161);
+				color: #fff;
 			}
 			.tools-member a:hover {
 				color: #000;
