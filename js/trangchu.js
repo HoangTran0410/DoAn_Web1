@@ -57,11 +57,13 @@ window.onload = function () {
 		var blue = ['#42bcf4', '#004c70'];
 		var green = ['#5de272', '#007012'];
 
-		addKhungSanPham('ĐIỆN THOẠI NỔI BẬT NHẤT', yellow_red, ['sort=rateCount-decrease'], soLuong);
+		// Thêm các khung sản phẩm
+		addKhungSanPham('ĐIỆN THOẠI NỔI BẬT NHẤT', yellow_red, ['star=3','sort=rateCount-decrease'], soLuong);
 		addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat','sort=rateCount-decrease'], soLuong);
 		addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop'], soLuong);
 		addKhungSanPham('GIÁ SỐC ONLINE', green, ['promo=giareonline'], soLuong);
 		addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong);
+		addKhungSanPham('ĐIỆN THOẠI GIÁ RẺ', green, ['price=0-2000000','sort=price'], soLuong);
 	}
 
 	// Thêm chọn mức giá
@@ -265,7 +267,7 @@ function addKhungSanPham(tenKhung, color, filter, len) {
 
 	// thêm nút xem tất cả rồi đóng tag
 	s += `	</div>
-			<a class="xemTatCa" href="index.html?`+filter.join('')+`" style="`+borderA+`">
+			<a class="xemTatCa" href="index.html?`+filter.join('&')+`" style="`+borderA+`">
 				Xem tất cả `+spResult.length+` sản phẩm
 			</a>
 		</div> <hr>`;
