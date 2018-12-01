@@ -1102,5 +1102,50 @@ var list_products = [
 			"microUSB": "Không",
 			"battery": "1821 mAh, có sạc nhanh"
 		}
+	},
+	{
+		"name": "iPhone Xr 64GB",
+		"company": "Apple",
+		"img": "https://cdn.tgdd.vn/Products/Images/42/190325/iphone-xr-black-400x460.png",
+		"price": "22.990.000",
+		"star": 4,
+		"rateCount": 5,
+		"promo": {
+			"name": "giareonline",
+			"value": "19.990.000"
+		},
+		"detail": {
+			"screen": "IPS LCD, 6.1', IPS LCD, 16 triệu màu",
+			"os": "iOS 12",
+			"camara": "12 MP",
+			"camaraFront": "7 MP",
+			"cpu": "Apple A12 Bionic 6 nhân",
+			"ram": "3 GB",
+			"rom": "64 GB",
+			"battery": "2942 mAh, có sạc nhanh"
+		}
+	},
+	{
+		"name": "Huawei Nova 2i",
+		"company": "Huawei",
+		"img": "https://cdn.tgdd.vn/Products/Images/42/157031/samsung-galaxy-a6-2018-2-600x600.jpg",
+		"price": "4.490.000",
+		"star": 4,
+		"rateCount": 804,
+		"promo": {
+			"name": "giareonline",
+			"value": "3.990.000"
+		},
+		"detail": {
+			"screen": "IPS LCD, 5.9', Full HD+",
+			"os": "Android 7.0 (Nougat)",
+			"camara": "16 MP và 2 MP (2 camera)",
+			"camaraFront": "13 MP và 2 MP (2 camera)",
+			"cpu": "HiSilicon Kirin 659 8 nhân",
+			"ram": "4 GB",
+			"rom": "64 GB",
+			"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+			"battery": "3340 mAh"
+		}
 	}
 ]

@@ -1,7 +1,8 @@
 window.onload = function () {
 
 	// Thêm hình vào banner
-	var numBanner = 8; // Số lượng hình banner
+	addBanner("img/banners/banner0.gif", "img/banners/banner0.gif");
+	var numBanner = 9; // Số lượng hình banner
 	for (var i = 1; i <= numBanner; i++) {
 		var linkimg = "img/banners/banner" + i + ".png";
 		addBanner(linkimg, linkimg);
@@ -35,11 +36,26 @@ window.onload = function () {
 	for (var c of company) addCompany("img/company/" + c, c.slice(0, c.length - 4));
 
 	// Thêm sản phẩm vào trang
-	var sanPhamPhanTich = phanTich_URL();
-	var sanPhamPhanTrang = tinhToanPhanTrang(sanPhamPhanTich, filtersFromUrl.page || 1);
+	var sanPhamPhanTich
+	var sanPhamPhanTrang;
 
-	if (!sanPhamPhanTrang.length) alertNotHaveProduct(false);
-	else addProductsFrom(sanPhamPhanTrang);
+	var filters = getFilterFromURL();
+	if (filters.length) { // có filter
+		sanPhamPhanTich = phanTich_URL(filters, true);
+		sanPhamPhanTrang = tinhToanPhanTrang(sanPhamPhanTich, filtersFromUrl.page || 1);
+		if (!sanPhamPhanTrang.length) alertNotHaveProduct(false);
+		else addProductsFrom(sanPhamPhanTrang);
+
+		// hiển thị list sản phẩm
+		document.getElementsByClassName('contain-products')[0].style.display = '';
+
+	} else {  // ko có filter : trang chính mặc định sẽ hiển thị các sp hot, ...
+		addKhungSanPham('ĐIỆN THOẠI NỔI BẬT NHẤT', 'yellow-red', ['sort=rateCount-decrease'], 5);
+		addKhungSanPham('SẢN PHẨM MỚI', 'blue-bluelight', ['promo=moiramat'], 5);
+		addKhungSanPham('TRẢ GÓP 0%', 'yellow-red', ['promo=tragop'], 5);
+		addKhungSanPham('GIÁ SỐC ONLINE', 'green-greenlight', ['promo=giareonline'], 5);
+		addKhungSanPham('GIẢM GIÁ ', 'yellow-red', ['promo=giamgia'], 5);
+	}
 
 	// Thêm chọn mức giá
 	addPricesRange(0, 2000000);
@@ -108,8 +124,8 @@ function getFilterFromURL() { // tách và trả về mảng bộ lọc trên ur
 	return [];
 }
 
-function phanTich_URL() {
-	var filters = getFilterFromURL();
+function phanTich_URL(filters, saveFilter) {
+	// var filters = getFilterFromURL();
 	var result = copyObject(list_products);
 
 	for (var i = 0; i < filters.length; i++) {
@@ -119,11 +135,11 @@ function phanTich_URL() {
 			case 'search':
 				dauBang[1] = dauBang[1].split('+').join(' ');
 				result = timKiemTheoTen(result, dauBang[1]);
-				filtersFromUrl.search = dauBang[1];
+				if(saveFilter) filtersFromUrl.search = dauBang[1];
 				break;
 
 			case 'price':
-				filtersFromUrl.price = dauBang[1];
+				if(saveFilter) filtersFromUrl.price = dauBang[1];
 
 				var prices = dauBang[1].split('-');
 				prices[1] = Number(prices[1]) || 1E10;
@@ -132,21 +148,21 @@ function phanTich_URL() {
 
 			case 'company':
 				result = timKiemTheoCongTySanXuat(result, dauBang[1]);
-				filtersFromUrl.company = dauBang[1];
+				if(saveFilter) filtersFromUrl.company = dauBang[1];
 				break;
 
 			case 'star':
 				result = timKiemTheoSoLuongSao(result, dauBang[1]);
-				filtersFromUrl.star = dauBang[1];
+				if(saveFilter) filtersFromUrl.star = dauBang[1];
 				break;
 
 			case 'promo':
 				result = timKiemTheoKhuyenMai(result, dauBang[1]);
-				filtersFromUrl.promo = dauBang[1];
+				if(saveFilter) filtersFromUrl.promo = dauBang[1];
 				break;
 
 			case 'page': // page luôn ở cuối đường link
-				filtersFromUrl.page = dauBang[1];
+				if(saveFilter) filtersFromUrl.page = dauBang[1];
 				break;
 
 			case 'sort':
@@ -155,7 +171,7 @@ function phanTich_URL() {
 
 				switch (tenThanhPhanCanSort) {
 					case 'price':
-						filtersFromUrl.sort.by = 'price';
+						if(saveFilter) filtersFromUrl.sort.by = 'price';
 						result.sort(function (a, b) {
 							var giaA = parseInt(a.price.split('.').join(''));
 							var giaB = parseInt(b.price.split('.').join(''));
@@ -164,21 +180,21 @@ function phanTich_URL() {
 						break;
 
 					case 'star':
-						filtersFromUrl.sort.by = 'star';
+						if(saveFilter) filtersFromUrl.sort.by = 'star';
 						result.sort(function (a, b) {
 							return a.star - b.star;
 						});
 						break;
 
 					case 'rateCount':
-						filtersFromUrl.sort.by = 'rateCount';
+						if(saveFilter) filtersFromUrl.sort.by = 'rateCount';
 						result.sort(function (a, b) {
 							return a.rateCount - b.rateCount;
 						});
 						break;
 
 					case 'name':
-						filtersFromUrl.sort.by = 'name';
+						if(saveFilter) filtersFromUrl.sort.by = 'name';
 						result.sort(function (a, b) {
 							return a.name.localeCompare(b.name);
 						});
@@ -186,7 +202,7 @@ function phanTich_URL() {
 				}
 
 				if (s[1] == 'decrease') {
-					filtersFromUrl.sort.type = 'decrease';
+					if(saveFilter) filtersFromUrl.sort.type = 'decrease';
 					result.reverse();
 				}
 
@@ -198,10 +214,11 @@ function phanTich_URL() {
 }
 
 // Thêm sản phẩm vào trang
-function addProduct(p, id) {
+function addProduct(p, ele, returnString) {
 	promo = new Promo(p.promo.name, p.promo.value); // class Promo
 	product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo); // Class product
-	addToWeb(product, id);
+
+	return addToWeb(product, ele, returnString);
 }
 
 // thêm các sản phẩm từ biến mảng nào đó vào trang
@@ -215,6 +232,31 @@ function addProductsFrom(list, vitri, soluong) {
 
 function clearAllProducts() {
 	document.getElementById('products').innerHTML = "";
+}
+
+// Thêm sản phẩm vào các khung sản phẩm
+function addKhungSanPham(tenKhung, colorClass, filter, len) {
+	// mở tag
+	var s = `<div class="khungSanPham">
+				<h3 class="tenKhung `+colorClass+`">* `+tenKhung+` *</h3>
+				<div class="listSpTrongKhung flexContain">`;
+
+	// thêm các <li> (sản phẩm) vào tag
+	var spResult = phanTich_URL(filter, false);
+	if(spResult.length < len) len = spResult.length;
+
+	for(var i = 0; i < len; i++) {
+		s += addProduct(spResult[i], null, true); 
+		// truyền vào 'true' để trả về chuỗi rồi gán vào s
+	}
+
+	// thêm nút xem tất cả rồi đóng tag
+	s += `		<a class="xemTatCa" href="index.html?`+filter.join('')+`">Xem tất cả</a>
+			</div>
+		</div>`;
+
+	// thêm khung vào contain-khung
+	document.getElementsByClassName('contain-khungSanPham')[0].innerHTML += s;
 }
 
 // Nút phân trang

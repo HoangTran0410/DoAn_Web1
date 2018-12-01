@@ -462,17 +462,11 @@ function addTopNav() {
 
             <ul class="top-nav-quicklink flexContain">
                 <li><a href="index.html">Trang chủ</a></li>
-                <li>|</li>
                 <li><a href="tintuc.html">Tin tức</a></li>
-                <li>|</li>
                 <li><a href="tuyendung.html">Tuyển dụng</a></li>
-                <li>|</li>
                 <li><a href="gioithieu.html">Giới thiệu</a></li>
-                <li>|</li>
                 <li><a href="trungtambaohanh.html">Trung tâm bảo hành</a></li>
-                <li>|</li>
                 <li><a href="lienhe.html">Liên hệ</a></li>
-                <li>|</li>
             </ul> <!-- End Quick link -->
         </section><!-- End Section -->
     </div><!-- End Top Nav  -->`);

@@ -1,108 +1,3 @@
-.companyMenu a {
-    border: 1px solid #eee;
-    height: 40px;
-    line-height: 40px;
-}
-
-.companyMenu a:hover {
-	border: 1px solid #aaa;
-}
-
-.companyMenu a img{
-    max-height: 30px;
-    vertical-align: middle;
-    margin-top: -3px;
-}
-
-/* Dropdown From w3 */
-	.dropbtn {
-	    background-color: #444;
-	    color: white;
-	    padding: 10px 14px;
-	    font-size: 15px;
-	    border: none;
-	    border-radius: 5px;
-	    cursor: pointer;
-		margin-bottom: 5px;
-		transition-duration: .3s;
-	}
-	.dropbtn:after {
-		/* kí tự mũi tên > */
-	    content: ' \25B7';
-	}
-	.dropdown:hover .dropbtn:after{
-		/* kí tự mũi tên xuống */
-		content:' \25BD'
-	}
-	.dropdown {
-	    position: relative;
-	    margin: 10px 5px;
-	}
-	.dropdown-content {
-	    z-index: 1;
-	    position: absolute;
-	    min-width: 170px;
-	    border-radius: 5px;
-	    background-color: rgba(255, 255, 255, .8);
-		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-		/* mặc địng là xoay 90 độ => bị ẩn đi */
-	    transform: rotateX(90deg);
-	    transition-duration: .3s;
-	}
-	.dropdown-content a {
-	    color: #444;
-	    padding: 12px 16px;
-	    text-decoration: none;
-	    display: block;
-	}
-	.dropdown-content a:hover { 
-		color: white;
-		background-color: #555 
-	}
-	.dropdown:hover .dropdown-content {
-	    /* khi hover vào thì cần hiện content ra => xoay 0 độ => trờ về như cũ */
-	    transform: rotateY(0deg);
-	}
-	.dropdown:hover .dropbtn {
-	    background-color: #3e8e41;
-	}
-/* ============== End From W3 ============== */
-
-/* Filter by Name */
-.filterName {
-	margin: 15px auto;
-	text-align: center;
-	/* width: 195px; */
-}
-.filterName input {
-	padding: 0 15px;
-	/* width: calc(100% - 30px); 15px la padding left cua input */
-	height: 30px;
-	border: 2px solid #bbb;
-	border-radius: 10px;
-	font-size: 15px;
-	-webkit-transition-duration: .3s;
-     -o-transition-duration: .3s;
-        transition-duration: .3s;
-}
-.filterName input:focus {
-	border: 2px solid orange;
-} 
-
-/* Choosed filter */
-.choosedFilter { margin: 10px auto; }
-.choosedFilter i { transition-duration: .3s; }
-.choosedFilter a:hover > h3 > i { color: red; }
-/* .choosedFilter a:hover > h3 { text-decoration: line-through; } */
-.choosedFilter a {
-    font-size: 12px;
-    padding: 6px;
-    color: #fff;
-    background: #288ad6;
-    border-radius: 4px;
-    margin-right: 5px;
-}
-
 #khongCoSanPham {
 	opacity: 0;
 	width: 0;
@@ -115,20 +10,22 @@
 	.homeproduct {
 		list-style-type: none;  
 	}
-	.homeproduct li {
+
+	/* <li> trong homeproduct có class="sanPham" , khai báo trong classes.js */
+	.sanPham {
 		width: 238px;
 		border: 1px solid #eee;
     	-webkit-transition-duration: .3s;
     	     -o-transition-duration: .3s;
     	        transition-duration: .3s;
 	}
-	.homeproduct li a {
+	.sanPham a {
 		display: block;
 		position: relative;
 		padding: 10px 0;
 		height: 310px;
 	}
-	.homeproduct a .price span {
+	.sanPham a .price span {
 	    display: inline-block;
 	    vertical-align: middle;
 	    font-size: 12px;
@@ -138,7 +35,7 @@
 	}
 	/* Name and image */
 		/* Hinh anh san pham */
-		.homeproduct a img {
+		.sanPham a img {
 			display: block;
 			margin: 15px auto;
 			-webkit-transition-duration: 0.2s;
@@ -148,11 +45,11 @@
 			height: 200px;
 		}
 		/* Di chuyen anh? len tren */
-		.homeproduct a:hover > img {
+		.sanPham a:hover > img {
 			margin: 5px auto 25px;
 		}
 		/* Ten san pham */
-		.homeproduct li h3 {
+		.sanPham h3 {
 			display: block;
 			padding: 0 10px;
 			color: #333;
@@ -161,19 +58,19 @@
 			font-weight: normal;
 		}
 		/* Hightlight ten san pham khi hover */
-		.homeproduct a:hover h3 {
+		.sanPham a:hover h3 {
 			color: #288ad6;
         }
 	/* ====== End Name and image ===== */
 
 	/* Price */
 		/* la div chua strong */
-		.homeproduct li .price {
+		.sanPham .price {
 			display: block;
 			padding: 5px 10px 0px 10px;
 		}
 		/* strong la gia tien in dam */
-		.homeproduct li strong {
+		.sanPham strong {
 		    display: inline-block;
 		    vertical-align: middle;
 		    overflow: hidden;
@@ -184,10 +81,10 @@
 	/* ===== End Price ===== */
 
 	/* Rating */
-		.homeproduct .ratingresult {
+		.sanPham .ratingresult {
 			padding: 5px 10px;
 		}
-		.homeproduct .ratingresult span {
+		.sanPham .ratingresult span {
 		    display: inline-block;
 		    /*position: relative;*/
 		    top: 1px;
@@ -204,7 +101,7 @@
 
 	/* Khuyen mai */
 		/* label la tag khuyen mai */
-		.homeproduct li label {
+		.sanPham label {
 		    display: inline-block;
 		    position: absolute;
 		    top: 207px;
@@ -217,7 +114,7 @@
 		    height: 18px;
 		}
 		/* Giam gia thanh */
-		.homeproduct li label.giamgia {
+		.sanPham label.giamgia {
 			background-image: -webkit-gradient(linear, left top, right top, from(#ff9c00), to(#ec1f1f));
 		    background-image: -webkit-linear-gradient(left, #ff9c00 0%, #ec1f1f 100%);
 		    background-image: -o-linear-gradient(left, #ff9c00 0%, #ec1f1f 100%);
@@ -238,15 +135,15 @@
 			color: white;
 		}
 		/* Tra gop 0% */
-		.homeproduct li label.tragop {
+		.sanPham label.tragop {
 		    background: #f28902;
 		}
 		/* Gia re online */
-		.homeproduct li label.giareonline {
+		.sanPham label.giareonline {
 			background: #3fb846;
 		}
 		/* Moi ra mat */
-		.homeproduct li label.moiramat {
+		.sanPham label.moiramat {
 			background: #1191f8;
 		}
 	/* ===== End Khuyen mai ====== */

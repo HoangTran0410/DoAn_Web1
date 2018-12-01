@@ -55,7 +55,7 @@ function Product(img, name, price, star, rateCount, promo) {
 	this.promo = promo;
 }
 
-function addToWeb(p, id) {
+function addToWeb(p, ele, returnString) {
 	// Chuyển star sang dạng tag html
 	var rating = "";
 	if (p.rateCount > 0) {
@@ -83,7 +83,7 @@ function addToWeb(p, id) {
 
 	// Cho mọi thứ vào tag <li>... </li>
 	var newLi =
-	`<li>
+	`<li class="sanPham">
 		<a href="` + chitietSp + `">
 			<img src=` + p.img + ` alt="">
 			<h3>` + p.name + `</h3>
@@ -103,7 +103,9 @@ function addToWeb(p, id) {
 		</a>
 	</li>`;
 
-	// Thêm tag <li> vừa tạo vào <ul> homeproduct
-	var products = document.getElementById(id || 'products');
+	if(returnString) return newLi;
+
+	// Thêm tag <li> vừa tạo vào <ul> homeproduct (mặc định) , hoặc tag ele truyền vào
+	var products = ele || document.getElementById('products');
 	products.innerHTML += newLi;
 }

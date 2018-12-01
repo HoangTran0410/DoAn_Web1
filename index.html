@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="css/header.css">
 	<link rel="stylesheet" href="css/banner.css">
 	<link rel="stylesheet" href="css/taikhoan.css">
+	<link rel="stylesheet" href="css/trangchu.css">
 	<link rel="stylesheet" href="css/home_products.css">
 	<link rel="stylesheet" href="css/pagination_phantrang.css">
 	<link rel="stylesheet" href="css/footer.css">
@@ -85,7 +86,8 @@
 		</div> <!-- Những bộ lọc đã chọn -->
 		<hr>
 
-		<div class="contain-products">
+		<!-- Mặc định mới vào trang sẽ ẩn đi, nế có filter thì mới hiện lên -->
+		<div class="contain-products" style="display:none"> 
 			<div class="filterName">
 				<input type="text" placeholder="Lọc trong trang theo tên..." onkeyup="filterProductsName(this)">
 			</div> <!-- End FilterName -->
@@ -98,6 +100,17 @@
 			</ul><!-- End products -->
 
 			<div class="pagination"></div>
+		</div>
+
+		<!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
+		<div class="contain-khungSanPham" >
+			<!-- <div class="khungSanPham">
+				<h3 class="tenKhung">* SẢN PHẨM HOT *</h3>
+
+				<div class="listSpTrongKhung flexContain"></div>
+
+				<a class="xemTatCa" href="">Xem tất cả</a>
+			</div> -->
 		</div>
 
 	</section> <!-- End Section -->
