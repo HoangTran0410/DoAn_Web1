@@ -464,7 +464,7 @@ function addTopNav() {
                 <li><a href="index.html">Trang chủ</a></li>
                 <li><a href="tintuc.html">Tin tức</a></li>
                 <li><a href="tuyendung.html">Tuyển dụng</a></li>
-                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <!-- <li><a href="gioithieu.html">Giới thiệu</a></li> -->
                 <li><a href="trungtambaohanh.html">Trung tâm bảo hành</a></li>
                 <li><a href="lienhe.html">Liên hệ</a></li>
             </ul> <!-- End Quick link -->
