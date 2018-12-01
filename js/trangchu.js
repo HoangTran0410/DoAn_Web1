@@ -50,11 +50,18 @@ window.onload = function () {
 		document.getElementsByClassName('contain-products')[0].style.display = '';
 
 	} else {  // ko có filter : trang chính mặc định sẽ hiển thị các sp hot, ...
-		addKhungSanPham('ĐIỆN THOẠI NỔI BẬT NHẤT', 'yellow-red', ['sort=rateCount-decrease'], 5);
-		addKhungSanPham('SẢN PHẨM MỚI', 'blue-bluelight', ['promo=moiramat'], 5);
-		addKhungSanPham('TRẢ GÓP 0%', 'yellow-red', ['promo=tragop'], 5);
-		addKhungSanPham('GIÁ SỐC ONLINE', 'green-greenlight', ['promo=giareonline'], 5);
-		addKhungSanPham('GIẢM GIÁ ', 'yellow-red', ['promo=giamgia'], 5);
+		var soLuong = (window.innerWidth < 1200 ?4:5); // màn hình nhỏ thì hiển thị 4 sp, to thì hiển thị 5
+
+		// Các màu
+		var yellow_red = ['#ff9c00', '#ec1f1f'];
+		var blue = ['#42bcf4', '#004c70'];
+		var green = ['#5de272', '#007012'];
+
+		addKhungSanPham('ĐIỆN THOẠI NỔI BẬT NHẤT', yellow_red, ['sort=rateCount-decrease'], soLuong);
+		addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat','sort=rateCount-decrease'], soLuong);
+		addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop'], soLuong);
+		addKhungSanPham('GIÁ SỐC ONLINE', green, ['promo=giareonline'], soLuong);
+		addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong);
 	}
 
 	// Thêm chọn mức giá
@@ -235,10 +242,16 @@ function clearAllProducts() {
 }
 
 // Thêm sản phẩm vào các khung sản phẩm
-function addKhungSanPham(tenKhung, colorClass, filter, len) {
+function addKhungSanPham(tenKhung, color, filter, len) {
+	// convert color to code
+	var gradient = `background-image: linear-gradient(120deg, `+color[0]+` 0%, `+color[1]+` 50%, `+color[0]+` 100%);`
+	var borderColor = `border-color: `+color[0];
+	var borderA = `	border-left: 2px solid `+color[0]+`;
+					border-right: 2px solid `+color[0]+`;`;
+
 	// mở tag
-	var s = `<div class="khungSanPham">
-				<h3 class="tenKhung `+colorClass+`">* `+tenKhung+` *</h3>
+	var s = `<div class="khungSanPham" style="`+borderColor+`">
+				<h3 class="tenKhung" style="`+gradient+`">* `+tenKhung+` *</h3>
 				<div class="listSpTrongKhung flexContain">`;
 
 	// thêm các <li> (sản phẩm) vào tag
@@ -251,9 +264,11 @@ function addKhungSanPham(tenKhung, colorClass, filter, len) {
 	}
 
 	// thêm nút xem tất cả rồi đóng tag
-	s += `		<a class="xemTatCa" href="index.html?`+filter.join('')+`">Xem tất cả</a>
-			</div>
-		</div>`;
+	s += `	</div>
+			<a class="xemTatCa" href="index.html?`+filter.join('')+`" style="`+borderA+`">
+				Xem tất cả `+spResult.length+` sản phẩm
+			</a>
+		</div> <hr>`;
 
 	// thêm khung vào contain-khung
 	document.getElementsByClassName('contain-khungSanPham')[0].innerHTML += s;

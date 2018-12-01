@@ -112,18 +112,18 @@
 
 /* Các khung sản phẩm */
 .contain-khungSanPham {
-
+	
 }
 
 .khungSanPham {
 	width: 100%;
 	margin: 50px 0;
 	border-radius: 5px;
-	border: 1px solid #ff4d00; 
+	border: 2px solid #ff4d00; 
+	box-sizing: border-box; /* dùng để width ko vượt ra ngoài khi có border */
 }
 
 .khungSanPham h3.tenKhung {
-	width: 30%;
 	line-height: 1.5em;
 	font-size: 1.5em;
 	text-align: center;
@@ -141,26 +141,17 @@
 .xemTatCa {
 	display: block;
 	font-weight: bold;
+	text-align: center;
+	/* max-width: 25%; */
+	margin:	0 auto;
 	padding: .5em 1em;
 	border-radius: 1em;
-	background-color: #ddd;  
+	color: #888;
+	background-color: #eee;
 	transition-duration: .2s;
 	transform: translateY(1em);
 }
 .xemTatCa:hover {
-	background-color: #aaa;
-}
-
-
-/* Các class màu gradient */
-.yellow-red {
-	background-image: linear-gradient(120deg, #ff9c00 0%, #ec1f1f 100%);
-}
-
-.blue-bluelight {
-	background-image: linear-gradient(120deg, #42bcf4 0%, #004c70 100%);
-}
-
-.green-greenlight {
-	background-image: linear-gradient(120deg, #007012 0%, #5de272 100%);
+	background-color: #ccc;
+	color: #000;
 }
