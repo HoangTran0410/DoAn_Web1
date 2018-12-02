@@ -14,9 +14,6 @@ window.onload = function () {
 
     // Cài đặt event cho phần tài khoản
     setupEventTaiKhoan();
-
-    // check LocalStorage
-    checkLocalStorage();
 }
 
 function phanTich_URL_chiTietSanPham() {
