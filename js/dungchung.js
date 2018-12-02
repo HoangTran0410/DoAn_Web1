@@ -210,16 +210,15 @@ function showTaiKhoan(show) {
 // Hàm này chạy khi ấn vào nút tài khoản trên header
 function checkTaiKhoan() {
     if (getCurrentUser()) {
-        if (window.confirm('Bạn muốn đăng xuất ?')) {
-            logOut();
-            location.reload();
-        }
+        // if (window.confirm('Bạn muốn đăng xuất ?')) {
+        //     logOut();
+        //     location.reload();
+        // }
+        // window.location.assign('nguoidung.html')
 
     } else {
         showTaiKhoan(true);
     }
-
-
 }
 
 // Tạo event, hiệu ứng cho form tài khoản
@@ -294,6 +293,9 @@ function capNhat_ThongTin_CurrentUser() {
         // Cập nhật tên người dùng
         document.getElementsByClassName('member')[0]
             .getElementsByTagName('a')[0].childNodes[2].nodeValue = u.username;
+        // bỏ class hide của menu người dùng
+        document.getElementsByClassName('menuMember')[0]
+                .classList.remove('hide');
     }
 }
 
@@ -504,6 +506,10 @@ function addHeader() {
                         <i class="fa fa-user"></i>
                         Tài khoản
                     </a>
+                    <div class="menuMember hide">
+                        <a href="nguoidung.html">Trang người dùng</a>
+                        <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
+                    </div>
 
                 </div> <!-- End Member -->
 
@@ -515,12 +521,12 @@ function addHeader() {
                     </a>
                 </div> <!-- End Cart -->
 
-                <div class="check-order">
+                <!--<div class="check-order">
                     <a>
                         <i class="fa fa-truck"></i>
                         <span>Đơn hàng</span>
                     </a>
-                </div> <!-- End Check Order -->
+                </div> -->
             </div><!-- End Tools Member -->
         </div> <!-- End Content -->
     </div> <!-- End Header -->`)
