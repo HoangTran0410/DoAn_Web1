@@ -26,7 +26,7 @@ window.onload = function () {
 
 	// thêm tags (từ khóa) vào khung tìm kiếm
 	var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
-	for (var t of tags) addTags(t, "index.html?search=" + t)
+	for (var t of tags) addTags(t, "index.html?search=" + t);
 
 	// Thêm danh sách hãng điện thoại
 	var company = ["Apple.jpg", "Samsung.jpg", "Oppo.jpg", "Nokia.jpg", "Huawei.jpg", "Xiaomi.png",
@@ -58,12 +58,12 @@ window.onload = function () {
 		var green = ['#5de272', '#007012'];
 
 		// Thêm các khung sản phẩm
-		addKhungSanPham('ĐIỆN THOẠI NỔI BẬT NHẤT', yellow_red, ['star=3','sort=rateCount-decrease'], soLuong);
+		addKhungSanPham('NỔI BẬT NHẤT', yellow_red, ['star=3','sort=rateCount-decrease'], soLuong);
 		addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat','sort=rateCount-decrease'], soLuong);
 		addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop'], soLuong);
 		addKhungSanPham('GIÁ SỐC ONLINE', green, ['promo=giareonline'], soLuong);
 		addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong);
-		addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-2000000','sort=price'], soLuong);
+		addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-3000000','sort=price'], soLuong);
 	}
 
 	// Thêm chọn mức giá
@@ -99,9 +99,6 @@ window.onload = function () {
 
     // Cài đặt event cho phần tài khoản
     setupEventTaiKhoan();	
-
-	// check Localstorage
-	checkLocalStorage();
 };
 
 var soLuongSanPhamMaxTrongMotTrang = 15;
