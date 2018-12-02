@@ -15,7 +15,7 @@ window.onload = function () {
 }
 
 function addProductToTable(user) {
-	var table = document.getElementsByClassName('listSanPham')[0];;
+	var table = document.getElementsByClassName('listSanPham')[0];
 
 	var s = `
 		<tbody>
@@ -116,6 +116,7 @@ function thanhToan() {
 	if (window.confirm('Thanh toán giỏ hàng ?')) {
 		currentuser.donhang.push({
 			"sp": currentuser.products,
+			"ngaymua": new Date(),
 			"dangXuLy": true
 		});
 		currentuser.products = [];
