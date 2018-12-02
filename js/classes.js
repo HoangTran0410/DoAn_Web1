@@ -1,4 +1,4 @@
-function User(username, pass, ho, ten, email, products) {
+function User(username, pass, ho, ten, email, products, donhang) {
 	this.ho = ho || '';
 	this.ten = ten || '';
 	this.email = email || '';
@@ -6,6 +6,7 @@ function User(username, pass, ho, ten, email, products) {
 	this.username = username;
 	this.pass = pass;
 	this.products = products || [];
+	this.donhang = donhang || [];
 }
 
 function equalUser(u1, u2) {
