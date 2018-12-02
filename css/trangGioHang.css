@@ -109,19 +109,20 @@
 
 /* Nút thanh toán */
 .thanhtoan {
-    padding: 10px 15px;
     font-size: 1.5em;
+    padding: 10px 15px;
     font-weight: bold;
-    /* border: none; */
     background-color: rgb(197, 223, 199);
-    border-radius: 10px;
     cursor: pointer;
+    transition-duration: .2s;
+}
+.thanhtoan:hover {
+    background-color: #4CAF50; 
 }
 
 .xoaHet {
     border: none;
-    border-radius: 5px;
-    padding: 5px;
+    font-size: 1em;
     font-weight: bold;
     cursor: pointer;
 }
