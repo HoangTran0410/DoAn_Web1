@@ -135,17 +135,11 @@
 				font-weight: bold;
 				color: #565;
 				cursor: pointer;
-				-webkit-transition-duration: .3s;
-				     -o-transition-duration: .3s;
-				        transition-duration: .3s;
 			}
 			.tools-member a:hover > i {
 				border: 1px solid #fff;
 				background-color: rgb(161, 161, 161);
 				color: #fff;
-			}
-			.tools-member a:hover {
-				color: #000;
 			}
 
 			.tools-member i { /* icon */
@@ -166,8 +160,34 @@
 			}
 			/* Member */
 				.member {
+					position: relative;
 					float: left;
 					display: table-cell;
+				}
+				.member:hover > .menuMember{
+					z-index: 20;
+					transform: translateX(-40%) scale(1);
+				}
+				.member .menuMember {
+					position: absolute;
+					left: 0;
+					text-align: center;
+					border-radius: 5px;
+					background-color: #eee;
+					min-width: 170px;
+					transition-duration: .15s;
+					transform: translateX(-40%) scale(0);
+				}
+				.member .menuMember a {
+					display: block;
+					padding: 10px 0;
+				}
+				.member .menuMember a:hover {
+					background-color: #888;
+					color: #eee;
+				}
+				.member .hide {
+					display: none;
 				}
 			/* ======= End Member ======= */
 
@@ -175,8 +195,8 @@
 				.cart {
 					float: left;
 					display: table-cell;
-					border-left: 1px solid #bbb;
-					margin-left: 5px; 
+					/* border-left: 1px solid #bbb; */
+					margin: 0 15px; 
 					padding-left: 5px;
 				}
 				.cart-number {
@@ -197,7 +217,7 @@
 				}
 			/* ======= End Cart ======== */
 
-			/* Check Order */
+			/* Check Order - Đã loại bỏ */
 				.check-order {
 					float: left;
 					display: table-cell;
