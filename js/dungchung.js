@@ -126,11 +126,11 @@ function setListUser(l) {
 }
 
 // Sau khi chỉnh sửa 1 user 'u' thì cần hàm này để cập nhật lại vào ListUser
-function updateListUser(u) {
+function updateListUser(u, newData) {
     var list = getListUser();
     for (var i = 0; i < list.length; i++) {
         if (equalUser(u, list[i])) {
-            list[i] = u;
+            list[i] = (newData?newData:u);
         }
     }
     setListUser(list);

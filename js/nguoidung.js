@@ -1,3 +1,6 @@
+var currentUser;
+var tongTienTatCaDonHang = 0; // lưu tổng tiền từ tất cả các đơn hàng đã mua
+
 window.onload = function () {
     // autocomplete cho khung tim kiem
     autocomplete(document.getElementById('search-box'), list_products);
@@ -9,7 +12,87 @@ window.onload = function () {
     // Cài đặt event cho phần tài khoản
     setupEventTaiKhoan();
 
-    addTatCaDonHang(getCurrentUser());
+    currentUser = getCurrentUser();
+    addTatCaDonHang(currentUser); // hàm này cần chạy trước để tính được tổng tiền tất cả đơn hàng 
+    addInfoUser(currentUser);
+}
+
+function addInfoUser(user) {
+    document.getElementsByClassName('infoUser')[0].innerHTML = 
+    `<table>
+        <tr>
+            <td colspan="2"> <h3>Thông tin người dùng</h3> </td>
+        </tr>
+        <tr>
+            <td>Tài khoản:</td>
+            <td>`+user.username+`</td>
+            <td> 
+                <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> </button> 
+                <input type="text" onchange="changeInfo(this, 'username')">
+            </td>
+        </tr>
+        <tr>
+            <td>Họ tên: </td>
+            <td>`+(user.ho + ' ' + user.ten)+`</td>
+            <td> 
+                <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> </button> 
+                <input type="text" onchange="changeInfo(this, 'ten')">
+            </td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td>`+user.email+`</td>
+            <td> 
+                <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> </button> 
+                <input type="text" onchange="changeInfo(this, 'email')">
+            </td>
+        </tr>
+        <tr>
+            <td>Số lượng đơn hàng: </td>
+            <td>`+user.donhang.length+`</td>
+        </tr>
+        <tr>
+            <td>Tổng tiền đã mua: </td>
+            <td>`+numToString(tongTienTatCaDonHang)+`</td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td>
+                <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> Đổi mật khẩu </button> 
+                <input type="text" onchange="changeInfo(this, 'pass')">
+            </td>
+        </tr>
+    </table>`
+}
+
+function showInput(but) {
+    but.nextElementSibling.style.display = "inline";
+    but.nextElementSibling.focus();
+}
+
+function changeInfo(inp, info) {
+    var temp = copyObject(currentUser);
+
+    if(info == 'name') {
+        var s = inpt.value.split(' ');
+        currentUser.ten = s[s.length-1];
+        currentUser.ho = inp.value.replace(currentUser.ten, '').trim();
+    }else 
+        currentUser[info] = inp.value;
+
+    // cập nhật danh sách sản phẩm trong localstorage
+    setCurrentUser(currentUser);
+    updateListUser(temp, currentUser);
+
+    // Cập nhật trên header
+    capNhat_ThongTin_CurrentUser();
+
+
+    // Cập nhật lại bảng info
+    addInfoUser(currentUser);
+
+    // Ẩn input
+    inp.style.display = "none";
 }
 
 function addTatCaDonHang(user) {
@@ -77,9 +160,9 @@ function addDonHang(dh) {
                     <td style="text-align: center" >` + thoigian + `</td>
                 </tr>
             `;
-        // Chú ý nháy cho đúng ở giamsoluong, tangsoluong
         totalPrice += thanhtien;
     }
+    tongTienTatCaDonHang += totalPrice;
 
     s += `
                 <tr style="font-weight:bold; text-align:center; height: 4em;">
@@ -93,3 +176,4 @@ function addDonHang(dh) {
 
     div.innerHTML += s;
 }
+
