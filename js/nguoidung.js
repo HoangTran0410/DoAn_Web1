@@ -36,7 +36,7 @@ function addInfoUser(user) {
             <td>`+(user.ho + ' ' + user.ten)+`</td>
             <td> 
                 <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> </button> 
-                <input type="text" onchange="changeInfo(this, 'ten')">
+                <input type="text" onchange="changeInfo(this, 'name')">
             </td>
         </tr>
         <tr>
@@ -74,8 +74,9 @@ function changeInfo(inp, info) {
     var temp = copyObject(currentUser);
 
     if(info == 'name') {
-        var s = inpt.value.split(' ');
+        var s = inp.value.split(' ');
         currentUser.ten = s[s.length-1];
+        console.log(currentUser.ten)
         currentUser.ho = inp.value.replace(currentUser.ten, '').trim();
     }else 
         currentUser[info] = inp.value;
