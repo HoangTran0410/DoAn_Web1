@@ -44,16 +44,28 @@
 }
 
 /* Thay đổi mật khẩu */
+#khungDoiMatKhau {
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+#khungDoiMatKhau tr td {
+    padding: 0;
+}
 #khungDoiMatKhau tr td div {
     max-height: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     overflow: hidden;
-    transition: max-height 0.3s;
+    transition-duration: 0.3s;
 }
 
+/* active */
+#khungDoiMatKhau.active, #khungDoiMatKhau.active tr td {
+    padding: 5px 0;
+}
 #khungDoiMatKhau.active td div {
     max-height: 100px;
-    transition: max-height 0.6s;
+    transition-duration: 0.6s;
 }
 
 #khungDoiMatKhau button {

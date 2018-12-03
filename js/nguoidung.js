@@ -39,7 +39,7 @@ function addInfoUser(user) {
         </tr>
         <tr>
             <td colspan="3" id="khungDoiMatKhau">
-                <table style="border: 1px solid #555;">
+                <table>
                     <tr>
                         <td> <div>Mật khẩu cũ:</div> </td>
                         <td> <div><input type="password"></div> </td>
