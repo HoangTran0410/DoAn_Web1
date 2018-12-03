@@ -18,6 +18,7 @@ window.onload = function () {
 }
 
 function addInfoUser(user) {
+    if(!user) return;
     document.getElementsByClassName('infoUser')[0].innerHTML = 
     `<table>
         <tr>
@@ -56,43 +57,98 @@ function addInfoUser(user) {
             <td>`+numToString(tongTienTatCaDonHang)+`</td>
         </tr>
         <tr>
-            <td> </td>
-            <td>
-                <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> Đổi mật khẩu </button> 
-                <input type="text" onchange="changeInfo(this, 'pass')">
+            <td colspan="3">
+                <button onclick="showChangePass()"> <i class="fa fa-pencil"></i> Đổi mật khẩu </button> 
+                <div id="changepass" >
+                    <table>
+                        <tr> 
+                            <td>Mật khẩu cũ:</td>
+                            <td><input type="text" placeholder="Mật khẩu cũ"></td>
+                        <tr>
+                        <tr>
+                            <td>Mật khẩu mới:</td>
+                            <td><input type="pass" placeholder="Mật khẩu mới"></td>
+                        </tr>
+                        <tr>
+                            <td>Nhập lại mật khẩu:</td>
+                            <td><input type="pass" placeholder="Nhập lại mật khẩu"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button>Xác nhận</button></td>
+                        </tr>
+                    </table>
+                </div>
             </td>
         </tr>
     </table>`
 }
 
 function showInput(but) {
-    but.nextElementSibling.style.display = "inline";
-    but.nextElementSibling.focus();
+    var inp = but.nextElementSibling;
+
+    if(inp.style.display == 'none' || inp.style.display == '') {
+        inp.style.display = "inline";
+        inp.focus();
+    } else {
+        inp.style.display = 'none';
+    }
+}
+
+function showChangePass() {
+    var div = document.getElementById('changepass');
+    if(div.style.transform == 'scale(1)') {
+        div.style.transform = 'scale(0)';
+    } else {
+        div.style.transform = 'scale(1)';
+    }
 }
 
 function changeInfo(inp, info) {
-    var temp = copyObject(currentUser);
+    if(inp.value.trim() != '') {
+        var temp = copyObject(currentUser);
 
-    if(info == 'name') {
-        var s = inp.value.split(' ');
-        currentUser.ten = s[s.length-1];
-        console.log(currentUser.ten)
-        currentUser.ho = inp.value.replace(currentUser.ten, '').trim();
-    }else 
-        currentUser[info] = inp.value;
+        if(info == 'name') {
+            var s = inp.value.split(' ');
+            currentUser.ten = s[s.length-1];
+            currentUser.ho = inp.value.replace(currentUser.ten, '').trim();
+    
+        }else if(info == 'username') {
+            var users = getListUser();
+            for(var u of users) {
+                if(u.username == inp.value) {
+                    alert('Tên đã có người sử dụng !!');
+                    return;
+                }
+            }
+            currentUser.username = inp.value;
 
-    // cập nhật danh sách sản phẩm trong localstorage
-    setCurrentUser(currentUser);
-    updateListUser(temp, currentUser);
+        } else if(info == 'email') {
+            var users = getListUser();
+            for(var u of users) {
+                if(u.email == inp.value) {
+                    alert('Email đã có người sử dụng !!');
+                    return;
+                }
+            }
+            currentUser.email = inp.value;
 
-    // Cập nhật trên header
-    capNhat_ThongTin_CurrentUser();
+        } else currentUser[info] = inp.value;
 
-
-    // Cập nhật lại bảng info
-    addInfoUser(currentUser);
-
+    
+        // cập nhật danh sách sản phẩm trong localstorage
+        setCurrentUser(currentUser);
+        updateListUser(temp, currentUser);
+    
+        // Cập nhật trên header
+        capNhat_ThongTin_CurrentUser();
+    
+    
+        // Cập nhật lại bảng info
+        addInfoUser(currentUser);
+    }
+    
     // Ẩn input
+    inp.value = '';
     inp.style.display = "none";
 }
 
@@ -107,7 +163,7 @@ function addTatCaDonHang(user) {
     if(!user.donhang.length) {
         document.getElementsByClassName('listDonHang')[0].innerHTML = `
             <h3 style="width=100%; padding: 50px; color: green; font-size: 2em; text-align: center"> 
-                Xin chào. Bạn chưa có đơn hàng nào.
+                Xin chào `+currentUser.username+`. Bạn chưa có đơn hàng nào.
             </h3>`;
         return;
     }

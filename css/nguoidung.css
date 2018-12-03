@@ -1,7 +1,16 @@
-.listDonHang {
-    /* display: none; */
+/* .listDonHang {
+    display: none;
+} */
+
+.infoUser table {
+    margin: 0 auto;
 }
 
-.infoUser table tr input {
+.infoUser > table > tbody > tr > td > input {
     display: none;
+}
+
+#changepass {
+    transform: scale(0);
+    transition-duration: .2s; 
 }
