@@ -3,14 +3,66 @@
 } */
 
 .infoUser table {
+    border-collapse: collapse;
     margin: 0 auto;
 }
 
-.infoUser > table > tbody > tr > td > input {
-    display: none;
+.infoUser table th {
+    font-size: 26px;
+    font-weight: bold;
+    padding: 10px 5px;
 }
 
-#changepass {
-    transform: scale(0);
-    transition-duration: .2s; 
+.infoUser table td {
+    font-size: 18px;
+}
+
+.infoUser input {
+    font-size: 20px;
+    border-radius: 5px;
+    text-align: center;
+    transition-duration: .15s;
+    border: 1px solid #aaa;
+}
+
+.infoUser input:read-only {
+    border: 1px solid transparent;
+}
+
+/* Nút sửa thông tin */
+.infoUser .fa-pencil {
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 7px;
+    transition-duration: .2s;
+    cursor: pointer;
+}
+
+.infoUser .fa-pencil:hover {
+    background-color: #ccc;
+    color: #444;
+}
+
+/* Thay đổi mật khẩu */
+#khungDoiMatKhau tr td div {
+    max-height: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: max-height 0.3s;
+}
+
+#khungDoiMatKhau.active td div {
+    max-height: 100px;
+    transition: max-height 0.6s;
+}
+
+#khungDoiMatKhau button {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+#khungDoiMatKhau button:hover {
+    background-color: rgb(120, 212, 120);
 }

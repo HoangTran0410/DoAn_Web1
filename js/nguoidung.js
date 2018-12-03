@@ -19,121 +19,164 @@ window.onload = function () {
 
 function addInfoUser(user) {
     if(!user) return;
-    document.getElementsByClassName('infoUser')[0].innerHTML = 
-    `<table>
+    document.getElementsByClassName('infoUser')[0].innerHTML = `
+    <hr>
+    <table>
         <tr>
-            <td colspan="2"> <h3>Thông tin người dùng</h3> </td>
+            <th colspan="3">THÔNG TIN KHÁCH HÀNG</th>
         </tr>
         <tr>
-            <td>Tài khoản:</td>
-            <td>`+user.username+`</td>
-            <td> 
-                <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> </button> 
-                <input type="text" onchange="changeInfo(this, 'username')">
+            <td>Tài khoản: </td>
+            <td> <input type="text" value="`+user.username+`"  onchange="changeInfo(this, 'username')" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick='showInput(this)'></i> </td>
+        </tr>
+        <tr>
+            <td>Mật khẩu: </td>
+            <td style="text-align: center;"> 
+                <i class="fa fa-pencil" id="butDoiMatKhau" onclick="openChangePass()"> Đổi mật khẩu</i> 
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3" id="khungDoiMatKhau">
+                <table style="border: 1px solid #555;">
+                    <tr>
+                        <td> <div>Mật khẩu cũ:</div> </td>
+                        <td> <div><input type="password"></div> </td>
+                    </tr>
+                    <tr>
+                        <td> <div>Mật khẩu mới:</div> </td>
+                        <td> <div><input type="password"></div> </td>
+                    </tr>
+                    <tr>
+                        <td> <div>Xác nhận mật khẩu:</div> </td>
+                        <td> <div><input type="password"></div> </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td> 
+                            <div><button onclick="changePass()">Đồng ý</button></div> 
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
-            <td>Họ tên: </td>
-            <td>`+(user.ho + ' ' + user.ten)+`</td>
-            <td> 
-                <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> </button> 
-                <input type="text" onchange="changeInfo(this, 'name')">
-            </td>
+            <td>Họ: </td>
+            <td> <input type="text" value="`+user.ho+`"  onchange="changeInfo(this, 'ho')" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick='showInput(this)'></i> </td>
+        </tr>
+        <tr>
+            <td>Tên: </td>
+            <td> <input type="text" value="`+user.ten+`"  onchange="changeInfo(this, 'ten')" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick='showInput(this)'></i> </td>
         </tr>
         <tr>
             <td>Email: </td>
-            <td>`+user.email+`</td>
-            <td> 
-                <button onclick="showInput(this)"> <i class="fa fa-pencil"></i> </button> 
-                <input type="text" onchange="changeInfo(this, 'email')">
-            </td>
-        </tr>
-        <tr>
-            <td>Số lượng đơn hàng: </td>
-            <td>`+user.donhang.length+`</td>
+            <td> <input type="text" value="`+user.email+`"  onchange="changeInfo(this, 'email')" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick='showInput(this)'></i> </td>
         </tr>
         <tr>
             <td>Tổng tiền đã mua: </td>
-            <td>`+numToString(tongTienTatCaDonHang)+`</td>
+            <td> <input type="text" value="`+numToString(tongTienTatCaDonHang)+` ₫" readonly> </td>
+            <td></td>
         </tr>
-        <tr>
-            <td colspan="3">
-                <button onclick="showChangePass()"> <i class="fa fa-pencil"></i> Đổi mật khẩu </button> 
-                <div id="changepass" >
-                    <table>
-                        <tr> 
-                            <td>Mật khẩu cũ:</td>
-                            <td><input type="text" placeholder="Mật khẩu cũ"></td>
-                        <tr>
-                        <tr>
-                            <td>Mật khẩu mới:</td>
-                            <td><input type="pass" placeholder="Mật khẩu mới"></td>
-                        </tr>
-                        <tr>
-                            <td>Nhập lại mật khẩu:</td>
-                            <td><input type="pass" placeholder="Nhập lại mật khẩu"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><button>Xác nhận</button></td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-    </table>`
+    </table>`;
 }
 
-function showInput(but) {
-    var inp = but.nextElementSibling;
+function openChangePass() {
+    var khungChangePass = document.getElementById('khungDoiMatKhau');
+    var actived = khungChangePass.classList.contains('active');
+    if(actived) khungChangePass.classList.remove('active');
+    else khungChangePass.classList.add('active');
+}
 
-    if(inp.style.display == 'none' || inp.style.display == '') {
-        inp.style.display = "inline";
-        inp.focus();
-    } else {
-        inp.style.display = 'none';
+function changePass() {
+    var khungChangePass = document.getElementById('khungDoiMatKhau');
+    var inps = khungChangePass.getElementsByTagName('input');
+    if(inps[0].value != currentUser.pass) {
+        alert('Sai mật khẩu !!');
+        inps[0].focus();
+        return;
     }
+    if(inps[1] == '') {
+        inps[1].focus();
+        alert('Chưa nhập mật khẩu mới !');
+    }
+    if(inps[1].value != inps[2].value) {
+        alert('Mật khẩu không khớp');
+        inps[2].focus();
+        return;
+    }
+
+    var temp = copyObject(currentUser);
+    currentUser.pass = inps[1].value;
+        
+    // cập nhật danh sách sản phẩm trong localstorage
+    setCurrentUser(currentUser);
+    updateListUser(temp, currentUser);
+
+    // Cập nhật trên header
+    capNhat_ThongTin_CurrentUser();
+
+    // thông báo
+    addAlertBox('Thay đổi mật khẩu thành công.', '#5f5', '#000');
+    openChangePass();
 }
 
-function showChangePass() {
-    var div = document.getElementById('changepass');
-    if(div.style.transform == 'scale(1)') {
-        div.style.transform = 'scale(0)';
+function showInput(iTag, inp, action) {
+    if(!inp) {
+        inp = iTag.parentElement.previousElementSibling.getElementsByTagName('input')[0];
+    }
+    if(!action) {
+        inp.readOnly = !inp.readOnly;
     } else {
-        div.style.transform = 'scale(1)';
+        inp.readOnly = (action=='hide');
+    }
+
+    if(!inp.readOnly) {
+        inp.focus(); // focus
+        // go to end of input
+        var val = inp.value;
+        inp.value = ''; 
+        inp.value = val;
+
+        if(iTag) iTag.innerHTML = 'Đồng ý';
+
+    } else {
+        // blur
+        inp.blur();
+
+        if(iTag) iTag.innerHTML = '';
     }
 }
 
 function changeInfo(inp, info) {
-    if(inp.value.trim() != '') {
-        var temp = copyObject(currentUser);
+    if(inp.value != '') {
 
-        if(info == 'name') {
-            var s = inp.value.split(' ');
-            currentUser.ten = s[s.length-1];
-            currentUser.ho = inp.value.replace(currentUser.ten, '').trim();
-    
-        }else if(info == 'username') {
+        if(info == 'username') {
             var users = getListUser();
             for(var u of users) {
                 if(u.username == inp.value) {
                     alert('Tên đã có người sử dụng !!');
+                    inp.value = currentUser.username; 
                     return;
                 }
             }
-            currentUser.username = inp.value;
 
         } else if(info == 'email') {
             var users = getListUser();
             for(var u of users) {
                 if(u.email == inp.value) {
                     alert('Email đã có người sử dụng !!');
+                    inp.value = currentUser.email;
                     return;
                 }
             }
-            currentUser.email = inp.value;
+        } 
 
-        } else currentUser[info] = inp.value;
-
+        var temp = copyObject(currentUser);
+        currentUser[info] = inp.value;
     
         // cập nhật danh sách sản phẩm trong localstorage
         setCurrentUser(currentUser);
@@ -141,15 +184,11 @@ function changeInfo(inp, info) {
     
         // Cập nhật trên header
         capNhat_ThongTin_CurrentUser();
-    
-    
-        // Cập nhật lại bảng info
-        addInfoUser(currentUser);
     }
     
     // Ẩn input
-    inp.value = '';
-    inp.style.display = "none";
+    inp.readOnly = true;
+    var itag = inp.parentElement.nextElementSibling.getElementsByTagName('i')[0].innerHTML = '';
 }
 
 function addTatCaDonHang(user) {
@@ -233,4 +272,3 @@ function addDonHang(dh) {
 
     div.innerHTML += s;
 }
-
