@@ -120,7 +120,7 @@ function changePass() {
     capNhat_ThongTin_CurrentUser();
 
     // thông báo
-    addAlertBox('Thay đổi mật khẩu thành công.', '#5f5', '#000');
+    addAlertBox('Thay đổi mật khẩu thành công.', '#5f5', '#000', 4000);
     openChangePass();
 }
 
