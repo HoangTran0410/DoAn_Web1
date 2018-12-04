@@ -27,8 +27,8 @@ function addInfoUser(user) {
         </tr>
         <tr>
             <td>Tài khoản: </td>
-            <td> <input type="text" value="`+user.username+`"  onchange="changeInfo(this, 'username')" readonly> </td>
-            <td> <i class="fa fa-pencil" onclick='showInput(this)'></i> </td>
+            <td> <input type="text" value="`+user.username+`" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick="changeInfo(this, 'username')"></i> </td>
         </tr>
         <tr>
             <td>Mật khẩu: </td>
@@ -63,18 +63,18 @@ function addInfoUser(user) {
         </tr>
         <tr>
             <td>Họ: </td>
-            <td> <input type="text" value="`+user.ho+`"  onchange="changeInfo(this, 'ho')" readonly> </td>
-            <td> <i class="fa fa-pencil" onclick='showInput(this)'></i> </td>
+            <td> <input type="text" value="`+user.ho+`" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick="changeInfo(this, 'ho')"></i> </td>
         </tr>
         <tr>
             <td>Tên: </td>
-            <td> <input type="text" value="`+user.ten+`"  onchange="changeInfo(this, 'ten')" readonly> </td>
-            <td> <i class="fa fa-pencil" onclick='showInput(this)'></i> </td>
+            <td> <input type="text" value="`+user.ten+`" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick="changeInfo(this, 'ten')"></i> </td>
         </tr>
         <tr>
             <td>Email: </td>
-            <td> <input type="text" value="`+user.email+`"  onchange="changeInfo(this, 'email')" readonly> </td>
-            <td> <i class="fa fa-pencil" onclick='showInput(this)'></i> </td>
+            <td> <input type="text" value="`+user.email+`" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick="changeInfo(this, 'email')"></i> </td>
         </tr>
         <tr>
             <td>Tổng tiền đã mua: </td>
@@ -124,40 +124,16 @@ function changePass() {
     openChangePass();
 }
 
-function showInput(iTag, inp, action) {
-    if(!inp) {
-        inp = iTag.parentElement.previousElementSibling.getElementsByTagName('input')[0];
-    }
-    if(!action) {
-        inp.readOnly = !inp.readOnly;
-    } else {
-        inp.readOnly = (action=='hide');
-    }
+function changeInfo(iTag, info) {
+    var inp =  iTag.parentElement.previousElementSibling.getElementsByTagName('input')[0];
 
-    if(!inp.readOnly) {
-        inp.focus(); // focus
-        // go to end of input
-        var val = inp.value;
-        inp.value = ''; 
-        inp.value = val;
-
-        if(iTag) iTag.innerHTML = 'Đồng ý';
-
-    } else {
-        // blur
-        inp.blur();
-
-        if(iTag) iTag.innerHTML = '';
-    }
-}
-
-function changeInfo(inp, info) {
-    if(inp.value != '') {
+    // Đang hiện
+    if(!inp.readOnly && inp.value != '') {
 
         if(info == 'username') {
             var users = getListUser();
             for(var u of users) {
-                if(u.username == inp.value) {
+                if(u.username == inp.value && u.username != currentUser.username) {
                     alert('Tên đã có người sử dụng !!');
                     inp.value = currentUser.username; 
                     return;
@@ -167,7 +143,7 @@ function changeInfo(inp, info) {
         } else if(info == 'email') {
             var users = getListUser();
             for(var u of users) {
-                if(u.email == inp.value) {
+                if(u.email == inp.value && u.username != currentUser.username) {
                     alert('Email đã có người sử dụng !!');
                     inp.value = currentUser.email;
                     return;
@@ -184,11 +160,13 @@ function changeInfo(inp, info) {
     
         // Cập nhật trên header
         capNhat_ThongTin_CurrentUser();
+
+        iTag.innerHTML = '';
+    } else {
+        iTag.innerHTML = 'Đồng ý';
     }
-    
-    // Ẩn input
-    inp.readOnly = true;
-    var itag = inp.parentElement.nextElementSibling.getElementsByTagName('i')[0].innerHTML = '';
+
+    inp.readOnly = !inp.readOnly;
 }
 
 function addTatCaDonHang(user) {

@@ -89,7 +89,6 @@ hr {
     float: right;
     font-size: 22px;
     line-height: 20px;
-    cursor: pointer;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;

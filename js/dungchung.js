@@ -209,14 +209,7 @@ function showTaiKhoan(show) {
 // Check xem có ai đăng nhập hay chưa (CurrentUser có hay chưa)
 // Hàm này chạy khi ấn vào nút tài khoản trên header
 function checkTaiKhoan() {
-    if (getCurrentUser()) {
-        // if (window.confirm('Bạn muốn đăng xuất ?')) {
-        //     logOut();
-        //     location.reload();
-        // }
-        // window.location.assign('nguoidung.html')
-
-    } else {
+    if (!getCurrentUser()) {
         showTaiKhoan(true);
     }
 }
