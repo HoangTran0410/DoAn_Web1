@@ -83,7 +83,7 @@ function addInfoUser(user) {
         </tr>
         <tr>
             <td>Tổng tiền đã mua: </td>
-            <td> <input type="text" value="`+numToString(tongTienTatCaDonHang)+` ₫" readonly> </td>
+            <td> <input type="text" value="`+numToString(tongTienTatCaDonHang)+`₫" readonly> </td>
             <td></td>
         </tr>
         <tr>
@@ -149,6 +149,14 @@ function changeInfo(iTag, info) {
                     return;
                 }
             }
+            // Đổi tên trong list đơn hàng
+            if(!currentUser.donhang.length) {
+                document.getElementsByClassName('listDonHang')[0].innerHTML = `
+                    <h3 style="width=100%; padding: 50px; color: green; font-size: 2em; text-align: center"> 
+                        Xin chào `+inp.value+`. Bạn chưa có đơn hàng nào.
+                    </h3>`;
+            }
+
 
         } else if(info == 'email') {
             var users = getListUser();

@@ -16,6 +16,10 @@
 .infoUser table td {
     font-size: 18px;
 }
+.infoUser table td:first-child {
+    font-weight: bold;
+    text-align: right;
+}
 
 .infoUser input {
     font-size: 20px;
