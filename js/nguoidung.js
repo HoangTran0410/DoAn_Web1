@@ -1,5 +1,6 @@
 var currentUser;
 var tongTienTatCaDonHang = 0; // lưu tổng tiền từ tất cả các đơn hàng đã mua
+var tongSanPhamTatCaDonHang = 0;
 
 window.onload = function () {
     // autocomplete cho khung tim kiem
@@ -17,6 +18,7 @@ window.onload = function () {
     addInfoUser(currentUser);
 }
 
+// Phần Thông tin người dùng
 function addInfoUser(user) {
     if(!user) return;
     document.getElementsByClassName('infoUser')[0].innerHTML = `
@@ -77,8 +79,16 @@ function addInfoUser(user) {
             <td> <i class="fa fa-pencil" onclick="changeInfo(this, 'email')"></i> </td>
         </tr>
         <tr>
+            <td colspan="3" style="padding:5px; border-top: 2px solid #ccc;"></td>
+        </tr>
+        <tr>
             <td>Tổng tiền đã mua: </td>
             <td> <input type="text" value="`+numToString(tongTienTatCaDonHang)+` ₫" readonly> </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Số lượng sản phẩm đã mua: </td>
+            <td> <input type="text" value="`+tongSanPhamTatCaDonHang+`" readonly> </td>
             <td></td>
         </tr>
     </table>`;
@@ -169,6 +179,8 @@ function changeInfo(iTag, info) {
     inp.readOnly = !inp.readOnly;
 }
 
+
+// Phần thông tin đơn hàng
 function addTatCaDonHang(user) {
     if(!user) {
         document.getElementsByClassName('listDonHang')[0].innerHTML = `
@@ -235,6 +247,7 @@ function addDonHang(dh) {
                 </tr>
             `;
         totalPrice += thanhtien;
+        tongSanPhamTatCaDonHang += soluongSp;
     }
     tongTienTatCaDonHang += totalPrice;
 
