@@ -98,7 +98,7 @@ window.onload = function () {
 	addAllChoosedFilter();
 
     // Cài đặt event cho phần tài khoản
-    setupEventTaiKhoan();	
+	setupEventTaiKhoan();
 };
 
 var soLuongSanPhamMaxTrongMotTrang = 15;

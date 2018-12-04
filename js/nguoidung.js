@@ -180,8 +180,11 @@ function changeInfo(iTag, info) {
         capNhat_ThongTin_CurrentUser();
 
         iTag.innerHTML = '';
+
     } else {
         iTag.innerHTML = 'Đồng ý';
+        inp.focus();
+        var v = inp.value; inp.value = ''; inp.value = v;
     }
 
     inp.readOnly = !inp.readOnly;
