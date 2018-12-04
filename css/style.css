@@ -130,21 +130,20 @@ hr {
 
 /* ========= ScrollBar ============ */
 ::-webkit-scrollbar {
-    width: 0px;
-    height: 7px;
+    width: .7em;
+    height: .7em;
 }
 
 ::-webkit-scrollbar-track {
-    background: #444;
+    background: #eee;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #999;
-    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #ccc;
+    background: #bbb;
 }
 
 /* ==================== css thêm , chưa sử dụng ========================= */
