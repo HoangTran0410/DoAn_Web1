@@ -21,6 +21,7 @@
 			line-height: 2em;
 			color: gray;
 			background-color: #f1f1f1;
+			transition-duration: .2s;
 		}
 		/* hightlight icon fb, google, youtube .... when hover */
 		.social-top-nav a:hover { color: #fff; }
