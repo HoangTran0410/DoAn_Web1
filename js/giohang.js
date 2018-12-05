@@ -75,9 +75,9 @@ function addProductToTable(user) {
 				</td>
 				<td class="alignRight">` + price + ` ₫</td>
 				<td class="soluong" >
-					<button class="boxShadow" onclick="giamSoLuong('` + nameSp + `')">-</button>
+					<button onclick="giamSoLuong('` + nameSp + `')"><i class="fa fa-minus"></i></button>
 					<input size="1" onchange="capNhatSoLuongFromInput(this, '` + nameSp + `')" value=` + soluongSp + `>
-					<button class="boxShadow" onclick="tangSoLuong('` + nameSp + `')">+</button>
+					<button onclick="tangSoLuong('` + nameSp + `')"><i class="fa fa-plus"></i></button>
 				</td>
 				<td class="alignRight">` + numToString(thanhtien) + ` ₫</td>
 				<td style="text-align: center" >` + thoigian + `</td>

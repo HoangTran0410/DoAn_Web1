@@ -74,12 +74,15 @@
     text-align: center;
 }
 .listSanPham .soluong button {
-    width: 2em;
-    height: 2em;
-    font-size: 1em;
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    background-color: rgb(182, 211, 206); 
+    background-color: transparent; 
+}
+.listSanPham .soluong button:hover {
+    background-color: #4CAF50; 
 }
 .listSanPham .soluong input {
     border: none;
