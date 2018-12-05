@@ -97,21 +97,26 @@ hr {
 /* ===== End clear float ====== */
 
 #goto-top-page {
-    bottom: 15px;
     position: fixed;
+    bottom: 15px;
     right: 15px;
-    z-index: 9;
-    /* display: none; */
-    background: rgba(0, 0, 0, .6);
+    z-index: 100;
+    background: rgba(0, 0, 0, .2);
     color: #fff;
     font-size: 18px;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    line-height: 29px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     cursor: pointer;
-    font-family: Consolas, monospace;
+    transition-duration: .2s;
+}
+#goto-top-page:hover {
+    background: rgba(0, 0, 0, .7);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
 }
 
 @keyframes sonar {
