@@ -48,8 +48,11 @@
 		}
 		.top-nav-quicklink li a:hover {
 			padding-top: 4px; 
-			border-bottom: 4px solid red;
+			border-bottom: 4px solid #000;
 			color: #000;
+		}
+		.top-nav-quicklink li a:hover i {
+			color: Tomato;
 		}
 	/* ======= End quick link ======= */
 /* ======= End Top navigation ======= */
