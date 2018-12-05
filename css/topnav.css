@@ -16,9 +16,9 @@
 			padding: 5px;
 			text-align: center;
 			font-size: 13px;
-			height: 1.5em;
-			width: 1.5em;
-			line-height: 1.5em;
+			height: 2em;
+			width: 2em;
+			line-height: 2em;
 			color: gray;
 			background-color: #f1f1f1;
 		}
@@ -36,18 +36,19 @@
 		}
 		.top-nav-quicklink li {
 			display: inline-block;
-			font-size: .9em;
+			font-size: 1em;
 			color: gray;
 		}
 		.top-nav-quicklink li a {
 			display: block;
 			color: gray;
-			padding: 6px 15px;
-			transition-duration: .2s;
+			padding: 8px 15px;
+			transition-duration: .15s;
 		}
 		.top-nav-quicklink li a:hover {
-			color: red;
-			padding: 10px 15px 2px;
+			padding-top: 4px; 
+			border-bottom: 4px solid red;
+			color: #000;
 		}
 	/* ======= End quick link ======= */
 /* ======= End Top navigation ======= */
