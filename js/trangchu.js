@@ -1,4 +1,5 @@
 window.onload = function () {
+	khoiTao();
 
 	// Thêm hình vào banner
 	addBanner("img/banners/banner0.gif", "img/banners/banner0.gif");
@@ -96,9 +97,6 @@ window.onload = function () {
 
 	// Thêm filter đã chọn
 	addAllChoosedFilter();
-
-    // Cài đặt event cho phần tài khoản
-	setupEventTaiKhoan();
 };
 
 var soLuongSanPhamMaxTrongMotTrang = 15;

@@ -3,6 +3,8 @@ var nameProduct; // Tên sản phẩm trong trang này,
 // không cần tính toán lấy tên từ url nhiều lần
 
 window.onload = function () {
+    khoiTao();
+
     // thêm tags (từ khóa) vào khung tìm kiếm
     var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
     for (var t of tags) addTags(t, "index.html?search=" + t, true);
@@ -11,9 +13,6 @@ window.onload = function () {
 
     // autocomplete cho khung tim kiem
     autocomplete(document.getElementById('search-box'), list_products);
-
-    // Cài đặt event cho phần tài khoản
-    setupEventTaiKhoan();
 }
 
 function phanTich_URL_chiTietSanPham() {

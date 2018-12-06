@@ -160,6 +160,7 @@
 			color: rgb(163, 161, 161);
 			background: none;
 			transition-duration: .2s;
+			cursor: pointer;
 		}
 		.themvaogio:hover {
 			color: black;

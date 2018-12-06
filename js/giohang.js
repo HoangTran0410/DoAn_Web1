@@ -1,14 +1,13 @@
 var currentuser; // user hiện tại, biến toàn cục
 window.onload = function () {
+    khoiTao();
+
 	// autocomplete cho khung tim kiem
 	autocomplete(document.getElementById('search-box'), list_products);
 
 	// thêm tags (từ khóa) vào khung tìm kiếm
 	var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
 	for (var t of tags) addTags(t, "index.html?search=" + t)
-
-	// Cài đặt event cho phần tài khoản
-	setupEventTaiKhoan();
 
 	currentuser = getCurrentUser();
 	addProductToTable(currentuser);
@@ -58,7 +57,7 @@ function addProductToTable(user) {
 	var totalPrice = 0;
 	for (var i = 0; i < user.products.length; i++) {
 		var nameSp = user.products[i].name;
-		var soluongSp = getSoLuongSanPhamTrongUser(nameSp, user);
+		var soluongSp = user.products[i].soluong;
 		var p = timKiemTheoTen(list_products, nameSp)[0];
 		var price = (p.promo.name == 'giareonline' ? p.promo.value : p.price);
 		var thoigian = new Date(user.products[i].date).toLocaleString();
@@ -110,7 +109,7 @@ function xoaSanPhamTrongGioHang(i) {
 
 function thanhToan() {
 	if (!currentuser.products.length) {
-		addAlertBox('Không có mặt hàng nào cần thanh toán !!', '#f55', '#000', 2000);
+		addAlertBox('Không có mặt hàng nào cần thanh toán !!', '#ffb400', '#fff', 2000);
 		return;
 	}
 	if (window.confirm('Thanh toán giỏ hàng ?')) {
@@ -121,7 +120,7 @@ function thanhToan() {
 		});
 		currentuser.products = [];
 		capNhatMoiThu();
-		addAlertBox('Các sản phẩm đã được gửi vào đơn hàng và chờ xử lý.', '#4a5', '#fff', 4000);
+		addAlertBox('Các sản phẩm đã được gửi vào đơn hàng và chờ xử lý.', '#17c671', '#fff', 4000);
 	}
 }
 

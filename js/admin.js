@@ -1,11 +1,20 @@
-// ========= Các hàm liên quan tới danh sách sản phẩm =========
-// Localstorage cho dssp: 'ListProducts_Storage
-function setListProducts(newList) {
-    window.localStorage.setItem('ListProducts_Storage', newList);
+
+window.onload = function() {
+    // get data từ localstorage
+    list_products = getListProducts() || list_products;
+    adminInfo = getListAdmin() || adminInfo;
+
+    if(window.localStorage.getItem('admin')) {
+
+    } else {
+        document.body.innerHTML = `<h1 style="color:red; with:100%; text-align:center;"> Truy cập bị từ chối.. </h1>`;
+    }
 }
-function getListProducts() {
-    return JSON.parse(window.localStorage.getItem('ListProducts_Storage'));
+
+function logOutAdmin() {
+    window.localStorage.removeItem('admin');
 }
+
 function themSanPham(sp) { // sp ở dạng object
     // Lấy dữ liệu ra đổ vào listSpLocal 
     var listSpLocal =  getListProducts();
@@ -39,7 +48,7 @@ function suaSanPham(sp) {
     // Lấy dữ liệu ra đổ vào listSpLocal 
     var listSpLocal =  getListProducts();
 
-    // Xóa
+    // Sửa
 
     // Đổ ngược trở lại localstorage
     setListProducts(listSpLocal);

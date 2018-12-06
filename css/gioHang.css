@@ -8,10 +8,59 @@
 /* thêm border và padding cho th */
 .listSanPham th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
 }
 .listSanPham td {
     border: 1px solid #ddd;
+}
+
+/* Đổi màu button khi hover vào tr */
+.listSanPham tr:hover td button {
+    background-color: rgb(176, 212, 177)
+}
+
+/* Canh giữa cho cột stt và th */
+.listSanPham tr td:first-child, .listSanPham tr th {
+	text-align: center;
+}
+
+/* những tr chẵn sẽ có màu khác */
+.listSanPham tr:nth-of-type(even) {background-color: #f2f2f2;}
+
+/* Dòng tổng tiền thanh toán sẽ có màu đậm hơn */
+.listSanPham tr:not(:last-child):hover {background-color: #e5e2e2;}
+
+/* Last child là dòng tổng tiền */
+.listSanPham tr:last-child { background-color: #aaa; }
+
+/* Số lượng */
+.listSanPham .soluong {
+    text-align: center;
+}
+.listSanPham .soluong button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent; 
+}
+.listSanPham .soluong button:hover {
+    background-color: #4CAF50; 
+}
+.listSanPham .soluong input {
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    width: 5em;
+    height: 2em;
 }
 
 /* Link sản phẩm */
@@ -47,53 +96,7 @@
     padding-right: 30px;  
 }
 
-/* Canh giữa cho cột stt và th */
-.listSanPham tr td:first-child, .listSanPham tr th {
-	text-align: center;
-}
 
-/* những tr chẵn sẽ có màu khác */
-.listSanPham tr:nth-of-type(even) {background-color: #f2f2f2;}
-
-/* Dòng tổng tiền thanh toán sẽ có màu đậm hơn */
-.listSanPham tr:not(:last-child):hover {background-color: #d9d9d9;}
-
-/* Last child là dòng tổng tiền */
-.listSanPham tr:last-child { background-color: #aaa; }
-
-.listSanPham th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-}
-
-/* Số lượng */
-.listSanPham .soluong {
-    text-align: center;
-}
-.listSanPham .soluong button {
-    width: 30px;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: transparent; 
-}
-.listSanPham .soluong button:hover {
-    background-color: #4CAF50; 
-}
-.listSanPham .soluong input {
-    border: none;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    width: 5em;
-    height: 2em;
-}
 
 /* Nút xóa */
 .fa-trash {
@@ -131,17 +134,4 @@
 }
 .xoaHet:hover {
     background-color: rgb(224, 65, 65);
-}
-
-/* Hiệu ứng bóng đổ hover */
-.boxShadow {
-    transition-duration: .2s;
-}
-.boxShadow:hover {
-    box-shadow: 4px 8px 15px #888888;
-    background-color: #4CAF50; 
-}
-.boxShadow:active {
-    box-shadow: none;
-    transition-duration: 0s;    
 }

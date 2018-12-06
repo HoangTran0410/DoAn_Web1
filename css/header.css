@@ -14,6 +14,10 @@
 			width: 250px;
 			height: 60px;
 			float: left;
+			transition-duration: .1s;
+		}
+		.header .logo:hover {
+			transform: scale(1.05)
 		}
 		.header .logo img {
 			width: 100%;

@@ -3,15 +3,14 @@ var tongTienTatCaDonHang = 0; // lưu tổng tiền từ tất cả các đơn h
 var tongSanPhamTatCaDonHang = 0;
 
 window.onload = function () {
+    khoiTao();
+    
     // autocomplete cho khung tim kiem
     autocomplete(document.getElementById('search-box'), list_products);
 
     // thêm tags (từ khóa) vào khung tìm kiếm
     var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Mobi"];
     for (var t of tags) addTags(t, "index.html?search=" + t);
-
-    // Cài đặt event cho phần tài khoản
-    setupEventTaiKhoan();
 
     currentUser = getCurrentUser();
     addTatCaDonHang(currentUser); // hàm này cần chạy trước để tính được tổng tiền tất cả đơn hàng 

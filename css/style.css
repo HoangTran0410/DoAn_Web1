@@ -119,20 +119,6 @@ hr {
     line-height: 50px;
 }
 
-@keyframes sonar {
-    0% {
-        opacity: 1;
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
-
-    100% {
-        -webkit-transform: scale(3);
-        transform: scale(3);
-        opacity: 0
-    }
-}
-
 /* ========= ScrollBar ============ */
 ::-webkit-scrollbar {
     width: .7em;
@@ -219,4 +205,18 @@ hr {
     animation-timing-function: linear;
     display: block;
     margin: -1px 0 0 -1px;
+}
+
+@keyframes sonar {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    100% {
+        -webkit-transform: scale(3);
+        transform: scale(3);
+        opacity: 0
+    }
 }

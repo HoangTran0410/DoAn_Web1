@@ -1,3 +1,36 @@
+var adminInfo = [{
+    "username" : "admin",
+    "pass" : "adadad"
+}];
+
+function getListAdmin() {
+    return JSON.parse(window.localStorage.getItem('ListAdmin'));
+}
+function setListAdmin(l) {
+    window.localStorage.setItem('ListAdmin', JSON.stringify(l));
+}
+
+
+// Hàm khởi tạo, tất cả các trang đều cần
+function khoiTao() {
+    // get data từ localstorage
+    list_products = getListProducts() || list_products;
+    adminInfo = getListAdmin() || adminInfo;
+
+    setupEventTaiKhoan();
+    capNhat_ThongTin_CurrentUser();
+    addEventCloseAlertButton();
+}
+
+// ========= Các hàm liên quan tới danh sách sản phẩm =========
+// Localstorage cho dssp: 'ListProducts
+function setListProducts(newList) {
+    window.localStorage.setItem('ListProducts', JSON.stringify(newList));
+}
+function getListProducts() {
+    return JSON.parse(window.localStorage.getItem('ListProducts'));
+}
+
 function timKiemTheoTen(list, ten, soluong) {
     var tempList = copyObject(list);
     var result = [];
@@ -91,7 +124,7 @@ function themVaoGioHang(tenSanPham) {
     }
 
     animateCartNumber();
-    addAlertBox('Đã thêm '+ tenSanPham +' vào giỏ.', '#14ba48', '#000', 3500);
+    addAlertBox('Đã thêm '+ tenSanPham +' vào giỏ.', '#17c671', '#fff', 3500);
     
     setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
     updateListUser(user); // cập nhật list user
@@ -157,6 +190,16 @@ function logIn(form) {
         }
     }
 
+    // Đăng nhập vào admin
+    for(var ad of adminInfo) {
+        if(equalUser(newUser, ad)) {
+            alert('Xin chào admin .. ');
+            window.localStorage.setItem('admin', true);
+            window.location.assign('admin.html');
+            return false;
+        }
+    }
+
     // Trả về thông báo nếu không khớp
     alert('Nhập sai tên hoặc mật khẩu !!!');
     form.username.focus();
@@ -173,6 +216,14 @@ function signUp(form) {
 
     // Lấy dữ liệu các khách hàng hiện có
     var listUser = getListUser();
+
+    // Kiểm tra trùng admin
+    for(var ad of adminInfo) {
+        if(newUser.username == ad.username) {
+            alert('Tên đăng nhập đã có người sử dụng !!');
+            return false;
+        }
+    }
 
     // Kiểm tra xem dữ liệu form có trùng với khách hàng đã có không
     for (var u of listUser) {
@@ -272,9 +323,6 @@ function setupEventTaiKhoan() {
 
     // Đoạn code tạo event trên được chuyển về js thuần từ code jquery
     // Code jquery cho phần tài khoản được lưu ở cuối file này
-
-    capNhat_ThongTin_CurrentUser(); // Cập nhật mỗi khi load xong trang, hàm setupEventTaiKhoan() phải luôn được đặt trong window.onload
-    addEventCloseAlertButton(); // TẠo event mỗi khi load xong trang
 }
 
 // Cập nhật số lượng hàng trong giỏ hàng + Tên current user
@@ -460,7 +508,7 @@ function addTopNav() {
                 <li><a href="tintuc.html"><i class="fa fa-newspaper-o"></i> Tin tức</a></li>
                 <li><a href="tuyendung.html"><i class="fa fa-handshake-o"></i> Tuyển dụng</a></li>
                 <li><a href="gioithieu.html"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
-                <li><a href="trungtambaohanh.html"><i class="fa fa-wrench"></i> Trung tâm bảo hành</a></li>
+                <li><a href="trungtambaohanh.html"><i class="fa fa-wrench"></i> Bảo hành</a></li>
                 <li><a href="lienhe.html"><i class="fa fa-phone"></i> Liên hệ</a></li>
             </ul> <!-- End Quick link -->
         </section><!-- End Section -->
