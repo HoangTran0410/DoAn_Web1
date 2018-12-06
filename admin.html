@@ -16,6 +16,7 @@
     <!-- Our files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin/style.css">
+    <link rel="stylesheet" href="css/admin/processBar.css">
 
     <script src="data/products.js"></script>
     <script src="js/classes.js"></script>
@@ -31,7 +32,20 @@
     </aside>
 
     <div class="main">
-        <div class="dashboard"></div>
+        <div class="dashboard">
+            <div class="progress">
+                <div class="progress-bar bg-info" style="width: 78%;"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar bg-danger" style="width: 30%;"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar bg-success" style="width: 50%;"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar bg-warning" style="width: 80%;"></div>
+            </div>
+        </div>
         <div class="products"></div>
         <div class="users"></div>
         <div class="donhang"></div>

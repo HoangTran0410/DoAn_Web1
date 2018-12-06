@@ -1,3 +1,8 @@
+body {
+    background-color: #2f353a;
+    /* 3a4149 */
+}
+
 .main {
-    
+    display: block;
 }
