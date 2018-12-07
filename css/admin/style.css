@@ -98,90 +98,118 @@ header {
     width: calc(100% - 255px); /* 150px la width cua aside */
 }
 
-/* products */
-.products {
-    margin: 0 auto;
-    /* max-width: 1200px; */
+.main > div {
+    /* Mặc định ẩn mọi thứ trong main */
+    display: none;
 }
 
-    .products table {
-        width: 100%;
+.table-content {
+    height: 550px;
+    overflow: auto;
+}
+
+/* css chotable , mọitable trong trang đều theo css này */
+table {
+    margin: 0 auto;
+    width: 100%;
+}
+
+    table tr:nth-of-type(even) {
+        background-color: #3e4144;
+    }
+    
+    table th {
+        color: #e4e7ea;
+        background-color: #3e464d;
+        border-color: #23282c;
+    }
+    table th i {  /* Ẩn icon sort */
+        transform: scale(0);
+        transition-duration: .2s;
+    }
+    table th:hover i {
+        transform: scale(1)
     }
 
-        .products table tr:nth-of-type(even) {
-            background-color: #3e4144;
-        }
-
-        /* Ẩn icon sort */
-        .products table th i {
-            transform: scale(0);
-            transition-duration: .2s;
-        }
-        .products table th {
-            color: #e4e7ea;
-            background-color: #3e464d;
-            border-color: #23282c;
-        }
-        .products table th:hover i {
-            transform: scale(1)
-        }
-
-        .products table th,
-        .products table td {
-            padding: .75rem;
-            text-align: center;
-            vertical-align: top;
-            border-top: 1px solid #23282c;
-        }
-
-        .products table td {
-            position: relative;
-            color: #e4e7ea;
-        }
-
-            /* Link chi tiet san pham */
-            .products table td a {
-                display: block;
-                color: #e4e7ea;
-            }
-
-            .products table td a:hover {
-                text-decoration: underline;
-            }
-
-                /* Hinh anh */
-                .products table td img {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    height: 0;
-                    border-radius: 5px;
-                    transition-duration: .1s;
-                    z-index: 2;
-                }
-                /* Hien thi ảnh */
-                .products table td:hover img {
-                    height: 150px;
-                }
-
-                /* Hành động */
-                .products table td i {
-                    padding: .3em;
-                    cursor: pointer;
-                }
-
-                .products table td i.fa-wrench:hover {
-                    color: #63c2de;
-                }
-
-                .products table td i.fa-trash:hover {
-                    color: #f86c6b;
-                }
-
-    .table-content {
-        height: 550px;
-        overflow: auto;
+    table th,
+    table td {
+        padding: .75rem;
+        text-align: center;
+        vertical-align: top;
+        border-top: 1px solid #23282c;
     }
+
+    table td {
+        position: relative;
+        color: #e4e7ea;
+    }
+
+        /* Link chi tiet san pham */
+        table td a {
+            display: block;
+            color: #e4e7ea;
+        }
+
+        table td a:hover {
+            text-decoration: underline;
+        }
+
+            /* Hinh anh */
+            table td img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 0;
+                border-radius: 5px;
+                transition-duration: .1s;
+                z-index: 2;
+            }
+            /* Hien thi ảnh */
+            table td:hover img {
+                height: 150px;
+            }
+
+            /* Hành động */
+            table td i {
+                padding: .3em;
+                cursor: pointer;
+            }
+
+            table td i.fa-wrench:hover {
+                color: #63c2de;
+            }
+
+            table td i.fa-trash:hover {
+                color: #f86c6b;
+            }
+
+
+.table-footer {
+    background-color: #3e464d;
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #23282c;
+}
+    /* css chung */
+    .table-footer input[type="text"], 
+    .table-footer button, 
+    .table-footer select {
+        padding: 5px 10px;
+        border: 3px solid transparent;
+    }
+
+    /* Nút thêm sản phẩm */
+    .table-footer button {
+        cursor: pointer;
+        background-color: #23282c;
+        color: #e4e7ea;
+        transition-duration: .2s;
+    }
+    .table-footer button:hover {
+        background-color: #7a879486;
+        border-color: #73818f;
+    }
+
 
 /* tooltip from w3school */
 .tooltip {

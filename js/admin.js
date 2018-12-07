@@ -3,8 +3,12 @@ window.onload = function () {
     list_products = getListProducts() || list_products;
     adminInfo = getListAdmin() || adminInfo;
 
+    addEventChangeTab();
+
     if (window.localStorage.getItem('admin')) {
         addTableProducts();
+
+        openTab('Home')
     } else {
         document.body.innerHTML = `<h1 style="color:red; with:100%; text-align:center;"> Truy cập bị từ chối.. </h1>`;
     }
@@ -12,6 +16,47 @@ window.onload = function () {
 
 function logOutAdmin() {
     window.localStorage.removeItem('admin');
+}
+
+// ======================= Các Tab =========================
+function addEventChangeTab() {
+    var sidebar = document.getElementsByClassName('sidebar')[0];
+    var list_a = sidebar.getElementsByTagName('a');
+    for(var a of list_a) {
+        if(!a.onclick) {
+            a.addEventListener('click', function() {
+                turnOff_Active();
+                this.classList.add('active');
+                var tab = this.childNodes[1].data.trim()
+                openTab(tab);
+            })
+        }
+    }
+}
+
+function turnOff_Active() {
+    var sidebar = document.getElementsByClassName('sidebar')[0];
+    var list_a = sidebar.getElementsByTagName('a');
+    for(var a of list_a) {
+        a.classList.remove('active');
+    }
+}
+
+function openTab(nameTab) {
+    // ẩn hết
+    var main = document.getElementsByClassName('main')[0].children;
+    for(var e of main) {
+        e.style.display = 'none';
+    }
+
+    // mở tab
+    switch(nameTab) {
+        case 'Home': document.getElementsByClassName('home')[0].style.display = 'block'; break;
+        case 'Sản Phẩm': document.getElementsByClassName('sanpham')[0].style.display = 'block'; break;
+        case 'Đơn Hàng': document.getElementsByClassName('donhang')[0].style.display = 'block'; break;
+        case 'Khách Hàng': document.getElementsByClassName('khachhang')[0].style.display = 'block'; break;
+        case 'Thống Kê': document.getElementsByClassName('thongke')[0].style.display = 'block'; break;
+    }
 }
 
 // ========================== Sản Phẩm ========================
@@ -40,7 +85,7 @@ function locTableTheoMaSanPham(ma) {
     }
 }
 
-function timKiem(inp) {
+function timKiemSanPham(inp) {
     var kieuTim = document.getElementsByName('kieuTim')[0].value;
     var text = inp.value;
     if (kieuTim == 'ten') {

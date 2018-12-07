@@ -1,0 +1,78 @@
+/* sanpham */
+.sanpham {
+    margin: 0 auto;
+    /* max-width: 1200px; */
+}
+
+    .sanpham table {
+        width: 100%;
+    }
+
+        .sanpham table tr:nth-of-type(even) {
+            background-color: #3e4144;
+        }
+        
+        .sanpham table th {
+            color: #e4e7ea;
+            background-color: #3e464d;
+            border-color: #23282c;
+        }
+        .sanpham table th i {  /* Ẩn icon sort */
+            transform: scale(0);
+            transition-duration: .2s;
+        }
+        .sanpham table th:hover i {
+            transform: scale(1)
+        }
+
+        .sanpham table th,
+        .sanpham table td {
+            padding: .75rem;
+            text-align: center;
+            vertical-align: top;
+            border-top: 1px solid #23282c;
+        }
+
+        .sanpham table td {
+            position: relative;
+            color: #e4e7ea;
+        }
+
+            /* Link chi tiet san pham */
+            .sanpham table td a {
+                display: block;
+                color: #e4e7ea;
+            }
+
+            .sanpham table td a:hover {
+                text-decoration: underline;
+            }
+
+                /* Hinh anh */
+                .sanpham table td img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 0;
+                    border-radius: 5px;
+                    transition-duration: .1s;
+                    z-index: 2;
+                }
+                /* Hien thi ảnh */
+                .sanpham table td:hover img {
+                    height: 150px;
+                }
+
+                /* Hành động */
+                .sanpham table td i {
+                    padding: .3em;
+                    cursor: pointer;
+                }
+
+                .sanpham table td i.fa-wrench:hover {
+                    color: #63c2de;
+                }
+
+                .sanpham table td i.fa-trash:hover {
+                    color: #f86c6b;
+                }

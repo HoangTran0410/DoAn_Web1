@@ -28,15 +28,18 @@
         <h2>SmartPhone Store - Admin</h2>
     </header>
 
+    <!-- Menu -->
     <aside class="sidebar">
         <ul class="nav">
             <li class="nav-title">MENU</li>
-            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-home"></i> Home</a></li>
-            <li class="nav-item"><a href="" class="nav-link active"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
-            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
-            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
-            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bar-chart-o"></i> Thống Kê</a></li>
-            <li class="nav-item"><hr></li>
+            <li class="nav-item"><a class="nav-link active"><i class="fa fa-home"></i> Home</a></li>
+            <li class="nav-item"><a class="nav-link"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
+            <li class="nav-item"><a class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
+            <li class="nav-item"><a class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
+            <li class="nav-item"><a class="nav-link"><i class="fa fa-bar-chart-o"></i> Thống Kê</a></li>
+            <li class="nav-item">
+                <hr>
+            </li>
             <li class="nav-item">
                 <a href="index.html" class="nav-link" onclick="logOutAdmin(); return true;">
                     <i class="fa fa-arrow-left"></i>
@@ -46,11 +49,12 @@
         </ul>
     </aside>
 
+    <!-- Khung hiển thị chính -->
     <div class="main">
-        <div class="dashboard"></div>
+        <div class="home"></div>
 
-        <div class="products">
-
+        <!-- Sản Phẩm -->
+        <div class="sanpham">
             <table class="table-header">
                 <tr style="cursor: pointer">
                     <!-- Theo độ rộng của table content -->
@@ -71,20 +75,84 @@
                     <option value="ma">Tìm theo mã</option>
                     <option value="ten">Tìm theo tên</option>
                 </select>
-                <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiem(this)">
+                <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemSanPham(this)">
                 <button onclick="openThemSanPham()"><i class="fa fa-plus-square"></i> Thêm sản phẩm</button>
             </div>
 
-            <div id="khungThemSanPham">
+            <div id="khungThemSanPham"></div>
+            <div id="khungSuaSanPham"></div>
+        </div> <!-- // sanpham -->
 
+
+        <!-- Đơn Hàng -->
+        <div class="donhang">
+            <table class="table-header">
+                <tr style="cursor: pointer">
+                    <!-- Theo độ rộng của table content -->
+                    <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('madon')">Mã đơn <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('khach')">Khách <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 20%" onclick="sortDonHangTable('sanpham')">Sản phẩm <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('tongtien')">Tổng tiền <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('ngaygio')">Ngày giờ <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('trangthai')">Trạng thái <i class="fa fa-sort"></i></th>
+                    <th style="width: 10%">Hành động</th>
+                </tr>
+            </table>
+
+            <div class="table-content">
             </div>
 
-        </div>
+            <div class="table-footer">
+                <select name="kieuTim">
+                    <option value="ma">Tìm theo tên</option>
+                    <option value="ten">Tìm theo tên đăng nhập</option>
+                    <option value="ten">Tìm theo email</option>
+                </select>
+                <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
+                <button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>
+            </div>
 
-        <div class="users"></div>
+            <div id="khungThemNguoiDung"></div>
+            <div id="khungSuaNguoiDung"></div>
+        </div> <!-- // don hang -->
 
-        <div class="donhang"></div>
-    </div>
+
+        <!-- Khách hàng -->
+        <div class="khachhang">
+            <table class="table-header">
+                <tr style="cursor: pointer">
+                    <!-- Theo độ rộng của table content -->
+                    <th title="Sắp xếp" style="width: 5%" onclick="sortUserTable('stt')">Stt <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 15%" onclick="sortUserTable('hoten')">Họ tên <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 20%" onclick="sortUserTable('email')">Email <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 20%" onclick="sortUserTable('taikhoan')">Tài khoản <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 10%" onclick="sortUserTable('matkhau')">Mật khẩu <i class="fa fa-sort"></i></th>
+                    <th style="width: 10%">Hành động</th>
+                </tr>
+            </table>
+
+            <div class="table-content">
+            </div>
+
+            <div class="table-footer">
+                <select name="kieuTim">
+                    <option value="ma">Tìm theo tên</option>
+                    <option value="ten">Tìm theo tên đăng nhập</option>
+                    <option value="ten">Tìm theo email</option>
+                </select>
+                <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
+                <button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>
+            </div>
+
+            <div id="khungThemNguoiDung"></div>
+            <div id="khungSuaNguoiDung"></div>
+        </div> <!-- // khach hang -->
+
+
+        <!-- Thống kê -->
+        <div class="thongke"></div>
+    </div> <!-- // main -->
+
 
     <footer></footer>
 </body>
