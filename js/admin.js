@@ -8,6 +8,7 @@ window.onload = function () {
     if (window.localStorage.getItem('admin')) {
         addTableProducts();
         addTableDonHang();
+        addTableKhachHang();
 
         openTab('Home')
     } else {
@@ -519,33 +520,35 @@ function addTableKhachHang() {
     var tc = document.getElementsByClassName('khachhang')[0].getElementsByClassName('table-content')[0];
     var s = `<table class="table-outline hideImg">`;
 
-    var listDH = getListUser();
+    var listUser = getListUser();
 
-    for (var i = 0; i < listDH.length; i++) {
-        var d = listDH[i];
+    for (var i = 0; i < listUser.length; i++) {
+        var u = listUser[i];
         s += `<tr>
-            <td style="width: 10%">` + d.ma + `</td>
-            <td style="width: 15%">` + d.khach + `</td>
-            <td style="width: 20%">` + d.sp + `</td>
-            <td style="width: 15%">` + d.tongtien + `</td>
-            <td style="width: 10%">` + d.ngaygio + `</td>
-            <td style="width: 10%">` + d.trangthai + `</td>
+            <td style="width: 5%">` + (i+1) + `</td>
+            <td style="width: 15%">` + u.ho + ' ' + u.ten + `</td>
+            <td style="width: 20%">` + u.email + `</td>
+            <td style="width: 20%">` + u.username + `</td>
+            <td style="width: 10%">` + u.pass + `</td>
             <td style="width: 10%">
                 <div class="tooltip">
-                    <i class="fa fa-check" onclick="duyet('`+d.ma+`', true)"></i>
-                    <span class="tooltiptext">Duyệt</span>
+                    <i class="fa fa-remove"></i>
+                    <span class="tooltiptext">Xóa</span>
                 </div>
-                <div class="tooltip">
-                    <i class="fa fa-remove" onclick="duyet('`+d.ma+`', false)"></i>
-                    <span class="tooltiptext">Hủy</span>
-                </div>
-                
             </td>
         </tr>`;
     }
 
     s += `</table>`;
     tc.innerHTML = s;
+}
+
+function timKiemNguoiDung(inp) {
+
+}
+
+function openThemNguoiDung() {
+
 }
 
 // ================== Sort ====================
