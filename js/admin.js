@@ -457,7 +457,8 @@ function duyet(maDonHang, duyetDon) {
                     }
                 } else {
                     if(u[i].donhang[j].tinhTrang == 'Đang chờ xử lý') {
-                        u[i].donhang[j].tinhTrang = 'Đã hủy';
+                        if(window.confirm('Bạn có chắc muốn hủy đơn hàng này. Hành động này sẽ không thể khôi phục lại !'))
+                            u[i].donhang[j].tinhTrang = 'Đã hủy';
                     
                     } else if(u[i].donhang[j].tinhTrang == 'Đã giao hàng') {
                         alert('Không thể hủy đơn hàng đã giao !');
