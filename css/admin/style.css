@@ -1,8 +1,222 @@
-body {
-    background-color: #2f353a;
-    /* 3a4149 */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+body,
+html {
+    min-width: 1024px;
+    background-color: #2f353a;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+/* header */
+header {
+    z-index: 10;
+    width: 100%;
+    /* position: sticky; */
+    padding: 20px 10px;
+    background-color: #3a4149;
+    border-bottom: 1px solid #23282c;
+}
+
+    header h2 {
+        display: block;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #fff;
+    }
+
+.table-outline {
+    border: 1px solid #23282c;
+}
+
+/* aside */
+.sidebar {
+    float: left;
+    width: 250px;
+}   
+    .sidebar .nav-title {
+        padding: 1.1rem 1rem;
+        font-size: 1.5em;
+        font-weight: 700;
+        color: #e4e7ea;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .sidebar .nav-item {
+        position: relative;
+        margin: 0;
+        transition: background .3s ease-in-out;
+    }
+    .sidebar .nav-link {
+        display: block;
+        padding: 1em 1em;
+        color: #fff;
+        text-decoration: none;
+        background: 0 0;
+    }
+    .sidebar .nav-link:hover, 
+    .sidebar .nav-link.active, 
+    .sidebar .nav-link:hover i, 
+    .sidebar .nav-link.active i {
+        background-color: #20a8d8;
+        color: #fff;
+    }
+    .sidebar .nav-link i {
+        display: inline-block;
+        width: 1.09375em;
+        margin: 0 .5rem 0 0;
+        font-size: 1em;
+        color: #73818f;
+        text-align: center;
+    }
+
+/* main */
 .main {
-    display: block;
+    float: left;
+    width: calc(100% - 255px); /* 150px la width cua aside */
+}
+
+/* products */
+.products {
+    margin: 0 auto;
+    /* max-width: 1200px; */
+}
+
+    .products table {
+        width: 100%;
+    }
+
+        .products table tr:nth-of-type(even) {
+            background-color: #3e4144;
+        }
+
+        .products table th {
+            color: #e4e7ea;
+            background-color: #3e464d;
+            border-color: #23282c;
+        }
+
+        .products table th,
+        .products table td {
+            padding: .75rem;
+            text-align: center;
+            vertical-align: top;
+            border-top: 1px solid #23282c;
+        }
+
+        .products table td {
+            position: relative;
+            color: #e4e7ea;
+        }
+
+            /* Link chi tiet san pham */
+            .products table td a {
+                display: block;
+                color: #e4e7ea;
+            }
+
+            .products table td a:hover {
+                text-decoration: underline;
+            }
+
+                /* Hinh anh */
+                .products table td img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 0;
+                    border-radius: 5px;
+                    transition-duration: .1s;
+                    z-index: 2;
+                }
+                /* Hien thi ảnh */
+                .products table td:nth-child(3):hover a {
+                    float: right;
+                }
+                .products table td:hover img {
+                    height: 150px;
+                }
+
+                /* Hành động */
+                .products table td i {
+                    padding: .3em;
+                    cursor: pointer;
+                }
+
+                .products table td i.fa-wrench:hover {
+                    color: #63c2de;
+                }
+
+                .products table td i.fa-trash:hover {
+                    color: #f86c6b;
+                }
+
+    .table-content {
+        height: 550px;
+        overflow: auto;
+    }
+
+/* tooltip from w3school */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 50px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 21;
+        bottom: -150%;
+        left: 50%;
+        margin-left: -25px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #555 transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+/* ========= ScrollBar ============ */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
 }

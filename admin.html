@@ -14,9 +14,8 @@
         crossorigin="anonymous">
 
     <!-- Our files -->
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin/style.css">
-    <link rel="stylesheet" href="css/admin/processBar.css">
+    <link rel="stylesheet" href="css/admin/progress.css">
 
     <script src="data/products.js"></script>
     <script src="js/classes.js"></script>
@@ -25,29 +24,58 @@
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <h2>SmartPhone Store - Admin</h2>
+    </header>
 
-    <aside>
-        
+    <aside class="sidebar">
+        <ul class="nav">
+            <li class="nav-title">MENU</li>
+            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-home"></i> Home</a></li>
+            <li class="nav-item"><a href="" class="nav-link active"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
+            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
+            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
+            <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bar-chart-o"></i> Thống Kê</a></li>
+        </ul>
     </aside>
 
     <div class="main">
-        <div class="dashboard">
-            <div class="progress">
-                <div class="progress-bar bg-info" style="width: 78%;"></div>
+        <div class="dashboard"></div>
+
+        <div class="products">
+
+            <table class="table-header">
+                <tr>
+                    <!-- Theo độ rộng của table content -->
+                    <th style="width: 5%">STT</th>
+                    <th style="width: 10%">Mã</th>
+                    <th style="width: 40%">Tên</th>
+                    <th style="width: 15%">Giá</th>
+                    <th style="width: 15%">Khuyến mãi</th>
+                    <th style="width: 15%">Hành động</th>
+                </tr>
+            </table>
+
+            <div class="table-content">
             </div>
-            <div class="progress">
-                <div class="progress-bar bg-danger" style="width: 30%;"></div>
+
+            <div class="table-footer">
+                <select name="kieuTim">
+                    <option value="ma">Tìm theo mã</option>
+                    <option value="ten">Tìm theo tên</option>
+                </select>
+                <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiem(this)">
+                <button onclick="openThemSanPham()"><i class="fa fa-plus-square"></i> Thêm sản phẩm</button>
             </div>
-            <div class="progress">
-                <div class="progress-bar bg-success" style="width: 50%;"></div>
+
+            <div id="khungThemSanPham">
+
             </div>
-            <div class="progress">
-                <div class="progress-bar bg-warning" style="width: 80%;"></div>
-            </div>
+
         </div>
-        <div class="products"></div>
+
         <div class="users"></div>
+
         <div class="donhang"></div>
     </div>
 
