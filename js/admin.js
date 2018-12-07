@@ -234,7 +234,7 @@ function xoaSanPham(masp, tensp) {
 
 // Sửa
 function suaSanPham(masp) {
-    var sp = layThongTinTuTable('khungSuaSanPham');
+    var sp = layThongTinSanPhamTuTable('khungSuaSanPham');
     
     for(var p of list_products) {
         if(p.masp == masp && p.masp != sp.masp) {
