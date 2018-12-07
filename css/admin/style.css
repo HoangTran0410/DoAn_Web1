@@ -58,17 +58,22 @@ header {
     .sidebar .nav-link {
         display: block;
         padding: 1em 1em;
-        color: #fff;
+        color: #73818f;
         text-decoration: none;
         background: 0 0;
     }
-    .sidebar .nav-link:hover, 
+    
     .sidebar .nav-link.active, 
-    .sidebar .nav-link:hover i, 
     .sidebar .nav-link.active i {
         background-color: #20a8d8;
         color: #fff;
     }
+    .sidebar .nav-link:hover:not(.active), 
+    .sidebar .nav-link:hover:not(.active) i {
+        background-color: #4a7b8d;
+        color: #fff;
+    }
+    
     .sidebar .nav-link i {
         display: inline-block;
         width: 1.09375em;
