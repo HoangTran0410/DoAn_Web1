@@ -47,7 +47,8 @@ function Promo(name, value) { // khuyen mai
 	}
 }
 
-function Product(img, name, price, star, rateCount, promo) {
+function Product(masp, name, img, price, star, rateCount, promo) {
+	this.masp = masp;
 	this.img = img;
 	this.name = name;
 	this.price = price;
@@ -96,7 +97,7 @@ function addToWeb(p, ele, returnString) {
 			</div>
 			` + (p.promo && p.promo.toWeb()) + `
 			<div class="tooltip">
-				<button class="themvaogio" onclick="themVaoGioHang('`+p.name+`'); return false;">
+				<button class="themvaogio" onclick="themVaoGioHang('`+p.masp+`', '`+p.name+`'); return false;">
 					<span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
 					+
 				</button>

@@ -232,9 +232,9 @@ function addDonHang(dh) {
 
     var totalPrice = 0;
     for (var i = 0; i < dh.sp.length; i++) {
-        var nameSp = dh.sp[i].name;
+        var masp = dh.sp[i].ma;
         var soluongSp = dh.sp[i].soluong;
-        var p = timKiemTheoTen(list_products, nameSp)[0];
+        var p = timKiemTheoMa(list_products, masp);
         var price = (p.promo.name == 'giareonline' ? p.promo.value : p.price);
         var thoigian = new Date(dh.sp[i].date).toLocaleString();
         var thanhtien = stringToNum(price) * soluongSp;
@@ -265,7 +265,7 @@ function addDonHang(dh) {
                 <tr style="font-weight:bold; text-align:center; height: 4em;">
                     <td colspan="4">TỔNG TIỀN: </td>
                     <td class="alignRight">` + numToString(totalPrice) + ` ₫</td>
-                    <td title="Sản phẩm đang được chúng tôi xử lý"> Đang chờ xử lý </td>
+                    <td > `+dh.tinhTrang+` </td>
                 </tr>
             </table>
             <hr>

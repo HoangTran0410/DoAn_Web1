@@ -131,7 +131,7 @@ header h2 {
     border: 1px solid #23282c;
 }
 
-
+/* phần chứa header (th) */
 .table-header {
     width: 100%;
 }
@@ -139,6 +139,10 @@ header h2 {
     color: #e4e7ea;
     background-color: #3e464d;
     border-color: #23282c;
+}
+
+.table-header th {
+    cursor: pointer;
 }
 
 .table-header th i {
@@ -159,6 +163,7 @@ header h2 {
     border-top: 1px solid #23282c;
 }
 
+/* phần chứa nội dung  */
 .table-content {
     height: 550px;
     overflow: auto;
@@ -192,13 +197,19 @@ header h2 {
 }
 
 .table-content td i.fa-wrench:hover {
-    color: #63c2de;
+    color: #63c2de
 }
-
 .table-content td i.fa-trash:hover {
-    color: #f86c6b;
+    color: #f86c6b
+}
+.table-content td i.fa-check:hover {
+    color: #5ce457d8
+}
+.table-content td i.fa-remove:hover {
+    color: #f86c6b
 }
 
+/*  phần footer table  */
 .table-footer {
     background-color: #3e464d;
     padding: .75rem;
@@ -206,7 +217,6 @@ header h2 {
     border-top: 1px solid #23282c;
 }
 
-/* ================= table footer ===================== */
 .table-footer input,
 .table-footer button,
 .table-footer select {
@@ -215,7 +225,7 @@ header h2 {
     background-color: #cccece;
 }
 
-/* Nút bấm */
+/* Nút bấm ở footer */
 .table-footer button {
     cursor: pointer;
     background-color: #23282c;
@@ -228,7 +238,7 @@ header h2 {
     border-color: #73818f;
 }
 
-/* ================== Những table thêm sửa ...  ====================== */
+/* ================== Những table thêm sửa sẽ có dạng overlay -> mặc định ẩn  ====================== */
 .overlay {
     position: fixed;
     top: 0;
@@ -283,9 +293,6 @@ header h2 {
 }
 
 /* ======================= id =================== */
-#khungThemSanPham {
-
-}
 
 /* Div Tìm theo ngày */
 .timTheoNgay {

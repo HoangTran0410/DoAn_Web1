@@ -56,9 +56,10 @@ function addProductToTable(user) {
 
 	var totalPrice = 0;
 	for (var i = 0; i < user.products.length; i++) {
-		var nameSp = user.products[i].name;
+		var masp = user.products[i].ma;
 		var soluongSp = user.products[i].soluong;
-		var p = timKiemTheoTen(list_products, nameSp)[0];
+		var p = timKiemTheoMa(list_products, masp);
+		var nameSp = p.name;
 		var price = (p.promo.name == 'giareonline' ? p.promo.value : p.price);
 		var thoigian = new Date(user.products[i].date).toLocaleString();
 		var thanhtien = stringToNum(price) * soluongSp;
@@ -116,7 +117,7 @@ function thanhToan() {
 		currentuser.donhang.push({
 			"sp": currentuser.products,
 			"ngaymua": new Date(),
-			"dangXuLy": true
+			"tinhTrang": 'Đang chờ xử lý'
 		});
 		currentuser.products = [];
 		capNhatMoiThu();

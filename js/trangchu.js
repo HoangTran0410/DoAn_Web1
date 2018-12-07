@@ -220,7 +220,7 @@ function phanTich_URL(filters, saveFilter) {
 // Thêm sản phẩm vào trang
 function addProduct(p, ele, returnString) {
 	promo = new Promo(p.promo.name, p.promo.value); // class Promo
-	product = new Product(p.img, p.name, p.price, p.star, p.rateCount, promo); // Class product
+	product = new Product(p.masp, p.name, p.img, p.price, p.star, p.rateCount, promo); // Class product
 
 	return addToWeb(product, ele, returnString);
 }

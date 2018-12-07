@@ -51,6 +51,11 @@ function timKiemTheoTen(list, ten, soluong) {
 
     return result;
 }
+function timKiemTheoMa(list, ma) {
+    for(var l of list) {
+        if(l.masp == ma) return l;
+    }
+}
 
 // copy 1 object, do trong js ko có tham biến , tham trị rõ ràng
 // nên dùng bản copy để chắc chắn ko ảnh hưởng tới bản chính
@@ -97,7 +102,7 @@ function animateCartNumber() {
     }, 1200);
 }
 
-function themVaoGioHang(tenSanPham) {
+function themVaoGioHang(masp, tensp) {
     var user = getCurrentUser();
     if(!user) {
         alert('Bạn cần đăng nhập để mua hàng !');
@@ -108,7 +113,7 @@ function themVaoGioHang(tenSanPham) {
     var daCoSanPham = false;;
 
     for(var i = 0; i < user.products.length; i++) { // check trùng sản phẩm
-        if(user.products[i].name == tenSanPham) {
+        if(user.products[i].masp == masp) {
             user.products[i].soluong++;
             daCoSanPham = true;
             break;
@@ -117,14 +122,14 @@ function themVaoGioHang(tenSanPham) {
     
     if(!daCoSanPham){ // nếu không trùng thì mới thêm sản phẩm vào user.products
         user.products.push({
-            "name": tenSanPham,
+            "ma": masp,
             "soluong": 1,
             "date": t
         });
     }
 
     animateCartNumber();
-    addAlertBox('Đã thêm '+ tenSanPham +' vào giỏ.', '#17c671', '#fff', 3500);
+    addAlertBox('Đã thêm '+ tensp +' vào giỏ.', '#17c671', '#fff', 3500);
     
     setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
     updateListUser(user); // cập nhật list user

@@ -1,4 +1,4 @@
-var nameProduct; // Tên sản phẩm trong trang này, 
+var nameProduct, maProduct; // Tên sản phẩm trong trang này, 
 // là biến toàn cục để có thể dùng ở bát cứ đâu trong trang
 // không cần tính toán lấy tên từ url nhiều lần
 
@@ -22,6 +22,13 @@ function phanTich_URL_chiTietSanPham() {
     // tách theo dấu '-' vào gắn lại bằng dấu ' ', code này giúp bỏ hết dấu '-' thay vào bằng khoảng trắng.
     // code này làm ngược lại so với lúc tạo href cho sản phẩm trong file classes.js
     nameProduct = nameProduct.split('-').join(' ');
+
+    for(var p of list_products) {
+        if(nameProduct == p.name) {
+            maProduct = p.masp;
+            break;
+        }
+    }
 
     var sanPham = timKiemTheoTen(list_products, nameProduct)[0];
     var divChiTiet = document.getElementsByClassName('chitietSanpham')[0];

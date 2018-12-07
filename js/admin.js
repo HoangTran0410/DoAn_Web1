@@ -7,6 +7,7 @@ window.onload = function () {
 
     if (window.localStorage.getItem('admin')) {
         addTableProducts();
+        addTableDonHang();
 
         openTab('Home')
     } else {
@@ -60,6 +61,41 @@ function openTab(nameTab) {
 }
 
 // ========================== Sản Phẩm ========================
+// Vẽ bảng danh sách sản phẩm
+function addTableProducts() {
+    var tc = document.getElementsByClassName('sanpham')[0].getElementsByClassName('table-content')[0];
+    var s = `<table class="table-outline hideImg">`;
+
+    for (var i = 0; i < list_products.length; i++) {
+        var p = list_products[i];
+        s += `<tr>
+            <td style="width: 5%">` + i + `</td>
+            <td style="width: 10%">` + p.masp + `</td>
+            <td style="width: 40%">
+                <a title="Xem chi tiết" target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `">` + p.name + `</a>
+                <img src="` + p.img + `"></img>
+            </td>
+            <td style="width: 15%">` + p.price + `</td>
+            <td style="width: 15%">` + promoToStringValue(p.promo) + `</td>
+            <td style="width: 15%">
+                <div class="tooltip">
+                    <i class="fa fa-wrench" onclick="addKhungSuaSanPham('` + p.masp + `')"></i>
+                    <span class="tooltiptext">Sửa</span>
+                </div>
+                <div class="tooltip">
+                    <i class="fa fa-trash" onclick="xoaSanPham('` + p.masp + `', '`+p.name+`')"></i>
+                    <span class="tooltiptext">Xóa</span>
+                </div>
+                
+            </td>
+        </tr>`;
+    }
+
+    s += `</table>`;
+
+    tc.innerHTML = s;
+}
+
 // Tìm kiếm - Lọc
 function locTableTheoTenSanPham(ten) {
     var listTr_table = document.getElementsByClassName('table-content')[0].getElementsByTagName('tr');
@@ -96,7 +132,7 @@ function timKiemSanPham(inp) {
 }
 
 // Thêm
-function layThongTinTuTable(id) {
+function layThongTinSanPhamTuTable(id) {
     var khung = document.getElementById(id);
     var tr = khung.getElementsByTagName('tr');
 
@@ -146,14 +182,14 @@ function layThongTinTuTable(id) {
     };
 }
 function themSanPham() {
-    var newSp = layThongTinTuTable('khungThemSanPham')
+    var newSp = layThongTinSanPhamTuTable('khungThemSanPham')
     for(var p of list_products) {
         if(p.masp == newSp.masp) {
             alert('Mã sản phẩm bị trùng !!');
             return false;
         }
     }
-     // Them san pham vao listSpLocal
+     // Them san pham vao list_products
      list_products.push(newSp);
 
      // Lưu vào localstorage
@@ -166,6 +202,7 @@ function themSanPham() {
     document.getElementById('khungThemSanPham').style.transform = 'scale(0)';
 }
 function autoMaSanPham(company) {
+    // hàm tự tạo mã cho sản phẩm mới
     if(!company) company = document.getElementsByName('chonCompany')[0].value;
     var index = 0;
     for (var i = 0; i < list_products.length; i++) {
@@ -350,7 +387,7 @@ function capNhatAnhSanPham(files) {
     document.getElementById('anhDaiDienSanPham').src = url;
 } 
 
-// Sắp Xếp
+// Sắp Xếp sản phẩm
 function sortProductsTable(loai) {
     var list = document.getElementsByClassName("table-content")[0];
     var tr = list.getElementsByTagName('tr');
@@ -359,8 +396,157 @@ function sortProductsTable(loai) {
     decrease = !decrease;
 }
 
-// ========================= Đơn Hàng ===========================
+function getValueOfTypeInTable(tr, loai) {
+    var td = tr.getElementsByTagName('td');
+    switch(loai) {
+        case 'stt' : return Number(td[0].innerHTML);
+        case 'masp' : return td[1].innerHTML.toLowerCase();
+        case 'ten' : return td[2].innerHTML.toLowerCase();
+        case 'gia' : return stringToNum(td[3].innerHTML);
+        case 'khuyenmai' : return td[4].innerHTML.toLowerCase();
+    }
+    return false;
+}
 
+// ========================= Đơn Hàng ===========================
+function addTableDonHang() {
+    var tc = document.getElementsByClassName('donhang')[0].getElementsByClassName('table-content')[0];
+    var s = `<table class="table-outline hideImg">`;
+
+    var listDH = getListDonHang();
+
+    for (var i = 0; i < listDH.length; i++) {
+        var d = listDH[i];
+        s += `<tr>
+            <td style="width: 10%">` + d.ma + `</td>
+            <td style="width: 15%">` + d.khach + `</td>
+            <td style="width: 20%">` + d.sp + `</td>
+            <td style="width: 15%">` + d.tongtien + `</td>
+            <td style="width: 10%">` + d.ngaygio + `</td>
+            <td style="width: 10%">` + d.trangthai + `</td>
+            <td style="width: 10%">
+                <div class="tooltip">
+                    <i class="fa fa-check" onclick="duyet('`+d.ma+`', true)"></i>
+                    <span class="tooltiptext">Duyệt</span>
+                </div>
+                <div class="tooltip">
+                    <i class="fa fa-remove" onclick="duyet('`+d.ma+`', false)"></i>
+                    <span class="tooltiptext">Hủy</span>
+                </div>
+                
+            </td>
+        </tr>`;
+    }
+
+    s += `</table>`;
+    tc.innerHTML = s;
+}
+
+function duyet(maDonHang, duyetDon) {
+    var u = getListUser();
+    for(var i = 0; i < u.length; i++) {
+        for(var j = 0; j < u[i].donhang.length; j++) {
+            if(u[i].donhang[j].ngaymua == maDonHang) {
+                if(duyetDon) {
+                    if(u[i].donhang[j].tinhTrang == 'Đang chờ xử lý') {
+                        u[i].donhang[j].tinhTrang = 'Đã giao hàng';
+                    
+                    } else if(u[i].donhang[j].tinhTrang == 'Đã hủy') {
+                        alert('Không thể duyệt đơn đã hủy !');
+                    }
+                } else {
+                    if(u[i].donhang[j].tinhTrang == 'Đang chờ xử lý') {
+                        u[i].donhang[j].tinhTrang = 'Đã hủy';
+                    
+                    } else if(u[i].donhang[j].tinhTrang == 'Đã giao hàng') {
+                        alert('Không thể hủy đơn hàng đã giao !');
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    // lưu lại
+    setListUser(u);
+
+    // vẽ lại
+    addTableDonHang();
+}
+
+function getListDonHang() {
+    var u = getListUser();
+    var result = [];
+    for(var i = 0; i < u.length; i++) {
+        for(var j = 0; j < u[i].donhang.length; j++) {
+            // Tổng tiền
+            var tongtien = 0;
+            for(var s of u[i].donhang[j].sp) {
+                tongtien += stringToNum(timKiemTheoMa(list_products, s.ma).price);
+            }
+
+            // Ngày giờ
+            var x = new Date(u[i].donhang[j].ngaymua).toLocaleString();
+
+            // Các sản phẩm
+            var sps = '';
+            for(var s of u[i].donhang[j].sp) {
+                sps += `<p style="text-align: right">`+(timKiemTheoMa(list_products, s.ma).name + ' [' + s.soluong + ']') + `</p>`;
+            }
+
+            // Lưu vào result
+            result.push({
+                "ma": u[i].donhang[j].ngaymua,
+                "khach": u[i].username,
+                "sp": sps,
+                "tongtien": numToString(tongtien),
+                "ngaygio": x,
+                "trangthai": u[i].donhang[j].tinhTrang
+            });
+        }
+    }
+    return result;
+}
+
+function locDonHangTheoKhoangNgay() {}
+
+function timKiemNguoiDung(inp) {
+
+}
+
+// ====================== Khách Hàng =============================
+function addTableKhachHang() {
+    var tc = document.getElementsByClassName('khachhang')[0].getElementsByClassName('table-content')[0];
+    var s = `<table class="table-outline hideImg">`;
+
+    var listDH = getListUser();
+
+    for (var i = 0; i < listDH.length; i++) {
+        var d = listDH[i];
+        s += `<tr>
+            <td style="width: 10%">` + d.ma + `</td>
+            <td style="width: 15%">` + d.khach + `</td>
+            <td style="width: 20%">` + d.sp + `</td>
+            <td style="width: 15%">` + d.tongtien + `</td>
+            <td style="width: 10%">` + d.ngaygio + `</td>
+            <td style="width: 10%">` + d.trangthai + `</td>
+            <td style="width: 10%">
+                <div class="tooltip">
+                    <i class="fa fa-check" onclick="duyet('`+d.ma+`', true)"></i>
+                    <span class="tooltiptext">Duyệt</span>
+                </div>
+                <div class="tooltip">
+                    <i class="fa fa-remove" onclick="duyet('`+d.ma+`', false)"></i>
+                    <span class="tooltiptext">Hủy</span>
+                </div>
+                
+            </td>
+        </tr>`;
+    }
+
+    s += `</table>`;
+    tc.innerHTML = s;
+}
 
 // ================== Sort ====================
 // https://github.com/HoangTran0410/First_html_css_js/blob/master/sketch.js
@@ -403,52 +589,7 @@ function swap(arr, i, j) {
     arr[j].parentNode.replaceChild(tempi, arr[j]);
 }
 
-function getValueOfTypeInTable(tr, loai) {
-    var td = tr.getElementsByTagName('td');
-    switch(loai) {
-        case 'stt' : return Number(td[0].innerHTML);
-        case 'masp' : return td[1].innerHTML.toLowerCase();
-        case 'ten' : return td[2].innerHTML.toLowerCase();
-        case 'gia' : return stringToNum(td[3].innerHTML);
-        case 'khuyenmai' : return td[4].innerHTML.toLowerCase();
-    }
-    return false;
-}
-
 // ======================= Hiển thị ==============================
-function addTableProducts() {
-    var tp = document.getElementsByClassName('table-content')[0];
-    var s = `<table class="table-outline hideImg">`;
-
-    for (var i = 0; i < list_products.length; i++) {
-        var p = list_products[i];
-        s += `<tr>
-            <td style="width: 5%">` + i + `</td>
-            <td style="width: 10%">` + p.masp + `</td>
-            <td style="width: 40%">
-                <a title="Xem chi tiết" target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `">` + p.name + `</a>
-                <img src="` + p.img + `"></img>
-            </td>
-            <td style="width: 15%">` + p.price + `</td>
-            <td style="width: 15%">` + promoToStringValue(p.promo) + `</td>
-            <td style="width: 15%">
-                <div class="tooltip">
-                    <i class="fa fa-wrench" onclick="addKhungSuaSanPham('` + p.masp + `')"></i>
-                    <span class="tooltiptext">Sửa</span>
-                </div>
-                <div class="tooltip">
-                    <i class="fa fa-trash" onclick="xoaSanPham('` + p.masp + `', '`+p.name+`')"></i>
-                    <span class="tooltiptext">Xóa</span>
-                </div>
-                
-            </td>
-        </tr>`;
-    }
-
-    s += `</table>`;
-
-    tp.innerHTML = s;
-}
 
 // ================= các hàm thêm ====================
 // Chuyển khuyến mãi vễ dạng chuỗi tiếng việt
