@@ -148,6 +148,18 @@ function suaSanPham(masp) {
     addTableProducts();
 }
 
+// Cập nhật ảnh sản phẩm
+function capNhatAnhSanPham(files) {
+    var url = '';
+    if(files.length) url = window.URL.createObjectURL(files[0]);
+    
+    document.getElementById('anhDaiDienSanPham').src = url;
+} 
+
+function taoTableOverLay() {
+
+}
+
 // ================== Sort ====================
 // https://github.com/HoangTran0410/First_html_css_js/blob/master/sketch.js
 var decrease = true; // Sắp xếp giảm dần
@@ -212,7 +224,7 @@ function getValueOfTypeInTable(tr, loai) {
 // ======================= Hiển thị ==============================
 function addTableProducts() {
     var tp = document.getElementsByClassName('table-content')[0];
-    var s = `<table class="table-outline">`;
+    var s = `<table class="table-outline hideImg">`;
 
     for (var i = 0; i < list_products.length; i++) {
         var p = list_products[i];
@@ -244,6 +256,7 @@ function addTableProducts() {
     tp.innerHTML = s;
 }
 
+// ================= các hàm thêm ====================
 // Chuyển khuyến mãi vễ dạng chuỗi tiếng việt
 function promoToStringValue(pr) {
     switch (pr.name) {
@@ -259,7 +272,6 @@ function promoToStringValue(pr) {
     return '';
 }
 
-// ================= các hàm thêm ====================
 function progress(percent, bg, width, height) {
 
     return `<div class="progress" style="width: ` + width + `; height:` + height + `">

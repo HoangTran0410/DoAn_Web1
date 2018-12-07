@@ -76,10 +76,116 @@
                     <option value="ten">Tìm theo tên</option>
                 </select>
                 <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemSanPham(this)">
-                <button onclick="openThemSanPham()"><i class="fa fa-plus-square"></i> Thêm sản phẩm</button>
+                <button onclick="document.getElementById('khungThemSanPham').style.transform = 'scale(1)'"><i class="fa fa-plus-square"></i>
+                    Thêm sản phẩm</button>
             </div>
 
-            <div id="khungThemSanPham"></div>
+            <div id="khungThemSanPham">
+                <span class="close" onclick="this.parentElement.style.transform = 'scale(0)';">&times;</span>
+                <table class="overlayTable table-outline table-content table-header">
+                    <tr>
+                        <th colspan="2">Sản Phẩm Cần Thêm</th>
+                    </tr>
+                    <tr>
+                        <td>Mã sản phẩm:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Tên sẩn phẩm:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Hãng:</td>
+                        <td>
+                            <select>
+                                <script>
+                                    var company = ["Apple", "Samsung", "Oppo", "Nokia", "Huawei", "Xiaomi","Realme", "Vivo", "Philips", "Mobell", "Mobiistar", "Itel","Coolpad", "HTC", "Motorola"];
+                                    for(var c of company) {
+                                        document.writeln(`<option value="`+c+`">`+c+`</option>`);
+                                    }
+                                </script>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hình:</td>
+                        <td>
+                            <img class="hinhDaiDien" id="anhDaiDienSanPham" src="">
+                            <input type="file" accept="image/*" onchange="capNhatAnhSanPham(this.files)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Giá tiền:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Số sao:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Đánh giá:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Khuyến mãi:</td>
+                        <td>
+                            <select>
+                                <option value="">Không</option>
+                                <option value="tragop">Trả góp</option>
+                                <option value="giamgia">Giảm giá</option>
+                                <option value="giareonline">Giá rẻ online</option>
+                                <option value="moiramat">Mởi ra mắt</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Giá trị khuyến mãi:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Thông số kĩ thuật</th>
+                    </tr>
+                    <tr>
+                        <td>Màn hình:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Hệ điều hành:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Camara sau:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Camara trước:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>CPU:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>RAM:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Bộ nhớ trong:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Thẻ nhớ:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Dung lượng Pin:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td> <button>THÊM</button> </td>
+                    </tr>
+                </table>
+            </div>
             <div id="khungSuaSanPham"></div>
         </div> <!-- // sanpham -->
 
@@ -103,13 +209,18 @@
             </div>
 
             <div class="table-footer">
+                <div class="timTheoNgay">
+                    Từ ngày: <input type="date" id="fromDate">
+                    Đến ngày: <input type="date" id="toDate">
+
+                    <button onclick="timDonHangTheoKhoangNgay()"><i class="fa fa-search"></i> Tìm</button>
+                </div>
+
                 <select name="kieuTim">
-                    <option value="ma">Tìm theo tên</option>
-                    <option value="ten">Tìm theo tên đăng nhập</option>
-                    <option value="ten">Tìm theo email</option>
+                    <option value="ma">Tìm theo mã đơn</option>
+                    <option value="ten">Tìm theo tên khách hàng</option>
                 </select>
                 <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
-                <button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>
             </div>
 
             <div id="khungThemNguoiDung"></div>
@@ -136,7 +247,7 @@
 
             <div class="table-footer">
                 <select name="kieuTim">
-                    <option value="ma">Tìm theo tên</option>
+                    <option value="ma">Tìm theo họ tên</option>
                     <option value="ten">Tìm theo tên đăng nhập</option>
                     <option value="ten">Tìm theo email</option>
                 </select>
