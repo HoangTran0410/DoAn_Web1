@@ -76,28 +76,30 @@
                     <option value="ten">Tìm theo tên</option>
                 </select>
                 <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemSanPham(this)">
-                <button onclick="document.getElementById('khungThemSanPham').style.transform = 'scale(1)'"><i class="fa fa-plus-square"></i>
-                    Thêm sản phẩm</button>
+                <button onclick="document.getElementById('khungThemSanPham').style.transform = 'scale(1)'; autoMaSanPham()">
+                    <i class="fa fa-plus-square"></i>
+                    Thêm sản phẩm
+                </button>
             </div>
 
-            <div id="khungThemSanPham">
+            <div id="khungThemSanPham" class="overlay">
                 <span class="close" onclick="this.parentElement.style.transform = 'scale(0)';">&times;</span>
                 <table class="overlayTable table-outline table-content table-header">
                     <tr>
-                        <th colspan="2">Sản Phẩm Cần Thêm</th>
+                        <th colspan="2">Thêm Sản Phẩm</th>
                     </tr>
                     <tr>
                         <td>Mã sản phẩm:</td>
-                        <td><input type="text"></td>
+                        <td><input type="text" id="maspThem"></td>
                     </tr>
                     <tr>
-                        <td>Tên sẩn phẩm:</td>
+                        <td>Tên sản phẩm:</td>
                         <td><input type="text"></td>
                     </tr>
                     <tr>
                         <td>Hãng:</td>
                         <td>
-                            <select>
+                            <select name="chonCompany" onchange="autoMaSanPham(this.value)">
                                 <script>
                                     var company = ["Apple", "Samsung", "Oppo", "Nokia", "Huawei", "Xiaomi","Realme", "Vivo", "Philips", "Mobell", "Mobiistar", "Itel","Coolpad", "HTC", "Motorola"];
                                     for(var c of company) {
@@ -182,11 +184,11 @@
                         <td><input type="text"></td>
                     </tr>
                     <tr>
-                        <td> <button>THÊM</button> </td>
+                        <td colspan="2" class="table-footer"> <button onclick="themSanPham()">THÊM</button> </td>
                     </tr>
                 </table>
             </div>
-            <div id="khungSuaSanPham"></div>
+            <div id="khungSuaSanPham" class="overlay"></div>
         </div> <!-- // sanpham -->
 
 
@@ -223,8 +225,6 @@
                 <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
             </div>
 
-            <div id="khungThemNguoiDung"></div>
-            <div id="khungSuaNguoiDung"></div>
         </div> <!-- // don hang -->
 
 
@@ -255,8 +255,8 @@
                 <button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>
             </div>
 
-            <div id="khungThemNguoiDung"></div>
-            <div id="khungSuaNguoiDung"></div>
+            <div id="khungThemNguoiDung" class="overlay"></div>
+            <div id="khungSuaNguoiDung" class="overlay"></div>
         </div> <!-- // khach hang -->
 
 

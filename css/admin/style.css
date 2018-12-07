@@ -229,13 +229,36 @@ header h2 {
 }
 
 /* ================== Những table thêm sửa ...  ====================== */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 14;
+    transition: .2s ease;
+    transform: scale(0);
+    background-color: #020202d8; 
+}
 .overlayTable {
+    margin: 50px auto;
     width: auto;
     background-color: #23282c;
 }
 
 .overlayTable td:first-child {
-    float: right;
+    text-align: right;
+}
+
+.overlayTable input {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e7e7e7;
+}
+.overlayTable input[type="file"] {
+    background-color: transparent;
 }
 
 .close {
@@ -261,16 +284,7 @@ header h2 {
 
 /* ======================= id =================== */
 #khungThemSanPham {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    z-index: 14;
-    transition: .2s ease;
-    transform: scale(0);
-    background-color: #020202d8;
+
 }
 
 /* Div Tìm theo ngày */
