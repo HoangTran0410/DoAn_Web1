@@ -143,9 +143,6 @@ header {
                     z-index: 2;
                 }
                 /* Hien thi ảnh */
-                .products table td:nth-child(3):hover a {
-                    float: right;
-                }
                 .products table td:hover img {
                     height: 150px;
                 }
