@@ -13,6 +13,15 @@ window.onload = function () {
     for (var t of tags) addTags(t, "index.html?search=" + t);
 
     currentUser = getCurrentUser();
+
+    // cập nhật từ list user, do admin chỉ tác động tới listuser
+    var listUser = getListUser();
+    for(var u of listUser) {
+        if(equalUser(currentUser, u)) {
+            currentUser = u;
+        }
+    }
+
     addTatCaDonHang(currentUser); // hàm này cần chạy trước để tính được tổng tiền tất cả đơn hàng 
     addInfoUser(currentUser);
 }
@@ -270,6 +279,6 @@ function addDonHang(dh) {
             </table>
             <hr>
         `;
-
+    console.log(dh);
     div.innerHTML += s;
 }

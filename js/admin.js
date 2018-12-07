@@ -424,7 +424,7 @@ function addTableDonHang() {
             <td style="width: 20%">` + d.sp + `</td>
             <td style="width: 15%">` + d.tongtien + `</td>
             <td style="width: 10%">` + d.ngaygio + `</td>
-            <td style="width: 10%">` + d.trangthai + `</td>
+            <td style="width: 10%">` + d.tinhTrang + `</td>
             <td style="width: 10%">
                 <div class="tooltip">
                     <i class="fa fa-check" onclick="duyet('`+d.ma+`', true)"></i>
@@ -503,7 +503,7 @@ function getListDonHang() {
                 "sp": sps,
                 "tongtien": numToString(tongtien),
                 "ngaygio": x,
-                "trangthai": u[i].donhang[j].tinhTrang
+                "tinhTrang": u[i].donhang[j].tinhTrang
             });
         }
     }
