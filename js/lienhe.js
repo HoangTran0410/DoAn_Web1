@@ -37,6 +37,15 @@ function checkName(str) {
 }
 
 function checkPhone(phone) {
+    for(var i =0 ; i< phone.length ;i++)
+    {
+        if(phone.charAt(i)<"0" || phone.charAt(i)>"9")
+            return false;
+    }
+    return true;
+}
+
+function checkPhone2(phone) {
     var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     if (phone.match(phoneno)) return true;
 
