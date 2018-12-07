@@ -123,7 +123,7 @@ function locTableTheoMaSanPham(ma) {
 }
 
 function timKiemSanPham(inp) {
-    var kieuTim = document.getElementsByName('kieuTim')[0].value;
+    var kieuTim = document.getElementsByName('kieuTimSanPham')[0].value;
     var text = inp.value;
     if (kieuTim == 'ten') {
         locTableTheoTenSanPham(text);
