@@ -37,7 +37,12 @@
             <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
             <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bar-chart-o"></i> Thống Kê</a></li>
             <li class="nav-item"><hr></li>
-            <li class="nav-item"><a href="index.html" class="nav-link" onclick="logOutAdmin(); return true;"><i class="fa fa-arrow-left"></i>Đăng xuất (về Trang chủ)</a></li>
+            <li class="nav-item">
+                <a href="index.html" class="nav-link" onclick="logOutAdmin(); return true;">
+                    <i class="fa fa-arrow-left"></i>
+                    Đăng xuất (về Trang chủ)
+                </a>
+            </li>
         </ul>
     </aside>
 
@@ -47,13 +52,13 @@
         <div class="products">
 
             <table class="table-header">
-                <tr>
+                <tr style="cursor: pointer">
                     <!-- Theo độ rộng của table content -->
-                    <th style="width: 5%">STT</th>
-                    <th style="width: 10%">Mã</th>
-                    <th style="width: 40%">Tên</th>
-                    <th style="width: 15%">Giá</th>
-                    <th style="width: 15%">Khuyến mãi</th>
+                    <th title="Sắp xếp" style="width: 5%" onclick="sortProductsTable('stt')">Stt <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 10%" onclick="sortProductsTable('masp')">Mã <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 40%" onclick="sortProductsTable('ten')">Tên <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 15%" onclick="sortProductsTable('gia')">Giá <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 15%" onclick="sortProductsTable('khuyenmai')">Khuyến mãi <i class="fa fa-sort"></i></th>
                     <th style="width: 15%">Hành động</th>
                 </tr>
             </table>

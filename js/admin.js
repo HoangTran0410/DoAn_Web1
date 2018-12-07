@@ -15,7 +15,7 @@ function logOutAdmin() {
 }
 
 // ========================== Sản Phẩm ========================
-// Tìm kiếm
+// Tìm kiếm - Lọc
 function locTableTheoTenSanPham(ten) {
     var listTr_table = document.getElementsByClassName('table-content')[0].getElementsByTagName('tr');
     for (var tr of listTr_table) {
@@ -48,7 +48,6 @@ function timKiem(inp) {
     } else {
         locTableTheoMaSanPham(text);
     }
-
 }
 
 // Thêm
@@ -57,9 +56,6 @@ function openThemSanPham() {
 }
 
 function themSanPham(sp) { // sp ở dạng object
-    // Lấy dữ liệu ra đổ vào listSpLocal 
-    var listSpLocal = getListProducts();
-
     // check trùng ở list_products
     for (var l of list_products) {
         if (l.name == sp.name) {
@@ -69,10 +65,13 @@ function themSanPham(sp) { // sp ở dạng object
     }
 
     // Them san pham vao listSpLocal
-    listSpLocal.push(sp);
+    list_products.push(sp);
 
-    // Đổ ngược trở lại localstorage
-    setListProducts(listSpLocal);
+    // Lưu vào localstorage
+    setListProducts(list_products);
+
+    // Vẽ lại table
+    addTableProducts();
 }
 
 // Xóa
@@ -95,13 +94,74 @@ function xoaSanPham(masp, tensp) {
 
 // Sửa
 function suaSanPham(masp) {
-    // Lấy dữ liệu ra đổ vào listSpLocal 
-    var listSpLocal = getListProducts();
-
     // Sửa
 
-    // Đổ ngược trở lại localstorage
-    setListProducts(listSpLocal);
+    // Lưu vào localstorage
+    setListProducts(list_products);
+
+    // Vẽ lại table
+    addTableProducts();
+}
+
+// ================== Sort ====================
+// https://github.com/HoangTran0410/First_html_css_js/blob/master/sketch.js
+var decrease = true; // Sắp xếp giảm dần
+
+function sortProductsTable(loai) {
+    var list = document.getElementsByClassName("table-content")[0];
+    var tr = list.getElementsByTagName('tr');
+
+    quickSort(tr, 0, tr.length-1, loai); // type cho phép lựa chọn sort theo mã hoặc tên hoặc giá ... 
+    decrease = !decrease;
+}
+
+function quickSort(arr, left, right, loai) {
+    var pivot,
+        partitionIndex;
+
+    if (left < right) {
+        pivot = right;
+        partitionIndex = partition(arr, pivot, left, right, loai);
+
+        //sort left and right
+        quickSort(arr, left, partitionIndex - 1, loai);
+        quickSort(arr, partitionIndex + 1, right, loai);
+    }
+    return arr;
+}
+
+function partition(arr, pivot, left, right, loai) {
+    var pivotValue =  getValueOfTypeInTable(arr[pivot], loai),
+        partitionIndex = left;
+    
+    for (var i = left; i < right; i++) {
+        if (decrease && getValueOfTypeInTable(arr[i], loai) > pivotValue
+        || !decrease && getValueOfTypeInTable(arr[i], loai) < pivotValue) {
+            swap(arr, i, partitionIndex);
+            partitionIndex++;
+        }
+    }
+    swap(arr, right, partitionIndex);
+    return partitionIndex;
+}
+
+function swap(arr, i, j) {
+    var tempi = arr[i].cloneNode(true);
+    var tempj = arr[j].cloneNode(true);
+    arr[i].parentNode.replaceChild(tempj, arr[i]);
+    arr[j].parentNode.replaceChild(tempi, arr[j]);
+}
+
+function getValueOfTypeInTable(tr, loai) {
+    var td = tr.getElementsByTagName('td');
+    switch(loai) {
+        case 'stt' : return Number(td[0].innerHTML);
+        case 'masp' : return td[1].innerHTML.toLowerCase();
+        case 'ten' : return td[2].innerHTML.toLowerCase();
+        case 'gia' : return stringToNum(td[3].innerHTML);
+        case 'khuyenmai' : return td[4].innerHTML.toLowerCase();
+    }
+    return false;
 }
 
 // ======================= Hiển thị ==============================
@@ -154,7 +214,7 @@ function promoToStringValue(pr) {
     return '';
 }
 
-// các hàm thêm
+// ================= các hàm thêm ====================
 function progress(percent, bg, width, height) {
 
     return `<div class="progress" style="width: ` + width + `; height:` + height + `">

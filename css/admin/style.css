@@ -11,6 +11,15 @@ html {
     background-color: #2f353a;
 }
 
+hr {
+    color: rgb(95, 95, 95);
+    background-color: rgb(95, 95, 95);
+    border-top: 2px solid rgb(95, 95, 95);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
 a {
     text-decoration: none;
     color: #222;
@@ -103,10 +112,18 @@ header {
             background-color: #3e4144;
         }
 
+        /* Ẩn icon sort */
+        .products table th i {
+            transform: scale(0);
+            transition-duration: .2s;
+        }
         .products table th {
             color: #e4e7ea;
             background-color: #3e464d;
             border-color: #23282c;
+        }
+        .products table th:hover i {
+            transform: scale(1)
         }
 
         .products table th,
