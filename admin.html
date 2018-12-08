@@ -197,8 +197,9 @@
             <table class="table-header">
                 <tr>
                     <!-- Theo độ rộng của table content -->
-                    <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('madon')">Mã đơn <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('khach')">Khách <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 5%" onclick="sortDonHangTable('stt')">Stt <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 13%" onclick="sortDonHangTable('madon')">Mã đơn <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 7%" onclick="sortDonHangTable('khach')">Khách <i class="fa fa-sort"></i></th>
                     <th title="Sắp xếp" style="width: 20%" onclick="sortDonHangTable('sanpham')">Sản phẩm <i class="fa fa-sort"></i></th>
                     <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('tongtien')">Tổng tiền <i class="fa fa-sort"></i></th>
                     <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('ngaygio')">Ngày giờ <i class="fa fa-sort"></i></th>
@@ -220,9 +221,10 @@
 
                 <select name="kieuTimDonHang">
                     <option value="ma">Tìm theo mã đơn</option>
-                    <option value="ten">Tìm theo tên khách hàng</option>
+                    <option value="khachhang">Tìm theo tên khách hàng</option>
+                    <option value="trangThai">Tìm theo trạng thái</option>
                 </select>
-                <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
+                <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemDonHang(this)">
             </div>
 
         </div> <!-- // don hang -->
@@ -233,11 +235,11 @@
             <table class="table-header">
                 <tr>
                     <!-- Theo độ rộng của table content -->
-                    <th title="Sắp xếp" style="width: 5%" onclick="sortUserTable('stt')">Stt <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 15%" onclick="sortUserTable('hoten')">Họ tên <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 20%" onclick="sortUserTable('email')">Email <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 20%" onclick="sortUserTable('taikhoan')">Tài khoản <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 10%" onclick="sortUserTable('matkhau')">Mật khẩu <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 5%" onclick="sortKhachHangTable('stt')">Stt <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 15%" onclick="sortKhachHangTable('hoten')">Họ tên <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 20%" onclick="sortKhachHangTable('email')">Email <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 20%" onclick="sortKhachHangTable('taikhoan')">Tài khoản <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 10%" onclick="sortKhachHangTable('matkhau')">Mật khẩu <i class="fa fa-sort"></i></th>
                     <th style="width: 10%">Hành động</th>
                 </tr>
             </table>
@@ -247,9 +249,9 @@
 
             <div class="table-footer">
                 <select name="kieuTimKhachHang">
-                    <option value="ma">Tìm theo họ tên</option>
-                    <option value="ten">Tìm theo tài khoản</option>
-                    <option value="ten">Tìm theo email</option>
+                    <option value="ten">Tìm theo họ tên</option>
+                    <option value="email">Tìm theo email</option>
+                    <option value="taikhoan">Tìm theo tài khoản</option>
                 </select>
                 <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
                 <button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>

@@ -69,6 +69,7 @@ header h2 {
     color: #73818f;
     text-decoration: none;
     background: 0 0;
+    cursor: pointer;
 }
 
 .sidebar .nav-link.active,

@@ -1,3 +1,5 @@
+var TONGTIEN = 0;
+
 window.onload = function () {
     // get data từ localstorage
     list_products = getListProducts() || list_products;
@@ -70,7 +72,7 @@ function addTableProducts() {
     for (var i = 0; i < list_products.length; i++) {
         var p = list_products[i];
         s += `<tr>
-            <td style="width: 5%">` + i + `</td>
+            <td style="width: 5%">` + (i+1) + `</td>
             <td style="width: 10%">` + p.masp + `</td>
             <td style="width: 40%">
                 <a title="Xem chi tiết" target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `">` + p.name + `</a>
@@ -97,38 +99,23 @@ function addTableProducts() {
     tc.innerHTML = s;
 }
 
-// Tìm kiếm - Lọc
-function locTableTheoTenSanPham(ten) {
-    var listTr_table = document.getElementsByClassName('table-content')[0].getElementsByTagName('tr');
-    for (var tr of listTr_table) {
-        var tensp_tr = tr.getElementsByTagName('a')[0].innerHTML.toLowerCase();
-        if (tensp_tr.indexOf(ten.toLowerCase()) < 0) {
-            tr.style.display = 'none';
-        } else {
-            tr.style.display = '';
-        }
-    }
-}
-
-function locTableTheoMaSanPham(ma) {
-    var listTr_table = document.getElementsByClassName('table-content')[0].getElementsByTagName('tr');
-    for (var tr of listTr_table) {
-        var tensp_tr = tr.getElementsByTagName('td')[1].innerHTML.toLowerCase();
-        if (tensp_tr.indexOf(ma.toLowerCase()) < 0) {
-            tr.style.display = 'none';
-        } else {
-            tr.style.display = '';
-        }
-    }
-}
-
+// Tìm kiếm
 function timKiemSanPham(inp) {
     var kieuTim = document.getElementsByName('kieuTimSanPham')[0].value;
     var text = inp.value;
-    if (kieuTim == 'ten') {
-        locTableTheoTenSanPham(text);
-    } else {
-        locTableTheoMaSanPham(text);
+
+    // Lọc
+    var vitriKieuTim = {'ma':1, 'ten':2}; // mảng lưu vị trí cột
+
+    var listTr_table = document.getElementsByClassName('sanpham')[0].getElementsByClassName('table-content')[0].getElementsByTagName('tr');
+    for (var tr of listTr_table) {
+        var tensp_tr = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
+
+        if (tensp_tr.indexOf(text.toLowerCase()) < 0) {
+            tr.style.display = 'none';
+        } else {
+            tr.style.display = '';
+        }
     }
 }
 
@@ -390,14 +377,15 @@ function capNhatAnhSanPham(files) {
 
 // Sắp Xếp sản phẩm
 function sortProductsTable(loai) {
-    var list = document.getElementsByClassName("table-content")[0];
+    var list = document.getElementsByClassName('sanpham')[0].getElementsByClassName("table-content")[0];
     var tr = list.getElementsByTagName('tr');
 
-    quickSort(tr, 0, tr.length-1, loai); // type cho phép lựa chọn sort theo mã hoặc tên hoặc giá ... 
+    quickSort(tr, 0, tr.length-1, loai, getValueOfTypeInTable_SanPham); // type cho phép lựa chọn sort theo mã hoặc tên hoặc giá ... 
     decrease = !decrease;
 }
 
-function getValueOfTypeInTable(tr, loai) {
+// Lấy giá trị của loại(cột) dữ liệu nào đó trong bảng
+function getValueOfTypeInTable_SanPham(tr, loai) {
     var td = tr.getElementsByTagName('td');
     switch(loai) {
         case 'stt' : return Number(td[0].innerHTML);
@@ -410,17 +398,20 @@ function getValueOfTypeInTable(tr, loai) {
 }
 
 // ========================= Đơn Hàng ===========================
+// Vẽ bảng
 function addTableDonHang() {
     var tc = document.getElementsByClassName('donhang')[0].getElementsByClassName('table-content')[0];
     var s = `<table class="table-outline hideImg">`;
 
     var listDH = getListDonHang();
 
+    TONGTIEN = 0;
     for (var i = 0; i < listDH.length; i++) {
         var d = listDH[i];
         s += `<tr>
-            <td style="width: 10%">` + d.ma + `</td>
-            <td style="width: 15%">` + d.khach + `</td>
+            <td style="width: 5%">` + (i+1) + `</td>
+            <td style="width: 13%">` + d.ma + `</td>
+            <td style="width: 7%">` + d.khach + `</td>
             <td style="width: 20%">` + d.sp + `</td>
             <td style="width: 15%">` + d.tongtien + `</td>
             <td style="width: 10%">` + d.ngaygio + `</td>
@@ -437,12 +428,50 @@ function addTableDonHang() {
                 
             </td>
         </tr>`;
+        TONGTIEN += stringToNum(d.tongtien);
     }
 
     s += `</table>`;
     tc.innerHTML = s;
 }
 
+function getListDonHang() {
+    var u = getListUser();
+    var result = [];
+    for(var i = 0; i < u.length; i++) {
+        for(var j = 0; j < u[i].donhang.length; j++) {
+            // Tổng tiền
+            var tongtien = 0;
+            for(var s of u[i].donhang[j].sp) {
+                var timsp = timKiemTheoMa(list_products, s.ma);
+                if(timsp.promo.name == 'giareonline') tongtien += stringToNum(timsp.promo.value);
+                else tongtien += stringToNum(timsp.price);
+            }
+
+            // Ngày giờ
+            var x = new Date(u[i].donhang[j].ngaymua).toLocaleString();
+
+            // Các sản phẩm
+            var sps = '';
+            for(var s of u[i].donhang[j].sp) {
+                sps += `<p style="text-align: right">`+(timKiemTheoMa(list_products, s.ma).name + ' [' + s.soluong + ']') + `</p>`;
+            }
+
+            // Lưu vào result
+            result.push({
+                "ma": u[i].donhang[j].ngaymua.toString(),
+                "khach": u[i].username,
+                "sp": sps,
+                "tongtien": numToString(tongtien),
+                "ngaygio": x,
+                "tinhTrang": u[i].donhang[j].tinhTrang
+            });
+        }
+    }
+    return result;
+}
+
+// Duyệt
 function duyet(maDonHang, duyetDon) {
     var u = getListUser();
     for(var i = 0; i < u.length; i++) {
@@ -454,6 +483,7 @@ function duyet(maDonHang, duyetDon) {
                     
                     } else if(u[i].donhang[j].tinhTrang == 'Đã hủy') {
                         alert('Không thể duyệt đơn đã hủy !');
+                        return;
                     }
                 } else {
                     if(u[i].donhang[j].tinhTrang == 'Đang chờ xử lý') {
@@ -462,6 +492,7 @@ function duyet(maDonHang, duyetDon) {
                     
                     } else if(u[i].donhang[j].tinhTrang == 'Đã giao hàng') {
                         alert('Không thể hủy đơn hàng đã giao !');
+                        return;
                     }
                 }
                 break;
@@ -476,47 +507,55 @@ function duyet(maDonHang, duyetDon) {
     addTableDonHang();
 }
 
-function getListDonHang() {
-    var u = getListUser();
-    var result = [];
-    for(var i = 0; i < u.length; i++) {
-        for(var j = 0; j < u[i].donhang.length; j++) {
-            // Tổng tiền
-            var tongtien = 0;
-            for(var s of u[i].donhang[j].sp) {
-                tongtien += stringToNum(timKiemTheoMa(list_products, s.ma).price);
-            }
+function locDonHangTheoKhoangNgay() {
 
-            // Ngày giờ
-            var x = new Date(u[i].donhang[j].ngaymua).toLocaleString();
-
-            // Các sản phẩm
-            var sps = '';
-            for(var s of u[i].donhang[j].sp) {
-                sps += `<p style="text-align: right">`+(timKiemTheoMa(list_products, s.ma).name + ' [' + s.soluong + ']') + `</p>`;
-            }
-
-            // Lưu vào result
-            result.push({
-                "ma": u[i].donhang[j].ngaymua,
-                "khach": u[i].username,
-                "sp": sps,
-                "tongtien": numToString(tongtien),
-                "ngaygio": x,
-                "tinhTrang": u[i].donhang[j].tinhTrang
-            });
-        }
-    }
-    return result;
 }
 
-function locDonHangTheoKhoangNgay() {}
+function timKiemDonHang(inp) {
+    var kieuTim = document.getElementsByName('kieuTimDonHang')[0].value;
+    var text = inp.value;
 
-function timKiemNguoiDung(inp) {
+    // Lọc
+    var vitriKieuTim = {'ma':1, 'khachhang':2, 'trangThai':6};
 
+    var listTr_table = document.getElementsByClassName('donhang')[0].getElementsByClassName('table-content')[0].getElementsByTagName('tr');
+    for (var tr of listTr_table) {
+        var tensp_tr = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
+
+        if (tensp_tr.indexOf(text.toLowerCase()) < 0) {
+            tr.style.display = 'none';
+        } else {
+            tr.style.display = '';
+        }
+    }
+}
+
+// Sắp xếp
+function sortDonHangTable(loai) {
+    var list = document.getElementsByClassName('donhang')[0].getElementsByClassName("table-content")[0];
+    var tr = list.getElementsByTagName('tr');
+
+    quickSort(tr, 0, tr.length-1, loai, getValueOfTypeInTable_DonHang); 
+    decrease = !decrease;
+}
+
+// Lấy giá trị của loại(cột) dữ liệu nào đó trong bảng
+function getValueOfTypeInTable_DonHang(tr, loai) {
+    var td = tr.getElementsByTagName('td');
+    switch(loai) {
+        case 'stt': return Number(td[0].innerHTML);
+        case 'ma' : return new Date(td[1].innerHTML); // chuyển về dạng ngày để so sánh ngày
+        case 'khach' : return td[2].innerHTML.toLowerCase(); // lấy tên khách
+        case 'sanpham' : return td[3].children.length;    // lấy số lượng hàng trong đơn này, length ở đây là số lượng <p>
+        case 'tongtien' : return stringToNum(td[4].innerHTML); // trả về dạng giá tiền
+        case 'ngaygio' : return new Date(td[5].innerHTML); // chuyển về ngày
+        case 'trangthai': return td[6].innerHTML.toLowerCase(); //
+    }
+    return false;
 }
 
 // ====================== Khách Hàng =============================
+// Vẽ bảng
 function addTableKhachHang() {
     var tc = document.getElementsByClassName('khachhang')[0].getElementsByClassName('table-content')[0];
     var s = `<table class="table-outline hideImg">`;
@@ -544,40 +583,78 @@ function addTableKhachHang() {
     tc.innerHTML = s;
 }
 
+// Tìm kiếm
 function timKiemNguoiDung(inp) {
+    var kieuTim = document.getElementsByName('kieuTimKhachHang')[0].value;
+    var text = inp.value;
 
+    // Lọc
+    var vitriKieuTim = {'ten':1, 'email':2, 'taikhoan':3};
+
+    var listTr_table = document.getElementsByClassName('khachhang')[0].getElementsByClassName('table-content')[0].getElementsByTagName('tr');
+    for (var tr of listTr_table) {
+        var tensp_tr = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
+
+        if (tensp_tr.indexOf(text.toLowerCase()) < 0) {
+            tr.style.display = 'none';
+        } else {
+            tr.style.display = '';
+        }
+    }
 }
 
 function openThemNguoiDung() {
 
 }
 
+// Sắp xếp
+function sortKhachHangTable(loai) {
+    var list = document.getElementsByClassName('khachhang')[0].getElementsByClassName("table-content")[0];
+    var tr = list.getElementsByTagName('tr');
+
+    quickSort(tr, 0, tr.length-1, loai, getValueOfTypeInTable_KhachHang); 
+    decrease = !decrease;
+}
+
+function getValueOfTypeInTable_KhachHang(tr, loai) {
+    var td = tr.getElementsByTagName('td');
+    switch(loai) {
+        case 'stt': return Number(td[0].innerHTML);
+        case 'hoten' : return td[1].innerHTML.toLowerCase();
+        case 'email' : return td[2].innerHTML.toLowerCase();
+        case 'taikhoan' : return td[3].innerHTML.toLowerCase();    
+        case 'matkhau' : return td[4].innerHTML.toLowerCase(); 
+    }
+    return false;
+}
+
 // ================== Sort ====================
 // https://github.com/HoangTran0410/First_html_css_js/blob/master/sketch.js
 var decrease = true; // Sắp xếp giảm dần
 
-function quickSort(arr, left, right, loai) {
+// loại là tên cột, func là hàm giúp lấy giá trị từ cột loai
+function quickSort(arr, left, right, loai, func) {
     var pivot,
         partitionIndex;
 
     if (left < right) {
         pivot = right;
-        partitionIndex = partition(arr, pivot, left, right, loai);
+        partitionIndex = partition(arr, pivot, left, right, loai, func);
 
         //sort left and right
-        quickSort(arr, left, partitionIndex - 1, loai);
-        quickSort(arr, partitionIndex + 1, right, loai);
+        quickSort(arr, left, partitionIndex - 1, loai, func);
+        quickSort(arr, partitionIndex + 1, right, loai, func);
     }
     return arr;
 }
 
-function partition(arr, pivot, left, right, loai) {
-    var pivotValue =  getValueOfTypeInTable(arr[pivot], loai),
+function partition(arr, pivot, left, right, loai, func) {
+    var pivotValue =  func(arr[pivot], loai),
         partitionIndex = left;
     
     for (var i = left; i < right; i++) {
-        if (decrease && getValueOfTypeInTable(arr[i], loai) > pivotValue
-        || !decrease && getValueOfTypeInTable(arr[i], loai) < pivotValue) {
+        if (decrease && func(arr[i], loai) > pivotValue
+        || !decrease && func(arr[i], loai) < pivotValue) {
             swap(arr, i, partitionIndex);
             partitionIndex++;
         }
