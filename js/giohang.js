@@ -59,7 +59,6 @@ function addProductToTable(user) {
 		var masp = user.products[i].ma;
 		var soluongSp = user.products[i].soluong;
 		var p = timKiemTheoMa(list_products, masp);
-		var nameSp = p.name;
 		var price = (p.promo.name == 'giareonline' ? p.promo.value : p.price);
 		var thoigian = new Date(user.products[i].date).toLocaleString();
 		var thanhtien = stringToNum(price) * soluongSp;
@@ -75,9 +74,9 @@ function addProductToTable(user) {
 				</td>
 				<td class="alignRight">` + price + ` ₫</td>
 				<td class="soluong" >
-					<button onclick="giamSoLuong('` + nameSp + `')"><i class="fa fa-minus"></i></button>
-					<input size="1" onchange="capNhatSoLuongFromInput(this, '` + nameSp + `')" value=` + soluongSp + `>
-					<button onclick="tangSoLuong('` + nameSp + `')"><i class="fa fa-plus"></i></button>
+					<button onclick="giamSoLuong('` + masp + `')"><i class="fa fa-minus"></i></button>
+					<input size="1" onchange="capNhatSoLuongFromInput(this, '` + masp + `')" value=` + soluongSp + `>
+					<button onclick="tangSoLuong('` + masp + `')"><i class="fa fa-plus"></i></button>
 				</td>
 				<td class="alignRight">` + numToString(thanhtien) + ` ₫</td>
 				<td style="text-align: center" >` + thoigian + `</td>
@@ -135,12 +134,12 @@ function xoaHet() {
 }
 
 // Cập nhật số lượng lúc nhập số lượng vào input
-function capNhatSoLuongFromInput(inp, tenSanPham) {
+function capNhatSoLuongFromInput(inp, masp) {
 	var soLuongMoi = Number(inp.value);
 	if (!soLuongMoi || soLuongMoi <= 0) soLuongMoi = 1;
 
 	for (var p of currentuser.products) {
-		if (p.name == tenSanPham) {
+		if (p.ma == masp) {
 			p.soluong = soLuongMoi;
 		}
 	}
@@ -148,9 +147,9 @@ function capNhatSoLuongFromInput(inp, tenSanPham) {
 	capNhatMoiThu();
 }
 
-function tangSoLuong(tenSanPham) {
+function tangSoLuong(masp) {
 	for (var p of currentuser.products) {
-		if (p.name == tenSanPham) {
+		if (p.ma == masp) {
 			p.soluong++;
 		}
 	}
@@ -158,9 +157,9 @@ function tangSoLuong(tenSanPham) {
 	capNhatMoiThu();
 }
 
-function giamSoLuong(tenSanPham) {
+function giamSoLuong(masp) {
 	for (var p of currentuser.products) {
-		if (p.name == tenSanPham) {
+		if (p.ma == masp) {
 			if (p.soluong > 1) {
 				p.soluong--;
 			} else {

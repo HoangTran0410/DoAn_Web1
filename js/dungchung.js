@@ -113,7 +113,7 @@ function themVaoGioHang(masp, tensp) {
     var daCoSanPham = false;;
 
     for(var i = 0; i < user.products.length; i++) { // check trùng sản phẩm
-        if(user.products[i].masp == masp) {
+        if(user.products[i].ma == masp) {
             user.products[i].soluong++;
             daCoSanPham = true;
             break;

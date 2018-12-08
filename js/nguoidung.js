@@ -279,6 +279,5 @@ function addDonHang(dh) {
             </table>
             <hr>
         `;
-    console.log(dh);
     div.innerHTML += s;
 }
