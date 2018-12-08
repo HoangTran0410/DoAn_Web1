@@ -150,7 +150,6 @@ function addTableProducts() {
                     <i class="fa fa-trash" onclick="xoaSanPham('` + p.masp + `', '`+p.name+`')"></i>
                     <span class="tooltiptext">Xóa</span>
                 </div>
-                
             </td>
         </tr>`;
     }
