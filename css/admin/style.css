@@ -312,7 +312,7 @@ header h2 {
 .thongke .canvasContainer {
     display: inline-block;
     width: 49%;
-    margin: 0;
+    margin: 50px 0;
 }
 
 .flexContain {

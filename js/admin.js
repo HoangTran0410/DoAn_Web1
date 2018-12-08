@@ -10,77 +10,8 @@ window.onload = function () {
     if (window.localStorage.getItem('admin')) {
         addTableProducts();
         addTableDonHang();
-        addTableKhachHang(); // đồng
-
-        // Thêm thống kê
-        addChart('myChart1', {
-            type: 'bar',
-            data: {
-                labels: ["Apple", "Samsung", "Xiaomi", "Vivo", "Oppo", "Mobiistar"],
-                datasets: [{
-                    label: 'Số lượng bán ra',
-                    data: [12, 19, 10, 5, 20, 5],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                title: {
-                    fontSize: 25,
-                    display: true,
-                    text: 'Sản phẩm bán ra'
-                }
-            }
-        });
-        addChart('myChart2', {
-            type: 'doughnut',
-            data: {
-                labels: ["Apple", "Samsung", "Xiaomi", "Vivo", "Oppo", "Mobiistar"],
-                datasets: [{
-                    label: 'Số lượng bán ra',
-                    data: [12, 19, 10, 5, 20, 5],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                title: {
-                    fontSize: 25,
-                    display: true,
-                    text: 'Sản phẩm bán ra'
-                }
-            }
-        });
+        addTableKhachHang();
+        addThongKe();
 
         openTab('Home')
     } else {
@@ -92,45 +23,64 @@ function logOutAdmin() {
     window.localStorage.removeItem('admin');
 }
 
-/* {
-    type: 'bar',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-}*/
 function addChart(id, chartOption) {
     var ctx = document.getElementById(id).getContext('2d');
     var chart = new Chart(ctx, chartOption);
+}
+
+function addThongKe() {
+    var dataChart = {
+        type: 'bar',
+        data: {
+            labels: ["Apple", "Samsung", "Xiaomi", "Vivo", "Oppo", "Mobiistar"],
+            datasets: [{
+                label: 'Số lượng bán ra',
+                data: [12, 19, 10, 5, 20, 5],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            title: {
+                fontColor: '#fff',
+                fontSize: 25,
+                display: true,
+                text: 'Sản phẩm bán ra'
+            }
+        }
+    };
+
+    // Thêm thống kê
+    var barChart = copyObject(dataChart);
+        barChart.type = 'bar';
+    addChart('myChart1', barChart);
+
+    var doughnutChart = copyObject(dataChart);
+        doughnutChart.type = 'doughnut';
+    addChart('myChart2', doughnutChart);
+
+    var pieChart = copyObject(dataChart);
+        pieChart.type = 'pie';
+    addChart('myChart3', pieChart);
+
+    var lineChart = copyObject(dataChart);
+        lineChart.type = 'line';
+    addChart('myChart4', lineChart);
 }
 
 // ======================= Các Tab =========================
