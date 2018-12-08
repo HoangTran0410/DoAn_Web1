@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">
 
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
     <!-- Our files -->
     <link rel="stylesheet" href="css/admin/style.css">
     <link rel="stylesheet" href="css/admin/progress.css">
@@ -51,7 +54,9 @@
 
     <!-- Khung hiển thị chính -->
     <div class="main">
-        <div class="home"></div>
+        <div class="home">
+
+        </div>
 
         <!-- Sản Phẩm -->
         <div class="sanpham">
@@ -259,11 +264,22 @@
         </div> <!-- // khach hang -->
 
         <!-- Thống kê -->
-        <div class="thongke"></div>
+        <div class="thongke">
+            <div class="canvasContainer">
+                <canvas id="myChart1"></canvas>
+            </div>
+
+            <div class="canvasContainer">
+                <canvas id="myChart2"></canvas>
+            </div>
+
+        </div>
     </div> <!-- // main -->
 
 
-    <footer></footer>
+    <footer>
+
+    </footer>
 </body>
 
 </html>

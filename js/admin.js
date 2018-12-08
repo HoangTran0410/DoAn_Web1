@@ -10,7 +10,77 @@ window.onload = function () {
     if (window.localStorage.getItem('admin')) {
         addTableProducts();
         addTableDonHang();
-        addTableKhachHang();
+        addTableKhachHang(); // đồng
+
+        // Thêm thống kê
+        addChart('myChart1', {
+            type: 'bar',
+            data: {
+                labels: ["Apple", "Samsung", "Xiaomi", "Vivo", "Oppo", "Mobiistar"],
+                datasets: [{
+                    label: 'Số lượng bán ra',
+                    data: [12, 19, 10, 5, 20, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                title: {
+                    fontSize: 25,
+                    display: true,
+                    text: 'Sản phẩm bán ra'
+                }
+            }
+        });
+        addChart('myChart2', {
+            type: 'doughnut',
+            data: {
+                labels: ["Apple", "Samsung", "Xiaomi", "Vivo", "Oppo", "Mobiistar"],
+                datasets: [{
+                    label: 'Số lượng bán ra',
+                    data: [12, 19, 10, 5, 20, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                title: {
+                    fontSize: 25,
+                    display: true,
+                    text: 'Sản phẩm bán ra'
+                }
+            }
+        });
 
         openTab('Home')
     } else {
@@ -20,6 +90,47 @@ window.onload = function () {
 
 function logOutAdmin() {
     window.localStorage.removeItem('admin');
+}
+
+/* {
+    type: 'bar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+}*/
+function addChart(id, chartOption) {
+    var ctx = document.getElementById(id).getContext('2d');
+    var chart = new Chart(ctx, chartOption);
 }
 
 // ======================= Các Tab =========================
@@ -109,9 +220,9 @@ function timKiemSanPham(inp) {
 
     var listTr_table = document.getElementsByClassName('sanpham')[0].getElementsByClassName('table-content')[0].getElementsByTagName('tr');
     for (var tr of listTr_table) {
-        var tensp_tr = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
+        var td = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
 
-        if (tensp_tr.indexOf(text.toLowerCase()) < 0) {
+        if (td.indexOf(text.toLowerCase()) < 0) {
             tr.style.display = 'none';
         } else {
             tr.style.display = '';
@@ -508,7 +619,20 @@ function duyet(maDonHang, duyetDon) {
 }
 
 function locDonHangTheoKhoangNgay() {
+    var from = document.getElementById('fromDate').valueAsDate;
+    var to = document.getElementById('toDate').valueAsDate;
 
+    var listTr_table = document.getElementsByClassName('donhang')[0].getElementsByClassName('table-content')[0].getElementsByTagName('tr');
+    for (var tr of listTr_table) {
+        var td = tr.getElementsByTagName('td')[5].innerHTML;
+        var d = new Date(td);
+
+        if (d >= from && d <= to) {
+            tr.style.display = '';
+        } else {
+            tr.style.display = 'none';
+        }
+    }
 }
 
 function timKiemDonHang(inp) {
@@ -520,9 +644,9 @@ function timKiemDonHang(inp) {
 
     var listTr_table = document.getElementsByClassName('donhang')[0].getElementsByClassName('table-content')[0].getElementsByTagName('tr');
     for (var tr of listTr_table) {
-        var tensp_tr = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
+        var td = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
 
-        if (tensp_tr.indexOf(text.toLowerCase()) < 0) {
+        if (td.indexOf(text.toLowerCase()) < 0) {
             tr.style.display = 'none';
         } else {
             tr.style.display = '';
@@ -593,9 +717,9 @@ function timKiemNguoiDung(inp) {
 
     var listTr_table = document.getElementsByClassName('khachhang')[0].getElementsByClassName('table-content')[0].getElementsByTagName('tr');
     for (var tr of listTr_table) {
-        var tensp_tr = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
+        var td = tr.getElementsByTagName('td')[vitriKieuTim[kieuTim]].innerHTML.toLowerCase();
 
-        if (tensp_tr.indexOf(text.toLowerCase()) < 0) {
+        if (td.indexOf(text.toLowerCase()) < 0) {
             tr.style.display = 'none';
         } else {
             tr.style.display = '';
@@ -670,8 +794,6 @@ function swap(arr, i, j) {
     arr[j].parentNode.replaceChild(tempi, arr[j]);
 }
 
-// ======================= Hiển thị ==============================
-
 // ================= các hàm thêm ====================
 // Chuyển khuyến mãi vễ dạng chuỗi tiếng việt
 function promoToStringValue(pr) {
@@ -693,16 +815,6 @@ function progress(percent, bg, width, height) {
     return `<div class="progress" style="width: ` + width + `; height:` + height + `">
                 <div class="progress-bar bg-info" style="width: ` + percent + `%; background-color:` + bg + `"></div>
             </div>`
-}
-
-function vitriCompany(product, vt) {
-    var index = 0;
-    for (var i = 0; i < vt; i++) {
-        if (list_products[i].company == product.company) {
-            index++;
-        }
-    }
-    return index;
 }
 
 // for(var i = 0; i < list_products.length; i++) {
