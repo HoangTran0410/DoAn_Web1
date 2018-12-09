@@ -338,7 +338,7 @@ function capNhat_ThongTin_CurrentUser() {
         document.getElementsByClassName('cart-number')[0].innerHTML = getTongSoLuongSanPhamTrongGioHang(u);
         // Cập nhật tên người dùng
         document.getElementsByClassName('member')[0]
-            .getElementsByTagName('a')[0].childNodes[2].nodeValue = u.username;
+            .getElementsByTagName('a')[0].childNodes[2].nodeValue = ' '+u.username;
         // bỏ class hide của menu người dùng
         document.getElementsByClassName('menuMember')[0]
                 .classList.remove('hide');
