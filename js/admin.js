@@ -246,7 +246,7 @@ function themSanPham() {
      // Vẽ lại table
      addTableProducts();
 
-    alert('Thêm sản phẩm "' + name + '" thành công.');
+    alert('Thêm sản phẩm "' + newSp.name + '" thành công.');
     document.getElementById('khungThemSanPham').style.transform = 'scale(0)';
 }
 function autoMaSanPham(company) {
@@ -347,8 +347,8 @@ function addKhungSuaSanPham(masp) {
         <tr>
             <td>Hình:</td>
             <td>
-                <img class="hinhDaiDien" id="anhDaiDienSanPham" src="`+sp.img+`">
-                <input type="file" accept="image/*" onchange="capNhatAnhSanPham(this.files)">
+                <img class="hinhDaiDien" id="anhDaiDienSanPhamSua" src="`+sp.img+`">
+                <input type="file" accept="image/*" onchange="capNhatAnhSanPham(this.files, 'anhDaiDienSanPhamSua')">
             </td>
         </tr>
         <tr>
@@ -428,11 +428,11 @@ function addKhungSuaSanPham(masp) {
 }
 
 // Cập nhật ảnh sản phẩm
-function capNhatAnhSanPham(files) {
+function capNhatAnhSanPham(files, id) {
     var url = '';
     if(files.length) url = window.URL.createObjectURL(files[0]);
     
-    document.getElementById('anhDaiDienSanPham').src = url;
+    document.getElementById(id).src = url;
 } 
 
 // Sắp Xếp sản phẩm
