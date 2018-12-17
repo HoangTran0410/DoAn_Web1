@@ -108,6 +108,13 @@ function xoaSanPhamTrongGioHang(i) {
 }
 
 function thanhToan() {
+	var c_user = getCurrentUser();
+	if(c_user.off) {
+        alert('Tài khoản của bạn hiện đang bị khóa nên không thể mua hàng!');
+        addAlertBox('Tài khoản của bạn đã bị khóa bởi Admin.', '#aa0000', '#fff', 10000);
+        return;
+	}
+	
 	if (!currentuser.products.length) {
 		addAlertBox('Không có mặt hàng nào cần thanh toán !!', '#ffb400', '#fff', 2000);
 		return;

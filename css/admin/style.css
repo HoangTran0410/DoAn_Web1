@@ -119,6 +119,7 @@ header h2 {
     transition-duration: .1s;
     z-index: 2;
 }
+
 .hideImg td:hover img {
     height: 150px;
 }
@@ -139,6 +140,7 @@ header h2 {
 .table-header {
     width: 100%;
 }
+
 .table-header th {
     color: #e4e7ea;
     background-color: #3e464d;
@@ -204,12 +206,15 @@ header h2 {
 .table-content td i.fa-wrench:hover {
     color: #63c2de
 }
+
 .table-content td i.fa-trash:hover {
     color: #f86c6b
 }
+
 .table-content td i.fa-check:hover {
     color: #5ce457d8
 }
+
 .table-content td i.fa-remove:hover {
     color: #f86c6b
 }
@@ -254,8 +259,9 @@ header h2 {
     z-index: 14;
     transition: .2s ease;
     transform: scale(0);
-    background-color: #020202d8; 
+    background-color: #020202d8;
 }
+
 .overlayTable {
     margin: 50px auto;
     width: auto;
@@ -272,6 +278,7 @@ header h2 {
     border-radius: 5px;
     background-color: #e7e7e7;
 }
+
 .overlayTable input[type="file"] {
     background-color: transparent;
 }
@@ -367,6 +374,68 @@ header h2 {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+/* ======================== Switch Slider (Togggle) ======================= */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 15px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 0px;
+    bottom: 0px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
 
 /* ========= ScrollBar ============ */

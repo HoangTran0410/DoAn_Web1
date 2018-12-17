@@ -109,6 +109,11 @@ function themVaoGioHang(masp, tensp) {
         showTaiKhoan(true);
         return;
     }
+    if(user.off) {
+        alert('Tài khoản của bạn hiện đang bị khóa nên không thể mua hàng!');
+        addAlertBox('Tài khoản của bạn đã bị khóa bởi Admin.', '#aa0000', '#fff', 10000);
+        return;
+    }
     var t = new Date();
     var daCoSanPham = false;;
 
@@ -134,8 +139,6 @@ function themVaoGioHang(masp, tensp) {
     setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
     updateListUser(user); // cập nhật list user
     capNhat_ThongTin_CurrentUser(); // cập nhật giỏ hàng
-
-    // alert('Sản phẩm đã được thêm vào giỏ hàng của bạn (' + user.username +')');
 }
 
 // ============================== TÀI KHOẢN ============================
@@ -190,7 +193,6 @@ function logIn(form) {
 
             // Reload lại trang -> sau khi reload sẽ cập nhật luôn giỏ hàng khi hàm setupEventTaiKhoan chạy
             location.reload();
-
             return false;
         }
     }

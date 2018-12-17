@@ -645,6 +645,13 @@ function addTableKhachHang() {
             <td style="width: 10%">` + u.pass + `</td>
             <td style="width: 10%">
                 <div class="tooltip">
+                    <label class="switch">
+                        <input type="checkbox" `+(u.off?'':'checked')+` onclick="voHieuHoaNguoiDung(this, '`+u.username+`')">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="tooltiptext">`+(u.off?'Mở':'Khóa')+`</span>
+                </div>
+                <div class="tooltip">
                     <i class="fa fa-remove" onclick="xoaNguoiDung('`+u.username+`')"></i>
                     <span class="tooltiptext">Xóa</span>
                 </div>
@@ -678,6 +685,25 @@ function timKiemNguoiDung(inp) {
 
 function openThemNguoiDung() {
     window.alert('Not Available!');
+}
+
+// vô hiệu hóa người dùng (tạm dừng, không cho đăng nhập vào)
+function voHieuHoaNguoiDung(inp, taikhoan) {
+    var listUser = getListUser();
+    for(var u of listUser) {
+        if(u.username == taikhoan) {
+            u.off = !inp.checked;
+            setListUser(listUser);
+
+            var c_user = getCurrentUser();
+            if(c_user.username == taikhoan) {
+                setCurrentUser(u);
+            }
+            break;
+        }
+    }
+    var span = inp.parentElement.nextElementSibling;
+        span.innerHTML = (inp.checked?'Khóa':'Mở');
 }
 
 // Xóa người dùng
