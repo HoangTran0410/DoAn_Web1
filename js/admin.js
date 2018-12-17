@@ -645,7 +645,7 @@ function addTableKhachHang() {
             <td style="width: 10%">` + u.pass + `</td>
             <td style="width: 10%">
                 <div class="tooltip">
-                    <i class="fa fa-remove"></i>
+                    <i class="fa fa-remove" onclick="xoaNguoiDung('`+u.username+`')"></i>
                     <span class="tooltiptext">Xóa</span>
                 </div>
             </td>
@@ -677,7 +677,23 @@ function timKiemNguoiDung(inp) {
 }
 
 function openThemNguoiDung() {
+    window.alert('Not Available!');
+}
 
+// Xóa người dùng
+function xoaNguoiDung(taikhoan) {
+    if(window.confirm('Xác nhận xóa '+taikhoan+'? \nMọi dữ liệu về '+taikhoan+' sẽ mất! Bao gồm cả những đơn hàng của '+taikhoan)) {
+        var listuser = getListUser();
+        for(var i = 0; i < listuser.length; i++) {
+            if(listuser[i].username == taikhoan) {
+                listuser.splice(i, 1);
+                setListUser(listuser);
+                localStorage.removeItem('CurrentUser');
+                addTableKhachHang();
+                return;
+            }
+        }
+    }
 }
 
 // Sắp xếp
