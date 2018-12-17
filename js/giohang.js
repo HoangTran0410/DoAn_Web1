@@ -101,7 +101,7 @@ function addProductToTable(user) {
 }
 
 function xoaSanPhamTrongGioHang(i) {
-	if (window.confirm('Xác nhận hủy mua ' + currentuser.products[i].name.toUpperCase())) {
+	if (window.confirm('Xác nhận hủy mua')) {
 		currentuser.products.splice(i, 1);
 		capNhatMoiThu();
 	}
