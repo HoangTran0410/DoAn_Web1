@@ -1,11 +1,12 @@
 var adminInfo = [{
-    "username" : "admin",
-    "pass" : "adadad"
+    "username": "admin",
+    "pass": "adadad"
 }];
 
 function getListAdmin() {
     return JSON.parse(window.localStorage.getItem('ListAdmin'));
 }
+
 function setListAdmin(l) {
     window.localStorage.setItem('ListAdmin', JSON.stringify(l));
 }
@@ -27,6 +28,7 @@ function khoiTao() {
 function setListProducts(newList) {
     window.localStorage.setItem('ListProducts', JSON.stringify(newList));
 }
+
 function getListProducts() {
     return JSON.parse(window.localStorage.getItem('ListProducts'));
 }
@@ -51,9 +53,10 @@ function timKiemTheoTen(list, ten, soluong) {
 
     return result;
 }
+
 function timKiemTheoMa(list, ma) {
-    for(var l of list) {
-        if(l.masp == ma) return l;
+    for (var l of list) {
+        if (l.masp == ma) return l;
     }
 }
 
@@ -73,19 +76,20 @@ function addAlertBox(text, bgcolor, textcolor, time) {
     al.style.zIndex = 200;
 
     if (textcolor) al.style.color = textcolor;
-    if(time) 
-    setTimeout(function(){
-        al.style.opacity = 0;
-        al.style.zIndex = 0;
-    }, time);
+    if (time)
+        setTimeout(function () {
+            al.style.opacity = 0;
+            al.style.zIndex = 0;
+        }, time);
 }
+
 function addEventCloseAlertButton() {
     document.getElementById('closebtn')
-    .addEventListener('mouseover', (event) => {
-        // event.target.parentElement.style.display = "none";
-        event.target.parentElement.style.opacity = 0;
-        event.target.parentElement.style.zIndex = 0;
-    });
+        .addEventListener('mouseover', (event) => {
+            // event.target.parentElement.style.display = "none";
+            event.target.parentElement.style.opacity = 0;
+            event.target.parentElement.style.zIndex = 0;
+        });
 }
 
 // ================ Cart Number + Thêm vào Giỏ hàng ======================
@@ -95,7 +99,7 @@ function animateCartNumber() {
     cn.style.transform = 'scale(2)';
     cn.style.backgroundColor = 'rgba(255, 0, 0, 0.8)';
     cn.style.color = 'white';
-    setTimeout(function() { 
+    setTimeout(function () {
         cn.style.transform = 'scale(1)';
         cn.style.backgroundColor = 'transparent';
         cn.style.color = 'red';
@@ -104,12 +108,12 @@ function animateCartNumber() {
 
 function themVaoGioHang(masp, tensp) {
     var user = getCurrentUser();
-    if(!user) {
+    if (!user) {
         alert('Bạn cần đăng nhập để mua hàng !');
         showTaiKhoan(true);
         return;
     }
-    if(user.off) {
+    if (user.off) {
         alert('Tài khoản của bạn hiện đang bị khóa nên không thể mua hàng!');
         addAlertBox('Tài khoản của bạn đã bị khóa bởi Admin.', '#aa0000', '#fff', 10000);
         return;
@@ -117,15 +121,15 @@ function themVaoGioHang(masp, tensp) {
     var t = new Date();
     var daCoSanPham = false;;
 
-    for(var i = 0; i < user.products.length; i++) { // check trùng sản phẩm
-        if(user.products[i].ma == masp) {
+    for (var i = 0; i < user.products.length; i++) { // check trùng sản phẩm
+        if (user.products[i].ma == masp) {
             user.products[i].soluong++;
             daCoSanPham = true;
             break;
         }
     }
-    
-    if(!daCoSanPham){ // nếu không trùng thì mới thêm sản phẩm vào user.products
+
+    if (!daCoSanPham) { // nếu không trùng thì mới thêm sản phẩm vào user.products
         user.products.push({
             "ma": masp,
             "soluong": 1,
@@ -134,8 +138,8 @@ function themVaoGioHang(masp, tensp) {
     }
 
     animateCartNumber();
-    addAlertBox('Đã thêm '+ tensp +' vào giỏ.', '#17c671', '#fff', 3500);
-    
+    addAlertBox('Đã thêm ' + tensp + ' vào giỏ.', '#17c671', '#fff', 3500);
+
     setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
     updateListUser(user); // cập nhật list user
     capNhat_ThongTin_CurrentUser(); // cập nhật giỏ hàng
@@ -171,7 +175,7 @@ function updateListUser(u, newData) {
     var list = getListUser();
     for (var i = 0; i < list.length; i++) {
         if (equalUser(u, list[i])) {
-            list[i] = (newData?newData:u);
+            list[i] = (newData ? newData : u);
         }
     }
     setListUser(list);
@@ -198,8 +202,8 @@ function logIn(form) {
     }
 
     // Đăng nhập vào admin
-    for(var ad of adminInfo) {
-        if(equalUser(newUser, ad)) {
+    for (var ad of adminInfo) {
+        if (equalUser(newUser, ad)) {
             alert('Xin chào admin .. ');
             window.localStorage.setItem('admin', true);
             window.location.assign('admin.html');
@@ -225,8 +229,8 @@ function signUp(form) {
     var listUser = getListUser();
 
     // Kiểm tra trùng admin
-    for(var ad of adminInfo) {
-        if(newUser.username == ad.username) {
+    for (var ad of adminInfo) {
+        if (newUser.username == ad.username) {
             alert('Tên đăng nhập đã có người sử dụng !!');
             return false;
         }
@@ -340,10 +344,10 @@ function capNhat_ThongTin_CurrentUser() {
         document.getElementsByClassName('cart-number')[0].innerHTML = getTongSoLuongSanPhamTrongGioHang(u);
         // Cập nhật tên người dùng
         document.getElementsByClassName('member')[0]
-            .getElementsByTagName('a')[0].childNodes[2].nodeValue = ' '+u.username;
+            .getElementsByTagName('a')[0].childNodes[2].nodeValue = ' ' + u.username;
         // bỏ class hide của menu người dùng
         document.getElementsByClassName('menuMember')[0]
-                .classList.remove('hide');
+            .classList.remove('hide');
     }
 }
 
@@ -359,7 +363,7 @@ function getTongSoLuongSanPhamTrongGioHang(u) {
 // lấy số lương của sản phẩm NÀO ĐÓ của user NÀO ĐÓ được truyền vào
 function getSoLuongSanPhamTrongUser(tenSanPham, user) {
     for (var p of user.products) {
-        if(p.name == tenSanPham)
+        if (p.name == tenSanPham)
             return p.soluong;
     }
     return 0;
@@ -716,14 +720,14 @@ function checkLocalStorage() {
 
 // Di chuyển lên đầu trang
 function gotoTop() {
-    if(window.jQuery) {
+    if (window.jQuery) {
         jQuery('html,body').animate({
             scrollTop: 0
         }, 300);
     } else {
         document.getElementsByClassName('top-nav')[0].scrollIntoView({
-        	behavior: 'smooth',
-        	block: 'start'
+            behavior: 'smooth',
+            block: 'start'
         });
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera

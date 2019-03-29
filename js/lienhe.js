@@ -30,8 +30,12 @@ function nguoidung() {
 }
 
 function checkName(str) {
+    var special = '~!@#$%^&*()_+=-`./*{}[]|\'<>?;"';
+
     for (var i = 0; i < str.length; i++) {
         if (Number(str[i])) return false;
+        for(var j = 0; j < special.length; j++)
+            if (str[i] == special[j]) return false;
     }
     return true;
 }
