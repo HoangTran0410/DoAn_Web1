@@ -50,8 +50,8 @@ window.onload = function () {
 		// hiển thị list sản phẩm
 		document.getElementsByClassName('contain-products')[0].style.display = '';
 
-	} else {  // ko có filter : trang chính mặc định sẽ hiển thị các sp hot, ...
-		var soLuong = (window.innerWidth < 1200 ?4:5); // màn hình nhỏ thì hiển thị 4 sp, to thì hiển thị 5
+	} else { // ko có filter : trang chính mặc định sẽ hiển thị các sp hot, ...
+		var soLuong = (window.innerWidth < 1200 ? 4 : 5); // màn hình nhỏ thì hiển thị 4 sp, to thì hiển thị 5
 
 		// Các màu
 		var yellow_red = ['#ff9c00', '#ec1f1f'];
@@ -59,12 +59,12 @@ window.onload = function () {
 		var green = ['#5de272', '#007012'];
 
 		// Thêm các khung sản phẩm
-		addKhungSanPham('NỔI BẬT NHẤT', yellow_red, ['star=3','sort=rateCount-decrease'], soLuong);
-		addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat','sort=rateCount-decrease'], soLuong);
+		addKhungSanPham('NỔI BẬT NHẤT', yellow_red, ['star=3', 'sort=rateCount-decrease'], soLuong);
+		addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat', 'sort=rateCount-decrease'], soLuong);
 		addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop'], soLuong);
 		addKhungSanPham('GIÁ SỐC ONLINE', green, ['promo=giareonline'], soLuong);
 		addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong);
-		addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-3000000','sort=price'], soLuong);
+		addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-3000000', 'sort=price'], soLuong);
 	}
 
 	// Thêm chọn mức giá
@@ -139,11 +139,11 @@ function phanTich_URL(filters, saveFilter) {
 			case 'search':
 				dauBang[1] = dauBang[1].split('+').join(' ');
 				result = timKiemTheoTen(result, dauBang[1]);
-				if(saveFilter) filtersFromUrl.search = dauBang[1];
+				if (saveFilter) filtersFromUrl.search = dauBang[1];
 				break;
 
 			case 'price':
-				if(saveFilter) filtersFromUrl.price = dauBang[1];
+				if (saveFilter) filtersFromUrl.price = dauBang[1];
 
 				var prices = dauBang[1].split('-');
 				prices[1] = Number(prices[1]) || 1E10;
@@ -152,21 +152,21 @@ function phanTich_URL(filters, saveFilter) {
 
 			case 'company':
 				result = timKiemTheoCongTySanXuat(result, dauBang[1]);
-				if(saveFilter) filtersFromUrl.company = dauBang[1];
+				if (saveFilter) filtersFromUrl.company = dauBang[1];
 				break;
 
 			case 'star':
 				result = timKiemTheoSoLuongSao(result, dauBang[1]);
-				if(saveFilter) filtersFromUrl.star = dauBang[1];
+				if (saveFilter) filtersFromUrl.star = dauBang[1];
 				break;
 
 			case 'promo':
 				result = timKiemTheoKhuyenMai(result, dauBang[1]);
-				if(saveFilter) filtersFromUrl.promo = dauBang[1];
+				if (saveFilter) filtersFromUrl.promo = dauBang[1];
 				break;
 
 			case 'page': // page luôn ở cuối đường link
-				if(saveFilter) filtersFromUrl.page = dauBang[1];
+				if (saveFilter) filtersFromUrl.page = dauBang[1];
 				break;
 
 			case 'sort':
@@ -175,7 +175,7 @@ function phanTich_URL(filters, saveFilter) {
 
 				switch (tenThanhPhanCanSort) {
 					case 'price':
-						if(saveFilter) filtersFromUrl.sort.by = 'price';
+						if (saveFilter) filtersFromUrl.sort.by = 'price';
 						result.sort(function (a, b) {
 							var giaA = parseInt(a.price.split('.').join(''));
 							var giaB = parseInt(b.price.split('.').join(''));
@@ -184,21 +184,21 @@ function phanTich_URL(filters, saveFilter) {
 						break;
 
 					case 'star':
-						if(saveFilter) filtersFromUrl.sort.by = 'star';
+						if (saveFilter) filtersFromUrl.sort.by = 'star';
 						result.sort(function (a, b) {
 							return a.star - b.star;
 						});
 						break;
 
 					case 'rateCount':
-						if(saveFilter) filtersFromUrl.sort.by = 'rateCount';
+						if (saveFilter) filtersFromUrl.sort.by = 'rateCount';
 						result.sort(function (a, b) {
 							return a.rateCount - b.rateCount;
 						});
 						break;
 
 					case 'name':
-						if(saveFilter) filtersFromUrl.sort.by = 'name';
+						if (saveFilter) filtersFromUrl.sort.by = 'name';
 						result.sort(function (a, b) {
 							return a.name.localeCompare(b.name);
 						});
@@ -206,7 +206,7 @@ function phanTich_URL(filters, saveFilter) {
 				}
 
 				if (s[1] == 'decrease') {
-					if(saveFilter) filtersFromUrl.sort.type = 'decrease';
+					if (saveFilter) filtersFromUrl.sort.type = 'decrease';
 					result.reverse();
 				}
 
@@ -241,29 +241,29 @@ function clearAllProducts() {
 // Thêm sản phẩm vào các khung sản phẩm
 function addKhungSanPham(tenKhung, color, filter, len) {
 	// convert color to code
-	var gradient = `background-image: linear-gradient(120deg, `+color[0]+` 0%, `+color[1]+` 50%, `+color[0]+` 100%);`
-	var borderColor = `border-color: `+color[0];
-	var borderA = `	border-left: 2px solid `+color[0]+`;
-					border-right: 2px solid `+color[0]+`;`;
+	var gradient = `background-image: linear-gradient(120deg, ` + color[0] + ` 0%, ` + color[1] + ` 50%, ` + color[0] + ` 100%);`
+	var borderColor = `border-color: ` + color[0];
+	var borderA = `	border-left: 2px solid ` + color[0] + `;
+					border-right: 2px solid ` + color[0] + `;`;
 
 	// mở tag
-	var s = `<div class="khungSanPham" style="`+borderColor+`">
-				<h3 class="tenKhung" style="`+gradient+`">* `+tenKhung+` *</h3>
+	var s = `<div class="khungSanPham" style="` + borderColor + `">
+				<h3 class="tenKhung" style="` + gradient + `">* ` + tenKhung + ` *</h3>
 				<div class="listSpTrongKhung flexContain">`;
 
 	// thêm các <li> (sản phẩm) vào tag
 	var spResult = phanTich_URL(filter, false);
-	if(spResult.length < len) len = spResult.length;
+	if (spResult.length < len) len = spResult.length;
 
-	for(var i = 0; i < len; i++) {
-		s += addProduct(spResult[i], null, true); 
+	for (var i = 0; i < len; i++) {
+		s += addProduct(spResult[i], null, true);
 		// truyền vào 'true' để trả về chuỗi rồi gán vào s
 	}
 
 	// thêm nút xem tất cả rồi đóng tag
 	s += `	</div>
-			<a class="xemTatCa" href="index.html?`+filter.join('&')+`" style="`+borderA+`">
-				Xem tất cả `+spResult.length+` sản phẩm
+			<a class="xemTatCa" href="index.html?` + filter.join('&') + `" style="` + borderA + `">
+				Xem tất cả ` + spResult.length + ` sản phẩm
 			</a>
 		</div> <hr>`;
 
