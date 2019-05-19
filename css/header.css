@@ -9,10 +9,6 @@
 		border-bottom: 3px solid #e1e1e1;
 	}
 
-	.header .smallmenu {
-		display: none;
-	}
-
 	/* Logo */
 		.header .logo {
 			width: 250px;
@@ -27,17 +23,6 @@
 			width: 100%;
 			height: 100%;
 			vertical-align: middle;
-			animation: example 5s infinite ease-in-out;
-		}
-
-		/* Standard syntax */
-		@keyframes example {
-			35%, 100% {
-				transform: scale(1);
-			}
-			10% {
-				transform: rotateX(360deg) scale(1.15);
-			}
 		}
 	/* ======= End logo ======== */
 
@@ -248,75 +233,3 @@
 		/* ======= End Tools Member ======= */
 	/* ======= End Content ========= */
 /* ======= End header ======== */
-
-
-@media only screen and (max-width: 768px){
-    .header .smallmenu {
-		display: block;
-		float: left;
-		font-size: 25px;
-		font-weight: 700;
-		margin-left: 10px; 
-	}
-    .header .logo{
-        float: none;
-        width: 40%;
-        height: 40px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    .header .content{
-        float: none;
-        width: 100%;
-        margin-top: 5px;
-        max-height: 0;
-        overflow: hidden;
-  		transition: max-height .05s ease-out;
-    }
-    .search-header
-    {
-    	float: none;
-    	width: 90%;
-    	margin-right: auto;
-		margin-left: auto;
-    }
-    form.input-search
-    {
-    	float: none;
-        width: 97%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    .input-search input
-    {
-    	padding-left: 5px;
-    	width: calc(100% - 100px - 5px);
-	}
-    .tags
-    {
-		/* float: none; */
-		width: 100%;
-        margin: 5px 0 0 0;
-        text-align: center;
-    }
-    .tools-member
-    {
-    	/* float: none; */
-        width: 100%;
-        margin: 10px auto;
-    }
-    .member, .cart
-    {
-    	float: left;
-    	width: 50%;
-    	height: 35px;
-    	margin: 0;
-    	text-align: center;
-    	padding: 0;
-    }
-    .member:hover > .menuMember
-    {
-    	transform: translateX(0%) scale(1);
-    	width: 90%;
-	}
-}

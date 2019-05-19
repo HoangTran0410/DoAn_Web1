@@ -102,7 +102,6 @@
 	/* Khuyen mai */
 		/* label la tag khuyen mai */
 		.sanPham label {
-			z-index: 1;
 		    display: inline-block;
 		    position: absolute;
 		    top: 207px;

@@ -56,19 +56,3 @@
 		}
 	/* ======= End quick link ======= */
 /* ======= End Top navigation ======= */
-
-@media only screen and (max-width: 768px){
-    .social-top-nav{
-        float: none;
-        width: 50%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-	.top-nav {
-        float: none;
-        width: 100%;
-	}
-	.top-nav-quicklink {
-		display: none;
-	}
-}

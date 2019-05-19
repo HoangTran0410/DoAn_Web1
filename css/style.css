@@ -5,11 +5,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/*body,
+body,
 html {
     min-width: 1024px;
 
-}*/
+}
 
 a {
     text-decoration: none;
@@ -65,21 +65,6 @@ hr {
     /* For IE 6/7 (trigger hasLayout) */
 }
 
-.loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 2s linear infinite;
-  margin: 10px auto;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 /* =========   Alert ===============*/
 #alert {
     z-index: 200; /* luôn trên cùng (đè lên những thứ khác) */
@@ -111,7 +96,7 @@ hr {
 
 /* ===== End clear float ====== */
 
-#goto-top-page, #goto-bot-page {
+#goto-top-page {
     position: fixed;
     bottom: 15px;
     right: 15px;
@@ -127,15 +112,11 @@ hr {
     cursor: pointer;
     transition-duration: .2s;
 }
-#goto-top-page:hover, #goto-bot-page:hover {
+#goto-top-page:hover {
     background: rgba(0, 0, 0, .7);
     width: 50px;
     height: 50px;
     line-height: 50px;
-}
-
-#goto-bot-page {
-    left: 15px;
 }
 
 /* ========= ScrollBar ============ */
