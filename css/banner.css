@@ -5,4 +5,12 @@
 		padding-top:  10px;
 		border-bottom: 1px solid #e1e1e1;
 	}
+
+	@media only screen and (max-width: 768px){
+		.banner
+		{
+        	float: none;
+        	width: 100%;
+		}
+	}
 /* ======= End Banner ======== */

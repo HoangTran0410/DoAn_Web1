@@ -7,7 +7,7 @@
 
 body,
 html {
-    /* min-width: 1024px; */
+    min-width: 1024px;
     background-color: #2f353a;
 }
 
@@ -46,10 +46,6 @@ header h2 {
 .sidebar {
     float: left;
     width: 170px;
-}
-
-.sidebar .nav {
-    list-style-type: none;
 }
 
 .sidebar .nav-title {
@@ -458,23 +454,4 @@ input:checked+.slider:before {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #bbb;
-}
-
-/* responsive */
-@media only screen and (max-width: 768px){
-    .sidebar {
-        width: 100%;
-    }
-    .sidebar .nav-item {
-        float: left;
-        width: 16%;
-    }
-    
-    hr  {
-        display: none;
-    }
-
-    .main {
-        width: 100%;
-    }
 }

@@ -2,23 +2,30 @@
 	margin: 10px 0 30px; 
 }
 
-.companyMenu a {
+.companyMenu button {
+	box-sizing: border-box;
     border: 2px solid #fff;
+    background: transparent;
     height: 40px;
     line-height: 40px;
     transition-duration: .2s;
+    cursor: pointer;
 }
 
-.companyMenu a:hover {
+.companyMenu button:hover {
 	border: 2px solid #aaa;
 	transform: scale(1.1);
 	z-index: 20;
 }
 
-.companyMenu a img{
+.companyMenu button img{
     max-height: 30px;
     vertical-align: middle;
     margin-top: -3px;
+}
+
+.companysFilter{
+	display: none;
 }
 
 /* Dropdown From w3 */
@@ -74,6 +81,19 @@
 	    background-color: #3e8e41;
 	}
 /* ============== End From W3 ============== */
+#divSoLuongSanPham {
+	margin: 5px 0;
+	padding: 5px;
+	color: #999;
+	background-color: #333;
+	font-weight: bold;
+	font-size: 1em;
+}
+
+#divSoLuongSanPham span {
+	color: #fff;
+	font-size: 1.25em;
+}
 
 /* Filter by Name */
 .filterName {
@@ -108,6 +128,7 @@
     background: #288ad6;
     border-radius: 4px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 /* Các khung sản phẩm */
@@ -154,4 +175,46 @@
 .xemTatCa:hover {
 	background-color: #ccc;
 	color: #000;
+}
+
+@media only screen and (max-width: 768px){
+	.companyMenu
+	{
+		max-height: 0;
+		overflow: hidden;
+  		transition: max-height 0.2s ease-out;
+  		margin: 0;
+	}
+	.companysFilter
+	{
+		display: block;
+		margin-top: 10px;
+		text-align: center;
+	}
+	.companysButton
+	{
+		width: 80%;
+		background-color: #444;
+    	color: white;
+    	padding: 10px 14px;
+    	font-size: 15px;
+    	border: none;
+    	border-radius: 5px;
+    	cursor: pointer;
+    	margin-bottom: 5px;
+    	transition-duration: .3s;
+    	text-align: center;
+	}
+	.companysButton p
+	{
+		width: 55%;
+		float: left;
+		text-align: right;
+	}
+	.companysButton div
+	{
+		width: 43%;
+		float: right;
+		text-align: left;
+	}
 }
