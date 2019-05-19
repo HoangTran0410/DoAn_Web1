@@ -1,0 +1,35 @@
+/* Thanh % */
+.progress {
+    display: block;
+    position: relative;
+    height: 10px;
+    width: 300px;
+    background-color: #515b65;
+    border-radius: 0.25em;
+    overflow: hidden;
+}
+
+.progress:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+.progress-bar {
+    position: absolute;
+    height: 100%;
+    left: 0;
+}
+
+/* background color class */
+
+.bg-info {
+    background-color: #63c2de;
+}
+.bg-danger {
+    background-color: #f86c6b;
+}
+.bg-success {
+    background-color: #4dbd74;
+}
+.bg-warning {
+    background-color: #ffc107;
+}

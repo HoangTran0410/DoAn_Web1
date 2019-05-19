@@ -1,0 +1,86 @@
+/* .listDonHang {
+    display: none;
+} */
+
+.infoUser table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.infoUser table th {
+    font-size: 26px;
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+.infoUser table td {
+    font-size: 18px;
+}
+.infoUser table td:first-child {
+    font-weight: bold;
+    text-align: right;
+}
+
+.infoUser input {
+    font-size: 20px;
+    border-radius: 5px;
+    text-align: center;
+    transition-duration: .15s;
+    border: 1px solid #aaa;
+}
+
+.infoUser input:read-only {
+    border: 1px solid transparent;
+}
+
+/* Nút sửa thông tin */
+.infoUser .fa-pencil {
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 7px;
+    transition-duration: .2s;
+    cursor: pointer;
+    min-width: 70px;
+}
+
+.infoUser .fa-pencil:hover {
+    background-color: #ccc;
+    color: #444;
+}
+
+/* Thay đổi mật khẩu */
+#khungDoiMatKhau {
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+#khungDoiMatKhau tr td {
+    padding: 0;
+}
+#khungDoiMatKhau tr td div {
+    max-height: 0;
+    /* box-sizing: border-box; */
+    overflow: hidden;
+    transition-duration: 0.3s;
+}
+
+/* active */
+#khungDoiMatKhau.active, #khungDoiMatKhau.active tr td {
+    padding: 5px 0;
+}
+#khungDoiMatKhau.active td div {
+    max-height: 100px;
+    transition-duration: 0.6s;
+}
+
+#khungDoiMatKhau button {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+#khungDoiMatKhau button:hover {
+    background-color: rgb(120, 212, 120);
+}

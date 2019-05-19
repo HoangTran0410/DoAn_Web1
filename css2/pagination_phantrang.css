@@ -1,0 +1,24 @@
+.pagination {
+    clear: both;
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #555;
+}
+
+.pagination a:hover:not(.current) {
+    background-color: #ccc;
+}
+
+.pagination .current {
+    color: white;
+    background: #0950E8;
+}

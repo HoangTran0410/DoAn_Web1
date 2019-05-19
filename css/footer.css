@@ -10,6 +10,7 @@
 
 .plc ul {
 	width: 100%;
+	text-align: center;
 }
 
 .plc li {
@@ -55,3 +56,22 @@
 }
 
 /* ======= End Footer ======== */
+
+@media only screen and (max-width: 768px){
+	.plc {
+	border-left: 1px solid #bbb;
+	border-right: 1px solid #bbb;
+	border-top: 0;
+	border-bottom: 0;
+}
+	.plc li {
+	float: none;
+	width: 100%;
+	border-top: solid 1px #bbb;
+	border-bottom: solid 1px #bbb;
+	border-left: 0;
+	border-right: 0;
+	margin: 0;
+	text-align: center;
+	}
+}

@@ -1,0 +1,58 @@
+/* Top Navigation */
+	.top-nav {
+		display: inline-block;
+		background: #f1f1f1;
+		width: 100%;
+		border-bottom: 1px #e1e1e1 solid;
+	}
+
+	/* Social Icon */
+		.social-top-nav {
+			float: left;
+			display: table;
+		}
+		.social-top-nav a {
+			display: table-cell;
+			padding: 5px;
+			text-align: center;
+			font-size: 13px;
+			height: 2em;
+			width: 2em;
+			line-height: 2em;
+			color: gray;
+			background-color: #f1f1f1;
+			transition-duration: .2s;
+		}
+		/* hightlight icon fb, google, youtube .... when hover */
+		.social-top-nav a:hover { color: #fff; }
+		.fa-facebook:hover { background: #3B5998; }
+		.fa-twitter:hover { background: #55ACEE; }
+		.fa-google:hover { background: #dd4b39; }
+		.fa-youtube:hover { background: #bb0000; }
+	/* ======= End Social Icon ======= */
+
+	/* Quick link */
+		.top-nav-quicklink {
+			float: right;
+		}
+		.top-nav-quicklink li {
+			display: inline-block;
+			font-size: 1em;
+			color: gray;
+		}
+		.top-nav-quicklink li a {
+			display: block;
+			color: gray;
+			padding: 8px 15px;
+			transition-duration: .15s;
+		}
+		.top-nav-quicklink li a:hover {
+			padding-top: 4px; 
+			border-bottom: 4px solid #000;
+			color: #000;
+		}
+		.top-nav-quicklink li a:hover i {
+			color: Dodgerblue;
+		}
+	/* ======= End quick link ======= */
+/* ======= End Top navigation ======= */

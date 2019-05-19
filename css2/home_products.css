@@ -1,0 +1,175 @@
+#khongCoSanPham {
+	opacity: 0;
+	width: 0;
+	color: red;
+	font-size: 30px;
+	font-weight: bold;
+	height: 310px;
+}
+/* Home Product */
+	.homeproduct {
+		list-style-type: none;  
+	}
+
+	/* <li> trong homeproduct có class="sanPham" , khai báo trong classes.js */
+	.sanPham {
+		width: 238px;
+		border: 1px solid #eee;
+    	-webkit-transition-duration: .3s;
+    	     -o-transition-duration: .3s;
+    	        transition-duration: .3s;
+	}
+	.sanPham a {
+		display: block;
+		position: relative;
+		padding: 10px 0;
+		height: 310px;
+	}
+	.sanPham a .price span {
+	    display: inline-block;
+	    vertical-align: middle;
+	    font-size: 12px;
+	    text-decoration: line-through;
+	    margin-left: 5px;
+	    color: #222;
+	}
+	/* Name and image */
+		/* Hinh anh san pham */
+		.sanPham a img {
+			display: block;
+			margin: 15px auto;
+			-webkit-transition-duration: 0.2s;
+			     -o-transition-duration: 0.2s;
+			        transition-duration: 0.2s;
+			width: 200px;
+			height: 200px;
+		}
+		/* Di chuyen anh? len tren */
+		.sanPham a:hover > img {
+			margin: 5px auto 25px;
+		}
+		/* Ten san pham */
+		.sanPham h3 {
+			display: block;
+			padding: 0 10px;
+			color: #333;
+			line-height: 1.3em;
+			font-size: 15px;
+			font-weight: normal;
+		}
+		/* Hightlight ten san pham khi hover */
+		.sanPham a:hover h3 {
+			color: #288ad6;
+        }
+	/* ====== End Name and image ===== */
+
+	/* Price */
+		/* la div chua strong */
+		.sanPham .price {
+			display: block;
+			padding: 5px 10px 0px 10px;
+		}
+		/* strong la gia tien in dam */
+		.sanPham strong {
+		    display: inline-block;
+		    vertical-align: middle;
+		    overflow: hidden;
+		    font-size: 14px;
+		    color: #e10c00;
+		    line-height: 15px;
+		}
+	/* ===== End Price ===== */
+
+	/* Rating */
+		.sanPham .ratingresult {
+			padding: 5px 10px;
+		}
+		.sanPham .ratingresult span {
+		    display: inline-block;
+		    /*position: relative;*/
+		    top: 1px;
+		    margin-left: 5px;
+		    vertical-align: middle;
+		    text-decoration: none;
+		    font-size: 12px;
+		    color: #777;
+		}
+		.fa-star, .fa-star-o {
+			color: orange;
+		}
+	/* ===== End Rating ===== */
+
+	/* Khuyen mai */
+		/* label la tag khuyen mai */
+		.sanPham label {
+		    display: inline-block;
+		    position: absolute;
+		    top: 207px;
+		    left: 10px;
+		    font-size: 12px;
+		    color: #fff;
+		    font-weight: 600;
+		    border-radius: 2px;
+		    padding: 3px 5px 0;
+		    height: 18px;
+		}
+		/* Giam gia thanh */
+		.sanPham label.giamgia {
+			background-image: -webkit-gradient(linear, left top, right top, from(#ff9c00), to(#ec1f1f));
+		    background-image: -webkit-linear-gradient(left, #ff9c00 0%, #ec1f1f 100%);
+		    background-image: -o-linear-gradient(left, #ff9c00 0%, #ec1f1f 100%);
+		    background-image: linear-gradient(90deg, #ff9c00 0%, #ec1f1f 100%);
+		    border-radius: 10px;
+		    padding: 1px 7px;
+		    padding-left: 0;
+		    padding-right: 10px;
+		}
+		/* Kí tự sấm sét */
+		.fa-bolt { 
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			line-height: 20px;
+			border-radius: 50%;
+			background: #f21;
+			color: white;
+		}
+		/* Tra gop 0% */
+		.sanPham label.tragop {
+		    background: #f28902;
+		}
+		/* Gia re online */
+		.sanPham label.giareonline {
+			background: #3fb846;
+		}
+		/* Moi ra mat */
+		.sanPham label.moiramat {
+			background: #1191f8;
+		}
+	/* ===== End Khuyen mai ====== */
+
+	/* ===== Them Vao Gio Hang ==== */
+		/* tooltip được css bên style.css */
+		.themvaogio {
+			z-index: 20;
+			border: 1px solid #e3e7eb;
+			border-radius: 50%;
+			width: 1.5em;
+			height: 1.5em;
+			font-size: 1.5em;
+			color: rgb(163, 161, 161);
+			background: none;
+			transition-duration: .2s;
+			cursor: pointer;
+		}
+		.themvaogio:hover {
+			color: black;
+			background-color: #e6e6e6;
+			box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+		}
+		.themvaogio:active {
+			box-shadow: none;
+		}
+		
+	/* ===== End Them Vao Gio Hang ==== */
+/* ====== End Home Product ======= */
