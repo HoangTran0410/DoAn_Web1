@@ -13,7 +13,7 @@ window.onload = function () {
         addTableKhachHang();
         addThongKe();
 
-        openTab('Home')
+        openTab('Trang Chủ')
     } else {
         document.body.innerHTML = `<h1 style="color:red; with:100%; text-align:center; margin: 50px;"> Truy cập bị từ chối.. </h1>`;
     }
@@ -23,36 +23,36 @@ function logOutAdmin() {
     window.localStorage.removeItem('admin');
 }
 
+function getListRandomColor(length) {
+    let result = [];
+    for(let i = length; i--;) {
+        result.push(getRandomColor());
+    }
+    return result;
+}
+
 function addChart(id, chartOption) {
     var ctx = document.getElementById(id).getContext('2d');
     var chart = new Chart(ctx, chartOption);
 }
 
-function addThongKe() {
-    var dataChart = {
-        type: 'bar',
+function createChartConfig(
+    title = 'Title',
+    charType = 'bar', 
+    labels = ['nothing'], 
+    data = [2], 
+    colors = ['red'], 
+) {
+    return {
+        type: charType,
         data: {
-            labels: ["Apple", "Samsung", "Xiaomi", "Vivo", "Oppo", "Mobiistar"],
+            labels: labels,
             datasets: [{
-                label: 'Số lượng bán ra',
-                data: [12, 19, 10, 5, 20, 5],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 2
+                label: title,
+                data: data,
+                backgroundColor: colors,
+                borderColor: colors,
+                // borderWidth: 2
             }]
         },
         options: {
@@ -60,27 +60,79 @@ function addThongKe() {
                 fontColor: '#fff',
                 fontSize: 25,
                 display: true,
-                text: 'Sản phẩm bán ra'
+                text: title
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
             }
         }
     };
+}
+
+function addThongKe() {
+    var danhSachDonHang = getListDonHang(true);
+
+    var thongKeHang = {}; // Thống kê hãng
+
+    danhSachDonHang.forEach(donHang => {
+        // Nếu đơn hàng bị huỷ thì không tính vào số lượng bán ra
+        if(donHang.tinhTrang === 'Đã hủy') return;
+
+        // Lặp qua từng sản phẩm trong đơn hàng
+        donHang.sp.forEach(sanPhamTrongDonHang => {
+            let tenHang = sanPhamTrongDonHang.sanPham.company;
+            let soLuong = sanPhamTrongDonHang.soLuong;
+            let donGia = stringToNum(sanPhamTrongDonHang.sanPham.price);
+            let thanhTien = soLuong * donGia;
+
+            if(!thongKeHang[tenHang]) {
+                thongKeHang[tenHang] = {
+                    soLuongBanRa: 0,
+                    doanhThu: 0,
+                }
+            }
+
+            thongKeHang[tenHang].soLuongBanRa += soLuong;
+            thongKeHang[tenHang].doanhThu += thanhTien;
+        })
+    })
+
+
+    // Lấy mảng màu ngẫu nhiên để vẽ đồ thị
+    let colors = getListRandomColor(Object.keys(thongKeHang).length);
 
     // Thêm thống kê
-    var barChart = copyObject(dataChart);
-        barChart.type = 'bar';
-    addChart('myChart1', barChart);
+    addChart('myChart1', createChartConfig(
+        'Số lượng bán ra',
+        'bar', 
+        Object.keys(thongKeHang), 
+        Object.values(thongKeHang).map(_ =>  _.soLuongBanRa),
+        colors,
+    ));
 
-    var doughnutChart = copyObject(dataChart);
-        doughnutChart.type = 'doughnut';
-    addChart('myChart2', doughnutChart);
+    addChart('myChart2', createChartConfig(
+        'Doanh thu',
+        'doughnut', 
+        Object.keys(thongKeHang), 
+        Object.values(thongKeHang).map(_ =>  _.doanhThu),
+        colors,
+    ));
 
-    var pieChart = copyObject(dataChart);
-        pieChart.type = 'pie';
-    addChart('myChart3', pieChart);
+    // var doughnutChart = copyObject(dataChart);
+    //     doughnutChart.type = 'doughnut';
+    // addChart('myChart2', doughnutChart);
 
-    var lineChart = copyObject(dataChart);
-        lineChart.type = 'line';
-    addChart('myChart4', lineChart);
+    // var pieChart = copyObject(dataChart);
+    //     pieChart.type = 'pie';
+    // addChart('myChart3', pieChart);
+
+    // var lineChart = copyObject(dataChart);
+    //     lineChart.type = 'line';
+    // addChart('myChart4', lineChart);
 }
 
 // ======================= Các Tab =========================
@@ -116,11 +168,10 @@ function openTab(nameTab) {
 
     // mở tab
     switch(nameTab) {
-        case 'Home': document.getElementsByClassName('home')[0].style.display = 'block'; break;
+        case 'Trang Chủ': document.getElementsByClassName('home')[0].style.display = 'block'; break;
         case 'Sản Phẩm': document.getElementsByClassName('sanpham')[0].style.display = 'block'; break;
         case 'Đơn Hàng': document.getElementsByClassName('donhang')[0].style.display = 'block'; break;
         case 'Khách Hàng': document.getElementsByClassName('khachhang')[0].style.display = 'block'; break;
-        case 'Thống Kê': document.getElementsByClassName('thongke')[0].style.display = 'block'; break;
     }
 }
 
@@ -205,12 +256,11 @@ function layThongTinSanPhamTuTable(id) {
     var microUSB = tr[18].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var battery = tr[19].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
 
-
     return {
         "name": name,
         "company": company,
         "img": previewSrc,
-        "price": numToString(Number.parseInt(price, 10)),
+        "price": price,
         "star": star,
         "rateCount": rateCount,
         "promo": {
@@ -507,7 +557,7 @@ function addTableDonHang() {
     tc.innerHTML = s;
 }
 
-function getListDonHang() {
+function getListDonHang(traVeDanhSachSanPham = false) {
     var u = getListUser();
     var result = [];
     for(var i = 0; i < u.length; i++) {
@@ -523,17 +573,26 @@ function getListDonHang() {
             // Ngày giờ
             var x = new Date(u[i].donhang[j].ngaymua).toLocaleString();
 
-            // Các sản phẩm
+            // Các sản phẩm - dạng html
             var sps = '';
             for(var s of u[i].donhang[j].sp) {
                 sps += `<p style="text-align: right">`+(timKiemTheoMa(list_products, s.ma).name + ' [' + s.soluong + ']') + `</p>`;
+            }
+
+            // Các sản phẩm - dạng mảng
+            var danhSachSanPham = [];
+            for(var s of u[i].donhang[j].sp) {
+                danhSachSanPham.push({
+                    sanPham: timKiemTheoMa(list_products, s.ma),
+                    soLuong: s.soluong,
+                });
             }
 
             // Lưu vào result
             result.push({
                 "ma": u[i].donhang[j].ngaymua.toString(),
                 "khach": u[i].username,
-                "sp": sps,
+                "sp": traVeDanhSachSanPham ? danhSachSanPham : sps,
                 "tongtien": numToString(tongtien),
                 "ngaygio": x,
                 "tinhTrang": u[i].donhang[j].tinhTrang
@@ -704,13 +763,11 @@ function voHieuHoaNguoiDung(inp, taikhoan) {
     var listUser = getListUser();
     for(var u of listUser) {
         if(u.username == taikhoan) {
-            u.off = !inp.checked;
+            let value = !inp.checked
+            u.off = value;
             setListUser(listUser);
-
-            var c_user = getCurrentUser();
-            if(c_user.username == taikhoan) {
-                setCurrentUser(u);
-            }
+            
+            setTimeout(() => alert(`${value ? 'Khoá' : 'Mở khoá'} tải khoản ${u.username} thành công.`), 500);
             break;
         }
     }

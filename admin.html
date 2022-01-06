@@ -35,11 +35,10 @@
     <aside class="sidebar">
         <ul class="nav">
             <li class="nav-title">MENU</li>
-            <li class="nav-item"><a class="nav-link active"><i class="fa fa-home"></i> Home</a></li>
+            <li class="nav-item"><a class="nav-link active"><i class="fa fa-home"></i> Trang Chủ</a></li>
             <li class="nav-item"><a class="nav-link"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
             <li class="nav-item"><a class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
             <li class="nav-item"><a class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
-            <li class="nav-item"><a class="nav-link"><i class="fa fa-bar-chart-o"></i> Thống Kê</a></li>
             <li class="nav-item">
                 <hr>
             </li>
@@ -55,7 +54,21 @@
     <!-- Khung hiển thị chính -->
     <div class="main">
         <div class="home">
+            <div class="canvasContainer">
+                <canvas id="myChart1"></canvas>
+            </div>
 
+            <div class="canvasContainer">
+                <canvas id="myChart2"></canvas>
+            </div>
+
+            <div class="canvasContainer">
+                <canvas id="myChart3"></canvas>
+            </div>
+
+            <div class="canvasContainer">
+                <canvas id="myChart4"></canvas>
+            </div>
         </div>
 
         <!-- Sản Phẩm -->
@@ -262,26 +275,6 @@
                 <button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>
             </div>
         </div> <!-- // khach hang -->
-
-        <!-- Thống kê -->
-        <div class="thongke">
-            <div class="canvasContainer">
-                <canvas id="myChart1"></canvas>
-            </div>
-
-            <div class="canvasContainer">
-                <canvas id="myChart2"></canvas>
-            </div>
-
-            <div class="canvasContainer">
-                <canvas id="myChart3"></canvas>
-            </div>
-
-            <div class="canvasContainer">
-                <canvas id="myChart4"></canvas>
-            </div>
-
-        </div>
     </div> <!-- // main -->
 
 

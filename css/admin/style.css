@@ -106,6 +106,26 @@ header h2 {
 }
 
 /* ===================== HOME ================== */
+.home .canvasContainer {
+    display: inline-block;
+    width: 49%;
+    margin: 50px 0;
+}
+
+.flexContain {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
 
 
 /* =================== Các class xử lý ảnh ================ */
@@ -313,28 +333,6 @@ header h2 {
     padding-right: 10px;
     color: #e4e7ea;
     border-right: 2px solid #777;
-}
-
-/* ========================== Thong ke ========================= */
-.thongke .canvasContainer {
-    display: inline-block;
-    width: 49%;
-    margin: 50px 0;
-}
-
-.flexContain {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
 }
 
 /* ========================= tooltip from w3school  ====================== */

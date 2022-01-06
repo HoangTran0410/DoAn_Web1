@@ -193,6 +193,11 @@ function logIn(form) {
     // Kiểm tra xem dữ liệu form có khớp với người dùng nào trong danh sách ko
     for (var u of listUser) {
         if (equalUser(newUser, u)) {
+            if(u.off) {
+                alert('Tài khoản này đang bị khoá. Không thể đăng nhập.');
+                return false;
+            }
+
             setCurrentUser(u);
 
             // Reload lại trang -> sau khi reload sẽ cập nhật luôn giỏ hàng khi hàm setupEventTaiKhoan chạy
@@ -745,9 +750,30 @@ function checkLocalStorage() {
 }
 
 // Di chuyển lên đầu trang
+function gotoTop() {
+    if (window.jQuery) {
+        jQuery('html,body').animate({
+            scrollTop: 0
+        }, 100);
+    } else {
+        document.getElementsByClassName('top-nav')[0].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+}
 
-
-
+// Lấy màu ngẫu nhiên
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 // Test, not finished
 function auto_Get_Database() {
