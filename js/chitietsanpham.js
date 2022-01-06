@@ -1,4 +1,4 @@
-var nameProduct, maProduct; // Tên sản phẩm trong trang này, 
+var nameProduct, maProduct, sanPhamHienTai; // Tên sản phẩm trong trang này, 
 // là biến toàn cục để có thể dùng ở bát cứ đâu trong trang
 // không cần tính toán lấy tên từ url nhiều lần
 
@@ -15,12 +15,17 @@ window.onload = function () {
     autocomplete(document.getElementById('search-box'), list_products);
 
     // Thêm gợi ý sản phẩm
-    suggestion();
+    sanPhamHienTai && suggestion();
+}
+
+function khongTimThaySanPham() {
+    document.getElementById('productNotFound').style.display = 'block';
+    document.getElementsByClassName('chitietSanpham')[0].style.display = 'none';
 }
 
 function phanTich_URL_chiTietSanPham() {
     nameProduct = window.location.href.split('?')[1]; // lấy tên
-    if (!nameProduct) return; // nếu không tìm thấy tên thì thoát hàm
+    if(!nameProduct) return khongTimThaySanPham();
 
     // tách theo dấu '-' vào gắn lại bằng dấu ' ', code này giúp bỏ hết dấu '-' thay vào bằng khoảng trắng.
     // code này làm ngược lại so với lúc tạo href cho sản phẩm trong file classes.js
@@ -33,7 +38,9 @@ function phanTich_URL_chiTietSanPham() {
         }
     }
 
-    var sanPham = timKiemTheoMa(list_products, maProduct);
+    sanPhamHienTai = timKiemTheoMa(list_products, maProduct);
+    if(!sanPhamHienTai) return khongTimThaySanPham();
+
     var divChiTiet = document.getElementsByClassName('chitietSanpham')[0];
 
     // Đổi title
@@ -45,50 +52,50 @@ function phanTich_URL_chiTietSanPham() {
 
     // Cập nhật sao
     var rating = "";
-    if (sanPham.rateCount > 0) {
+    if (sanPhamHienTai.rateCount > 0) {
         for (var i = 1; i <= 5; i++) {
-            if (i <= sanPham.star) {
+            if (i <= sanPhamHienTai.star) {
                 rating += `<i class="fa fa-star"></i>`
             } else {
                 rating += `<i class="fa fa-star-o"></i>`
             }
         }
-        rating += `<span> ` + sanPham.rateCount + ` đánh giá</span>`;
+        rating += `<span> ` + sanPhamHienTai.rateCount + ` đánh giá</span>`;
     }
     divChiTiet.getElementsByClassName('rating')[0].innerHTML += rating;
 
     // Cập nhật giá + label khuyến mãi
     var price = divChiTiet.getElementsByClassName('area_price')[0];
-    if (sanPham.promo.name != 'giareonline') {
-        price.innerHTML = `<strong>` + sanPham.price + `₫</strong>`;
-        price.innerHTML += new Promo(sanPham.promo.name, sanPham.promo.value).toWeb();
+    if (sanPhamHienTai.promo.name != 'giareonline') {
+        price.innerHTML = `<strong>` + sanPhamHienTai.price + `₫</strong>`;
+        price.innerHTML += new Promo(sanPhamHienTai.promo.name, sanPhamHienTai.promo.value).toWeb();
     } else {
         document.getElementsByClassName('ship')[0].style.display = ''; // hiển thị 'giao hàng trong 1 giờ'
-        price.innerHTML = `<strong>` + sanPham.promo.value + `&#8363;</strong>
-					        <span>` + sanPham.price + `&#8363;</span>`;
+        price.innerHTML = `<strong>` + sanPhamHienTai.promo.value + `&#8363;</strong>
+					        <span>` + sanPhamHienTai.price + `&#8363;</span>`;
     }
 
     // Cập nhật chi tiết khuyến mãi
-    document.getElementById('detailPromo').innerHTML = getDetailPromo(sanPham);
+    document.getElementById('detailPromo').innerHTML = getDetailPromo(sanPhamHienTai);
 
     // Cập nhật thông số
     var info = document.getElementsByClassName('info')[0];
-    var s = addThongSo('Màn hình', sanPham.detail.screen);
-    s += addThongSo('Hệ điều hành', sanPham.detail.os);
-    s += addThongSo('Camara sau', sanPham.detail.camara);
-    s += addThongSo('Camara trước', sanPham.detail.camaraFront);
-    s += addThongSo('CPU', sanPham.detail.cpu);
-    s += addThongSo('RAM', sanPham.detail.ram);
-    s += addThongSo('Bộ nhớ trong', sanPham.detail.rom);
-    s += addThongSo('Thẻ nhớ', sanPham.detail.microUSB);
-    s += addThongSo('Dung lượng pin', sanPham.detail.battery);
+    var s = addThongSo('Màn hình', sanPhamHienTai.detail.screen);
+    s += addThongSo('Hệ điều hành', sanPhamHienTai.detail.os);
+    s += addThongSo('Camara sau', sanPhamHienTai.detail.camara);
+    s += addThongSo('Camara trước', sanPhamHienTai.detail.camaraFront);
+    s += addThongSo('CPU', sanPhamHienTai.detail.cpu);
+    s += addThongSo('RAM', sanPhamHienTai.detail.ram);
+    s += addThongSo('Bộ nhớ trong', sanPhamHienTai.detail.rom);
+    s += addThongSo('Thẻ nhớ', sanPhamHienTai.detail.microUSB);
+    s += addThongSo('Dung lượng pin', sanPhamHienTai.detail.battery);
     info.innerHTML = s;
 
     // Cập nhật hình
     var hinh = divChiTiet.getElementsByClassName('picture')[0];
     hinh = hinh.getElementsByTagName('img')[0];
-    hinh.src = sanPham.img;
-    document.getElementById('bigimg').src = sanPham.img;
+    hinh.src = sanPhamHienTai.img;
+    document.getElementById('bigimg').src = sanPhamHienTai.img;
 
     // Hình nhỏ
     addSmallImg("img/products/huawei-mate-20-pro-green-600x600.jpg");
@@ -190,8 +197,6 @@ function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
 /// gợi ý sản phẩm
 function suggestion(){
     // Lay ra thong tin san pham hien tai
-    console.log(maProduct);
-    const sanPhamHienTai = list_products.find(_ => _.masp === maProduct);
     const giaSanPhamHienTai = stringToNum(sanPhamHienTai.price);
 
     // Tìm cách sản phẩm tương tự theo tiêu chí
@@ -217,11 +222,13 @@ function suggestion(){
         return soLuongChiTietGiongNhau >= 2;
     });
 
-    // Lấy ra 5 sản phẩm đầu tiên (nếu có) trong danh sách trên
-    const sanPhamTuongTu_5SpDauTien = sanPhamTuongTu.slice(0, 5);
+    // Lấy ra 5 sản phẩm đầu tiên (nếu có) trong danh sách trên + sắp xếp ngẫu nhiên 5 sản phẩm đó
+    const sanPhamTuongTu_5SpDauTien = shuffleArray(sanPhamTuongTu.slice(0, 5));
     console.log(sanPhamTuongTu_5SpDauTien)
 
     // Hiển thị 5 sản phẩm lên web
-    let div = document.getElementById('goiYSanPham');
-    addKhungSanPham(sanPhamTuongTu_5SpDauTien, 'Sản phẩm gợi ý', ['#ff9c00', '#ec1f1f'], div);
+    if(sanPhamTuongTu_5SpDauTien.length) {
+        let div = document.getElementById('goiYSanPham');
+        addKhungSanPham(sanPhamTuongTu_5SpDauTien, 'Bạn có thể thích', ['#434aa8', '#ec1f1f'], div);
+    }
 }

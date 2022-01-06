@@ -42,7 +42,12 @@
     <section>
         <script> addHeader(); </script>
 
-        <div class="chitietSanpham" style="min-height: 85vh">
+        <div id="productNotFound" style="min-height: 50vh; text-align: center; margin: 50px; display: none;">
+            <h1 style="color: red; margin-bottom: 10px;">Không tìm thấy sản phẩm</h1>
+            <a href="index.html" style="text-decoration: underline;">Quay lại trang chủ</a>
+        </div>
+
+        <div class="chitietSanpham" style="margin-bottom: 100px">
             <h1>Điện thoại </h1>
             <div class="rating"></div>
             <div class="rowdetail group">
@@ -102,11 +107,11 @@
                 </div>
             </div>
         </div>
+
+        <div id="goiYSanPham"></div>
     </section>
 
     <script>addContainTaiKhoan();</script>
-
-    <div id="goiYSanPham"></div>
 
     <div class="footer"><script>addFooter();</script></div>
 
