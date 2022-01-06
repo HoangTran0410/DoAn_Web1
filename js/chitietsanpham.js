@@ -206,9 +206,7 @@ function suggestion(){
 
         // Tiêu chí 1: giá sản phẩm ko lệch nhau quá 1 triệu
         const giaSanPham = stringToNum(sanPham.price);
-        if(Math.abs(giaSanPham - giaSanPhamHienTai) < 1000000) {
-            return true;
-        }
+        let tieuChi1 = Math.abs(giaSanPham - giaSanPhamHienTai) < 1000000;
 
         // Tiêu chí 2: có ít nhất 1 thông tin trong detail trùng nhau
         let soLuongChiTietGiongNhau = 0;
@@ -218,12 +216,20 @@ function suggestion(){
 
             if(value == currentValue) soLuongChiTietGiongNhau++;
         }
+        let tieuChi2  = soLuongChiTietGiongNhau >= 3;
 
-        return soLuongChiTietGiongNhau >= 2;
+        // Tiêu chí 3: cùng hãng sản xuất 
+        let tieuChi3 = sanPham.company ===  sanPhamHienTai.company
+
+        // Tiêu chí 4: cùng loại khuyến mãi
+        let tieuChi4 = sanPham.promo?.name === sanPhamHienTai.promo?.name;
+
+        // Các tiêu chí được sắp xếp theo mức độ quan trọng
+        return tieuChi1 || tieuChi2 && tieuChi3 || tieuChi4;
     });
 
     // Lấy ra 5 sản phẩm đầu tiên (nếu có) trong danh sách trên + sắp xếp ngẫu nhiên 5 sản phẩm đó
-    const sanPhamTuongTu_5SpDauTien = shuffleArray(sanPhamTuongTu.slice(0, 5));
+    const sanPhamTuongTu_5SpDauTien = sanPhamTuongTu.slice(0, 5);
     console.log(sanPhamTuongTu_5SpDauTien)
 
     // Hiển thị 5 sản phẩm lên web
