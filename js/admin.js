@@ -205,11 +205,12 @@ function layThongTinSanPhamTuTable(id) {
     var microUSB = tr[18].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var battery = tr[19].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
 
+
     return {
         "name": name,
         "company": company,
         "img": previewSrc,
-        "price": price,
+        "price": numToString(Number.parseInt(price, 10)),
         "star": star,
         "rateCount": rateCount,
         "promo": {
