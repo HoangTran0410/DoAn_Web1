@@ -13,6 +13,9 @@ window.onload = function () {
 
     // autocomplete cho khung tim kiem
     autocomplete(document.getElementById('search-box'), list_products);
+
+    // Thêm gợi ý sản phẩm
+    suggestion();
 }
 
 function phanTich_URL_chiTietSanPham() {
@@ -30,7 +33,7 @@ function phanTich_URL_chiTietSanPham() {
         }
     }
 
-    var sanPham = timKiemTheoTen(list_products, nameProduct)[0];
+    var sanPham = timKiemTheoMa(list_products, maProduct);
     var divChiTiet = document.getElementsByClassName('chitietSanpham')[0];
 
     // Đổi title
@@ -160,4 +163,65 @@ function closecertain() {
 // đổi hình trong chế độ xem hình
 function changepic(src) {
     document.getElementById("bigimg").src = src;
+}
+
+// Thêm sản phẩm vào các khung sản phẩm
+function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
+	// convert color to code
+	var gradient = `background-image: linear-gradient(120deg, ` + color[0] + ` 0%, ` + color[1] + ` 50%, ` + color[0] + ` 100%);`
+	var borderColor = `border-color: ` + color[0];
+	var borderA = `	border-left: 2px solid ` + color[0] + `;
+					border-right: 2px solid ` + color[0] + `;`;
+
+	// mở tag
+	var s = `<div class="khungSanPham" style="` + borderColor + `">
+				<h3 class="tenKhung" style="` + gradient + `">* ` + tenKhung + ` *</h3>
+				<div class="listSpTrongKhung flexContain">`;
+
+	for (var i = 0; i < list_sanpham.length; i++) {
+		s += addProduct(list_sanpham[i], null, true);
+		// truyền vào 'true' để trả về chuỗi rồi gán vào s
+	}
+
+	// thêm khung vào contain-khung
+	ele.innerHTML += s;
+}
+
+/// gợi ý sản phẩm
+function suggestion(){
+    // Lay ra thong tin san pham hien tai
+    console.log(maProduct);
+    const sanPhamHienTai = list_products.find(_ => _.masp === maProduct);
+    const giaSanPhamHienTai = stringToNum(sanPhamHienTai.price);
+
+    // Tìm cách sản phẩm tương tự theo tiêu chí
+    const sanPhamTuongTu = list_products.filter(sanPham => {
+        // Tiêu chí bắt buộc: không được trùng với sản phẩm hiện tại
+        if(sanPham.masp === sanPhamHienTai.masp) return false;
+
+        // Tiêu chí 1: giá sản phẩm ko lệch nhau quá 1 triệu
+        const giaSanPham = stringToNum(sanPham.price);
+        if(Math.abs(giaSanPham - giaSanPhamHienTai) < 1000000) {
+            return true;
+        }
+
+        // Tiêu chí 2: có ít nhất 1 thông tin trong detail trùng nhau
+        let soLuongChiTietGiongNhau = 0;
+        for(let key in sanPham.detail) {
+            let value = sanPham.detail[key];
+            let currentValue = sanPhamHienTai.detail[key];
+
+            if(value == currentValue) soLuongChiTietGiongNhau++;
+        }
+
+        return soLuongChiTietGiongNhau >= 2;
+    });
+
+    // Lấy ra 5 sản phẩm đầu tiên (nếu có) trong danh sách trên
+    const sanPhamTuongTu_5SpDauTien = sanPhamTuongTu.slice(0, 5);
+    console.log(sanPhamTuongTu_5SpDauTien)
+
+    // Hiển thị 5 sản phẩm lên web
+    let div = document.getElementById('goiYSanPham');
+    addKhungSanPham(sanPhamTuongTu_5SpDauTien, 'Sản phẩm gợi ý', ['#ff9c00', '#ec1f1f'], div);
 }

@@ -180,6 +180,7 @@ function timKiemSanPham(inp) {
 }
 
 // Thêm
+let previewSrc; // biến toàn cục lưu file ảnh đang thêm
 function layThongTinSanPhamTuTable(id) {
     var khung = document.getElementById(id);
     var tr = khung.getElementsByTagName('tr');
@@ -207,7 +208,7 @@ function layThongTinSanPhamTuTable(id) {
     return {
         "name": name,
         "company": company,
-        "img": img,
+        "img": previewSrc,
         "price": price,
         "star": star,
         "rateCount": rateCount,
@@ -230,7 +231,7 @@ function layThongTinSanPhamTuTable(id) {
     };
 }
 function themSanPham() {
-    var newSp = layThongTinSanPhamTuTable('khungThemSanPham')
+    var newSp = layThongTinSanPhamTuTable('khungThemSanPham');
     for(var p of list_products) {
         if(p.masp == newSp.masp) {
             alert('Mã sản phẩm bị trùng !!');
@@ -433,6 +434,16 @@ function capNhatAnhSanPham(files, id) {
     if(files.length) url = window.URL.createObjectURL(files[0]);
     
     document.getElementById(id).src = url;
+
+    const reader = new FileReader();
+    reader.addEventListener("load", function () {
+        // convert image file to base64 string
+        previewSrc = reader.result;
+    }, false);
+
+    if (files[0]) {
+        reader.readAsDataURL(files[0]);
+    }
 } 
 
 // Sắp Xếp sản phẩm

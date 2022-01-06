@@ -17,7 +17,6 @@ window.onload = function () {
 		center: true,
 		loop: true,
 		smartSpeed: 450,
-
 		autoplay: true,
 		autoplayTimeout: 3500
 	});
@@ -59,12 +58,13 @@ window.onload = function () {
 		var green = ['#5de272', '#007012'];
 
 		// Thêm các khung sản phẩm
-		addKhungSanPham('NỔI BẬT NHẤT', yellow_red, ['star=3', 'sort=rateCount-decrease'], soLuong);
-		addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat', 'sort=rateCount-decrease'], soLuong);
-		addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop'], soLuong);
-		addKhungSanPham('GIÁ SỐC ONLINE', green, ['promo=giareonline'], soLuong);
-		addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong);
-		addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-3000000', 'sort=price'], soLuong);
+		var div = document.getElementsByClassName('contain-khungSanPham')[0];
+		addKhungSanPham('NỔI BẬT NHẤT', yellow_red, ['star=3', 'sort=rateCount-decrease'], soLuong, div);
+		addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat', 'sort=rateCount-decrease'], soLuong, div);
+		addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop'], soLuong, div);
+		addKhungSanPham('GIÁ SỐC ONLINE', green, ['promo=giareonline'], soLuong, div);
+		addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong, div);
+		addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-3000000', 'sort=price'], soLuong, div);
 	}
 
 	// Thêm chọn mức giá
@@ -217,14 +217,6 @@ function phanTich_URL(filters, saveFilter) {
 	return result;
 }
 
-// Thêm sản phẩm vào trang
-function addProduct(p, ele, returnString) {
-	promo = new Promo(p.promo.name, p.promo.value); // class Promo
-	product = new Product(p.masp, p.name, p.img, p.price, p.star, p.rateCount, promo); // Class product
-
-	return addToWeb(product, ele, returnString);
-}
-
 // thêm các sản phẩm từ biến mảng nào đó vào trang
 function addProductsFrom(list, vitri, soluong) {
 	var start = vitri || 0;
@@ -239,7 +231,7 @@ function clearAllProducts() {
 }
 
 // Thêm sản phẩm vào các khung sản phẩm
-function addKhungSanPham(tenKhung, color, filter, len) {
+function addKhungSanPham(tenKhung, color, filter, len, ele) {
 	// convert color to code
 	var gradient = `background-image: linear-gradient(120deg, ` + color[0] + ` 0%, ` + color[1] + ` 50%, ` + color[0] + ` 100%);`
 	var borderColor = `border-color: ` + color[0];
@@ -268,7 +260,7 @@ function addKhungSanPham(tenKhung, color, filter, len) {
 		</div> <hr>`;
 
 	// thêm khung vào contain-khung
-	document.getElementsByClassName('contain-khungSanPham')[0].innerHTML += s;
+	ele.innerHTML += s;
 }
 
 // Nút phân trang
@@ -329,7 +321,6 @@ function timKiemTheoCongTySanXuat(list, tenCongTy, soluong) {
 			if (count <= 0) break;
 		}
 	}
-
 	return result;
 }
 

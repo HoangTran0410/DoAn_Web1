@@ -502,6 +502,14 @@ function addTags(nameTag, link) {
     khung_tags.innerHTML += new_tag;
 }
 
+// Thêm sản phẩm vào trang
+function addProduct(p, ele, returnString) {
+	promo = new Promo(p.promo.name, p.promo.value); // class Promo
+	product = new Product(p.masp, p.name, p.img, p.price, p.star, p.rateCount, promo); // Class product
+
+	return addToWeb(product, ele, returnString);
+}
+
 // Thêm topnav vào trang
 function addTopNav() {
     document.write(`    
@@ -537,7 +545,7 @@ function addHeader() {
         </div> <!-- End Logo -->
 
         <div class="content">
-            <div class="search-header">
+            <div class="search-header" style="position: relative; left: 162px; top: 1px;">
                 <form class="input-search" method="get" action="index.html">
                     <div class="autocomplete">
                         <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm...">
@@ -593,8 +601,8 @@ function addFooter() {
 
     <!-- ============== Footer ============= -->
     <div class="copy-right">
-        <p><a href="index.html">SmartPhone Store</a> - All rights reserved © 2018 - Designed by
-            <span style="color: #eee; font-weight: bold">H-group</span></p>
+        <p><a href="index.html">LDD Phone Store</a> - All rights reserved © 2021 - Designed by
+            <span style="color: #eee; font-weight: bold">group 15th</span></p>
     </div>`);
 }
 
@@ -690,7 +698,6 @@ function addContainTaiKhoan() {
         </div> <!-- /taikhoan -->
     </div>`);
 }
-
 // Thêm plc (phần giới thiệu trước footer)
 function addPlc() {
     document.write(`
@@ -703,7 +710,7 @@ function addPlc() {
                 <li>Lỗi đổi tại nhà trong 1 ngày</li>
                 <li>Hỗ trợ suốt thời gian sử dụng.
                     <br>Hotline:
-                    <a href="tel:12345678" style="color: #288ad6;">1234.5678</a>
+                    <a href="tel:12345678" style="color: #288ad6;">12345678</a>
                 </li>
             </ul>
         </section>
@@ -719,20 +726,7 @@ function checkLocalStorage() {
 }
 
 // Di chuyển lên đầu trang
-function gotoTop() {
-    if (window.jQuery) {
-        jQuery('html,body').animate({
-            scrollTop: 0
-        }, 300);
-    } else {
-        document.getElementsByClassName('top-nav')[0].scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
-}
+
 
 
 
