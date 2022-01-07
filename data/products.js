@@ -779,7 +779,7 @@ var list_products = [{
         "microUSB": "Không",
         "battery": "1200 mAh"
     },
-    "masp": "Mob0"
+    "masp": "Mobe0"
 }, {
     "name": "Mobell Rock 3",
     "company": "Mobell",
@@ -802,7 +802,7 @@ var list_products = [{
         "microUSB": "Không",
         "battery": "5000 mAh"
     },
-    "masp": "Mob1"
+    "masp": "Mobe1"
 }, {
     "name": "Mobell S60",
     "company": "Mobell",
@@ -825,7 +825,7 @@ var list_products = [{
         "microUSB": "MicroSD, hỗ trợ tối đa 32 GB",
         "battery": "2650 mAh"
     },
-    "masp": "Mob2"
+    "masp": "Mobe2"
 }, {
     "name": "Itel P32",
     "company": "Itel",
