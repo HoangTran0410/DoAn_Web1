@@ -226,8 +226,8 @@ function suggestion(){
         let cungLoaiKhuyenMai = sanPham.promo?.name === sanPhamHienTai.promo?.name;
         
         // Tiêu chí 5: có đánh giá, số sao
-        let coDanhGia = sanPham.rateCount > 0;
-        let soSao = sanPham.star;
+        let soDanhGia = Number.parseInt(sanPham.rateCount, 10)
+        let soSao = Number.parseInt(sanPham.star, 10);
 
         // Tính điểm cho sản phẩm này (càng thoả nhiều tiêu chí điểm càng cao => càng nên gợi ý)
         let diem = 0;
@@ -235,7 +235,7 @@ function suggestion(){
         if(giongThongSoKyThuat) diem += soLuongChiTietGiongNhau;
         if(cungHangSanXuat) diem += 15;
         if(cungLoaiKhuyenMai) diem += 10;
-        if(coDanhGia) diem += (sanPham.rateCount + '').length;
+        if(soDanhGia > 0) diem += (soDanhGia + '').length;
         diem += soSao;
 
         // Thêm thuộc tính diem vào dữ liệu trả về

@@ -256,33 +256,40 @@ function layThongTinSanPhamTuTable(id) {
     var microUSB = tr[18].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var battery = tr[19].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
 
-    return {
-        "name": name,
-        "company": company,
-        "img": previewSrc,
-        "price": price,
-        "star": star,
-        "rateCount": rateCount,
-        "promo": {
-            "name": promoName,
-            "value": promoValue
-        },
-        "detail": {
-            "screen": screen,
-            "os": os,
-            "camara": camara,
-            "camaraFront": camaraFront,
-            "cpu": cpu,
-            "ram": ram,
-            "rom": rom,
-            "microUSB": microUSB,
-            "battery": battery
-        },
-        "masp" : masp
-    };
+    try {
+        return {
+            "name": name,
+            "company": company,
+            "img": previewSrc,
+            "price": numToString(Number.parseInt(price, 10)),
+            "star": Number.parseInt(star, 10),
+            "rateCount": Number.parseInt(rateCount, 10),
+            "promo": {
+                "name": promoName,
+                "value": promoValue
+            },
+            "detail": {
+                "screen": screen,
+                "os": os,
+                "camara": camara,
+                "camaraFront": camaraFront,
+                "cpu": cpu,
+                "ram": ram,
+                "rom": rom,
+                "microUSB": microUSB,
+                "battery": battery
+            },
+            "masp" : masp
+        }
+    } catch(e) {
+        alert('Lỗi: ' + e.toString());
+        return false;
+    }
 }
 function themSanPham() {
     var newSp = layThongTinSanPhamTuTable('khungThemSanPham');
+    if(!newSp) return;
+
     for(var p of list_products) {
         if(p.masp == newSp.masp) {
             alert('Mã sản phẩm bị trùng !!');
@@ -334,6 +341,7 @@ function xoaSanPham(masp, tensp) {
 // Sửa
 function suaSanPham(masp) {
     var sp = layThongTinSanPhamTuTable('khungSuaSanPham');
+    if(!sp) return;
     
     for(var p of list_products) {
         if(p.masp == masp && p.masp != sp.masp) {
