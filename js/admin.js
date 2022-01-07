@@ -256,6 +256,21 @@ function layThongTinSanPhamTuTable(id) {
     var microUSB = tr[18].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var battery = tr[19].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
 
+    if(isNaN(price)) {
+        alert('Giá phải là số nguyên');
+        return false;
+    }
+
+    if(isNaN(star)) {
+        alert('Số sao phải là số nguyên');
+        return false;
+    }
+
+    if(isNaN(rateCount)) {
+        alert('Số đánh giá phải là số nguyên');
+        return false;
+    }
+
     try {
         return {
             "name": name,
