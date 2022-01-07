@@ -196,19 +196,20 @@ function addKhungSanPham(list_sanpham, tenKhung, color, ele) {
 
 /// gợi ý sản phẩm
 function suggestion(){
-    // Lay ra thong tin san pham hien tai
+    // ====== Lay ra thong tin san pham hien tai ====== 
     const giaSanPhamHienTai = stringToNum(sanPhamHienTai.price);
 
-    // Tìm cách sản phẩm tương tự theo tiêu chí
-    const sanPhamTuongTu = list_products.filter(sanPham => {
-        // Tiêu chí bắt buộc: không được trùng với sản phẩm hiện tại
-        if(sanPham.masp === sanPhamHienTai.masp) return false;
-
+    // ====== Tìm các sản phẩm tương tự theo tiêu chí ====== 
+    const sanPhamTuongTu = list_products
+    // Lọc sản phẩm trùng
+    .filter((_) => _.masp !== sanPhamHienTai.masp)
+    // Tính điểm cho từng sản phẩm
+    .map(sanPham => {
         // Tiêu chí 1: giá sản phẩm ko lệch nhau quá 1 triệu
         const giaSanPham = stringToNum(sanPham.price);
-        let tieuChi1 = Math.abs(giaSanPham - giaSanPhamHienTai) < 1000000;
+        let giaTienGanGiong = Math.abs(giaSanPham - giaSanPhamHienTai) < 1000000;
 
-        // Tiêu chí 2: có ít nhất 1 thông tin trong detail trùng nhau
+        // Tiêu chí 2: các thông số kỹ thuật giống nhau
         let soLuongChiTietGiongNhau = 0;
         for(let key in sanPham.detail) {
             let value = sanPham.detail[key];
@@ -216,25 +217,43 @@ function suggestion(){
 
             if(value == currentValue) soLuongChiTietGiongNhau++;
         }
-        let tieuChi2  = soLuongChiTietGiongNhau >= 3;
+        let giongThongSoKyThuat  = soLuongChiTietGiongNhau >= 3;
 
         // Tiêu chí 3: cùng hãng sản xuất 
-        let tieuChi3 = sanPham.company ===  sanPhamHienTai.company
+        let cungHangSanXuat = sanPham.company ===  sanPhamHienTai.company
 
         // Tiêu chí 4: cùng loại khuyến mãi
-        let tieuChi4 = sanPham.promo?.name === sanPhamHienTai.promo?.name;
+        let cungLoaiKhuyenMai = sanPham.promo?.name === sanPhamHienTai.promo?.name;
+        
+        // Tiêu chí 5: có đánh giá, số sao
+        let coDanhGia = sanPham.rateCount > 0;
+        let soSao = sanPham.star;
 
-        // Các tiêu chí được sắp xếp theo mức độ quan trọng
-        return tieuChi1 || tieuChi2 && tieuChi3 || tieuChi4;
-    });
+        // Tính điểm cho sản phẩm này (càng thoả nhiều tiêu chí điểm càng cao => càng nên gợi ý)
+        let diem = 0;
+        if(giaTienGanGiong) diem += 20;
+        if(giongThongSoKyThuat) diem += soLuongChiTietGiongNhau;
+        if(cungHangSanXuat) diem += 15;
+        if(cungLoaiKhuyenMai) diem += 10;
+        if(coDanhGia) diem += (sanPham.rateCount + '').length;
+        diem += soSao;
 
-    // Lấy ra 5 sản phẩm đầu tiên (nếu có) trong danh sách trên + sắp xếp ngẫu nhiên 5 sản phẩm đó
-    const sanPhamTuongTu_5SpDauTien = sanPhamTuongTu.slice(0, 5);
-    console.log(sanPhamTuongTu_5SpDauTien)
+        // Thêm thuộc tính diem vào dữ liệu trả về
+        return {
+            ...sanPham,
+            diem: diem
+        };
+    })
+    // Sắp xếp theo số điểm cao xuống thấp
+    .sort((a,b) => b.diem - a.diem)
+    // Lấy ra 10 sản phẩm đầu tiên
+    .slice(0, 10);
 
-    // Hiển thị 5 sản phẩm lên web
-    if(sanPhamTuongTu_5SpDauTien.length) {
+    console.log(sanPhamTuongTu)
+
+    // ====== Hiển thị 5 sản phẩm lên web ====== 
+    if(sanPhamTuongTu.length) {
         let div = document.getElementById('goiYSanPham');
-        addKhungSanPham(sanPhamTuongTu_5SpDauTien, 'Bạn có thể thích', ['#434aa8', '#ec1f1f'], div);
+        addKhungSanPham(sanPhamTuongTu, 'Bạn có thể thích', ['#434aa8', '#ec1f1f'], div);
     }
 }
