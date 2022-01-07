@@ -427,15 +427,15 @@ function addKhungSuaSanPham(masp) {
             </td>
         </tr>
         <tr>
-            <td>Giá tiền:</td>
-            <td><input type="text" value="`+sp.price+`"></td>
+            <td>Giá tiền (số nguyên):</td>
+            <td><input type="text" value="`+stringToNum(sp.price)+`"></td>
         </tr>
         <tr>
-            <td>Số sao:</td>
+            <td>Số sao (số nguyên 0->5):</td>
             <td><input type="text" value="`+sp.star+`"></td>
         </tr>
         <tr>
-            <td>Đánh giá:</td>
+            <td>Đánh giá (số nguyên):</td>
             <td><input type="text" value="`+sp.rateCount+`"></td>
         </tr>
         <tr>
@@ -504,15 +504,16 @@ function addKhungSuaSanPham(masp) {
 
 // Cập nhật ảnh sản phẩm
 function capNhatAnhSanPham(files, id) {
-    var url = '';
-    if(files.length) url = window.URL.createObjectURL(files[0]);
+    // var url = '';
+    // if(files.length) url = window.URL.createObjectURL(files[0]);
     
-    document.getElementById(id).src = url;
+    // document.getElementById(id).src = url;
 
     const reader = new FileReader();
     reader.addEventListener("load", function () {
         // convert image file to base64 string
         previewSrc = reader.result;
+        document.getElementById(id).src = previewSrc;
     }, false);
 
     if (files[0]) {
