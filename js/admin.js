@@ -310,6 +310,11 @@ function themSanPham() {
             alert('Mã sản phẩm bị trùng !!');
             return false;
         }
+
+        if(p.name == newSp.name) {
+            alert('Tên sản phẩm bị trùng !!');
+            return false;
+        }
     }
      // Them san pham vao list_products
      list_products.push(newSp);
@@ -361,6 +366,11 @@ function suaSanPham(masp) {
     for(var p of list_products) {
         if(p.masp == masp && p.masp != sp.masp) {
             alert('Mã sản phẩm bị trùng !!');
+            return false;
+        }
+
+        if(p.name == sp.name && p.masp != sp.masp) {
+            alert('Tên sản phẩm bị trùng !!');
             return false;
         }
     }
