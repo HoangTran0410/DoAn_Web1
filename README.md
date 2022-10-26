@@ -1,5 +1,7 @@
 # DoAn_Web1
 
+Donate? Muốn hỗ trợ mình 1 ly cafe <3 [Donate here](https://github.com/HoangTran0410/HoangTran0410/blob/main/DONATE.md)
+
 Đồ án môn web 1, web tĩnh, đề tài trang web bán điện thoại.
 
 Giao diện thân thiện, dễ sử dụng, chức năng khá đầy đủ.
